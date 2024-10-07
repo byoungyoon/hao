@@ -1,4 +1,4 @@
-import { createTheme, globalFontFace } from '@vanilla-extract/css';
+import { createTheme } from '@vanilla-extract/css';
 
 export const [themeClass, vars] = createTheme({
   color: {
