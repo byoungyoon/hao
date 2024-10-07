@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import Body from '@/app/components/text/Body';
 import * as styles from './navigation.css';
+import cx from 'classnames';
 
 type Props = {
   /**
@@ -15,14 +16,18 @@ type Props = {
    * center text
    */
   text?: string;
+  /**
+   * add className
+   */
+  className?: string;
 };
 
 /**
  * navigation
  */
-export default function Navigation({ left, right, text }: Props) {
+export default function Navigation({ left, right, text, className }: Props) {
   return (
-    <div className={styles.navigation}>
+    <div className={cx(styles.navigation, className)}>
       <div className={styles.left}>{left}</div>
       <Body size='1'>{text}</Body>
       <div className={styles.right}>{right}</div>

@@ -21,6 +21,7 @@ export default function HomeLayout({ children }: Props) {
         </div>
       }
       right={<Image src={AlarmOn} alt='alarm' width={24} height={24} />}
+      className={styles.navigation}
     >
       {children}
     </CustomLayout>
