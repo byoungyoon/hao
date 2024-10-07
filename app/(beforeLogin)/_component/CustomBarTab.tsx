@@ -11,42 +11,44 @@ import WritingOff from '@/app/icon/writing/off.png';
 import { useMemo } from 'react';
 import BarTab from '@/app/components/tab/BarTab';
 import { useRouter, usePathname } from 'next/navigation';
+import { BarTabItemTypes } from '@/app/components/tab/BarTabItem';
+import { StaticImageData } from 'next/image';
 
 export default function CustomBarTab() {
   const router = useRouter();
   const pathname = usePathname();
 
-  const data = useMemo(
+  const data: (BarTabItemTypes & { target: string })[] = useMemo(
     () => [
       {
         text: '홈',
         icon: {
-          on: HomeOn,
-          off: HomeOff,
+          on: HomeOn as StaticImageData,
+          off: HomeOff as StaticImageData,
         },
         target: '/home',
       },
       {
         text: '피드',
         icon: {
-          on: FeedOn,
-          off: FeedOff,
+          on: FeedOn as StaticImageData,
+          off: FeedOff as StaticImageData,
         },
         target: '/feed',
       },
       {
         text: '글 작성',
         icon: {
-          on: MyPageOn,
-          off: MyPageOff,
+          on: MyPageOn as StaticImageData,
+          off: MyPageOff as StaticImageData,
         },
         target: '/writing',
       },
       {
         text: '마이페이지',
         icon: {
-          on: WritingOn,
-          off: WritingOff,
+          on: WritingOn as StaticImageData,
+          off: WritingOff as StaticImageData,
         },
         target: '/my',
       },

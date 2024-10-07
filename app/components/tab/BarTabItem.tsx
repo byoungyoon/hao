@@ -7,8 +7,8 @@ import cx from 'classnames';
 export type BarTabItemTypes = {
   text: string;
   icon: {
-    on: StaticImageData;
-    off: StaticImageData;
+    on: StaticImageData | string;
+    off: StaticImageData | string;
   };
 
   isSelect?: boolean;

@@ -14,4 +14,5 @@ export const image = style({
   bottom: 0,
   right: 0,
   cursor: 'pointer',
+  maxWidth: 425,
 });
