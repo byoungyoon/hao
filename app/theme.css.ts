@@ -43,7 +43,7 @@ export const [themeClass, vars] = createTheme({
     s10: '72px',
   },
   shadow: {
-    default: 'box-shadow: 0 0 8px rgba(0, 0, 0, .04)',
-    top: 'box-shadow: 0 4px 8px rgba(0, 0, 0, .04)',
+    default: '0 0 8px rgba(0, 0, 0, .04)',
+    top: '0 -4px 8px rgba(0, 0, 0, .04)',
   },
 });
