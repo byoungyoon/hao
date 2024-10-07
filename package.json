@@ -8,10 +8,12 @@
     "start": "next start",
     "lint": "next lint",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "chromatic": "npx chromatic --project-token=chpt_5f2edbfd13b6265"
   },
   "dependencies": {
     "@vanilla-extract/css": "^1.16.0",
+    "chromatic": "^11.11.0",
     "classnames": "^2.5.1",
     "next": "14.2.14",
     "prettier": "^3.3.3",

@@ -2,16 +2,19 @@ import { style } from '@vanilla-extract/css';
 
 export const text = style({
   selectors: {
-    '&.1': {
+    '&.type1': {
       fontFamily: 'medium',
+      fontWeight: 500,
       fontSize: 20,
     },
-    '&.2': {
+    '&.type2': {
       fontFamily: 'regular',
+      fontWeight: 400,
       fontSize: 16,
     },
-    '&.3': {
+    '&.type3': {
       fontFamily: 'regular',
+      fontWeight: 400,
       fontSize: 14,
     },
   },

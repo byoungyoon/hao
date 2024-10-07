@@ -1,20 +1,24 @@
 @font-face {
     font-family: 'bold';
+    font-weight: bold;
     src: url(./fonts/Pretendard-Bold.otf);
 }
 
 @font-face {
     font-family: 'medium';
+    font-weight: 500;
     src: url(./fonts/Pretendard-Medium.otf);
 }
 
 @font-face {
     font-family: 'regular';
+    font-weight: 400;
     src: url(./fonts/Pretendard-Regular.otf);
 }
 
 @font-face {
     font-family: 'semiBold';
+    font-weight: 600;
     src: url(./fonts/Pretendard-SemiBold.otf);
 }
 

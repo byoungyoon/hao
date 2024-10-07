@@ -1,14 +1,16 @@
 'use client';
 
-import BarTabItem, { BarTabItemTypes } from '@/app/components/tab/BarTabItem';
+import CategoryTabItem, {
+  CategoryTabItemTypes,
+} from '@/app/components/tab/CategoryTabItem';
 import { useEffect, useState } from 'react';
-import * as styles from './barTab.css';
+import * as styles from './cartegoryTab.css';
 
 type Props = {
   /**
-   * tab item data
+   * tab category item data
    */
-  data: BarTabItemTypes[];
+  data: CategoryTabItemTypes[];
   /**
    * default select
    */
@@ -21,9 +23,13 @@ type Props = {
 };
 
 /**
- * tab bar
+ * tab category
  */
-export default function BarTab({ data, defaultSelect, onTrackable }: Props) {
+export default function CategoryTab({
+  data,
+  defaultSelect,
+  onTrackable,
+}: Props) {
   const [select, setSelect] = useState(defaultSelect);
 
   const onClickItem = (text: string) => () => {
@@ -37,7 +43,7 @@ export default function BarTab({ data, defaultSelect, onTrackable }: Props) {
   return (
     <div className={styles.itemGroup}>
       {data.map((datum) => (
-        <BarTabItem
+        <CategoryTabItem
           key={datum.text}
           onClick={onClickItem(datum.text)}
           isSelect={select === datum.text}

@@ -2,31 +2,38 @@ import { style } from '@vanilla-extract/css';
 
 export const body = style({
   selectors: {
-    '&.1': {
+    '&.type1': {
+      fontWeight: 500,
       fontSize: 20,
       fontFamily: 'medium',
     },
-    '&.2': {
+    '&.type2': {
+      fontWeight: 'bold',
       fontSize: 20,
       fontFamily: 'bold',
     },
-    '&.3': {
+    '&.type3': {
+      fontWeight: 500,
       fontSize: 18,
       fontFamily: 'medium',
     },
-    '&.4': {
+    '&.type4': {
+      fontWeight: 600,
       fontSize: 18,
       fontFamily: 'semiBold',
     },
-    '&.5': {
+    '&.type5': {
+      fontWeight: 400,
       fontSize: 16,
       fontFamily: 'regular',
     },
-    '&.6': {
+    '&.type6': {
+      fontWeight: 400,
       fontSize: 14,
       fontFamily: 'regular',
     },
-    '&.7': {
+    '&.type7': {
+      fontWeight: 400,
       fontSize: 12,
       fontFamily: 'regular',
     },

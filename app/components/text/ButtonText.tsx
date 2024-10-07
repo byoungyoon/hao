@@ -16,7 +16,7 @@ export default function ButtonText(
   const { size, children, className, ...rest } = props;
 
   return (
-    <p className={cx(styles.text, size, className)} {...rest}>
+    <p className={cx(styles.text, `type${size}`, className)} {...rest}>
       {children}
     </p>
   );
