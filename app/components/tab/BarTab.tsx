@@ -31,7 +31,7 @@ export default function BarTab({ data, defaultSelect, onTrackable }: Props) {
   };
 
   useEffect(() => {
-    onTrackable && onTrackable(select);
+    if (onTrackable) onTrackable(select);
   }, [select]);
 
   return (
