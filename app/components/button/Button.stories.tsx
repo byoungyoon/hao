@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import BarTab from '@/app/components/tab/BarTab';
 import { themeClass } from '@/app/theme.css';
 import Button from '@/app/components/button/Button';
 

@@ -12,8 +12,6 @@ import { useMemo } from 'react';
 import BarTab from '@/app/components/tab/BarTab';
 import { useRouter, usePathname } from 'next/navigation';
 
-const DEFAULT_SELECT = '홈';
-
 export default function CustomBarTab() {
   const router = useRouter();
   const pathname = usePathname();
