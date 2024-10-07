@@ -64,5 +64,6 @@ export const itemGroup = style({
   overflowY: 'hidden',
   padding: '24px 20px',
   flexGrow: 1,
-  background: vars.color.gray['100'],
+  background: vars.color.gray.background,
+  scrollbarWidth: 'none',
 });
