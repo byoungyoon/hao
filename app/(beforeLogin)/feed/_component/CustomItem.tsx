@@ -1,3 +1,5 @@
+'use client';
+
 import InfoLayer from '@/app/components/layer/InfoLayer';
 import Image, { StaticImageData } from 'next/image';
 import Body from '@/app/components/text/Body';
@@ -9,6 +11,7 @@ import Comment from '@/app/icon/comment.png';
 import cx from 'classnames';
 
 import * as styles from './customItem.css';
+import { usePathname, useRouter } from 'next/navigation';
 
 type Props = {
   image: string | StaticImageData;
@@ -31,7 +34,7 @@ type Props = {
 
   height?: number;
 
-  onClick?: () => void;
+  callback?: string;
 };
 
 export default function CustomItem({
@@ -49,10 +52,24 @@ export default function CustomItem({
   hasAdopt = true,
   isBookmark,
   height = 142,
-  onClick,
+  callback,
 }: Props) {
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const onLocalClick = () => {
+    if (!callback) return;
+
+    router.push(`${pathname}/${callback}`);
+  };
+
   return (
-    <div role='button' tabIndex={0} className={styles.item} onClick={onClick}>
+    <div
+      role='button'
+      tabIndex={0}
+      className={styles.item}
+      onClick={onLocalClick}
+    >
       <hgroup className={styles.hgroup}>
         <div className={styles.userGroup}>
           <span className={cx(styles.imageLayer, `age${age}`)}>

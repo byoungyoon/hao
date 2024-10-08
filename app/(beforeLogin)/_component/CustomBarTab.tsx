@@ -37,20 +37,20 @@ export default function CustomBarTab() {
         target: '/feed',
       },
       {
-        text: '글 작성',
-        icon: {
-          on: MyPageOn as StaticImageData,
-          off: MyPageOff as StaticImageData,
-        },
-        target: '/writing',
-      },
-      {
         text: '마이페이지',
         icon: {
           on: WritingOn as StaticImageData,
           off: WritingOff as StaticImageData,
         },
         target: '/my',
+      },
+      {
+        text: '글 작성',
+        icon: {
+          on: MyPageOn as StaticImageData,
+          off: MyPageOff as StaticImageData,
+        },
+        target: '/writing',
       },
     ],
     [],
@@ -67,7 +67,7 @@ export default function CustomBarTab() {
   const onTrackableTab = (select: string) => {
     const find = data.find((datum) => datum.text === select);
 
-    if (!find) return;
+    if (!find || pathname.startsWith(find.target)) return;
 
     router.push(find.target);
   };

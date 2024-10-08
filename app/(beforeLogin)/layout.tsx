@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import CustomBarTab from '@/app/(beforeLogin)/_component/CustomBarTab';
 
 import * as styles from './layout.css';
-import RQProvider from '@/app/(beforeLogin)/RQProvider';
+import RQProvider from '@/app/provider/RQProvider';
 
 type Props = {
   children: ReactNode;

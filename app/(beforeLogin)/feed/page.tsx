@@ -39,11 +39,11 @@ export default function FeedPage() {
       <article className={styles.listArticle}>
         <CustomChipGroup data={chipData} defaultSelect='전체' />
         <div className={styles.itemGroup}>
-          <CustomItem {...sample} age={20} />
-          <CustomItem {...sample} isaAdopt />
-          <CustomItem {...sample} isLike />
-          <CustomItem {...sample} isBookmark />
-          <CustomItem {...sample} />
+          <CustomItem {...sample} age={20} callback='a' />
+          <CustomItem {...sample} isaAdopt callback='b' />
+          <CustomItem {...sample} isLike callback='c' />
+          <CustomItem {...sample} isBookmark callback='d' />
+          <CustomItem {...sample} callback='e' />
         </div>
       </article>
     </section>
