@@ -74,15 +74,14 @@ export const contentLayer = style({
 
 export const thumbnailLayer = style({
   width: '100%',
-  height: 142,
   borderRadius: 8,
   overflow: 'hidden',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  background: vars.color.gray['100'],
 });
 
-export const thumbnail = style({
-  width: '100%',
-  height: '100%',
-});
 
 export const subTitle = style({
   color: vars.color.gray['400'],

@@ -24,8 +24,14 @@ type Props = {
   comment: number;
 
   isaAdopt?: boolean;
+  hasAdopt?: boolean;
+
   isBookmark?: boolean;
   isLike?: boolean;
+
+  height?: number;
+
+  onClick?: () => void;
 };
 
 export default function CustomItem({
@@ -40,10 +46,13 @@ export default function CustomItem({
   comment,
   isLike,
   isaAdopt,
+  hasAdopt = true,
   isBookmark,
+  height = 142,
+  onClick,
 }: Props) {
   return (
-    <div className={styles.item}>
+    <div role='button' tabIndex={0} className={styles.item} onClick={onClick}>
       <hgroup className={styles.hgroup}>
         <div className={styles.userGroup}>
           <span className={cx(styles.imageLayer, `age${age}`)}>
@@ -59,22 +68,20 @@ export default function CustomItem({
             </Body>
           </div>
         </div>
-        <span>
-          <InfoLayer
-            text={isaAdopt ? '채택 완료' : '미채택'}
-            color={isaAdopt ? 'gray' : 'orange'}
-          />
-        </span>
+        {hasAdopt && (
+          <span>
+            <InfoLayer
+              text={isaAdopt ? '채택 완료' : '미채택'}
+              color={isaAdopt ? 'gray' : 'orange'}
+            />
+          </span>
+        )}
       </hgroup>
       <div className={styles.contentLayer}>
         <Body size='2'>{title}</Body>
         {thumbnail && (
-          <div className={styles.thumbnailLayer}>
-            <Image
-              src={thumbnail}
-              alt='thumbnail'
-              className={styles.thumbnail}
-            />
+          <div className={styles.thumbnailLayer} style={{ height: height }}>
+            <Image src={thumbnail} alt='thumbnail' />
           </div>
         )}
         <Body size='5' className={styles.subTitle}>
