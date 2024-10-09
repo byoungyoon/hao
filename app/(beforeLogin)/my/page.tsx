@@ -15,7 +15,7 @@ import * as styles from './page.css';
 export default function MyPage() {
   return (
     <section className={styles.section}>
-      <arsticle className={styles.infoArticle}>
+      <article className={styles.infoArticle}>
         <hgroup className={styles.infoHgroup}>
           <div>
             <Heading size='2'>지금까지 뱉은 후회 5개 중</Heading>
@@ -77,7 +77,7 @@ export default function MyPage() {
             />
           </div>
         </div>
-      </arsticle>
+      </article>
       <div className={styles.border} />
       <article className={styles.reportArticle}>
         <Heading size='2' className={styles.reportTitle}>
@@ -86,7 +86,7 @@ export default function MyPage() {
         <div className={styles.reportLayer}>
           <Heading size='2'>정재현내꺼는</Heading>
           <Heading size='2'>
-            '<text>대인관계</text>'에 제일 많은 후회를 했어
+            &apos;<text>대인관계</text>&apos;에 제일 많은 후회를 했어
           </Heading>
           <Body size='5' className={styles.reportAside}>
             과거의 후회를 되돌아보며 더 나은 내가 되어보자!
@@ -99,7 +99,12 @@ export default function MyPage() {
         </div>
       </article>
       <div className={styles.logoutLayer}>
-        <Button size='auto' text='로그아웃' className={styles.logout} />
+        <Button
+          size='auto'
+          text='로그아웃'
+          color='gray'
+          className={styles.logout}
+        />
       </div>
     </section>
   );
