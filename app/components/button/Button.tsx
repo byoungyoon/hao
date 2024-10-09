@@ -21,7 +21,7 @@ export default function Button(
   return (
     <button
       type='button'
-      className={cx(styles.button, size, color, className)}
+      className={cx(styles.button, size, color, className && className)}
       {...rest}
     >
       <ButtonText size='1'>{text}</ButtonText>

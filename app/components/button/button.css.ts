@@ -18,7 +18,7 @@ export const button = style({
       width: 222,
     },
     '&.auto': {
-      width: 'auto',
+      width: 'fit-content',
       padding: '8px 24px',
     },
     '&.orange': {

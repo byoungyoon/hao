@@ -14,4 +14,5 @@ export const input = style({
   position: 'sticky',
   bottom: 0,
   boxShadow: vars.shadow.top,
+  zIndex: 1,
 });
