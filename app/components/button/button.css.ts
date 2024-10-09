@@ -17,6 +17,10 @@ export const button = style({
     '&.small': {
       width: 222,
     },
+    '&.auto': {
+      width: 'auto',
+      padding: '8px 24px',
+    },
     '&.orange': {
       background: vars.color.orange['300'],
       color: vars.color.gray.white,

@@ -4,7 +4,7 @@ import { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
 import * as styles from './button.css';
 
 type Props = {
-  size: 'small' | 'long';
+  size: 'small' | 'long' | 'auto';
   color: 'gray' | 'orange';
   text: string;
 };
