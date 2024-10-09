@@ -2,7 +2,7 @@ import CSample from '@/app/image/sample/cSample.png';
 import { StaticImageData } from 'next/image';
 import Sample from '@/app/image/sample/sample2.png';
 import CustomItem from '@/app/(beforeLogin)/feed/_component/CustomItem';
-import CustomReport from '@/app/(beforeLogin)/feed/[detail]/_component/CustomReport';
+import CustomReport from '@/app/(beforeLogin)/_component/CustomReport';
 import CustomComment from '@/app/(beforeLogin)/feed/[detail]/_component/CustomComment';
 import CustomCommentInput from '@/app/(beforeLogin)/feed/[detail]/_component/CustomCommentInput';
 
