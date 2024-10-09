@@ -11,6 +11,7 @@ import Default20 from '@/app/image/character/default-20.png';
 import Arrow from '@/app/icon/arrow-white.png';
 
 import * as styles from './page.css';
+import CustomCallback from '@/app/(beforeLogin)/_component/CustomCallback';
 
 export default function MyPage() {
   return (
@@ -32,7 +33,10 @@ export default function MyPage() {
             className={styles.infoCharacter}
           />
         </hgroup>
-        <div className={styles.infoModifyLayer}>
+        <CustomCallback
+          className={styles.infoModifyLayer}
+          callback='/my/modify'
+        >
           <div className={styles.infoModifyImage}>
             <Image src={Default20} alt='default' />
           </div>
@@ -52,7 +56,7 @@ export default function MyPage() {
               <Image src={Arrow} alt='arrow' width={18} height={18} />
             </button>
           </div>
-        </div>
+        </CustomCallback>
         <div className={styles.infoLayerGroup}>
           <div className={styles.infoMyLayer}>
             <Body size='1'>내 후회</Body>
@@ -65,7 +69,10 @@ export default function MyPage() {
               className={styles.infoMyImage}
             />
           </div>
-          <div className={styles.infoScrapLayer}>
+          <CustomCallback
+            className={styles.infoScrapLayer}
+            callback='/my/scrap'
+          >
             <Body size='1'>스크랩</Body>
             <Body size='3' className={styles.infoLayerText}>
               13개
@@ -75,7 +82,7 @@ export default function MyPage() {
               alt='character'
               className={styles.infoScrapImage}
             />
-          </div>
+          </CustomCallback>
         </div>
       </article>
       <div className={styles.border} />
