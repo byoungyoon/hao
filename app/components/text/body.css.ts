@@ -1,41 +1,102 @@
 import { style } from '@vanilla-extract/css';
 
-export const body = style({
-  selectors: {
-    '&.type1': {
-      fontWeight: 500,
-      fontSize: 20,
-      fontFamily: 'medium',
+export const type = {
+  '1': style({
+    fontWeight: 500,
+    fontSize: 20,
+    fontFamily: 'medium',
+
+    '@media': {
+      'screen and (max-width: 375px)': {
+        fontSize: 19,
+      },
+      'screen and (max-width: 320px)': {
+        fontSize: 18,
+      },
     },
-    '&.type2': {
-      fontWeight: 'bold',
-      fontSize: 20,
-      fontFamily: 'bold',
+  }),
+  '2': style({
+    fontWeight: 'bold',
+    fontSize: 20,
+    fontFamily: 'bold',
+
+    '@media': {
+      'screen and (max-width: 375px)': {
+        fontSize: 19,
+      },
+      'screen and (max-width: 320px)': {
+        fontSize: 18,
+      },
     },
-    '&.type3': {
-      fontWeight: 500,
-      fontSize: 18,
-      fontFamily: 'medium',
+  }),
+  '3': style({
+    fontWeight: 500,
+    fontSize: 18,
+    fontFamily: 'medium',
+
+    '@media': {
+      'screen and (max-width: 375px)': {
+        fontSize: 17,
+      },
+      'screen and (max-width: 320px)': {
+        fontSize: 16,
+      },
     },
-    '&.type4': {
-      fontWeight: 600,
-      fontSize: 18,
-      fontFamily: 'semiBold',
+  }),
+  '4': style({
+    fontWeight: 600,
+    fontSize: 18,
+    fontFamily: 'semiBold',
+
+    '@media': {
+      'screen and (max-width: 375px)': {
+        fontSize: 17,
+      },
+      'screen and (max-width: 320px)': {
+        fontSize: 16,
+      },
     },
-    '&.type5': {
-      fontWeight: 400,
-      fontSize: 16,
-      fontFamily: 'regular',
+  }),
+  '5': style({
+    fontWeight: 400,
+    fontSize: 16,
+    fontFamily: 'regular',
+
+    '@media': {
+      'screen and (max-width: 375px)': {
+        fontSize: 15,
+      },
+      'screen and (max-width: 320px)': {
+        fontSize: 14,
+      },
     },
-    '&.type6': {
-      fontWeight: 400,
-      fontSize: 14,
-      fontFamily: 'regular',
+  }),
+  '6': style({
+    fontWeight: 400,
+    fontSize: 14,
+    fontFamily: 'regular',
+
+    '@media': {
+      'screen and (max-width: 375px)': {
+        fontSize: 13,
+      },
+      'screen and (max-width: 320px)': {
+        fontSize: 12,
+      },
     },
-    '&.type7': {
-      fontWeight: 400,
-      fontSize: 12,
-      fontFamily: 'regular',
+  }),
+  '7': style({
+    fontWeight: 400,
+    fontSize: 12,
+    fontFamily: 'regular',
+
+    '@media': {
+      'screen and (max-width: 375px)': {
+        fontSize: 11,
+      },
+      'screen and (max-width: 320px)': {
+        fontSize: 10,
+      },
     },
-  },
-});
+  }),
+};

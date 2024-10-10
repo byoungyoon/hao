@@ -32,10 +32,30 @@ export const input = style({
     fontFamily: 'regular',
     fontWeight: 400,
   },
+
+  '@media': {
+    'screen and (max-width: 375px)': {
+      paddingRight: 96,
+    },
+    'screen and (max-width: 320px)': {
+      paddingRight: 92,
+    },
+  },
 });
 
 export const button = style({
   position: 'absolute',
   right: 8,
   height: 37,
+
+  '@media': {
+    'screen and (max-width: 375px)': {
+      padding: '7px 22px',
+      right: 6,
+    },
+    'screen and (max-width: 320px)': {
+      padding: '6px 20px',
+      right: 4,
+    },
+  },
 });

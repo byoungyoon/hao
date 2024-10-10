@@ -10,9 +10,9 @@ import InfoLayer from '@/app/components/layer/InfoLayer';
 import Body from '@/app/components/text/Body';
 import CustomTab from '@/app/(beforeLogin)/home/_component/CustomTab';
 import Sample from '@/app/image/sample/sample.png';
+import CustomItem from '@/app/(beforeLogin)/home/_component/CustomItem';
 
 import * as styles from './page.css';
-import CustomItem from '@/app/(beforeLogin)/home/_component/CustomItem';
 
 dayjs.extend(localizedFormat);
 dayjs.locale('ko');

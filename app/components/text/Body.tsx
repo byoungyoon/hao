@@ -16,7 +16,7 @@ export default function Body(
   const { size, children, className, ...rest } = props;
 
   return (
-    <h4 className={cx(styles.body, `type${size}`, className)} {...rest}>
+    <h4 className={cx(styles.type[size], className)} {...rest}>
       {children}
     </h4>
   );

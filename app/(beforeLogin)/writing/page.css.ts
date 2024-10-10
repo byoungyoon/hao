@@ -22,11 +22,33 @@ export const category = style({
   border: `1px solid ${vars.color.gray['200']}`,
   height: 56,
   cursor: 'pointer',
+
+  '@media': {
+    'screen and (max-width: 375px)': {
+      height: 50,
+      margin: '22px 0',
+      padding: '0 22px',
+    },
+    'screen and (max-width: 320px)': {
+      height: 42,
+      margin: '20px 0',
+      padding: '0 20px',
+    },
+  },
 });
 
 export const inputLayer = style({
   height: 53,
   position: 'relative',
+
+  '@media': {
+    'screen and (max-width: 375px)': {
+      height: 47,
+    },
+    'screen and (max-width: 320px)': {
+      height: 41,
+    },
+  },
 });
 
 export const input = style({
@@ -50,6 +72,21 @@ export const input = style({
     fontFamily: 'medium',
     fontSize: 18,
   },
+
+  '@media': {
+    'screen and (max-width: 375px)': {
+      '::placeholder': {
+        fontSize: 16,
+      },
+      padding: '14px 53px 14px 22px',
+    },
+    'screen and (max-width: 320px)': {
+      '::placeholder': {
+        fontSize: 14,
+      },
+      padding: '12px 51px 12px 20px',
+    },
+  },
 });
 
 export const inputReset = style({
@@ -63,6 +100,15 @@ export const textareaLayer = style({
   position: 'relative',
   height: 209,
   margin: '12px 0 16px 0',
+
+  '@media': {
+    'screen and (max-width: 375px)': {
+      height: 203,
+    },
+    'screen and (max-width: 320px)': {
+      height: 197,
+    },
+  },
 });
 
 export const textarea = style({
@@ -85,6 +131,21 @@ export const textarea = style({
     color: vars.color.gray['200'],
     fontFamily: 'medium',
     fontSize: 18,
+  },
+
+  '@media': {
+    'screen and (max-width: 375px)': {
+      '::placeholder': {
+        fontSize: 16,
+      },
+      padding: '14px 22px',
+    },
+    'screen and (max-width: 320px)': {
+      '::placeholder': {
+        fontSize: 14,
+      },
+      padding: '12px 20px',
+    },
   },
 });
 

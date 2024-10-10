@@ -9,6 +9,17 @@ export const item = style({
   flexDirection: 'column',
   position: 'relative',
   background: vars.color.gray.white,
+
+  '@media': {
+    'screen and (max-width: 375px)': {
+      width: 214,
+      height: 311,
+    },
+    'screen and (max-width: 320px)': {
+      width: 201,
+      height: 298,
+    },
+  },
 });
 
 export const numLayer = style({
@@ -23,6 +34,17 @@ export const numLayer = style({
   position: 'absolute',
   top: 0,
   left: 0,
+
+  '@media': {
+    'screen and (max-width: 375px)': {
+      width: 40,
+      height: 34,
+    },
+    'screen and (max-width: 320px)': {
+      width: 36,
+      height: 30,
+    },
+  },
 });
 
 export const numText = style({

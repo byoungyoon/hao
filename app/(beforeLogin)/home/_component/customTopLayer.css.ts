@@ -6,6 +6,15 @@ export const topLayer = style({
   height: 489,
 
   position: 'relative',
+
+  '@media': {
+    'screen and (max-width: 375px)': {
+      height: 476,
+    },
+    'screen and (max-width: 320px)': {
+      height: 463,
+    },
+  },
 });
 
 export const image = style({
@@ -15,4 +24,13 @@ export const image = style({
   right: 0,
   cursor: 'pointer',
   maxWidth: 425,
+
+  '@media': {
+    'screen and (max-width: 375px)': {
+      height: 160,
+    },
+    'screen and (max-width: 320px)': {
+      height: 160,
+    },
+  },
 });

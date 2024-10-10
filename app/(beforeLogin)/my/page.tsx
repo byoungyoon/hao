@@ -38,11 +38,13 @@ export default function MyPage() {
           callback='/my/modify'
         >
           <div className={styles.infoModifyImage}>
-            <Image src={Default20} alt='default' />
+            <Image src={Default20} alt='default' className={styles.infoImage} />
           </div>
           <div className={styles.infoModifyGroup}>
             <div className={styles.infoModifyNameGroup}>
-              <Body size='1'>정재현내꺼</Body>
+              <Body size='1' className={styles.infoName}>
+                정재현내꺼
+              </Body>
               <div className={styles.infoModifyAgeLayer}>
                 <Body size='7' className={styles.infoAgeText}>
                   20대

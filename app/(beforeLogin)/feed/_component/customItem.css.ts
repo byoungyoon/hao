@@ -60,6 +60,12 @@ export const nameLayer = style({
   background: vars.color.orange['50'],
   padding: '4px 8.5px',
   display: 'inline-block',
+
+  '@media': {
+    'screen and (max-width: 320px)': {
+      display: 'none',
+    },
+  },
 });
 
 export const date = style({
@@ -81,7 +87,6 @@ export const thumbnailLayer = style({
   justifyContent: 'center',
   background: vars.color.gray['100'],
 });
-
 
 export const subTitle = style({
   color: vars.color.gray['400'],

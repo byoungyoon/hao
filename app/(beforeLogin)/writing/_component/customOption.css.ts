@@ -19,6 +19,15 @@ export const optionLayer = style({
       background: vars.color.orange['50'],
     },
   },
+
+  '@media': {
+    'screen and (max-width: 375px)': {
+      padding: '14px 22px',
+    },
+    'screen and (max-width: 320px)': {
+      padding: '12px 20px',
+    },
+  },
 });
 
 export const optionTitle = style({
@@ -33,7 +42,6 @@ export const optionTitle = style({
 
 export const optionSubTitle = style({
   color: vars.color.gray['200'],
-  whiteSpace: 'nowrap',
 
   selectors: {
     '&.orange': {

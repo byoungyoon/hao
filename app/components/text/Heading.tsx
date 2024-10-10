@@ -16,7 +16,7 @@ export default function Heading(
   const { size, children, className, ...rest } = props;
 
   return (
-    <h3 className={cx(styles.heading, `type${size}`, className)} {...rest}>
+    <h3 className={cx(styles.heading, styles.type[size], className)} {...rest}>
       {children}
     </h3>
   );

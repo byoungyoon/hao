@@ -31,6 +31,20 @@ export const infoCharacter = style({
   position: 'absolute',
   bottom: -40,
   right: 0,
+
+  '@media': {
+    'screen and (max-width: 400px)': {
+      height: 130,
+    },
+    'screen and (max-width: 360px)': {
+      width: 140,
+      height: 130,
+    },
+    'screen and (max-width: 340px)': {
+      width: 120,
+      height: 110,
+    },
+  },
 });
 
 export const infoLayer = style({
@@ -58,6 +72,17 @@ export const infoModifyImage = style({
   justifyContent: 'center',
   background: vars.color.gray.white,
   borderRadius: '50%',
+
+  '@media': {
+    'screen and (max-width: 375px)': {
+      width: 90,
+      height: 90,
+    },
+    'screen and (max-width: 320px)': {
+      width: 80,
+      height: 80,
+    },
+  },
 });
 
 export const infoModifyGroup = style({
@@ -81,8 +106,26 @@ export const infoModifyAgeLayer = style({
   borderRadius: 100,
 });
 
+export const infoName = style({
+  whiteSpace: 'nowrap',
+});
+
 export const infoAgeText = style({
   color: vars.color.orange['300'],
+  whiteSpace: 'nowrap',
+});
+
+export const infoImage = style({
+  '@media': {
+    'screen and (max-width: 375px)': {
+      width: 60,
+      height: 60,
+    },
+    'screen and (max-width: 320px)': {
+      width: 55,
+      height: 55,
+    },
+  },
 });
 
 export const infoModifyButton = style({
