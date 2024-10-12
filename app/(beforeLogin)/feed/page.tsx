@@ -89,7 +89,6 @@ export default function FeedPage() {
         <div className={styles.selectLayer}>
           <Select
             data={selectData}
-            width={100}
             className={styles.select}
             onTrackable={onTrackableFilter(FeedOptionEnum.filter)}
           />
@@ -110,7 +109,7 @@ export default function FeedPage() {
               hasAdopt
               isBookmark={datum.isBookmark}
               isLike={datum.isVoted}
-              callback={datum.id as string}
+              callback={datum.id}
               date={datum.createdAt}
             />
           ))}

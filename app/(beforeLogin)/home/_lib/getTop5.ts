@@ -21,6 +21,7 @@ export const getTop5: QueryFunction<
   Top5ResponseTypes[],
   [_1: string, age: number]
 > = async ({ queryKey }) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_1, age] = queryKey;
 
   const params = {

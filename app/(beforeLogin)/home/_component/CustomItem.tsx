@@ -1,4 +1,4 @@
-import Image, { StaticImageData } from 'next/image';
+import Image from 'next/image';
 import Body from '@/app/components/text/Body';
 import Like from '@/app/icon/like-activate.png';
 import LikeOff from '@/app/icon/like-deactivate.png';

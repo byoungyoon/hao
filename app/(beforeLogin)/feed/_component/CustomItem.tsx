@@ -34,7 +34,7 @@ type Props = {
 
   height?: number;
 
-  callback?: string;
+  callback?: string | number;
 };
 
 export default function CustomItem({

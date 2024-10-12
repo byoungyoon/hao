@@ -31,6 +31,7 @@ type Props = {
 };
 
 export const getFeed = async ({ queryKey, pageParam }: Props) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_1, age, category, sort] = queryKey;
 
   const params = {
