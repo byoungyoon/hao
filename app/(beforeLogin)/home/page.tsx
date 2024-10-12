@@ -70,9 +70,10 @@ export default function HomePage() {
               num={index + 1}
               image={datum.thumbnail}
               title={datum.subject}
-              subTitle={datum.thumbnail}
+              subTitle={datum.body}
               like={datum.vote}
               comment={datum.commentCnt}
+              isLike={datum.isVoted}
             />
           ))}
         </div>

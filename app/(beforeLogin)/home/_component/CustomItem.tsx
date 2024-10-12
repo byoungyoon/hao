@@ -6,12 +6,12 @@ import Comment from '@/app/icon/comment.png';
 import Default from '@/app/image/top5_default.png';
 
 import cx from 'classnames';
-import * as styles from './customItem.css';
 import { makeSplitText } from '@/app/util/makeSplitText';
+import * as styles from './customItem.css';
 
 export type CustomItemDataTypes = {
   num: number;
-  image: string | StaticImageData;
+  image: string;
   title: string;
   subTitle: string;
 
@@ -40,9 +40,15 @@ export default function CustomItem({
       </div>
       <div className={styles.imageLayer}>
         {image ? (
-          <Image src={image} alt='item' />
+          <Image
+            src={image}
+            alt='item'
+            layout='fill'
+            objectFit='cover'
+            objectPosition='center'
+          />
         ) : (
-          <Image src={Default} alt='item' />
+          <Image src={Default} alt='item' width={214} height={172} />
         )}
       </div>
       <div className={styles.titleLayer}>

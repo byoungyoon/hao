@@ -86,6 +86,7 @@ export const thumbnailLayer = style({
   alignItems: 'center',
   justifyContent: 'center',
   background: vars.color.gray['100'],
+  position: 'relative',
 });
 
 export const subTitle = style({

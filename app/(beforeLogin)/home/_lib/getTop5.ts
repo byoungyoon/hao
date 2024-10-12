@@ -14,7 +14,7 @@ export type Top5ResponseTypes = {
   category: string;
   type: string;
   createdAt: string;
-  totalCount: number;
+  isVoted: boolean;
 };
 
 export const getTop5: QueryFunction<

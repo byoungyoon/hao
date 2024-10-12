@@ -1,7 +1,7 @@
 'use client';
 
 import InfoLayer from '@/app/components/layer/InfoLayer';
-import Image, { StaticImageData } from 'next/image';
+import Image from 'next/image';
 import Body from '@/app/components/text/Body';
 import Bookmark from '@/app/icon/bookmark-activate.png';
 import BookmarkOff from '@/app/icon/bookmark-deactivate.png';
@@ -14,19 +14,19 @@ import * as styles from './customItem.css';
 import { usePathname, useRouter } from 'next/navigation';
 
 type Props = {
-  image: string | StaticImageData;
+  image: string;
   nickname: string;
   date: string;
   age: number;
 
   title: string;
-  thumbnail?: string | StaticImageData;
+  thumbnail?: string;
   subTitle: string;
 
   like: number;
   comment: number;
 
-  isaAdopt?: boolean;
+  isAdopt?: boolean;
   hasAdopt?: boolean;
 
   isBookmark?: boolean;
@@ -48,7 +48,7 @@ export default function CustomItem({
   like,
   comment,
   isLike,
-  isaAdopt,
+  isAdopt,
   hasAdopt = true,
   isBookmark,
   height = 142,
@@ -73,7 +73,13 @@ export default function CustomItem({
       <hgroup className={styles.hgroup}>
         <div className={styles.userGroup}>
           <span className={cx(styles.imageLayer, `age${age}`)}>
-            <Image src={image} alt='user' width={26} height={25} />
+            <Image
+              src={`data:image/png;base64,${image}`}
+              alt='user'
+              width={26}
+              height={25}
+              unoptimized
+            />
           </span>
           <div className={styles.userSubGroup}>
             <div className={styles.nameGroup}>
@@ -88,8 +94,8 @@ export default function CustomItem({
         {hasAdopt && (
           <span>
             <InfoLayer
-              text={isaAdopt ? '채택 완료' : '미채택'}
-              color={isaAdopt ? 'gray' : 'orange'}
+              text={isAdopt ? '채택 완료' : '미채택'}
+              color={isAdopt ? 'gray' : 'orange'}
             />
           </span>
         )}
@@ -98,7 +104,13 @@ export default function CustomItem({
         <Body size='2'>{title}</Body>
         {thumbnail && (
           <div className={styles.thumbnailLayer} style={{ height: height }}>
-            <Image src={thumbnail} alt='thumbnail' />
+            <Image
+              src={thumbnail}
+              alt='thumbnail'
+              layout='fill'
+              objectFit='cover'
+              objectPosition='center'
+            />
           </div>
         )}
         <Body size='5' className={styles.subTitle}>

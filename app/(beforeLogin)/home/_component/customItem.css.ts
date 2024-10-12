@@ -35,6 +35,7 @@ export const numLayer = style({
   position: 'absolute',
   top: 0,
   left: 0,
+  zIndex: 1,
 
   '@media': {
     'screen and (max-width: 375px)': {
@@ -53,11 +54,11 @@ export const numText = style({
 });
 
 export const imageLayer = style({
+  width: 214,
   height: 172,
   overflow: 'hidden',
+  position: 'relative',
 });
-
-export const defaultImage = style({});
 
 export const titleLayer = style({
   display: 'flex',
@@ -68,6 +69,7 @@ export const titleLayer = style({
 
 export const subTitle = style({
   color: vars.color.gray['400'],
+  wordBreak: 'break-all',
 });
 
 export const countLayer = style({

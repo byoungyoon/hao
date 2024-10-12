@@ -20,3 +20,15 @@ export const itemGroup = style({
   gap: 16,
   marginTop: 16,
 });
+
+export const selectLayer = style({
+  display: 'flex',
+  justifyContent: 'end',
+  margin: '24px 0 16px 0',
+});
+
+export const select = style({
+  minWidth: 100,
+  display: 'flex',
+  justifyContent: 'end',
+});

@@ -23,7 +23,7 @@ export default function CustomChipGroup({
 
   useEffect(() => {
     if (onTrackable) onTrackable(select);
-  }, [select, onTrackable]);
+  }, [select]);
 
   return (
     <div className={styles.chipGroup}>
