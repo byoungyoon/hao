@@ -14,31 +14,37 @@ type Story = StoryObj<typeof meta>;
 const data = [
   {
     text: '전체',
+    value: 0,
   },
   {
     text: '10대',
+    value: 10,
   },
   {
     text: '20대',
+    value: 20,
   },
   {
     text: '30대',
+    value: 30,
   },
 ];
 
 const data2 = [
   {
     text: '채택완료',
+    value: 0,
   },
   {
     text: '미채택',
+    value: 1,
   },
 ];
 
 export const Two: Story = {
   args: {
     data: data2,
-    defaultSelect: '채택완료',
+    defaultSelect: 0,
   },
   render: (props) => {
     return (
@@ -52,7 +58,7 @@ export const Two: Story = {
 export const Four: Story = {
   args: {
     data: data,
-    defaultSelect: '전체',
+    defaultSelect: 0,
   },
   render: (props) => {
     return (

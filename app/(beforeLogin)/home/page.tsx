@@ -1,3 +1,5 @@
+'use client';
+
 import CustomTopLayer from '@/app/(beforeLogin)/home/_component/CustomTopLayer';
 import Heading from '@/app/components/text/Heading';
 import Info from '@/app/icon/info.png';
@@ -9,8 +11,10 @@ import Image, { StaticImageData } from 'next/image';
 import InfoLayer from '@/app/components/layer/InfoLayer';
 import Body from '@/app/components/text/Body';
 import CustomTab from '@/app/(beforeLogin)/home/_component/CustomTab';
-import Sample from '@/app/image/sample/sample.png';
 import CustomItem from '@/app/(beforeLogin)/home/_component/CustomItem';
+import { useToday } from '@/app/(beforeLogin)/home/_state/useToday';
+import { useTop5 } from '@/app/(beforeLogin)/home/_state/useTop5';
+import { useState } from 'react';
 
 import * as styles from './page.css';
 
@@ -18,16 +22,14 @@ dayjs.extend(localizedFormat);
 dayjs.locale('ko');
 
 export default function HomePage() {
-  const sampleData = {
-    num: 1,
-    title: '모의고사 1점차이로 영어가 망했다',
-    subTitle:
-      '마킹 실수만 아이었어도 2등급인데 시간이 없어서 5분동안 마킹하다가 잘못 마킹한 게 있었어',
-    like: 43,
-    comment: 13,
-    isLike: true,
-    image: Sample,
+  const [age, setAge] = useState(0);
+
+  const onTrackableTab = (value: number) => {
+    setAge(value);
   };
+
+  const { localData: todayData } = useToday();
+  const { localData: top5Data } = useTop5({ age: age });
 
   return (
     <div className={styles.layer}>
@@ -42,9 +44,9 @@ export default function HomePage() {
           </div>
           <div className={styles.question}>
             <span>
-              <InfoLayer text='연애' color='orange' />
+              <InfoLayer text={todayData.category} color='orange' />
             </span>
-            <Body size='3'>Q. 그 날.. 그러지 말았어야 했던 내 행동은?</Body>
+            <Body size='3'>{todayData.body}</Body>
           </div>
         </hgroup>
       </CustomTopLayer>
@@ -60,13 +62,19 @@ export default function HomePage() {
             현재 가장 인기 있는 글이야~
           </Body>
         </hgroup>
-        <CustomTab />
+        <CustomTab onTrackable={onTrackableTab} />
         <div className={styles.itemGroup}>
-          <CustomItem {...sampleData} />
-          <CustomItem {...sampleData} />
-          <CustomItem {...sampleData} />
-          <CustomItem {...sampleData} />
-          <CustomItem {...sampleData} />
+          {top5Data.map((datum, index) => (
+            <CustomItem
+              key={index}
+              num={index + 1}
+              image={datum.thumbnail}
+              title={datum.subject}
+              subTitle={datum.thumbnail}
+              like={datum.vote}
+              comment={datum.commentCnt}
+            />
+          ))}
         </div>
       </article>
     </div>

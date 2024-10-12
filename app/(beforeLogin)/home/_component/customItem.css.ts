@@ -9,6 +9,7 @@ export const item = style({
   flexDirection: 'column',
   position: 'relative',
   background: vars.color.gray.white,
+  justifyContent: 'space-between',
 
   '@media': {
     'screen and (max-width: 375px)': {
@@ -55,6 +56,8 @@ export const imageLayer = style({
   height: 172,
   overflow: 'hidden',
 });
+
+export const defaultImage = style({});
 
 export const titleLayer = style({
   display: 'flex',

@@ -4,6 +4,7 @@ import cx from 'classnames';
 
 export type CategoryTabItemTypes = {
   text: string;
+  value: number;
   isSelect?: boolean;
 };
 

@@ -8,6 +8,10 @@ export const item = style({
   gap: 8,
   width: '100%',
   cursor: 'pointer',
+
+  ':focus': {
+    background: vars.color.gray.white,
+  },
 });
 
 export const text = style({

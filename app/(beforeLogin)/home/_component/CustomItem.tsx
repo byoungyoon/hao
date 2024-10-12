@@ -3,6 +3,7 @@ import Body from '@/app/components/text/Body';
 import Like from '@/app/icon/like-activate.png';
 import LikeOff from '@/app/icon/like-deactivate.png';
 import Comment from '@/app/icon/comment.png';
+import Default from '@/app/image/top5_default.png';
 
 import cx from 'classnames';
 import * as styles from './customItem.css';
@@ -38,7 +39,11 @@ export default function CustomItem({
         </Body>
       </div>
       <div className={styles.imageLayer}>
-        <Image src={image} alt='item' />
+        {image ? (
+          <Image src={image} alt='item' />
+        ) : (
+          <Image src={Default} alt='item' />
+        )}
       </div>
       <div className={styles.titleLayer}>
         <Body size='3'>{makeSplitText(title, 10)}</Body>

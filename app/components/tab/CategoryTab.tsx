@@ -14,12 +14,12 @@ type Props = {
   /**
    * default select
    */
-  defaultSelect: string;
+  defaultSelect: number;
   /**
    * on change action => key(item.text)
    * @param text
    */
-  onTrackable?: (text: string) => void;
+  onTrackable?: (value: number) => void;
 };
 
 /**
@@ -32,8 +32,8 @@ export default function CategoryTab({
 }: Props) {
   const [select, setSelect] = useState(defaultSelect);
 
-  const onClickItem = (text: string) => () => {
-    setSelect(text);
+  const onClickItem = (value: number) => () => {
+    setSelect(value);
   };
 
   useEffect(() => {
@@ -45,8 +45,8 @@ export default function CategoryTab({
       {data.map((datum) => (
         <CategoryTabItem
           key={datum.text}
-          onClick={onClickItem(datum.text)}
-          isSelect={select === datum.text}
+          onClick={onClickItem(datum.value)}
+          isSelect={select === datum.value}
           {...datum}
         />
       ))}
