@@ -9,6 +9,8 @@ export const useCategory = () => {
   const { data } = useQuery({
     queryKey: ['category'],
     queryFn: getCategory,
+    staleTime: 1000 * 60 * 60 * 24,
+    gcTime: 1000 * 60 * 60 * 24 * 2,
   });
 
   const localData = useMemo(() => {

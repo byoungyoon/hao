@@ -1,8 +1,9 @@
-import CSample from '@/app/image/sample/cSample.png';
-import CustomReport from '@/app/(beforeLogin)/_component/CustomReport';
-import CustomComment from '@/app/(beforeLogin)/feed/[detail]/_component/CustomComment';
+import { useMemo } from 'react';
 import CustomCommentInput from '@/app/(beforeLogin)/feed/[detail]/_component/CustomCommentInput';
-import { StaticImageData } from 'next/image';
+import SuspenseFeedOne from '@/app/(beforeLogin)/feed/[detail]/_component/SuspenseFeedOne';
+import CustomDetailItem from '@/app/(beforeLogin)/feed/[detail]/_component/CustomDetailItem';
+import CustomDetailReport from '@/app/(beforeLogin)/feed/[detail]/_component/CustomDetailReport';
+import CustomCommentList from '@/app/(beforeLogin)/feed/[detail]/_component/CustomCommentList';
 
 import * as styles from './page.css';
 
@@ -11,34 +12,21 @@ type Props = {
 };
 
 export default function FeedDetailPage({ params }: Props) {
-  console.log(params);
-
-  const sample2 = {
-    image: CSample as StaticImageData,
-    nickname: '정재현내꺼',
-    date: '2024.09.28',
-    age: 10,
-    comment: '완전 재밌었겠는데 ㅋㅋㅋㅋ 나도 보고싶다!!!',
-    likeCount: 34,
-  };
+  const id = useMemo(() => +params.detail, [params.detail]);
 
   return (
-    <section>
-      {/*<CustomItem hasAdopt={false} height={221} {...sample} />*/}
-      <div className={styles.border} />
-      <article className={styles.commentArticle}>
-        <CustomReport mode='후시딘' />
-        <div>
-          <CustomComment {...sample2} />
-          <CustomComment isEdit {...sample2} />
-          <CustomComment isAdmin {...sample2} />
-          <CustomComment isAdmin isSelect {...sample2} />
-          <CustomComment isLike {...sample2} />
+    <section className={styles.section}>
+      <SuspenseFeedOne id={id}>
+        <CustomDetailItem id={id} />
+        <div className={styles.border} />
+        <article className={styles.commentArticle}>
+          <CustomDetailReport id={id} />
+          <CustomCommentList id={id} />
+        </article>
+        <div className={styles.input}>
+          <CustomCommentInput />
         </div>
-      </article>
-      <div className={styles.input}>
-        <CustomCommentInput />
-      </div>
+      </SuspenseFeedOne>
     </section>
   );
 }

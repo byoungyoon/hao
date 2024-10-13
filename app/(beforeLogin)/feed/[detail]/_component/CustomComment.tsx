@@ -1,4 +1,4 @@
-import Image, { StaticImageData } from 'next/image';
+import Image from 'next/image';
 import cx from 'classnames';
 import Body from '@/app/components/text/Body';
 import Edit from '@/app/icon/edit-gray.png';
@@ -11,7 +11,7 @@ import AdoptOff from '@/app/icon/adopt-deactivate.png';
 import * as styles from './customComment.css';
 
 type Props = {
-  image: string | StaticImageData;
+  image: string;
   nickname: string;
   date: string;
   age: number;
@@ -39,7 +39,13 @@ export default function CustomComment({
   return (
     <div className={styles.comment}>
       <div className={cx(styles.imageLayer, `age${age}`)}>
-        <Image src={image} alt='comment' width={15} height={13} />
+        <Image
+          src={`data:image/png;base64,${image}`}
+          alt='comment'
+          width={15}
+          height={13}
+          unoptimized
+        />
       </div>
       <div className={styles.commentLayer}>
         <hgroup className={styles.hgroup}>
