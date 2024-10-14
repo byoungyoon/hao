@@ -24,7 +24,7 @@ export default function FeedDetailPage({ params }: Props) {
           <CustomCommentList id={id} />
         </article>
         <div className={styles.input}>
-          <CustomCommentInput />
+          <CustomCommentInput id={id} />
         </div>
       </SuspenseFeedOne>
     </section>

@@ -25,12 +25,12 @@ type Props = {
   queryKey: [_1: string, detail: number, _3: string];
 };
 
-export const getFeedComment = async ({ queryKey, pageParam }: Props) => {
+export const getFeedComment = async ({ queryKey, pageParams }: Props) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_1, detail, _3] = queryKey;
 
   const params = {
-    page: pageParam,
+    page: pageParams ?? 1,
   };
 
   return await GET<FeedCommentResponseTypes>({

@@ -60,7 +60,7 @@ export default function CustomItem({
   const onLocalClick = () => {
     if (!callback) return;
 
-    router.push(`${pathname}/${callback}`);
+    router.push(`${pathname}/${callback}`, { scroll: false });
   };
 
   return (

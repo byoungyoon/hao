@@ -37,20 +37,20 @@ export default function CustomBarTab() {
         target: '/feed',
       },
       {
-        text: '마이페이지',
-        icon: {
-          on: MyPageOn as StaticImageData,
-          off: MyPageOff as StaticImageData,
-        },
-        target: '/my',
-      },
-      {
         text: '글 작성',
         icon: {
           on: WritingOn as StaticImageData,
           off: WritingOff as StaticImageData,
         },
         target: '/writing',
+      },
+      {
+        text: '마이페이지',
+        icon: {
+          on: MyPageOn as StaticImageData,
+          off: MyPageOff as StaticImageData,
+        },
+        target: '/my',
       },
     ],
     [],

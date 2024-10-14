@@ -1,11 +1,15 @@
 import {
   dehydrate,
   HydrationBoundary,
+  InfiniteData,
   QueryClient,
 } from '@tanstack/react-query';
 import { getFeedOne } from '@/app/(beforeLogin)/feed/[detail]/_lib/getFeedOne';
 import { ReactNode } from 'react';
-import { getFeedComment } from '@/app/(beforeLogin)/feed/[detail]/_lib/getFeedComment';
+import {
+  FeedCommentResponseTypes,
+  getFeedComment,
+} from '@/app/(beforeLogin)/feed/[detail]/_lib/getFeedComment';
 
 type Props = {
   children: ReactNode;
@@ -18,7 +22,13 @@ export default async function SuspenseFeedOne({ id, children }: Props) {
     queryKey: ['feed', id],
     queryFn: getFeedOne,
   });
-  await queryClient.prefetchInfiniteQuery({
+  await queryClient.prefetchInfiniteQuery<
+    FeedCommentResponseTypes,
+    object,
+    InfiniteData<FeedCommentResponseTypes>,
+    [_1: string, detail: number, _3: string],
+    number
+  >({
     queryKey: ['feed', id, 'comment'],
     queryFn: getFeedComment,
     initialPageParam: 1,

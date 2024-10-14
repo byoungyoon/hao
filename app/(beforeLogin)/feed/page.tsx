@@ -8,8 +8,8 @@ import { useCategory } from '@/app/(beforeLogin)/_state/useCategory';
 import { useFeed } from '@/app/(beforeLogin)/feed/_state/useFeed';
 import Select from '@/app/components/select/Select';
 
-import * as styles from './page.css';
 import { useInView } from 'react-intersection-observer';
+import * as styles from './page.css';
 
 enum FeedOptionEnum {
   age,

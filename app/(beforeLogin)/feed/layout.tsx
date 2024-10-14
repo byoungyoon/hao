@@ -20,7 +20,7 @@ export default function FeedLayout({ children }: Props) {
   const defaultPage = useMemo(() => pathname === PATH, [pathname]);
 
   const onClickBack = () => {
-    router.back();
+    router.push(PATH, { scroll: false });
   };
 
   return (
