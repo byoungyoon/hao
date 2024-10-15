@@ -3,7 +3,7 @@
 import Plus from '@/app/icon/plus-gray.png';
 import Image from 'next/image';
 import Button from '@/app/components/button/Button';
-import { ChangeEventHandler, useCallback, useEffect, useState } from 'react';
+import { ChangeEventHandler, useState } from 'react';
 
 import * as styles from './customCommentInput.css';
 
@@ -12,6 +12,8 @@ type Props = {
 };
 
 export default function CustomCommentInput({ id }: Props) {
+  console.log(id);
+
   const [value, setValue] = useState('');
 
   const onChangeInput: ChangeEventHandler<HTMLInputElement> = (event) => {

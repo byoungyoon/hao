@@ -19,8 +19,10 @@ export const useFeedOne = ({ id }: Props) => {
         nickname: '',
         date: '',
         age: 0,
-        comment: '',
-        likeCount: 0,
+        title: '',
+        subTitle: '',
+        comment: 0,
+        like: 0,
         type: '후시딘' as '후시딘' | '후추',
       };
 
