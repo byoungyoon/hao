@@ -1,15 +1,13 @@
 import Button from '@/app/components/button/Button';
 import Heading from '@/app/components/text/Heading';
 import Body from '@/app/components/text/Body';
-
 import CustomChartItem from '@/app/(beforeLogin)/my/_component/CustomChartItem';
 import Image from 'next/image';
 import Character from '@/app/image/character/my-character1.png';
 import Character2 from '@/app/image/character/my-character2.png';
 import Character3 from '@/app/image/character/my-character3.png';
-import Default20 from '@/app/image/character/color_20.png';
-import Arrow from '@/app/icon/arrow-white.png';
 import CustomCallback from '@/app/(beforeLogin)/_component/CustomCallback';
+import CustomInfo from '@/app/(beforeLogin)/my/_component/CustomInfo';
 
 import * as styles from './page.css';
 
@@ -37,27 +35,7 @@ export default function MyPage() {
           className={styles.infoModifyLayer}
           callback='/my/modify'
         >
-          <div className={styles.infoModifyImage}>
-            <Image src={Default20} alt='default' className={styles.infoImage} />
-          </div>
-          <div className={styles.infoModifyGroup}>
-            <div className={styles.infoModifyNameGroup}>
-              <Body size='1' className={styles.infoName}>
-                정재현내꺼
-              </Body>
-              <div className={styles.infoModifyAgeLayer}>
-                <Body size='7' className={styles.infoAgeText}>
-                  20대
-                </Body>
-              </div>
-            </div>
-            <button type='button' className={styles.infoModifyButton}>
-              <Body size='5' className={styles.infoModifyButtonText}>
-                내 정보 수정
-              </Body>
-              <Image src={Arrow} alt='arrow' width={18} height={18} />
-            </button>
-          </div>
+          <CustomInfo />
         </CustomCallback>
         <div className={styles.infoLayerGroup}>
           <div className={styles.infoMyLayer}>
