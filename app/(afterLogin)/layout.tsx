@@ -5,6 +5,7 @@ import Progress from '@/app/(afterLogin)/_component/Progress';
 import Image from 'next/image';
 import Arrow from '@/app/icon/arrow-left.png';
 import { usePathname, useRouter } from 'next/navigation';
+import RQProvider from '@/app/provider/RQProvider';
 
 import * as styles from './layout.css';
 
@@ -40,7 +41,9 @@ export default function AfterLoginLayout({ children }: Props) {
       <div className={styles.progressLayer}>
         <Progress count={3} select={currIndex} />
       </div>
-      <div className={styles.bodyLayer}>{children}</div>
+      <div className={styles.bodyLayer}>
+        <RQProvider>{children}</RQProvider>
+      </div>
     </main>
   );
 }

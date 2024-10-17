@@ -7,11 +7,11 @@ import Image from 'next/image';
 import Character from '@/app/image/character/my-character1.png';
 import Character2 from '@/app/image/character/my-character2.png';
 import Character3 from '@/app/image/character/my-character3.png';
-import Default20 from '@/app/image/character/default-20.png';
+import Default20 from '@/app/image/character/color_20.png';
 import Arrow from '@/app/icon/arrow-white.png';
+import CustomCallback from '@/app/(beforeLogin)/_component/CustomCallback';
 
 import * as styles from './page.css';
-import CustomCallback from '@/app/(beforeLogin)/_component/CustomCallback';
 
 export default function MyPage() {
   return (

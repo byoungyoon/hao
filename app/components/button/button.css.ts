@@ -12,6 +12,7 @@ export const button = style({
   color: vars.color.gray['200'],
   overflow: 'hidden',
   whiteSpace: 'nowrap',
+  transition: 'all 0.2s',
 
   selectors: {
     '&.small': {
