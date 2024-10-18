@@ -18,6 +18,8 @@ export type FeedDataTypes = {
   isVoted: boolean;
   isBookmark: boolean;
   img: string;
+  isQuestion: boolean;
+  todayQuestion: string;
 };
 
 export type FeedResponseTypes = {

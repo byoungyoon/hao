@@ -4,7 +4,7 @@ import { ReactNode, useMemo } from 'react';
 import CustomLayout from '@/app/(beforeLogin)/_component/CustomLayout';
 import Alarm from '@/app/icon/alarm.png';
 import Image from 'next/image';
-import { usePathname, useRouter } from 'next/navigation';
+import { useParams, usePathname, useRouter } from 'next/navigation';
 import Arrow from '@/app/icon/arrow-left.png';
 
 const PATH = '/my';
@@ -16,14 +16,16 @@ type Props = {
 export default function MyLayout({ children }: Props) {
   const pathname = usePathname();
   const router = useRouter();
+  const params = useParams<{ category: string }>();
 
   const defaultPage = useMemo(() => pathname === PATH, [pathname]);
   const text = useMemo(() => {
     if (pathname.endsWith('scrap')) return '스크랩';
     if (pathname.endsWith('modify')) return '내 정보 수정';
+    if (params.category) return decodeURIComponent(params.category);
 
     return '마이페이지';
-  }, [pathname]);
+  }, [pathname, params]);
 
   const onClickBack = () => {
     router.back();
