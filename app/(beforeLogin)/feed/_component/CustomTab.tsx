@@ -2,12 +2,11 @@
 
 import { useMemo } from 'react';
 import CategoryTab from '@/app/components/tab/CategoryTab';
+import { useFeedForm } from '@/app/store/useTranslate';
 
-type Props = {
-  onTrackable: (value: number) => void;
-};
+export default function CustomTab() {
+  const updateAge = useFeedForm((state) => state.updateAge);
 
-export default function CustomTab({ onTrackable }: Props) {
   const data = useMemo(
     () => [
       {
@@ -30,7 +29,11 @@ export default function CustomTab({ onTrackable }: Props) {
     [],
   );
 
+  const onTrackableTab = (tab: number) => {
+    updateAge(tab);
+  };
+
   return (
-    <CategoryTab data={data} defaultSelect={0} onTrackable={onTrackable} />
+    <CategoryTab data={data} defaultSelect={0} onTrackable={onTrackableTab} />
   );
 }

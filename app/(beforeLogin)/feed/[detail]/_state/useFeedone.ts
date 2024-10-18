@@ -24,6 +24,7 @@ export const useFeedOne = ({ id }: Props) => {
         comment: 0,
         like: 0,
         type: '후시딘' as '후시딘' | '후추',
+        thumbnail: [],
       };
 
     return {
@@ -33,12 +34,13 @@ export const useFeedOne = ({ id }: Props) => {
       age: data.age,
       title: data.subject,
       subTitle: data.body,
-      thumbnail: data.thumbnail,
+      thumbnail: data.images,
       like: data.vote,
       comment: data.commentCnt,
       isLike: data.isVoted,
       isBookmark: data.isBookmark,
       type: data.type,
+      isQuestion: data.isQuestion,
     };
   }, [data]);
 

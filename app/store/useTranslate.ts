@@ -30,3 +30,25 @@ export const usePointForm = create<PointState & PointAction>((set) => ({
   updatePoint: (point) => set(() => ({ point: point })),
   updateNickname: (nickname) => set(() => ({ nickname: nickname })),
 }));
+
+type FeedState = {
+  age: number;
+  category: string;
+  sort: string;
+};
+
+type FeedAction = {
+  updateAge: (age: FeedState['age']) => void;
+  updateCategory: (category: FeedState['category']) => void;
+  updateSort: (sort: FeedState['sort']) => void;
+};
+
+export const useFeedForm = create<FeedState & FeedAction>((set) => ({
+  age: 0,
+  category: '전체',
+  sort: '',
+
+  updateAge: (age) => set(() => ({ age: age })),
+  updateCategory: (category) => set(() => ({ category: category })),
+  updateSort: (sort) => set(() => ({ sort: sort })),
+}));

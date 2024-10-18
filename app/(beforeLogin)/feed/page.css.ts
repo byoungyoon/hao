@@ -26,9 +26,3 @@ export const selectLayer = style({
   justifyContent: 'end',
   margin: '24px 0 16px 0',
 });
-
-export const select = style({
-  minWidth: 100,
-  display: 'flex',
-  justifyContent: 'end',
-});

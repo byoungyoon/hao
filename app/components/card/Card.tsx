@@ -65,6 +65,10 @@ export type CardOptionTypes = {
    * 좋아요 여부
    */
   isVote?: boolean;
+  /**
+   * 오늘의 질문 여부
+   */
+  isQuestion?: boolean;
 };
 
 type Props = {

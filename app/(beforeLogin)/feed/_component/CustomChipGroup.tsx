@@ -1,33 +1,33 @@
 'use client';
 
 import ChipLayer from '@/app/components/layer/ChipLayer';
-import { useEffect, useState } from 'react';
+import { useMemo, useState } from 'react';
+import { useFeedForm } from '@/app/store/useTranslate';
+
 import * as styles from './customChipGroup.css';
+import { useCategory } from '@/app/(beforeLogin)/_state/useCategory';
 
-type Props = {
-  data: string[];
-  defaultSelect: string;
+export default function CustomChipGroup() {
+  const updateCategory = useFeedForm((state) => state.updateCategory);
 
-  onTrackable?: (text: string) => void;
-};
-export default function CustomChipGroup({
-  data,
-  defaultSelect,
-  onTrackable,
-}: Props) {
-  const [select, setSelect] = useState(defaultSelect);
+  const [select, setSelect] = useState('전체');
+
+  const { localData: categoryData } = useCategory();
+
+  const chipData = useMemo(() => {
+    const data = categoryData.map((datum) => datum.name);
+
+    return ['전체', ...data];
+  }, [categoryData]);
 
   const onClickLayer = (text: string) => () => {
     setSelect(text);
+    updateCategory(text);
   };
-
-  useEffect(() => {
-    if (onTrackable) onTrackable(select);
-  }, [select]);
 
   return (
     <div className={styles.chipGroup}>
-      {data.map((datum) => (
+      {chipData.map((datum) => (
         <ChipLayer
           key={datum}
           text={datum}

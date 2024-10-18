@@ -15,9 +15,10 @@ export type FeedOneResponseTypes = {
   category: string;
   type: '후추' | '후시딘';
   createdAt: string;
-  images: string[];
+  images?: string[];
   isVoted: boolean;
   isBookmark: boolean;
+  isQuestion: boolean;
   img: string;
 };
 
