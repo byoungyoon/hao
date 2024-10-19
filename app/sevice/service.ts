@@ -1,7 +1,7 @@
 const getToken = () => {
-  // return 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJxbmZwcjMxQG5hdGUuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImlhdCI6MTcyODMwNjYyMSwiZXhwIjoxNzMwODk4NjIxfQ._t8nuhse1CBkYq-pyevkvukRYhS-47uj4cuSjltjF7k';
+  return 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJxbmZwcjMxQG5hdGUuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImlhdCI6MTcyODMwNjYyMSwiZXhwIjoxNzMwODk4NjIxfQ._t8nuhse1CBkYq-pyevkvukRYhS-47uj4cuSjltjF7k';
 
-  return localStorage.getItem('token');
+  // return localStorage.getItem('token');
 };
 
 type Props = {

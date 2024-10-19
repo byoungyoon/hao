@@ -4,6 +4,7 @@ import { useFeed } from '@/app/(beforeLogin)/feed/_state/useFeed';
 import { useFeedForm } from '@/app/store/useTranslate';
 import Card from '@/app/components/card/Card';
 import { usePathname, useRouter } from 'next/navigation';
+import { useToday } from '@/app/(beforeLogin)/_state/useToday';
 
 export default function CustomCardGroup() {
   const { age, category, sort } = useFeedForm();
@@ -15,6 +16,7 @@ export default function CustomCardGroup() {
     category: category,
     sort: sort,
   });
+  const { localData: localTodayData } = useToday();
 
   const onClickCard = (id: number) => () => {
     router.push(`${pathname}/${id}`);
@@ -37,6 +39,8 @@ export default function CustomCardGroup() {
             date: datum.createdAt,
             subTitle: datum.body,
             voteCount: datum.vote,
+            question: localTodayData.body,
+            questionCategory: localTodayData.category,
           }}
           option={{
             isAdopt: datum.isAdopte,

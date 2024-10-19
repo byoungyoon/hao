@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { getToday } from '@/app/(beforeLogin)/home/_lib/getToday';
+import { getToday } from '@/app/(beforeLogin)/_lib/getToday';
 import { useMemo } from 'react';
 
 export const useToday = () => {

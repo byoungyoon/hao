@@ -22,6 +22,7 @@ type Props = {
   isAdmin?: boolean;
   isSelect?: boolean;
   isLike?: boolean;
+  isHost?: boolean;
 };
 
 export default function CustomComment({
@@ -35,6 +36,7 @@ export default function CustomComment({
   isAdmin,
   isSelect,
   isLike,
+  isHost,
 }: Props) {
   return (
     <div className={styles.comment}>
@@ -51,10 +53,7 @@ export default function CustomComment({
         <hgroup className={styles.hgroup}>
           <div className={styles.nameLayer}>
             <div className={styles.nameGroup}>
-              <Body
-                size='5'
-                className={cx(styles.nickname, isAdmin && 'admin')}
-              >
+              <Body size='5' className={cx(styles.nickname, isHost && 'admin')}>
                 {nickname}
               </Body>
               <Body size='7' className={styles.age}>

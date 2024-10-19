@@ -36,6 +36,14 @@ export type CardDetailDataTypes = {
    * 댓글 수
    */
   commentCount: number;
+  /**
+   * 오늘의 질문
+   */
+  question: string;
+  /**
+   * 오늘의 질문 카테고리
+   */
+  questionCategory: string;
 };
 
 export type CardDetailOptionTypes = {
@@ -85,7 +93,18 @@ export default function DetailCard({ user, data, option }: Props) {
         </div>
       </hgroup>
       <div className={styles.contentLayer}>
-        <Body size='2'>{data.title}</Body>
+        {!option.isQuestion ? (
+          <Body size='2'>{data.title}</Body>
+        ) : (
+          <div className={styles.questionLayer}>
+            <div className={styles.questionCategory}>
+              {data.questionCategory}
+            </div>
+            <Body size='5' className={styles.question}>
+              Q. {data.question}
+            </Body>
+          </div>
+        )}
         {data.thumbnail && (
           <div className={styles.thumbnailLayer}>
             <Image

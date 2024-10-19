@@ -3,6 +3,7 @@
 import { useMyScrapFeed } from '@/app/(beforeLogin)/my/scrap/[category]/_state/useMyScrapFeed';
 import Card from '@/app/components/card/Card';
 import { usePathname, useRouter } from 'next/navigation';
+import { useToday } from '@/app/(beforeLogin)/_state/useToday';
 
 import * as styles from './customCardGroup.css';
 
@@ -19,6 +20,7 @@ export default function CustomCardGroup({ category }: Props) {
   };
 
   const { localData } = useMyScrapFeed({ category: category });
+  const { localData: todayData } = useToday();
 
   return (
     <div className={styles.group}>
@@ -37,6 +39,8 @@ export default function CustomCardGroup({ category }: Props) {
             thumbnail: datum.thumbnail,
             voteCount: datum.vote,
             commentCount: datum.commentCnt,
+            questionCategory: todayData.category,
+            question: todayData.body,
           }}
           option={{
             isScrap: datum.isBookmark,

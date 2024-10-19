@@ -25,6 +25,7 @@ export const useFeedOne = ({ id }: Props) => {
         like: 0,
         type: '후시딘' as '후시딘' | '후추',
         thumbnail: [],
+        userId: '',
       };
 
     return {
@@ -41,6 +42,7 @@ export const useFeedOne = ({ id }: Props) => {
       isBookmark: data.isBookmark,
       type: data.type,
       isQuestion: data.isQuestion,
+      userId: data.userId,
     };
   }, [data]);
 

@@ -2,6 +2,7 @@
 
 import DetailCard from '@/app/components/card/DetailCard';
 import { useFeedOne } from '@/app/components/template/feedOne/_state/useFeedone';
+import { useToday } from '@/app/(beforeLogin)/_state/useToday';
 
 type Props = {
   id: number;
@@ -9,6 +10,7 @@ type Props = {
 
 export default function CustomDetailItem({ id }: Props) {
   const { localData: feedData } = useFeedOne({ id: id });
+  const { localData: todayData } = useToday();
 
   return (
     <DetailCard
@@ -24,6 +26,8 @@ export default function CustomDetailItem({ id }: Props) {
         subTitle: feedData.subTitle,
         voteCount: feedData.like,
         commentCount: feedData.comment,
+        question: todayData.body,
+        questionCategory: todayData.category,
       }}
       option={{
         isQuestion: feedData.isQuestion,

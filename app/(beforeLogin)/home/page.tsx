@@ -11,7 +11,7 @@ import InfoLayer from '@/app/components/layer/InfoLayer';
 import Body from '@/app/components/text/Body';
 import CustomTab from '@/app/(beforeLogin)/home/_component/CustomTab';
 import CustomItem from '@/app/(beforeLogin)/home/_component/CustomItem';
-import { useToday } from '@/app/(beforeLogin)/home/_state/useToday';
+import { useToday } from '@/app/(beforeLogin)/_state/useToday';
 import { useTop5 } from '@/app/(beforeLogin)/home/_state/useTop5';
 import { useState } from 'react';
 

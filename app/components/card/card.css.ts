@@ -121,3 +121,24 @@ export const countText = style({
     },
   },
 });
+
+export const questionLayer = style({
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'start',
+  gap: 8,
+  padding: 16,
+  borderRadius: 8,
+  background: vars.color.gray.background,
+});
+
+export const questionCategory = style({
+  borderRadius: 8,
+  background: vars.color.orange['300'],
+  color: vars.color.gray.white,
+  padding: '4px 8px',
+});
+
+export const question = style({
+  color: vars.color.gray['400'],
+});
