@@ -4,12 +4,12 @@ import {
   InfiniteData,
   QueryClient,
 } from '@tanstack/react-query';
-import { getFeedOne } from '@/app/(beforeLogin)/feed/[detail]/_lib/getFeedOne';
 import { ReactNode } from 'react';
+import { getFeedOne } from '@/app/components/template/feedOne/_lib/getFeedOne';
 import {
   FeedCommentResponseTypes,
   getFeedComment,
-} from '@/app/(beforeLogin)/feed/[detail]/_lib/getFeedComment';
+} from '@/app/components/template/feedOne/_lib/getFeedComment';
 
 type Props = {
   children: ReactNode;

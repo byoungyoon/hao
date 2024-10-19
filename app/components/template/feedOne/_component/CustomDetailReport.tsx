@@ -1,7 +1,7 @@
 'use client';
 
-import { useFeedOne } from '@/app/(beforeLogin)/feed/[detail]/_state/useFeedone';
 import CustomReport from '@/app/(beforeLogin)/_component/CustomReport';
+import { useFeedOne } from '@/app/components/template/feedOne/_state/useFeedone';
 
 type Props = {
   id: number;

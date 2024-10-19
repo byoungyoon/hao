@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
-import { getFeedOne } from '@/app/(beforeLogin)/feed/[detail]/_lib/getFeedOne';
 import { useMemo } from 'react';
+import { getFeedOne } from '@/app/components/template/feedOne/_lib/getFeedOne';
 
 type Props = {
   id: number;

@@ -1,7 +1,7 @@
 'use client';
 
-import { useFeedOne } from '@/app/(beforeLogin)/feed/[detail]/_state/useFeedone';
 import DetailCard from '@/app/components/card/DetailCard';
+import { useFeedOne } from '@/app/components/template/feedOne/_state/useFeedone';
 
 type Props = {
   id: number;

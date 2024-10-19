@@ -1,7 +1,7 @@
 'use client';
 
-import { useFeedComment } from '@/app/(beforeLogin)/feed/[detail]/_state/useFeedComment';
-import CustomComment from '@/app/(beforeLogin)/feed/[detail]/_component/CustomComment';
+import CustomComment from '@/app/components/template/feedOne/_component/CustomComment';
+import { useFeedComment } from '@/app/components/template/feedOne/_state/useFeedComment';
 
 type Props = {
   id: number;

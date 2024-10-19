@@ -12,44 +12,17 @@ type Props = {
 };
 
 export default function CustomCommentInput({ id }: Props) {
-  console.log(id);
-
   const [value, setValue] = useState('');
+
+  console.log(id);
 
   const onChangeInput: ChangeEventHandler<HTMLInputElement> = (event) => {
     setValue(event.target.value);
   };
 
-  // const onBeforeUnload = useCallback((event: BeforeUnloadEvent) => {
-  //   event.preventDefault();
-  //   (event || window.event).returnValue = '';
-  //
-  //   return '';
-  // }, []);
-  //
-  // const onPopState = useCallback(() => {
-  //   history.pushState(null, '', location.href);
-  // }, []);
-  //
-  // useEffect(() => {
-  //   if (value !== '') {
-  //     window.addEventListener('beforeunload', onBeforeUnload);
-  //     window.addEventListener('popstate', onPopState);
-  //   }
-  //
-  //   return () => {
-  //     window.removeEventListener('beforeunload', onBeforeUnload);
-  //     window.removeEventListener('popstate', onPopState);
-  //   };
-  // }, [onBeforeUnload, onPopState, value]);
-  //
-  // useEffect(() => {
-  //   history.pushState(null, '', location.href);
-  // }, []);
-
   return (
     <div className={styles.group}>
-      <Image src={Plus} alt='plus' width={40} height={40} />
+      <Image src={Plus.src} alt='plus' width={40} height={40} />
       <div className={styles.inputLayer}>
         <input
           className={styles.input}

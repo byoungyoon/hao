@@ -1,10 +1,10 @@
 import { InfiniteData, useInfiniteQuery } from '@tanstack/react-query';
+import { useMemo } from 'react';
 import {
   FeedCommentDataTypes,
   FeedCommentResponseTypes,
   getFeedComment,
-} from '@/app/(beforeLogin)/feed/[detail]/_lib/getFeedComment';
-import { useMemo } from 'react';
+} from '@/app/components/template/feedOne/_lib/getFeedComment';
 
 type Props = {
   id: number;
