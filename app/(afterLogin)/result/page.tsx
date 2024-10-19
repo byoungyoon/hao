@@ -1,9 +1,9 @@
 import Onboarding from '@/app/image/onboarding.png';
 import Heading from '@/app/components/text/Heading';
 import Image from 'next/image';
+import CustomButton from '@/app/(afterLogin)/result/_component/CustomButton';
 
 import * as styles from './page.css';
-import CustomButton from '@/app/(afterLogin)/result/_component/CustomButton';
 
 export default function ResultPage() {
   return (

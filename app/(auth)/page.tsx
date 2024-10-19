@@ -12,7 +12,7 @@ const AuthPage = () => {
 
   useEffect(() => {
     if (token) router.push(`/auth/${token}`);
-  }, [token]);
+  }, [token, router]);
 
   return null;
 };

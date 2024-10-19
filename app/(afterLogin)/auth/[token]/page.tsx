@@ -3,26 +3,28 @@
 import { useMutation } from '@tanstack/react-query';
 import { postToken } from '@/app/(afterLogin)/auth/[token]/_lib/postToken';
 import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 type Props = {
   params: { token: string };
 };
 
 export default function AuthTokenPage({ params }: Props) {
-  const { data, mutate: onAction } = useMutation({
+  const router = useRouter();
+
+  const { mutate: onAction } = useMutation({
     mutationKey: ['token'],
     mutationFn: postToken,
+    onSuccess: ({ token, role }) => {
+      localStorage.setItem('token', token);
+
+      if (role === '임시') router.replace(role === '임시' ? '/age' : '/home');
+    },
   });
 
   useEffect(() => {
     onAction({ token: params.token });
   }, [params.token]);
 
-  return (
-    <div>
-      kakaoToken: {params.token}
-      token: {data?.token}
-      role : {data?.role}
-    </div>
-  );
+  return null;
 }

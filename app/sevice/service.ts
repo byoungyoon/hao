@@ -1,5 +1,6 @@
-const token =
-  'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJxbmZwcjMxQG5hdGUuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImlhdCI6MTcyODMwNjYyMSwiZXhwIjoxNzMwODk4NjIxfQ._t8nuhse1CBkYq-pyevkvukRYhS-47uj4cuSjltjF7k';
+const getToken = () => {
+  return localStorage.getItem('token');
+};
 
 type Props = {
   url: string;
@@ -28,7 +29,7 @@ export const GET = async <T extends object>({
     const response = await fetch(fullUrl, {
       method: 'GET',
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${getToken()}`,
         'Content-Type': 'application/json',
       },
     });
@@ -61,7 +62,7 @@ export const POST = async <T extends object>({
     const response = await fetch(fullUrl, {
       method: 'POST',
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${getToken()}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(parameters),
