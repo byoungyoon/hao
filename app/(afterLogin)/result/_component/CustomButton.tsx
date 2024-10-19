@@ -22,7 +22,7 @@ export default function CustomButton() {
   });
 
   const onResult = () => {
-    onAction({ age: age, nickname: nickname, charaterId: point });
+    onAction({ age: age, nickname: nickname, characterId: point });
   };
 
   return (

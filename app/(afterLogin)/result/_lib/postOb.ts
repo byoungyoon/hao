@@ -4,7 +4,7 @@ import { POST } from '@/app/sevice/service';
 export type ObRequestTypes = {
   age: number;
   nickname: string;
-  charaterId: number;
+  characterId: number;
 };
 
 export type ObResponseTypes = {
@@ -15,11 +15,11 @@ export type ObResponseTypes = {
 export const postOb: MutationFunction<
   ObResponseTypes,
   ObRequestTypes
-> = async ({ age, charaterId, nickname }) => {
+> = async ({ age, characterId, nickname }) => {
   const params = {
     age: age,
     nickanem: nickname,
-    charaterId: charaterId,
+    characterId: charaterId,
   };
 
   return await POST<ObResponseTypes>({
