@@ -19,7 +19,7 @@ export const postOb: MutationFunction<
   const params = {
     age: age,
     nickanem: nickname,
-    characterId: charaterId,
+    characterId: characterId,
   };
 
   return await POST<ObResponseTypes>({
