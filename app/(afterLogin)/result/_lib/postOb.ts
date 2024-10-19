@@ -18,7 +18,7 @@ export const postOb: MutationFunction<
 > = async ({ age, characterId, nickname }) => {
   const params = {
     age: age,
-    nickanem: nickname,
+    nickname: nickname,
     characterId: characterId,
   };
 

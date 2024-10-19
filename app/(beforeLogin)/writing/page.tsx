@@ -17,7 +17,7 @@ export default function WritingPage() {
           <Body size='3' className={styles.categoryText}>
             진로
           </Body>
-          <Image src={Arrow} alt='arrow' width={24} height={24} />
+          <Image src={Arrow.src} alt='arrow' width={24} height={24} />
         </div>
         <div className={styles.inputLayer}>
           <input
@@ -25,7 +25,13 @@ export default function WritingPage() {
             className={styles.input}
             placeholder='제목을 지어줘!(3자~15자)'
           />
-          <Image src={Vector} alt='vector' className={styles.inputReset} />
+          <Image
+            src={Vector.src}
+            alt='vector'
+            className={styles.inputReset}
+            width={16}
+            height={17}
+          />
         </div>
         <div className={styles.textareaLayer}>
           <textarea
@@ -39,7 +45,7 @@ export default function WritingPage() {
         <CustomReport />
         <div className={styles.imageGroupLayer}>
           <div className={styles.imageLayer}>
-            <Image src={Camera} alt='camera' width={24} height={24} />
+            <Image src={Camera.src} alt='camera' width={24} height={24} />
           </div>
         </div>
       </article>
