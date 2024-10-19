@@ -18,7 +18,7 @@ export default function AuthTokenPage({ params }: Props) {
     onSuccess: ({ token, role }) => {
       localStorage.setItem('token', token);
 
-      if (role === '임시') router.replace(role === '임시' ? '/age' : '/home');
+      router.replace(role === '임시' ? '/age' : '/home');
     },
   });
 
