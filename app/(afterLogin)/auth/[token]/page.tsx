@@ -20,6 +20,7 @@ export default function AuthTokenPage({ params }: Props) {
 
   return (
     <div>
+      kakaoToken: {params.token}
       token: {data?.token}
       role : {data?.role}
     </div>
