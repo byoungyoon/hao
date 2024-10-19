@@ -43,3 +43,37 @@ export const GET = async <T extends object>({
     throw error;
   }
 };
+
+export const POST = async <T extends object>({
+  url,
+  parameters,
+}: Props): Promise<T> => {
+  try {
+    const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+
+    if (!baseUrl)
+      throw new Error(
+        'Server base URL is not defined in environment variables',
+      );
+
+    const fullUrl = `${baseUrl}${url}`;
+
+    const response = await fetch(fullUrl, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(parameters),
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    throw error;
+  }
+};
