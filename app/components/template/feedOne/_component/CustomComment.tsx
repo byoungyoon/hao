@@ -102,7 +102,7 @@ export default function CustomComment({
                   size='6'
                   className={cx(styles.countText, isSelect && 'orange')}
                 >
-                  채책
+                  채택
                 </Body>
               </div>
             )}
