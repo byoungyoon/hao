@@ -47,7 +47,7 @@ export default function CustomComment({
   const [isEditMode, setIsEditMode] = useState(false);
 
   const onEdit = () => {
-    setIsEditMode(true);
+    setIsEditMode(!isEditMode);
   };
 
   const onTrackableEditMode = () => {

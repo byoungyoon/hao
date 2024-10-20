@@ -15,7 +15,7 @@ export const input = style({
   fontFamily: 'medium',
   color: vars.color.gray['400'],
   padding: '0 10px',
-  flexGrow: 1,
+  width: '100%',
 
   '::placeholder': {
     color: vars.color.gray['200'],
@@ -25,6 +25,8 @@ export const input = style({
 export const inputLayer = style({
   display: 'flex',
   gap: 5,
+  justifyContent: 'space-between',
+  alignItems: 'center',
 });
 
 export const button = style({
@@ -35,4 +37,5 @@ export const button = style({
   outline: 'none',
   borderRadius: 8,
   padding: '0 5px',
+  whiteSpace: 'nowrap',
 });
