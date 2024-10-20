@@ -1,7 +1,7 @@
 const getToken = () => {
-  // return 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJxbmZwcjMxQG5hdGUuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImlhdCI6MTcyODMwNjYyMSwiZXhwIjoxNzMwODk4NjIxfQ._t8nuhse1CBkYq-pyevkvukRYhS-47uj4cuSjltjF7k';
+  return 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJxbmZwcjMxQG5hdGUuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImlhdCI6MTcyODMwNjYyMSwiZXhwIjoxNzMwODk4NjIxfQ._t8nuhse1CBkYq-pyevkvukRYhS-47uj4cuSjltjF7k';
 
-  return localStorage.getItem('token');
+  // return localStorage.getItem('token');
 };
 
 type Props = {
@@ -63,6 +63,40 @@ export const POST = async <T extends object>({
 
     const response = await fetch(fullUrl, {
       method: 'POST',
+      headers: {
+        Authorization: `Bearer ${getToken()}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(parameters),
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    throw error;
+  }
+};
+
+export const PUT = async <T extends object>({
+  url,
+  parameters,
+}: Props): Promise<T> => {
+  try {
+    const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+
+    if (!baseUrl)
+      throw new Error(
+        'Server base URL is not defined in environment variables',
+      );
+
+    const fullUrl = `${baseUrl}${url}`;
+
+    const response = await fetch(fullUrl, {
+      method: 'PUT',
       headers: {
         Authorization: `Bearer ${getToken()}`,
         'Content-Type': 'application/json',

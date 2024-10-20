@@ -17,7 +17,6 @@ export default function CustomInfo() {
           <Image
             src={`data:image/png;base64,${localData.profile}`}
             alt='default'
-            objectFit='cover'
             layout='fill'
             unoptimized
           />

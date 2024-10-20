@@ -1,17 +1,27 @@
 'use client';
 
-import CustomItem from '@/app/(afterLogin)/point/_component/CustomItem';
+import { useAgeForm, usePointForm } from '@/app/store/useTranslate';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { getPoint } from '@/app/(afterLogin)/point/_lib/getPoint';
-import { useEffect, useMemo, useRef } from 'react';
-import { useAgeForm, usePointForm } from '@/app/store/useTranslate';
 import cx from 'classnames';
+import PointCard from '@/app/components/card/PointCard';
+import { useUser } from '@/app/(beforeLogin)/_state/useUser';
 
-import * as styles from './customItemGroup.css';
+import * as styles from './customPointCardGroup.css';
 
-export default function CustomItemGroup() {
+export default function CustomPointCardGroup() {
+  const { localData: userData } = useUser();
+
   const age = useAgeForm((state) => state.age);
-  const { point, updatePoint } = usePointForm();
+  const updatePoint = usePointForm((state) => state.updatePoint);
+
+  const localAge = useMemo(
+    () => (age === 0 ? userData.age : age),
+    [userData, age],
+  );
+
+  const [point, setPoint] = useState(userData.characterId);
 
   const scrollRef = useRef<HTMLDivElement | null>(null);
 
@@ -21,12 +31,12 @@ export default function CustomItemGroup() {
   });
 
   const selectAge = useMemo(() => {
-    if (age === 10) return [1, 2, 3];
-    if (age === 20) return [4, 5, 6];
-    if (age === 30) return [7, 8, 9];
+    if (localAge === 10) return [1, 2, 3];
+    if (localAge === 20) return [4, 5, 6];
+    if (localAge === 30) return [7, 8, 9];
 
     return [];
-  }, [age]);
+  }, [localAge]);
 
   const localData = useMemo(() => {
     if (!data) return [];
@@ -42,24 +52,25 @@ export default function CustomItemGroup() {
   }, [data, selectAge]);
 
   const onClickItem = (point: number) => () => {
+    setPoint(point);
     updatePoint(point);
   };
 
   useEffect(() => {
     if (localData.length === 0 || !scrollRef.current) return;
 
-    const element = scrollRef.current;
+    const element = scrollRef.current!;
     element.scrollLeft = (element.scrollWidth - element.clientWidth) / 2;
   }, [localData, scrollRef]);
 
   return (
     <div ref={scrollRef} className={styles.group}>
       {localData.map((datum) => (
-        <CustomItem
+        <PointCard
           key={datum.id}
           image={datum.image}
           className={cx(
-            styles.age[`age${age}`],
+            styles.age[`age${localAge}`],
             point === datum.id && 'select',
           )}
           onClick={onClickItem(datum.id)}
