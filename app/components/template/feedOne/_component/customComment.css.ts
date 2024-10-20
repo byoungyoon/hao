@@ -83,10 +83,6 @@ export const contentLayer = style({
   gap: 24,
 });
 
-export const commentText = style({
-  color: vars.color.gray['400'],
-});
-
 export const countLayer = style({
   display: 'flex',
   alignItems: 'center',

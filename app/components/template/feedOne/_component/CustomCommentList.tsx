@@ -19,6 +19,7 @@ export default function CustomCommentList({ id }: Props) {
       {commentData.map((datum) => (
         <CustomComment
           key={datum.id}
+          id={datum.id}
           image={datum.img}
           nickname={datum.nickname}
           date={datum.createdAt}

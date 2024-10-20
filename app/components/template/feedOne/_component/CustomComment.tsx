@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 import cx from 'classnames';
 import Body from '@/app/components/text/Body';
@@ -7,10 +9,13 @@ import Like from '@/app/icon/like-activate.png';
 import LikeOff from '@/app/icon/like-deactivate.png';
 import Adopt from '@/app/icon/adopt-activate.png';
 import AdoptOff from '@/app/icon/adopt-deactivate.png';
+import { useState } from 'react';
+import CustomCommentEditMode from '@/app/components/template/feedOne/_component/CustomCommentEditMode';
 
 import * as styles from './customComment.css';
 
 type Props = {
+  id: number;
   image: string;
   nickname: string;
   date: string;
@@ -26,6 +31,7 @@ type Props = {
 };
 
 export default function CustomComment({
+  id,
   image,
   nickname,
   date,
@@ -38,6 +44,16 @@ export default function CustomComment({
   isLike,
   isHost,
 }: Props) {
+  const [isEditMode, setIsEditMode] = useState(false);
+
+  const onEdit = () => {
+    setIsEditMode(true);
+  };
+
+  const onTrackableEditMode = () => {
+    setIsEditMode(false);
+  };
+
   return (
     <div className={styles.comment}>
       <div className={cx(styles.imageLayer, `age${age}`)}>
@@ -66,15 +82,24 @@ export default function CustomComment({
           </div>
           {isEdit && (
             <div className={styles.editLayer}>
-              <Image src={Edit} alt='edit' width={20} height={20} />
-              <Image src={Trash} alt='trash' width={20} height={20} />
+              <Image
+                src={Edit.src}
+                alt='edit'
+                width={20}
+                height={20}
+                onClick={onEdit}
+              />
+              <Image src={Trash.src} alt='trash' width={20} height={20} />
             </div>
           )}
         </hgroup>
         <div className={styles.contentLayer}>
-          <Body size='6' className={styles.commentText}>
-            {comment}
-          </Body>
+          <CustomCommentEditMode
+            id={id}
+            defaultComment={comment}
+            isEditMode={isEditMode}
+            onTrackable={onTrackableEditMode}
+          />
           <div className={styles.countLayer}>
             <div className={styles.countGroup}>
               <Image

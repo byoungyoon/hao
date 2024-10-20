@@ -37,7 +37,7 @@ export default function MyPage() {
         >
           <CustomInfo />
         </CustomCallback>
-        <div className={styles.infoLayerGroup}>
+        <CustomCallback className={styles.infoLayerGroup} callback='/my/feed'>
           <div className={styles.infoMyLayer}>
             <Body size='1'>내 후회</Body>
             <Body size='3' className={styles.infoLayerText}>
@@ -63,7 +63,7 @@ export default function MyPage() {
               className={styles.infoScrapImage}
             />
           </CustomCallback>
-        </div>
+        </CustomCallback>
       </article>
       <div className={styles.border} />
       <article className={styles.reportArticle}>

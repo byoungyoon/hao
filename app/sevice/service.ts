@@ -114,3 +114,33 @@ export const PUT = async <T extends object>({
     throw error;
   }
 };
+
+export const DELETE = async <T extends object>({ url }: Props): Promise<T> => {
+  try {
+    const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+
+    if (!baseUrl)
+      throw new Error(
+        'Server base URL is not defined in environment variables',
+      );
+
+    const fullUrl = `${baseUrl}${url}`;
+
+    const response = await fetch(fullUrl, {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${getToken()}`,
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    throw error;
+  }
+};
