@@ -3,7 +3,6 @@ import CustomOption from '@/app/(beforeLogin)/writing/_component/CustomOption';
 import Button from '@/app/components/button/Button';
 import Arrow from '@/app/icon/category-gray.png';
 import Vector from '@/app/icon/vector.png';
-import Camera from '@/app/icon/camera-gray.png';
 import Image from 'next/image';
 import CustomReport from '@/app/(beforeLogin)/_component/CustomReport';
 
