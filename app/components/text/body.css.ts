@@ -2,9 +2,9 @@ import { style } from '@vanilla-extract/css';
 
 export const type = {
   '1': style({
-    fontWeight: 500,
+    fontWeight: 'bold',
     fontSize: 20,
-    fontFamily: 'medium',
+    fontFamily: 'bold',
 
     '@media': {
       'screen and (max-width: 375px)': {
@@ -16,9 +16,9 @@ export const type = {
     },
   }),
   '2': style({
-    fontWeight: 'bold',
+    fontWeight: 500,
     fontSize: 20,
-    fontFamily: 'bold',
+    fontFamily: 'medium',
 
     '@media': {
       'screen and (max-width: 375px)': {

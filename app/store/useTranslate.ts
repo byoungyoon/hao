@@ -57,16 +57,24 @@ export const useFeedForm = create<FeedState & FeedAction>((set) => ({
   updateIsAdopted: (isAdopted) => set(() => ({ isAdopted: isAdopted })),
 }));
 
-type ScrollState = {
-  y: number;
+type WritingState = {
+  category: string;
+  title: string;
+  body: string;
 };
 
-type ScrollAction = {
-  updateY: (y: ScrollState['y']) => void;
+type WritingAction = {
+  updateCategory: (y: WritingState['category']) => void;
+  updateTitle: (title: WritingState['title']) => void;
+  updateBody: (body: WritingState['body']) => void;
 };
 
-export const useScroll = create<ScrollState & ScrollAction>((set) => ({
-  y: 0,
+export const useWritingForm = create<WritingState & WritingAction>((set) => ({
+  category: '',
+  title: '',
+  body: '',
 
-  updateY: (y) => set(() => ({ y: y })),
+  updateCategory: (category) => set(() => ({ category: category })),
+  updateTitle: (title) => set(() => ({ title: title })),
+  updateBody: (body) => set(() => ({ body: body })),
 }));
