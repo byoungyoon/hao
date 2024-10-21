@@ -8,6 +8,7 @@ import Image from 'next/image';
 import CustomReport from '@/app/(beforeLogin)/_component/CustomReport';
 
 import * as styles from './page.css';
+import CustomImage from '@/app/(beforeLogin)/writing/_component/CustomImage';
 
 export default function WritingPage() {
   return (
@@ -44,9 +45,7 @@ export default function WritingPage() {
         </div>
         <CustomReport />
         <div className={styles.imageGroupLayer}>
-          <div className={styles.imageLayer}>
-            <Image src={Camera.src} alt='camera' width={24} height={24} />
-          </div>
+          <CustomImage />
         </div>
       </article>
       <article className={styles.optionArticle}>
