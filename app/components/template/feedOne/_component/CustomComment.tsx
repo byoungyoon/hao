@@ -11,10 +11,13 @@ import Adopt from '@/app/icon/adopt-activate.png';
 import AdoptOff from '@/app/icon/adopt-deactivate.png';
 import { useState } from 'react';
 import CustomCommentEditMode from '@/app/components/template/feedOne/_component/CustomCommentEditMode';
+import { useFeedCommentDelete } from '@/app/components/template/feedOne/_state/useFeedCommentDelete';
+import { useFeedCommentVote } from '@/app/components/template/feedOne/_state/useFeedCommentVote';
 
 import * as styles from './customComment.css';
 
 type Props = {
+  feedId: number;
   id: number;
   image: string;
   nickname: string;
@@ -31,6 +34,7 @@ type Props = {
 };
 
 export default function CustomComment({
+  feedId,
   id,
   image,
   nickname,
@@ -45,13 +49,18 @@ export default function CustomComment({
   isHost,
 }: Props) {
   const [isEditMode, setIsEditMode] = useState(false);
+  const [localValue, setLocalValue] = useState(comment);
+
+  const { onDelete } = useFeedCommentDelete({ id: id, feedId: feedId });
+  const { onVote } = useFeedCommentVote({ id: id, feedId: feedId });
 
   const onEdit = () => {
     setIsEditMode(!isEditMode);
   };
 
-  const onTrackableEditMode = () => {
+  const onTrackableEditMode = (value: string) => {
     setIsEditMode(false);
+    setLocalValue(value);
   };
 
   return (
@@ -89,14 +98,21 @@ export default function CustomComment({
                 height={20}
                 onClick={onEdit}
               />
-              <Image src={Trash.src} alt='trash' width={20} height={20} />
+              <Image
+                src={Trash.src}
+                alt='trash'
+                width={20}
+                height={20}
+                onClick={onDelete}
+              />
             </div>
           )}
         </hgroup>
         <div className={styles.contentLayer}>
           <CustomCommentEditMode
             id={id}
-            defaultComment={comment}
+            feedId={feedId}
+            defaultComment={localValue}
             isEditMode={isEditMode}
             onTrackable={onTrackableEditMode}
           />
@@ -107,6 +123,7 @@ export default function CustomComment({
                 alt='like'
                 width={24}
                 height={24}
+                onClick={onVote}
               />
               <Body
                 size='6'

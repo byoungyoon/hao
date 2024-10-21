@@ -56,3 +56,17 @@ export const useFeedForm = create<FeedState & FeedAction>((set) => ({
   updateSort: (sort) => set(() => ({ sort: sort })),
   updateIsAdopted: (isAdopted) => set(() => ({ isAdopted: isAdopted })),
 }));
+
+type ScrollState = {
+  y: number;
+};
+
+type ScrollAction = {
+  updateY: (y: ScrollState['y']) => void;
+};
+
+export const useScroll = create<ScrollState & ScrollAction>((set) => ({
+  y: 0,
+
+  updateY: (y) => set(() => ({ y: y })),
+}));

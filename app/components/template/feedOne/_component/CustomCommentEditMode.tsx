@@ -2,7 +2,7 @@
 
 import Body from '@/app/components/text/Body';
 import { ChangeEventHandler, useEffect, useState } from 'react';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { putFeedCommentUpdate } from '@/app/components/template/feedOne/_lib/putFeedCommentUpdate';
 
 import * as styles from './customCommentEditMode.css';
@@ -11,16 +11,18 @@ type Props = {
   isEditMode?: boolean;
   defaultComment: string;
   id: number;
-
-  onTrackable?: () => void;
+  feedId: number;
+  onTrackable?: (value: string) => void;
 };
 
 export default function CustomCommentEditMode({
   isEditMode = false,
   defaultComment,
   id,
+  feedId,
   onTrackable,
 }: Props) {
+  const queryClient = useQueryClient();
   const [localValue, setLocalValue] = useState(defaultComment);
 
   const onChangeInput: ChangeEventHandler<HTMLInputElement> = (event) => {
@@ -30,8 +32,13 @@ export default function CustomCommentEditMode({
   const { mutate: onAction } = useMutation({
     mutationKey: ['feed', 'comment', id],
     mutationFn: putFeedCommentUpdate,
-    onSuccess: () => {
-      if (onTrackable) onTrackable();
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({
+        queryKey: ['feed', feedId, 'comment'],
+      });
+    },
+    onMutate: () => {
+      if (onTrackable) onTrackable(localValue);
     },
   });
 

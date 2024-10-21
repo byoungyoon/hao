@@ -14,13 +14,6 @@ export const listArticle = style({
   padding: '16px 20px',
 });
 
-export const itemGroup = style({
-  display: 'flex',
-  flexDirection: 'column',
-  gap: 16,
-  marginTop: 16,
-});
-
 export const selectLayer = style({
   display: 'flex',
   justifyContent: 'end',

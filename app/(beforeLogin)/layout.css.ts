@@ -7,17 +7,10 @@ export const container = style({
   height: '100vh',
   display: 'flex',
   flexDirection: 'column',
-  position: 'relative',
 });
 
 export const body = style({
   flexGrow: 1,
-  position: 'relative',
-  top: 0,
-  left: 0,
-  bottom: 0,
-  right: 0,
-  overflow: 'hidden',
 });
 
 export const footer = style({

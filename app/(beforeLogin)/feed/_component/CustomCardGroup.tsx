@@ -5,11 +5,15 @@ import { useFeedForm } from '@/app/store/useTranslate';
 import Card from '@/app/components/card/Card';
 import { usePathname, useRouter } from 'next/navigation';
 import { useToday } from '@/app/(beforeLogin)/_state/useToday';
+import CustomNext from '@/app/(beforeLogin)/feed/_component/CustomNext';
+
+import * as styles from './customCardGroup.css';
 
 export default function CustomCardGroup() {
-  const { age, category, sort } = useFeedForm();
   const router = useRouter();
   const pathname = usePathname();
+
+  const { age, category, sort } = useFeedForm();
 
   const { localData } = useFeed({
     age: age,
@@ -23,7 +27,7 @@ export default function CustomCardGroup() {
   };
 
   return (
-    <>
+    <div className={styles.group}>
       {localData.map((datum) => (
         <Card
           key={datum.id}
@@ -51,6 +55,7 @@ export default function CustomCardGroup() {
           onClick={onClickCard(datum.id)}
         />
       ))}
-    </>
+      <CustomNext />
+    </div>
   );
 }

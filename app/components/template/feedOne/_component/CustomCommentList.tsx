@@ -20,6 +20,7 @@ export default function CustomCommentList({ id }: Props) {
         <CustomComment
           key={datum.id}
           id={datum.id}
+          feedId={id}
           image={datum.img}
           nickname={datum.nickname}
           date={datum.createdAt}

@@ -1,7 +1,6 @@
 import CustomTab from '@/app/(beforeLogin)/feed/_component/CustomTab';
 import CustomChipGroup from '@/app/(beforeLogin)/_component/CustomChipGroup';
 import CustomSelect from '@/app/(beforeLogin)/feed/_component/CustomSelect';
-import CustomNext from '@/app/(beforeLogin)/feed/_component/CustomNext';
 import CustomCardGroup from '@/app/(beforeLogin)/feed/_component/CustomCardGroup';
 
 import * as styles from './page.css';
@@ -15,10 +14,7 @@ export default function FeedPage() {
         <div className={styles.selectLayer}>
           <CustomSelect />
         </div>
-        <div className={styles.itemGroup}>
-          <CustomCardGroup />
-          <CustomNext />
-        </div>
+        <CustomCardGroup />
       </article>
     </section>
   );

@@ -9,6 +9,9 @@ export const wrapper = style({
 export const mainWrapper = style({
   flexGrow: 1,
   position: 'relative',
+  overflow: 'scroll',
+  overflowX: 'hidden',
+  scrollbarWidth: 'none',
 });
 
 export const mainWrapperOverflow = style({
@@ -17,7 +20,4 @@ export const mainWrapperOverflow = style({
   left: 0,
   right: 0,
   bottom: 0,
-  overflow: 'scroll',
-  overflowX: 'hidden',
-  scrollbarWidth: 'none',
 });

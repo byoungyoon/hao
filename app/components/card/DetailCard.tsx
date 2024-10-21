@@ -65,9 +65,11 @@ type Props = {
   user: CardUserTypes;
   data: CardDetailDataTypes;
   option: CardDetailOptionTypes;
+
+  onVote?: () => void;
 };
 
-export default function DetailCard({ user, data, option }: Props) {
+export default function DetailCard({ user, data, option, onVote }: Props) {
   return (
     <div className={styles.item}>
       <hgroup className={styles.hgroup}>
@@ -128,6 +130,7 @@ export default function DetailCard({ user, data, option }: Props) {
               alt='list'
               width={24}
               height={24}
+              onClick={onVote}
             />
             <Body
               size='5'
