@@ -6,7 +6,8 @@ const getToken = () => {
 
 type Props = {
   url: string;
-  parameters?: Record<string, string | number | boolean>;
+  parameters?: Record<string, string | number | boolean> | FormData;
+  isFormData?: boolean;
 };
 
 export const GET = async <T extends object>({
@@ -50,6 +51,7 @@ export const GET = async <T extends object>({
 export const POST = async <T extends object>({
   url,
   parameters,
+  isFormData,
 }: Props): Promise<T> => {
   try {
     const baseUrl = process.env.NEXT_PUBLIC_API_URL;
@@ -65,9 +67,11 @@ export const POST = async <T extends object>({
       method: 'POST',
       headers: {
         Authorization: `Bearer ${getToken()}`,
-        'Content-Type': 'application/json',
+        'Content-Type': !isFormData
+          ? 'application/json'
+          : 'multipart/form-data',
       },
-      body: JSON.stringify(parameters),
+      body: !isFormData ? JSON.stringify(parameters) : (parameters as FormData),
     });
 
     if (!response.ok) {

@@ -9,6 +9,7 @@ export const optionLayer = style({
   justifyContent: 'center',
   flexDirection: 'column',
   gap: 8,
+  transition: 'all 0.2s',
 
   border: `1px solid ${vars.color.gray['100']}`,
   background: vars.color.gray.background,

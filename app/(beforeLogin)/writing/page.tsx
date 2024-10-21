@@ -6,8 +6,10 @@ import CustomImage from '@/app/(beforeLogin)/writing/_component/CustomImage';
 import CustomCategory from '@/app/(beforeLogin)/writing/_component/CustomCategory';
 import CustomInput from '@/app/(beforeLogin)/writing/_component/CustomInput';
 import CustomTextarea from '@/app/(beforeLogin)/writing/_component/CustomTextarea';
+import CustomOptionGroup from '@/app/(beforeLogin)/writing/_component/CustomOptionGroup';
 
 import * as styles from './page.css';
+import CustomButton from '@/app/(beforeLogin)/writing/_component/CustomButton';
 
 export default function WritingPage() {
   return (
@@ -23,11 +25,8 @@ export default function WritingPage() {
       </article>
       <article className={styles.optionArticle}>
         <Body size='1'>내가 원하는 답변은</Body>
-        <div className={styles.optionLayerGroup}>
-          <CustomOption mode='후시딘' />
-          <CustomOption mode='후추' isSelect />
-        </div>
-        <Button size='long' text='공유할래!' color='gray' />
+        <CustomOptionGroup />
+        <CustomButton />
       </article>
     </section>
   );

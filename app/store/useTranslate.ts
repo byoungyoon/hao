@@ -61,20 +61,28 @@ type WritingState = {
   category: string;
   title: string;
   body: string;
+  images: string[];
+  type: '후시딘' | '후추';
 };
 
 type WritingAction = {
   updateCategory: (y: WritingState['category']) => void;
   updateTitle: (title: WritingState['title']) => void;
   updateBody: (body: WritingState['body']) => void;
+  updateImages: (images: WritingState['images']) => void;
+  updateType: (type: WritingState['type']) => void;
 };
 
 export const useWritingForm = create<WritingState & WritingAction>((set) => ({
   category: '',
   title: '',
   body: '',
+  images: [],
+  type: '후시딘',
 
   updateCategory: (category) => set(() => ({ category: category })),
   updateTitle: (title) => set(() => ({ title: title })),
   updateBody: (body) => set(() => ({ body: body })),
+  updateImages: (images) => set(() => ({ images: images })),
+  updateType: (type) => set(() => ({ type: type })),
 }));

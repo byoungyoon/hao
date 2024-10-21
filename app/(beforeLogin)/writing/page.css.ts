@@ -39,12 +39,6 @@ export const optionArticle = style({
   padding: '16px 20px',
 });
 
-export const optionLayerGroup = style({
-  display: 'grid',
-  gridTemplateColumns: 'repeat(2, 1fr)',
-  gap: 8,
-});
-
 export const close = style({
   position: 'absolute',
   top: 3,
