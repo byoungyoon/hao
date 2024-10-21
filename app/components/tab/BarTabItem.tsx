@@ -5,6 +5,7 @@ import * as styles from './barTabItem.css';
 import cx from 'classnames';
 
 export type BarTabItemTypes = {
+  target: string;
   text: string;
   icon: {
     on: StaticImageData | string;

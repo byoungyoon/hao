@@ -1,7 +1,8 @@
 'use client';
 
 import BarTabItem, { BarTabItemTypes } from '@/app/components/tab/BarTabItem';
-import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
+
 import * as styles from './barTab.css';
 
 type Props = {
@@ -9,10 +10,6 @@ type Props = {
    * tab item data
    */
   data: BarTabItemTypes[];
-  /**
-   * default select
-   */
-  defaultSelect: string;
   /**
    * on change action => key(item.text)
    * @param text
@@ -23,16 +20,12 @@ type Props = {
 /**
  * tab bar
  */
-export default function BarTab({ data, defaultSelect, onTrackable }: Props) {
-  const [select, setSelect] = useState(defaultSelect);
+export default function BarTab({ data, onTrackable }: Props) {
+  const pathname = usePathname();
 
   const onClickItem = (text: string) => () => {
-    setSelect(text);
+    if (onTrackable) onTrackable(text);
   };
-
-  useEffect(() => {
-    if (onTrackable) onTrackable(select);
-  }, [select, onTrackable]);
 
   return (
     <div className={styles.itemGroup}>
@@ -40,7 +33,7 @@ export default function BarTab({ data, defaultSelect, onTrackable }: Props) {
         <BarTabItem
           key={datum.text}
           onClick={onClickItem(datum.text)}
-          isSelect={select === datum.text}
+          isSelect={pathname.startsWith(datum.target)}
           {...datum}
         />
       ))}

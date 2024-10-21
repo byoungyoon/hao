@@ -10,45 +10,43 @@ import WritingOn from '@/app/icon/writing/on.png';
 import WritingOff from '@/app/icon/writing/off.png';
 import { useMemo } from 'react';
 import BarTab from '@/app/components/tab/BarTab';
-import { useRouter, usePathname } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { BarTabItemTypes } from '@/app/components/tab/BarTabItem';
-import { StaticImageData } from 'next/image';
 
 export default function CustomBarTab() {
   const router = useRouter();
-  const pathname = usePathname();
 
-  const data: (BarTabItemTypes & { target: string })[] = useMemo(
+  const data: BarTabItemTypes[] = useMemo(
     () => [
       {
         text: '홈',
         icon: {
-          on: HomeOn as StaticImageData,
-          off: HomeOff as StaticImageData,
+          on: HomeOn.src,
+          off: HomeOff.src,
         },
         target: '/home',
       },
       {
         text: '피드',
         icon: {
-          on: FeedOn as StaticImageData,
-          off: FeedOff as StaticImageData,
+          on: FeedOn.src,
+          off: FeedOff.src,
         },
         target: '/feed',
       },
       {
         text: '글 작성',
         icon: {
-          on: WritingOn as StaticImageData,
-          off: WritingOff as StaticImageData,
+          on: WritingOn.src,
+          off: WritingOff.src,
         },
         target: '/writing',
       },
       {
         text: '마이페이지',
         icon: {
-          on: MyPageOn as StaticImageData,
-          off: MyPageOff as StaticImageData,
+          on: MyPageOn.src,
+          off: MyPageOff.src,
         },
         target: '/my',
       },
@@ -56,27 +54,12 @@ export default function CustomBarTab() {
     [],
   );
 
-  const defaultSelect = useMemo(() => {
-    const find = data.find((datum) => pathname.startsWith(datum.target));
-
-    if (!find) return '홈';
-
-    return find.text;
-  }, [pathname]);
-
   const onTrackableTab = (select: string) => {
     const find = data.find((datum) => datum.text === select);
-
-    if (!find || pathname.startsWith(find.target)) return;
+    if (!find) return;
 
     router.push(find.target);
   };
 
-  return (
-    <BarTab
-      data={data}
-      defaultSelect={defaultSelect}
-      onTrackable={onTrackableTab}
-    />
-  );
+  return <BarTab data={data} onTrackable={onTrackableTab} />;
 }

@@ -26,6 +26,7 @@ const data = [
       on: HomeOn,
       off: HomeOff,
     },
+    target: '',
   },
   {
     text: '피드',
@@ -33,6 +34,7 @@ const data = [
       on: FeedOn,
       off: FeedOff,
     },
+    target: '',
   },
   {
     text: '글 작성',
@@ -40,6 +42,7 @@ const data = [
       on: MyPageOn,
       off: MyPageOff,
     },
+    target: '',
   },
   {
     text: '마이페이지',
@@ -47,13 +50,13 @@ const data = [
       on: WritingOn,
       off: WritingOff,
     },
+    target: '',
   },
 ];
 
 export const Mini: Story = {
   args: {
     data: data,
-    defaultSelect: '홈',
   },
   render: (props) => {
     return (
@@ -67,7 +70,6 @@ export const Mini: Story = {
 export const Default: Story = {
   args: {
     data: data,
-    defaultSelect: '홈',
   },
   render: (props) => {
     return (
@@ -81,7 +83,6 @@ export const Default: Story = {
 export const Big: Story = {
   args: {
     data: data,
-    defaultSelect: '홈',
   },
   render: (props) => {
     return (
@@ -95,7 +96,6 @@ export const Big: Story = {
 export const Tablet: Story = {
   args: {
     data: data,
-    defaultSelect: '홈',
   },
   render: (props) => {
     return (
