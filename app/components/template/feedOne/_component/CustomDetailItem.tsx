@@ -4,6 +4,7 @@ import DetailCard from '@/app/components/card/DetailCard';
 import { useFeedOne } from '@/app/components/template/feedOne/_state/useFeedone';
 import { useToday } from '@/app/(beforeLogin)/_state/useToday';
 import { useFeedVote } from '@/app/components/template/feedOne/_state/useFeedVote';
+import { useFeedScrap } from '@/app/components/template/feedOne/_state/useFeedScrap';
 
 type Props = {
   id: number;
@@ -13,6 +14,7 @@ export default function CustomDetailItem({ id }: Props) {
   const { localData: feedData } = useFeedOne({ id: id });
   const { localData: todayData } = useToday();
   const { onVote } = useFeedVote({ id: id });
+  const { onScrap } = useFeedScrap({ id: id });
 
   return (
     <DetailCard
@@ -37,6 +39,7 @@ export default function CustomDetailItem({ id }: Props) {
         isVote: feedData.isLike,
       }}
       onVote={onVote}
+      onScrap={onScrap}
     />
   );
 }

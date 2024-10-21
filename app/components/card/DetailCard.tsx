@@ -67,9 +67,16 @@ type Props = {
   option: CardDetailOptionTypes;
 
   onVote?: () => void;
+  onScrap?: () => void;
 };
 
-export default function DetailCard({ user, data, option, onVote }: Props) {
+export default function DetailCard({
+  user,
+  data,
+  option,
+  onVote,
+  onScrap,
+}: Props) {
   return (
     <div className={styles.item}>
       <hgroup className={styles.hgroup}>
@@ -148,9 +155,10 @@ export default function DetailCard({ user, data, option, onVote }: Props) {
         </div>
         <Image
           src={option.isScrap ? Bookmark : BookmarkOff}
-          alt='list'
+          alt='scarp'
           width={24}
           height={24}
+          onClick={onScrap}
         />
       </div>
     </div>
