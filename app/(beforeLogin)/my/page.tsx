@@ -37,8 +37,8 @@ export default function MyPage() {
         >
           <CustomInfo />
         </CustomCallback>
-        <CustomCallback className={styles.infoLayerGroup} callback='/my/feed'>
-          <div className={styles.infoMyLayer}>
+        <div className={styles.infoLayerGroup}>
+          <CustomCallback className={styles.infoMyLayer} callback='/my/feed'>
             <Body size='1'>내 후회</Body>
             <Body size='3' className={styles.infoLayerText}>
               8개
@@ -48,7 +48,7 @@ export default function MyPage() {
               alt='character'
               className={styles.infoMyImage}
             />
-          </div>
+          </CustomCallback>
           <CustomCallback
             className={styles.infoScrapLayer}
             callback='/my/scrap'
@@ -63,7 +63,7 @@ export default function MyPage() {
               className={styles.infoScrapImage}
             />
           </CustomCallback>
-        </CustomCallback>
+        </div>
       </article>
       <div className={styles.border} />
       <article className={styles.reportArticle}>

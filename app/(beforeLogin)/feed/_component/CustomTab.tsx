@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import CategoryTab from '@/app/components/tab/CategoryTab';
 import { useFeedForm } from '@/app/store/useTranslate';
 
@@ -32,6 +32,10 @@ export default function CustomTab() {
   const onTrackableTab = (tab: number) => {
     updateAge(tab);
   };
+
+  useEffect(() => {
+    return () => updateAge(0);
+  }, [updateAge]);
 
   return (
     <CategoryTab data={data} defaultSelect={0} onTrackable={onTrackableTab} />

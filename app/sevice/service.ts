@@ -6,7 +6,7 @@ const getToken = () => {
 
 type Props = {
   url: string;
-  parameters?: Record<string, string | number>;
+  parameters?: Record<string, string | number | boolean>;
 };
 
 export const GET = async <T extends object>({

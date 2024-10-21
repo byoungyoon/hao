@@ -35,20 +35,24 @@ type FeedState = {
   age: number;
   category: string;
   sort: string;
+  isAdopted: boolean;
 };
 
 type FeedAction = {
   updateAge: (age: FeedState['age']) => void;
   updateCategory: (category: FeedState['category']) => void;
   updateSort: (sort: FeedState['sort']) => void;
+  updateIsAdopted: (isAdopted: FeedState['isAdopted']) => void;
 };
 
 export const useFeedForm = create<FeedState & FeedAction>((set) => ({
   age: 0,
   category: '전체',
   sort: '',
+  isAdopted: true,
 
   updateAge: (age) => set(() => ({ age: age })),
   updateCategory: (category) => set(() => ({ category: category })),
   updateSort: (sort) => set(() => ({ sort: sort })),
+  updateIsAdopted: (isAdopted) => set(() => ({ isAdopted: isAdopted })),
 }));
