@@ -18,6 +18,8 @@ export type CustomItemDataTypes = {
   like: number;
   comment: number;
   isLike?: boolean;
+
+  onClick?: () => void;
 };
 
 type Props = CustomItemDataTypes;
@@ -30,9 +32,10 @@ export default function CustomItem({
   like,
   comment,
   isLike,
+  onClick,
 }: Props) {
   return (
-    <div className={styles.item}>
+    <div role='button' tabIndex={0} className={styles.item} onClick={onClick}>
       <div className={styles.numLayer}>
         <Body size='1' className={styles.numText}>
           {num}
@@ -48,7 +51,7 @@ export default function CustomItem({
             objectPosition='center'
           />
         ) : (
-          <Image src={Default} alt='item' width={214} height={172} />
+          <Image src={Default} alt='item' layout='fill' objectFit='contain' />
         )}
       </div>
       <div className={styles.titleLayer}>

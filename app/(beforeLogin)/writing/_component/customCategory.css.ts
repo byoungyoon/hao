@@ -2,7 +2,6 @@ import { style } from '@vanilla-extract/css';
 import { vars } from '@/app/theme.css';
 
 export const category = style({
-  margin: '24px 0',
   padding: '0 24px',
   display: 'flex',
   alignItems: 'center',
@@ -22,6 +21,14 @@ export const category = style({
       height: 42,
       margin: '20px 0',
       padding: '0 20px',
+    },
+  },
+
+  selectors: {
+    '&.question': {
+      background: vars.color.gray.background,
+      userSelect: 'none',
+      pointerEvents: 'none',
     },
   },
 });

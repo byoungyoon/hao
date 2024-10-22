@@ -96,3 +96,17 @@ export const useWritingForm = create<WritingState & WritingAction>((set) => ({
       type: '후시딘',
     })),
 }));
+
+type Top5State = {
+  age: number;
+};
+
+type Top5Action = {
+  updateAge: (age: Top5State['age']) => void;
+};
+
+export const useTop5From = create<Top5State & Top5Action>((set) => ({
+  age: 0,
+
+  updateAge: (age) => set(() => ({ age: age })),
+}));

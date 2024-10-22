@@ -5,12 +5,11 @@ import { useWritingForm } from '@/app/store/useTranslate';
 import { useUser } from '@/app/(beforeLogin)/_state/useUser';
 import { useMemo } from 'react';
 import { useFeedSave } from '@/app/(beforeLogin)/writing/_state/useFeedSave';
+import { useSearchParams } from 'next/navigation';
 
-type Props = {
-  isQuestion: boolean;
-};
+export default function CustomButton() {
+  const searchParams = useSearchParams();
 
-export default function CustomButton({ isQuestion }: Props) {
   const { type, images, body, title, category } = useWritingForm();
   const { localData: userData } = useUser();
 
@@ -44,7 +43,7 @@ export default function CustomButton({ isQuestion }: Props) {
       image: images.map((image, index) =>
         base64ToFile(image, `file${index}.png`),
       ),
-      isQuestion: isQuestion,
+      isQuestion: searchParams.has('question'),
     });
   };
 

@@ -22,16 +22,6 @@ export const subTitle = style({
   color: vars.color.orange['300'],
 });
 
-export const question = style({
-  borderRadius: 8,
-  background: vars.color.gray.white,
-  marginTop: 24,
-  padding: 16,
-  display: 'flex',
-  flexDirection: 'column',
-  gap: 8,
-});
-
 export const topArticle = style({
   display: 'flex',
   flexDirection: 'column',
@@ -55,15 +45,4 @@ export const topTitleOrange = style({
 
 export const topTitleSubTitle = style({
   color: vars.color.gray['200'],
-});
-
-export const itemGroup = style({
-  display: 'flex',
-  gap: 16,
-  overflow: 'scroll',
-  overflowY: 'hidden',
-  padding: '24px 20px',
-  flexGrow: 1,
-  background: vars.color.gray.background,
-  scrollbarWidth: 'none',
 });

@@ -3,10 +3,12 @@
 import Body from '@/app/components/text/Body';
 import { useWritingForm } from '@/app/store/useTranslate';
 import { ChangeEventHandler } from 'react';
+import { useSearchParams } from 'next/navigation';
 
 import * as styles from './customTextarea.css';
 
 export default function CustomTextarea() {
+  const searchParams = useSearchParams();
   const { body, updateBody } = useWritingForm();
 
   const onChangeTextarea: ChangeEventHandler<HTMLTextAreaElement> = (event) => {
@@ -21,7 +23,11 @@ export default function CustomTextarea() {
       <textarea
         value={body}
         className={styles.textarea}
-        placeholder='무슨 후회야? 궁금하다!'
+        placeholder={
+          searchParams.has('question')
+            ? 're.더 자세히 들려줘!'
+            : '무슨 후회야? 궁금하다!'
+        }
         onChange={onChangeTextarea}
       />
       <Body size='3' className={styles.counting}>

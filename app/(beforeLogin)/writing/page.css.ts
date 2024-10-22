@@ -12,6 +12,14 @@ export const writingArticle = style({
   padding: '0 20px',
 });
 
+export const categoryLayer = style({
+  margin: '24px 0',
+});
+
+export const textareaLayer = style({
+  margin: '12px 0 16px 0',
+});
+
 export const imageGroupLayer = style({
   display: 'flex',
   gap: 8,

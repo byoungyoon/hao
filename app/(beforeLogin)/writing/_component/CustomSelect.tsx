@@ -2,10 +2,10 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { MouseEventHandler, useEffect, useRef } from 'react';
-
-import * as styles from './customSelect.css';
 import Body from '@/app/components/text/Body';
 import { useCategory } from '@/app/(beforeLogin)/_state/useCategory';
+
+import * as styles from './customSelect.css';
 
 const overlayVariants = {
   initial: { backgroundColor: 'rgba(0, 0, 0, 0)' },
@@ -22,7 +22,6 @@ const contantVariants = {
 type Props = {
   open: boolean;
   onTrackable?: (open: boolean) => void;
-
   onTrackableCategory?: (category: string) => void;
 };
 

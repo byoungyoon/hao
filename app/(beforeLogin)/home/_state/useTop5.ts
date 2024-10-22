@@ -10,7 +10,7 @@ type Props = {
 };
 
 export const useTop5 = ({ age }: Props) => {
-  const { data } = useQuery({
+  const { data, isPending } = useQuery({
     queryKey: ['top5', age],
     queryFn: getTop5,
   });
@@ -21,5 +21,5 @@ export const useTop5 = ({ age }: Props) => {
     return data;
   }, [data]);
 
-  return { localData };
+  return { localData, isPending };
 };

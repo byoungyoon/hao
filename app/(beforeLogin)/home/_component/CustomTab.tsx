@@ -1,14 +1,11 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import CategoryTab from '@/app/components/tab/CategoryTab';
+import { useTop5From } from '@/app/store/useTranslate';
 
-type Props = {
-  onTrackable: (value: number) => void;
-};
-
-export default function CustomTab({ onTrackable }: Props) {
-  const [] = useState();
+export default function CustomTab() {
+  const updateAge = useTop5From((state) => state.updateAge);
 
   const data = useMemo(
     () => [
@@ -32,7 +29,11 @@ export default function CustomTab({ onTrackable }: Props) {
     [],
   );
 
+  const onTrackableTab = (tab: number) => {
+    updateAge(tab);
+  };
+
   return (
-    <CategoryTab data={data} defaultSelect={0} onTrackable={onTrackable} />
+    <CategoryTab data={data} defaultSelect={0} onTrackable={onTrackableTab} />
   );
 }

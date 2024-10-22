@@ -1,8 +1,10 @@
-import React from 'react';
+'use client';
+
 import Image, { StaticImageData } from 'next/image';
 import Body from '@/app/components/text/Body';
-import * as styles from './barTabItem.css';
 import cx from 'classnames';
+
+import * as styles from './barTabItem.css';
 
 export type BarTabItemTypes = {
   target: string;

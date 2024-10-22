@@ -3,21 +3,22 @@ import { vars } from '@/app/theme.css';
 
 export const item = style({
   borderRadius: 8,
-  width: 227,
+  minWidth: 227,
   height: 324,
   display: 'flex',
   flexDirection: 'column',
   position: 'relative',
   background: vars.color.gray.white,
   justifyContent: 'space-between',
+  overflow: 'hidden',
 
   '@media': {
     'screen and (max-width: 375px)': {
-      width: 214,
+      minWidth: 214,
       height: 311,
     },
     'screen and (max-width: 320px)': {
-      width: 201,
+      minWidth: 214,
       height: 298,
     },
   },
@@ -54,9 +55,8 @@ export const numText = style({
 });
 
 export const imageLayer = style({
-  width: 214,
+  width: '100%',
   height: 172,
-  overflow: 'hidden',
   position: 'relative',
 });
 
