@@ -67,9 +67,7 @@ export const POST = async <T extends object>({
       method: 'POST',
       headers: {
         Authorization: `Bearer ${getToken()}`,
-        'Content-Type': !isFormData
-          ? 'application/json'
-          : 'multipart/form-data',
+        ...(isFormData ? {} : { 'Content-Type': 'application/json' }),
       },
       body: !isFormData ? JSON.stringify(parameters) : (parameters as FormData),
     });

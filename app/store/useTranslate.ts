@@ -71,6 +71,8 @@ type WritingAction = {
   updateBody: (body: WritingState['body']) => void;
   updateImages: (images: WritingState['images']) => void;
   updateType: (type: WritingState['type']) => void;
+
+  reset: () => void;
 };
 
 export const useWritingForm = create<WritingState & WritingAction>((set) => ({
@@ -85,4 +87,12 @@ export const useWritingForm = create<WritingState & WritingAction>((set) => ({
   updateBody: (body) => set(() => ({ body: body })),
   updateImages: (images) => set(() => ({ images: images })),
   updateType: (type) => set(() => ({ type: type })),
+  reset: () =>
+    set(() => ({
+      category: '',
+      title: '',
+      body: '',
+      images: [],
+      type: '후시딘',
+    })),
 }));

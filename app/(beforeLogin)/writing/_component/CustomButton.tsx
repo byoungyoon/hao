@@ -4,8 +4,13 @@ import Button from '@/app/components/button/Button';
 import { useWritingForm } from '@/app/store/useTranslate';
 import { useUser } from '@/app/(beforeLogin)/_state/useUser';
 import { useMemo } from 'react';
+import { useFeedSave } from '@/app/(beforeLogin)/writing/_state/useFeedSave';
 
-export default function CustomButton() {
+type Props = {
+  isQuestion: boolean;
+};
+
+export default function CustomButton({ isQuestion }: Props) {
   const { type, images, body, title, category } = useWritingForm();
   const { localData: userData } = useUser();
 
@@ -13,9 +18,35 @@ export default function CustomButton() {
     if (title.length < 2 || title.length > 15 || category === '') return false;
 
     return true;
-  }, []);
+  }, [title, category]);
 
-  const onResult = () => {};
+  const base64ToFile = (base64String: string, filename: string) => {
+    const [base64Data] = base64String.split(';base64,');
+
+    const byteCharacters = atob(base64Data);
+    const byteNumbers = new Uint8Array(byteCharacters.length);
+
+    for (let i = 0; i < byteCharacters.length; i++) {
+      byteNumbers[i] = byteCharacters.charCodeAt(i);
+    }
+
+    const blob = new Blob([byteNumbers], { type: 'image/png' });
+    return new File([blob], filename, { type: blob.type });
+  };
+
+  const { onResult } = useFeedSave();
+
+  const onLocalResult = () => {
+    onResult({
+      subject: title,
+      body: body,
+      category: category,
+      type: type,
+      age: userData.age,
+      image: images.map((image, index) => base64ToFile(image, `file${index}`)),
+      isQuestion: isQuestion,
+    });
+  };
 
   return (
     <Button
@@ -23,6 +54,7 @@ export default function CustomButton() {
       text='공유할래!'
       color={isResult ? 'orange' : 'gray'}
       disabled={!isResult}
+      onClick={onLocalResult}
     />
   );
 }

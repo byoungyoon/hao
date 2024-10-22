@@ -28,5 +28,6 @@ export const postFeedSave: MutationFunction<
   return await POST({
     url: '/api/board/save',
     parameters: formData,
+    isFormData: true,
   });
 };
