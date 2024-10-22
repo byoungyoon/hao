@@ -7,8 +7,6 @@ import { ChangeEventHandler } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 import * as styles from './customInput.css';
-import { useSearchParams } from 'next/navigation';
-import cx from 'classnames';
 
 const variants = {
   initial: { opacity: 0 },
@@ -17,7 +15,6 @@ const variants = {
 };
 
 export default function CustomInput() {
-  const searchParams = useSearchParams();
   const { title, updateTitle } = useWritingForm();
 
   const onChangeInput: ChangeEventHandler<HTMLInputElement> = (event) => {
@@ -29,12 +26,7 @@ export default function CustomInput() {
   };
 
   return (
-    <div
-      className={cx(
-        styles.inputLayer,
-        searchParams.has('question') && 'question',
-      )}
-    >
+    <div className={styles.inputLayer}>
       <input
         type='text'
         className={styles.input}

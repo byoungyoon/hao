@@ -13,7 +13,7 @@ export default function CustomTopLayer({ children }: Props) {
   return (
     <article className={styles.topLayer}>
       {children}
-      <Link href={'/writing?question=1'}>
+      <Link href={'/writing/today'}>
         <Image src={Header} alt='header' className={styles.image} />
       </Link>
     </article>

@@ -13,12 +13,6 @@ export const inputLayer = style({
       height: 41,
     },
   },
-
-  selectors: {
-    '&.question': {
-      display: 'none',
-    },
-  },
 });
 
 export const input = style({

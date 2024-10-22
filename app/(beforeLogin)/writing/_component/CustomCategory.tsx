@@ -7,13 +7,15 @@ import { useState } from 'react';
 import CustomSelect from '@/app/(beforeLogin)/writing/_component/CustomSelect';
 import { useWritingForm } from '@/app/store/useTranslate';
 import cx from 'classnames';
-import { useSearchParams } from 'next/navigation';
 import { useToday } from '@/app/(beforeLogin)/_state/useToday';
 
 import * as styles from './customCategory.css';
 
-export default function CustomCategory() {
-  const searchParams = useSearchParams();
+type Props = {
+  isQuestion?: boolean;
+};
+
+export default function CustomCategory({ isQuestion }: Props) {
   const { category, updateCategory } = useWritingForm();
 
   const [open, setOpen] = useState(false);
@@ -38,14 +40,11 @@ export default function CustomCategory() {
       <div
         role='button'
         tabIndex={0}
-        className={cx(
-          styles.category,
-          searchParams.has('question') && 'question',
-        )}
+        className={cx(styles.category, isQuestion && 'question')}
         onClick={onClickCategory}
       >
         <Body size='3' className={styles.categoryText}>
-          {searchParams.has('question')
+          {isQuestion
             ? todayData.category
             : !!category
               ? category
