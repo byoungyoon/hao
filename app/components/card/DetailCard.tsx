@@ -114,7 +114,7 @@ export default function DetailCard({
             </Body>
           </div>
         )}
-        {data.thumbnail && (
+        {data.thumbnail && data.thumbnail.length !== 0 && (
           <div className={styles.thumbnailLayer}>
             <Image
               src={data.thumbnail[0]}

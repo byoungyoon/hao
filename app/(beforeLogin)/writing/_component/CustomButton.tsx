@@ -19,7 +19,7 @@ export default function CustomButton({ isQuestion = false }: Props) {
     if (title.length < 2 || title.length > 15 || category === '') return false;
 
     return true;
-  }, [title, category]);
+  }, [title, category, isQuestion]);
 
   const base64ToFile = (base64String: string, filename: string) => {
     const byteCharacters = atob(base64String);
@@ -33,7 +33,7 @@ export default function CustomButton({ isQuestion = false }: Props) {
     return new File([blob], filename, { type: blob.type });
   };
 
-  const { onResult } = useFeedSave();
+  const { onResult, isPending } = useFeedSave();
 
   const onLocalResult = () => {
     onResult({
@@ -54,7 +54,7 @@ export default function CustomButton({ isQuestion = false }: Props) {
       size='long'
       text='공유할래!'
       color={isResult ? 'orange' : 'gray'}
-      disabled={!isResult}
+      disabled={!isResult || isPending}
       onClick={onLocalResult}
     />
   );

@@ -2,6 +2,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { postFeedSave } from '@/app/(beforeLogin)/writing/_lib/postFeedSave';
 import { useRouter } from 'next/navigation';
 import { useWritingForm } from '@/app/store/useTranslate';
+import { throttle } from 'lodash';
 
 type Props = {
   subject: string;
@@ -18,7 +19,7 @@ export const useFeedSave = () => {
   const router = useRouter();
   const { reset } = useWritingForm();
 
-  const { mutate: onAction } = useMutation({
+  const { mutate: onAction, isPending } = useMutation({
     mutationKey: ['writing'],
     mutationFn: postFeedSave,
     onSuccess: async () => {
@@ -31,9 +32,11 @@ export const useFeedSave = () => {
     },
   });
 
+  const throttledAction = throttle(onAction, 3000);
+
   const onResult = (props: Props) => {
-    onAction({ ...props });
+    throttledAction({ ...props });
   };
 
-  return { onResult };
+  return { onResult, isPending };
 };
