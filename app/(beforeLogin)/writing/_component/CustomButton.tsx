@@ -21,9 +21,7 @@ export default function CustomButton({ isQuestion }: Props) {
   }, [title, category]);
 
   const base64ToFile = (base64String: string, filename: string) => {
-    const [base64Data] = base64String.split(';base64,');
-
-    const byteCharacters = atob(base64Data);
+    const byteCharacters = atob(base64String);
     const byteNumbers = new Uint8Array(byteCharacters.length);
 
     for (let i = 0; i < byteCharacters.length; i++) {
