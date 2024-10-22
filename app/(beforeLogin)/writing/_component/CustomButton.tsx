@@ -41,7 +41,9 @@ export default function CustomButton({ isQuestion }: Props) {
       category: category,
       type: type,
       age: userData.age,
-      image: images.map((image, index) => base64ToFile(image, `file${index}`)),
+      image: images.map((image, index) =>
+        base64ToFile(image, `file${index}.png`),
+      ),
       isQuestion: isQuestion,
     });
   };
