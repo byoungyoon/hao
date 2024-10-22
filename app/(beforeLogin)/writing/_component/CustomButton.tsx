@@ -15,6 +15,7 @@ export default function CustomButton({ isQuestion = false }: Props) {
   const { localData: userData } = useUser();
 
   const isResult = useMemo(() => {
+    if (isQuestion) return true;
     if (title.length < 2 || title.length > 15 || category === '') return false;
 
     return true;

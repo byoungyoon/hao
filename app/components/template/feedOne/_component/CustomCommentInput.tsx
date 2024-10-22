@@ -6,6 +6,7 @@ import Button from '@/app/components/button/Button';
 import { ChangeEventHandler, useState } from 'react';
 
 import * as styles from './customCommentInput.css';
+import { useFeedCommentSave } from '@/app/components/template/feedOne/_state/useFeedCommentSave';
 
 type Props = {
   id: number;
@@ -14,10 +15,21 @@ type Props = {
 export default function CustomCommentInput({ id }: Props) {
   const [value, setValue] = useState('');
 
-  console.log(id);
-
   const onChangeInput: ChangeEventHandler<HTMLInputElement> = (event) => {
     setValue(event.target.value);
+  };
+
+  const onReset = () => {
+    setValue('');
+  };
+
+  const { onResult, isPending } = useFeedCommentSave({
+    id: id,
+    onReset: onReset,
+  });
+
+  const onClick = () => {
+    onResult(value);
   };
 
   return (
@@ -32,9 +44,11 @@ export default function CustomCommentInput({ id }: Props) {
         />
         <Button
           size='auto'
-          color='gray'
+          color={value === '' ? 'gray' : 'orange'}
           text='전송'
           className={styles.button}
+          disabled={isPending || value === ''}
+          onClick={onClick}
         />
       </div>
     </div>
