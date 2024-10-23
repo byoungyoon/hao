@@ -1,7 +1,8 @@
 import { ReactNode } from 'react';
 import Body from '@/app/components/text/Body';
-import * as styles from './navigation.css';
 import cx from 'classnames';
+
+import * as styles from './navigation.css';
 
 type Props = {
   /**
