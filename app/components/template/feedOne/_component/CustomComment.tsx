@@ -9,12 +9,13 @@ import Like from '@/app/icon/like-activate.png';
 import LikeOff from '@/app/icon/like-deactivate.png';
 import Adopt from '@/app/icon/adopt-activate.png';
 import AdoptOff from '@/app/icon/adopt-deactivate.png';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import CustomCommentEditMode from '@/app/components/template/feedOne/_component/CustomCommentEditMode';
 import { useFeedCommentDelete } from '@/app/components/template/feedOne/_state/useFeedCommentDelete';
 import { useFeedCommentVote } from '@/app/components/template/feedOne/_state/useFeedCommentVote';
 
 import * as styles from './customComment.css';
+import { useFeedCommentAdopted } from '@/app/components/template/feedOne/_state/useFeedCommentAdopted';
 
 type Props = {
   feedId: number;
@@ -26,6 +27,7 @@ type Props = {
   comment: string;
   likeCount: number;
 
+  hasSelect?: boolean;
   isEdit?: boolean;
   isAdmin?: boolean;
   isSelect?: boolean;
@@ -44,6 +46,7 @@ export default function CustomComment({
   likeCount,
   isEdit,
   isAdmin,
+  hasSelect,
   isSelect,
   isLike,
   isHost,
@@ -53,6 +56,7 @@ export default function CustomComment({
 
   const { onDelete } = useFeedCommentDelete({ id: id, feedId: feedId });
   const { onVote } = useFeedCommentVote({ id: id, feedId: feedId });
+  const { onAdopted } = useFeedCommentAdopted({ id: id, feedId: feedId });
 
   const onEdit = () => {
     setIsEditMode(!isEditMode);
@@ -132,18 +136,27 @@ export default function CustomComment({
                 {likeCount}
               </Body>
             </div>
-            {isAdmin && (
+            {!hasSelect && isSelect && (
               <div className={styles.countGroup}>
-                <Image
-                  src={isSelect ? Adopt : AdoptOff}
-                  alt='like'
-                  width={24}
-                  height={24}
-                />
+                <Image src={Adopt} alt='like' width={24} height={24} />
                 <Body
                   size='6'
                   className={cx(styles.countText, isSelect && 'orange')}
                 >
+                  채택
+                </Body>
+              </div>
+            )}
+            {hasSelect && isAdmin && (
+              <div className={styles.countGroup}>
+                <Image
+                  src={AdoptOff}
+                  alt='like'
+                  width={24}
+                  height={24}
+                  onClick={onAdopted}
+                />
+                <Body size='6' className={styles.countText}>
                   채택
                 </Body>
               </div>

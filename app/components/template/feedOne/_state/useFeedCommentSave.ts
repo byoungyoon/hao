@@ -21,6 +21,10 @@ export const useFeedCommentSave = ({ id, onReset }: Props) => {
         queryKey: ['feed', id, 'comment'],
       });
 
+      await queryClient.invalidateQueries({
+        queryKey: ['feed', id],
+      });
+
       if (onReset) onReset();
     },
   });

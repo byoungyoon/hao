@@ -1,17 +1,18 @@
 import Body from '@/app/components/text/Body';
 import cx from 'classnames';
-import SuspenseModifyForm from '@/app/(beforeLogin)/my/[text]/modify/_component/SuspenseModifyForm';
 import CustomAgeItemGroup from '@/app/(beforeLogin)/my/[text]/modify/_component/CustomAgeItemGroup';
-import CustomPointCardGroup from '@/app/(beforeLogin)/my/[text]/modify/_component/CustomPointCardGroup';
 import CustomInput from '@/app/(beforeLogin)/my/[text]/modify/_component/CustomInput';
 import CustomButton from '@/app/(beforeLogin)/my/[text]/modify/_component/CustomButton';
+import SuspensePoint from '@/app/(beforeLogin)/my/[text]/modify/_suspense/SuspensePoint';
+import { Suspense } from 'react';
+import SuspenseUserWrapper from '@/app/(beforeLogin)/my/[text]/modify/_suspense/SuspenseUserWrapper';
 
 import * as styles from './page.css';
 
 export default function MyModifyPage() {
   return (
     <section className={styles.section}>
-      <SuspenseModifyForm>
+      <SuspenseUserWrapper>
         <article className={styles.article}>
           <Body size='1'>연령대</Body>
           <div className={styles.ageGroup}>
@@ -20,7 +21,9 @@ export default function MyModifyPage() {
         </article>
         <article className={cx(styles.article, styles.pointArticle)}>
           <Body size='1'>나를 설정해봐</Body>
-          <CustomPointCardGroup />
+          <Suspense>
+            <SuspensePoint />
+          </Suspense>
         </article>
         <article className={styles.nicknameArticle}>
           <CustomInput />
@@ -31,7 +34,7 @@ export default function MyModifyPage() {
         <div className={styles.buttonLayer}>
           <CustomButton />
         </div>
-      </SuspenseModifyForm>
+      </SuspenseUserWrapper>
     </section>
   );
 }

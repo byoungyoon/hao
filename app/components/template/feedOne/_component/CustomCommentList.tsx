@@ -4,6 +4,7 @@ import CustomComment from '@/app/components/template/feedOne/_component/CustomCo
 import { useFeedComment } from '@/app/components/template/feedOne/_state/useFeedComment';
 import { useUser } from '@/app/(beforeLogin)/_state/useUser';
 import { useFeedOne } from '@/app/components/template/feedOne/_state/useFeedone';
+import { useMemo } from 'react';
 
 type Props = {
   id: number;
@@ -13,6 +14,11 @@ export default function CustomCommentList({ id }: Props) {
   const { localData: commentData } = useFeedComment({ id: id });
   const { localData: userData } = useUser();
   const { localData: feedData } = useFeedOne({ id: id });
+
+  const hasAdopted = useMemo(
+    () => !commentData.some((comment) => comment.isAdopted),
+    [commentData],
+  );
 
   return (
     <div>
@@ -30,6 +36,7 @@ export default function CustomCommentList({ id }: Props) {
           isLike={datum.isVoted}
           isEdit={datum.isWriter}
           isSelect={datum.isAdopted}
+          hasSelect={hasAdopted}
           isAdmin={feedData.userId === userData.userId}
           isHost={feedData.userId === datum.userId}
         />

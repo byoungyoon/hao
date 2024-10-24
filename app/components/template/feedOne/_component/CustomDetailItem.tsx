@@ -5,6 +5,7 @@ import { useFeedOne } from '@/app/components/template/feedOne/_state/useFeedone'
 import { useToday } from '@/app/(beforeLogin)/_state/useToday';
 import { useFeedVote } from '@/app/components/template/feedOne/_state/useFeedVote';
 import { useFeedScrap } from '@/app/components/template/feedOne/_state/useFeedScrap';
+import { useState } from 'react';
 
 type Props = {
   id: number;
@@ -13,7 +14,14 @@ type Props = {
 export default function CustomDetailItem({ id }: Props) {
   const { localData: feedData } = useFeedOne({ id: id });
   const { localData: todayData } = useToday();
-  const { onVote } = useFeedVote({ id: id });
+
+  const [isVote, setIsVote] = useState(feedData.isLike);
+
+  const onTrackableVote = () => {
+    setIsVote(!isVote);
+  };
+
+  const { onVote } = useFeedVote({ id: id, onTrackable: onTrackableVote });
   const { onScrap } = useFeedScrap({ id: id });
 
   return (
@@ -36,7 +44,7 @@ export default function CustomDetailItem({ id }: Props) {
       option={{
         isQuestion: feedData.isQuestion,
         isScrap: feedData.isBookmark,
-        isVote: feedData.isLike,
+        isVote: isVote,
       }}
       onVote={onVote}
       onScrap={onScrap}

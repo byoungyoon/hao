@@ -3,14 +3,18 @@ import { postFeedVote } from '@/app/components/template/feedOne/_lib/postFeedVot
 
 type Props = {
   id: number;
+  onTrackable?: () => void;
 };
 
-export const useFeedVote = ({ id }: Props) => {
+export const useFeedVote = ({ id, onTrackable }: Props) => {
   const queryClient = useQueryClient();
 
   const { mutate: onAction } = useMutation({
     mutationKey: ['feed', id, 'vote'],
     mutationFn: postFeedVote,
+    onMutate: () => {
+      if (onTrackable) onTrackable();
+    },
     onSuccess: async () => {
       await queryClient.invalidateQueries({
         queryKey: ['feed', id],
