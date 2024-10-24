@@ -18,6 +18,7 @@ export default async function SuspenseFeedOne({ id, children }: Props) {
   await queryClient.prefetchQuery({
     queryKey: ['feed', id],
     queryFn: getFeedOne,
+    retry: true,
   });
   await queryClient.prefetchQuery(todayKey);
 

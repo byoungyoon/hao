@@ -1,47 +1,21 @@
-'use client';
-
-import CustomLayout from '@/app/(beforeLogin)/_component/CustomLayout';
-import { ReactNode, useMemo } from 'react';
-import Alarm from '@/app/icon/alarm.png';
-import Image from 'next/image';
-import { usePathname, useRouter } from 'next/navigation';
-import Arrow from '@/app/icon/arrow-left.png';
-
-const PATH = '/feed';
+import { ReactNode } from 'react';
+import CustomTitle from '@/app/(beforeLogin)/feed/_component/CustomTitle';
+import Layout from '@/app/(beforeLogin)/_component/Layout';
+import CustomBackButton from '@/app/(beforeLogin)/feed/_component/CustomBackButton';
+import CustomAlarm from '@/app/(beforeLogin)/feed/_component/CustomAlarm';
 
 type Props = {
   children: ReactNode;
 };
 
 export default function FeedLayout({ children }: Props) {
-  const pathname = usePathname();
-  const router = useRouter();
-
-  const defaultPage = useMemo(() => pathname === PATH, [pathname]);
-
-  const onClickBack = () => {
-    router.push(PATH, { scroll: false });
-  };
-
   return (
-    <CustomLayout
-      text={defaultPage ? '피드' : '글 상세'}
-      right={
-        defaultPage && <Image src={Alarm} alt='alarm' width={24} height={24} />
-      }
-      left={
-        !defaultPage && (
-          <Image
-            src={Arrow}
-            alt='arrow'
-            width={24}
-            height={24}
-            onClick={onClickBack}
-          />
-        )
-      }
+    <Layout
+      text={<CustomTitle />}
+      left={<CustomBackButton />}
+      right={<CustomAlarm />}
     >
       {children}
-    </CustomLayout>
+    </Layout>
   );
 }

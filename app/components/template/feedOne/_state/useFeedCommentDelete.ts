@@ -2,11 +2,10 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { deleteFeedComment } from '@/app/components/template/feedOne/_lib/deleteFeedComment';
 
 type Props = {
-  feedId: number;
   id: number;
 };
 
-export const useFeedCommentDelete = ({ feedId, id }: Props) => {
+export const useFeedCommentDelete = ({ id }: Props) => {
   const queryClient = useQueryClient();
 
   const { mutate: onAction } = useMutation({
@@ -14,7 +13,7 @@ export const useFeedCommentDelete = ({ feedId, id }: Props) => {
     mutationFn: deleteFeedComment,
     onSuccess: async () => {
       await queryClient.invalidateQueries({
-        queryKey: ['feed', feedId, 'comment'],
+        predicate: (query) => query.queryKey[0] === 'feed',
       });
     },
   });

@@ -54,9 +54,9 @@ export default function CustomComment({
   const [isEditMode, setIsEditMode] = useState(false);
   const [localValue, setLocalValue] = useState(comment);
 
-  const { onDelete } = useFeedCommentDelete({ id: id, feedId: feedId });
-  const { onVote } = useFeedCommentVote({ id: id, feedId: feedId });
-  const { onAdopted } = useFeedCommentAdopted({ id: id, feedId: feedId });
+  const { onDelete } = useFeedCommentDelete({ id: id });
+  const { onVote } = useFeedCommentVote({ id: id });
+  const { onAdopted } = useFeedCommentAdopted({ id: id });
 
   const onEdit = () => {
     setIsEditMode(!isEditMode);

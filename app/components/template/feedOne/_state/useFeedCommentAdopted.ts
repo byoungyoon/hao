@@ -3,10 +3,9 @@ import { postFeedCommentAdopted } from '@/app/components/template/feedOne/_lib/p
 
 type Props = {
   id: number;
-  feedId: number;
 };
 
-export const useFeedCommentAdopted = ({ id, feedId }: Props) => {
+export const useFeedCommentAdopted = ({ id }: Props) => {
   const queryClient = useQueryClient();
 
   const { mutate: onAction } = useMutation({
@@ -14,7 +13,7 @@ export const useFeedCommentAdopted = ({ id, feedId }: Props) => {
     mutationFn: postFeedCommentAdopted,
     onSuccess: async () => {
       await queryClient.invalidateQueries({
-        queryKey: ['feed', feedId, 'comment'],
+        predicate: (query) => query.queryKey[0] === 'feed',
       });
     },
   });

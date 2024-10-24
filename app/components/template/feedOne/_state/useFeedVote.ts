@@ -17,7 +17,7 @@ export const useFeedVote = ({ id, onTrackable }: Props) => {
     },
     onSuccess: async () => {
       await queryClient.invalidateQueries({
-        queryKey: ['feed', id],
+        predicate: (query) => query.queryKey[0] === 'feed',
       });
     },
   });
