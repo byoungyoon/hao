@@ -1,21 +1,15 @@
 import { ReactNode } from 'react';
-import Navigation from '@/app/components/navigation/Navigation';
-import BackButton from '@/app/(beforeLogin)/_component/BackButton';
-
-import * as styles from '@/app/(beforeLogin)/_component/customLayout.css';
+import Layout from '@/app/(beforeLogin)/_component/Layout';
+import CustomBackButton from '@/app/(beforeLogin)/writing/_component/CustomBackButton';
 
 type Props = {
   children: ReactNode;
-  params: Promise<{ left: string }>;
 };
 
-export default async function WritingLayout({ children, params }: Props) {
-  const { left } = await params;
-
+export default function WritingLayout({ children }: Props) {
   return (
-    <div className={styles.wrapper}>
-      <Navigation text='글 쓰기' left={left && <BackButton />} />
-      <div className={styles.mainWrapper}>{children}</div>
-    </div>
+    <Layout text='글 쓰기' left={<CustomBackButton />}>
+      {children}
+    </Layout>
   );
 }

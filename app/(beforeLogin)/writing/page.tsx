@@ -1,10 +1,11 @@
 import Body from '@/app/components/text/Body';
 import CustomReport from '@/app/(beforeLogin)/_component/CustomReport';
 import CustomImage from '@/app/(beforeLogin)/writing/_component/CustomImage';
-import CustomCategory from '@/app/(beforeLogin)/writing/_component/CustomCategory';
 import CustomInput from '@/app/(beforeLogin)/writing/_component/CustomInput';
 import CustomTextarea from '@/app/(beforeLogin)/writing/_component/CustomTextarea';
 import CustomOptionGroup from '@/app/(beforeLogin)/writing/_component/CustomOptionGroup';
+import SuspenseCategory from '@/app/(beforeLogin)/writing/_suspense/SuspenseCategory';
+import { Suspense } from 'react';
 import CustomButton from '@/app/(beforeLogin)/writing/_component/CustomButton';
 
 import * as styles from './page.css';
@@ -14,7 +15,9 @@ export default function WritingPage() {
     <section className={styles.section}>
       <article className={styles.writingArticle}>
         <div className={styles.categoryLayer}>
-          <CustomCategory />
+          <Suspense>
+            <SuspenseCategory />
+          </Suspense>
         </div>
         <CustomInput />
         <div className={styles.textareaLayer}>

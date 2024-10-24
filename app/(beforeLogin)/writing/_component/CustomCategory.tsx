@@ -10,6 +10,7 @@ import cx from 'classnames';
 import { useToday } from '@/app/(beforeLogin)/_state/useToday';
 
 import * as styles from './customCategory.css';
+import RQProvider from '@/app/provider/RQProvider';
 
 type Props = {
   isQuestion?: boolean;
@@ -36,7 +37,7 @@ export default function CustomCategory({ isQuestion }: Props) {
   const { localData: todayData } = useToday();
 
   return (
-    <>
+    <RQProvider>
       <div
         role='button'
         tabIndex={0}
@@ -57,6 +58,6 @@ export default function CustomCategory({ isQuestion }: Props) {
         onTrackable={onTrackable}
         onTrackableCategory={onTrackableCategory}
       />
-    </>
+    </RQProvider>
   );
 }

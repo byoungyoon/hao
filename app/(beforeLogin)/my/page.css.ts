@@ -107,20 +107,12 @@ export const infoScrapImage = style({
   right: 8,
 });
 
-export const infoLayerText = style({
-  color: vars.color.gray['300'],
-});
-
 export const logoutLayer = style({
   display: 'flex',
   flexGrow: 1,
   justifyContent: 'center',
   alignItems: 'center',
   minHeight: 150,
-});
-
-export const logout = style({
-  borderRadius: '100px !important',
 });
 
 export const border = style({
@@ -134,26 +126,4 @@ export const reportArticle = style({
 
 export const reportTitle = style({
   margin: '32px 0 23px 0',
-});
-
-export const reportLayer = style({
-  background: vars.color.gray.background,
-  borderRadius: 8,
-  padding: 24,
-});
-
-globalStyle(`${reportLayer} text`, {
-  color: vars.color.orange['300'],
-});
-
-export const reportAside = style({
-  color: vars.color.gray['300'],
-  marginTop: 16,
-  marginBottom: 35,
-});
-
-export const chart = style({
-  display: 'grid',
-  gridTemplateColumns: 'repeat(3, 1fr)',
-  gap: 8,
 });

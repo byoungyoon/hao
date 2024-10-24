@@ -16,7 +16,7 @@ type Props = {
   /**
    * center text
    */
-  text?: string;
+  text?: string | ReactNode;
   /**
    * add className
    */
