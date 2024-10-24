@@ -9,13 +9,13 @@ import Like from '@/app/icon/like-activate.png';
 import LikeOff from '@/app/icon/like-deactivate.png';
 import Adopt from '@/app/icon/adopt-activate.png';
 import AdoptOff from '@/app/icon/adopt-deactivate.png';
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import CustomCommentEditMode from '@/app/components/template/feedOne/_component/CustomCommentEditMode';
 import { useFeedCommentDelete } from '@/app/components/template/feedOne/_state/useFeedCommentDelete';
 import { useFeedCommentVote } from '@/app/components/template/feedOne/_state/useFeedCommentVote';
+import { useFeedCommentAdopted } from '@/app/components/template/feedOne/_state/useFeedCommentAdopted';
 
 import * as styles from './customComment.css';
-import { useFeedCommentAdopted } from '@/app/components/template/feedOne/_state/useFeedCommentAdopted';
 
 type Props = {
   feedId: number;
