@@ -12,6 +12,10 @@ const AuthPage = () => {
 
   useEffect(() => {
     if (token) router.push(`/auth/${token}`);
+    else {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (window as any).LogoutHandler.postMessage('');
+    }
   }, [token, router]);
 
   return null;
