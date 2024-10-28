@@ -15,6 +15,8 @@ export const border = style({
 export const commentArticle = style({
   padding: '16px 21px',
   flexGrow: 1,
+  position: 'relative',
+  zIndex: 1,
 });
 
 export const input = style({

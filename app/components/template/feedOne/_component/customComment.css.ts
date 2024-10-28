@@ -75,6 +75,7 @@ export const editLayer = style({
   display: 'flex',
   alignItems: 'center',
   gap: 8,
+  position: 'relative',
 });
 
 export const contentLayer = style({
@@ -93,6 +94,7 @@ export const countGroup = style({
   display: 'flex',
   gap: 4,
   alignItems: 'center',
+  minWidth: 42,
 });
 
 export const countText = style({
@@ -103,4 +105,9 @@ export const countText = style({
       color: vars.color.orange['300'],
     },
   },
+});
+
+export const image = style({
+  position: 'relative',
+  zIndex: 1,
 });

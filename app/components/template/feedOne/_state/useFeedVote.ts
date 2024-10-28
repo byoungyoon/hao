@@ -1,5 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { postFeedVote } from '@/app/components/template/feedOne/_lib/postFeedVote';
+import { MouseEventHandler } from 'react';
+import { useHeart } from '@/app/store/useHeart';
 
 type Props = {
   id: number;
@@ -8,6 +10,7 @@ type Props = {
 
 export const useFeedVote = ({ id, onTrackable }: Props) => {
   const queryClient = useQueryClient();
+  const viewHeart = useHeart((state) => state.viewHeart);
 
   const { mutate: onAction } = useMutation({
     mutationKey: ['feed', id, 'vote'],
@@ -22,7 +25,9 @@ export const useFeedVote = ({ id, onTrackable }: Props) => {
     },
   });
 
-  const onVote = () => {
+  const onVote: MouseEventHandler<HTMLImageElement> = (event) => {
+    viewHeart(event.clientX, event.clientY);
+
     onAction({ id: id });
   };
 

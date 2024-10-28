@@ -23,7 +23,7 @@ export const useMyFeed = ({ category, isAdopted }: Props) => {
     MyFeedQueryKeyTypes,
     number
   >({
-    queryKey: ['my', 'feed', category, isAdopted],
+    queryKey: ['feed', 'my', category, isAdopted],
     queryFn: getMyFeed,
     initialPageParam: 1,
     getNextPageParam: (lastPage, allPages) => {

@@ -2,6 +2,7 @@
 
 import CustomOption from '@/app/(beforeLogin)/writing/_component/CustomOption';
 import { useWritingForm } from '@/app/store/useTranslate';
+import { useEffect } from 'react';
 
 import * as styles from './customOptionGroup.css';
 
@@ -11,6 +12,10 @@ export default function CustomOptionGroup() {
   const onClickOption = (sType: '후시딘' | '후추') => () => {
     updateType(sType);
   };
+
+  useEffect(() => {
+    return () => updateType('후시딘');
+  }, [updateType]);
 
   return (
     <div className={styles.optionLayerGroup}>

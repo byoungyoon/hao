@@ -20,6 +20,10 @@ export default function AuthTokenPage({ params }: Props) {
 
       router.replace(role === '임시' ? '/age' : '/home');
     },
+    onError: () => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (window as any).LogoutHandler.postMessage('');
+    },
   });
 
   useEffect(() => {

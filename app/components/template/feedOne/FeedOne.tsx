@@ -3,6 +3,7 @@ import CustomDetailItem from '@/app/components/template/feedOne/_component/Custo
 import CustomDetailReport from '@/app/components/template/feedOne/_component/CustomDetailReport';
 import CustomCommentList from '@/app/components/template/feedOne/_component/CustomCommentList';
 import CustomCommentInput from '@/app/components/template/feedOne/_component/CustomCommentInput';
+import HeartCanvas from '@/app/components/canvas/HeartCanvas';
 
 import * as styles from './feedOne.css';
 
@@ -12,7 +13,7 @@ type Props = {
 
 export default function FeedOne({ id }: Props) {
   return (
-    <section className={styles.section}>
+    <section id='feedOne' className={styles.section}>
       <SuspenseFeedOne id={id}>
         <CustomDetailItem id={id} />
         <div className={styles.border} />
@@ -24,6 +25,7 @@ export default function FeedOne({ id }: Props) {
           <CustomCommentInput id={id} />
         </div>
       </SuspenseFeedOne>
+      <HeartCanvas id='feedOne' />
     </section>
   );
 }

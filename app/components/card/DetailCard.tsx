@@ -10,6 +10,10 @@ import Bookmark from '@/app/icon/bookmark-activate.png';
 import BookmarkOff from '@/app/icon/bookmark-deactivate.png';
 
 import * as styles from './detailCard.css';
+import { MouseEventHandler } from 'react';
+import Edit from '@/app/icon/edit-gray.png';
+import Trash from '@/app/icon/trash-gray.png';
+import CustomPreModal from '@/app/(beforeLogin)/_component/CustomPreModal';
 
 export type CardDetailDataTypes = {
   /**
@@ -59,6 +63,10 @@ export type CardDetailOptionTypes = {
    * 오늘의 질문 여부
    */
   isQuestion?: boolean;
+  /**
+   * 수정, 삭제 여부
+   */
+  isEdit?: boolean;
 };
 
 type Props = {
@@ -66,8 +74,10 @@ type Props = {
   data: CardDetailDataTypes;
   option: CardDetailOptionTypes;
 
-  onVote?: () => void;
+  onVote?: MouseEventHandler<HTMLImageElement>;
   onScrap?: () => void;
+  onDelete?: () => void;
+  onEdit?: () => void;
 };
 
 export default function DetailCard({
@@ -76,6 +86,8 @@ export default function DetailCard({
   option,
   onVote,
   onScrap,
+  onEdit,
+  onDelete,
 }: Props) {
   return (
     <div className={styles.item}>
@@ -100,6 +112,27 @@ export default function DetailCard({
             </Body>
           </div>
         </div>
+        {option.isEdit && (
+          <div className={styles.editLayer}>
+            <Image
+              src={Edit.src}
+              alt='edit'
+              width={20}
+              height={20}
+              onClick={onEdit}
+              className={styles.image}
+            />
+            <Image
+              src={Trash.src}
+              alt='trash'
+              width={20}
+              height={20}
+              onClick={onDelete}
+              className={styles.image}
+            />
+            <CustomPreModal />
+          </div>
+        )}
       </hgroup>
       <div className={styles.contentLayer}>
         {!option.isQuestion ? (
@@ -138,6 +171,7 @@ export default function DetailCard({
               width={24}
               height={24}
               onClick={onVote}
+              className={styles.image}
             />
             <Body
               size='5'
@@ -159,6 +193,7 @@ export default function DetailCard({
           width={24}
           height={24}
           onClick={onScrap}
+          className={styles.image}
         />
       </div>
     </div>

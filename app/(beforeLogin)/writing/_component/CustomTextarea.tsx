@@ -2,7 +2,7 @@
 
 import Body from '@/app/components/text/Body';
 import { useWritingForm } from '@/app/store/useTranslate';
-import { ChangeEventHandler } from 'react';
+import { ChangeEventHandler, useEffect } from 'react';
 
 import * as styles from './customTextarea.css';
 
@@ -19,6 +19,10 @@ export default function CustomTextarea({ isQuestion }: Props) {
 
     updateBody(value);
   };
+
+  useEffect(() => {
+    return () => updateBody('');
+  }, [updateBody]);
 
   return (
     <div className={styles.textareaLayer}>

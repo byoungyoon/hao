@@ -20,6 +20,7 @@ export const wrapper = style({
   border: 'none',
   background: 'none',
   padding: 0,
+  maxWidth: 425,
   width: '100%',
   height: '60vh',
 });

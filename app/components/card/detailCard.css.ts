@@ -78,6 +78,13 @@ export const contentLayer = style({
   gap: 16,
 });
 
+export const editLayer = style({
+  display: 'flex',
+  alignItems: 'center',
+  gap: 8,
+  position: 'relative',
+});
+
 export const thumbnailLayer = style({
   width: '100%',
   borderRadius: 8,
@@ -110,6 +117,7 @@ export const countGroup = style({
   display: 'flex',
   alignItems: 'center',
   gap: 8,
+  minWidth: 42,
 });
 
 export const countText = style({
@@ -141,4 +149,9 @@ export const questionCategory = style({
 
 export const question = style({
   color: vars.color.gray['400'],
+});
+
+export const image = style({
+  position: 'relative',
+  zIndex: 1,
 });

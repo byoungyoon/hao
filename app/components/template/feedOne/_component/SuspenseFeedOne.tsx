@@ -5,7 +5,7 @@ import {
 } from '@tanstack/react-query';
 import { ReactNode } from 'react';
 import { getFeedOne } from '@/app/components/template/feedOne/_lib/getFeedOne';
-import { todayKey } from '@/app/provider/keyData';
+import { todayKey, userKey } from '@/app/provider/keyData';
 
 type Props = {
   children: ReactNode;
@@ -18,9 +18,9 @@ export default async function SuspenseFeedOne({ id, children }: Props) {
   await queryClient.prefetchQuery({
     queryKey: ['feed', id],
     queryFn: getFeedOne,
-    retry: true,
   });
   await queryClient.prefetchQuery(todayKey);
+  await queryClient.prefetchQuery(userKey);
 
   const dehydratedState = dehydrate(queryClient);
 

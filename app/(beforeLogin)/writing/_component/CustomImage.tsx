@@ -9,7 +9,7 @@ import { useWritingForm } from '@/app/store/useTranslate';
 import * as styles from '@/app/(beforeLogin)/writing/page.css';
 
 export default function CustomImage() {
-  const { updateImages } = useWritingForm();
+  const { images, updateImages } = useWritingForm();
   const [image, setImage] = useState<string[]>([]);
 
   const onClick = () => {
@@ -25,6 +25,12 @@ export default function CustomImage() {
     setImage(result);
     updateImages(result);
   };
+
+  useEffect(() => {
+    if (images.length !== 0) setImage(images);
+
+    return () => updateImages([]);
+  }, []);
 
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

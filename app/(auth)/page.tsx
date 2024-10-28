@@ -8,15 +8,13 @@ const AuthPage = () => {
   const searchParam = useSearchParams();
   const router = useRouter();
 
-  const token = searchParam.get('token') ?? '';
-
   useEffect(() => {
-    if (token) router.push(`/auth/${token}`);
-    else {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      (window as any).LogoutHandler.postMessage('');
-    }
-  }, [token, router]);
+    const token = searchParam.get('token') ?? '';
+    if (!!token) router.push(`/auth/${token}`);
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (window as any).LogoutHandler.postMessage('');
+  }, [router, searchParam]);
 
   return null;
 };

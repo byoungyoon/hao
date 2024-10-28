@@ -12,6 +12,7 @@ import CustomMyTitle from '@/app/(beforeLogin)/my/_component/CustomMyTitle';
 import CustomScrapTitle from '@/app/(beforeLogin)/my/_component/CustomScrapTitle';
 import CustomReport from '@/app/(beforeLogin)/my/_component/CustomReport';
 import CustomLogout from '@/app/(beforeLogin)/my/_component/CustomLogout';
+import CustomPreModal from '@/app/(beforeLogin)/_component/CustomPreModal';
 
 import * as styles from './page.css';
 
@@ -74,6 +75,7 @@ export default function MyPage() {
       </SuspenseMy>
       <div className={styles.logoutLayer}>
         <CustomLogout />
+        <CustomPreModal />
       </div>
     </section>
   );

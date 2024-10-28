@@ -18,7 +18,7 @@ export const useMyScrapFeed = ({ category }: Props) => {
     [_1: string, _2: string, _3: string, category: string],
     number
   >({
-    queryKey: ['my', 'scrap', 'feed', category],
+    queryKey: ['feed', 'my', 'scrap', category],
     queryFn: getMyScrapFeed,
     initialPageParam: 1,
     getNextPageParam: (nextPage, allPages) => {

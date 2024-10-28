@@ -35,6 +35,7 @@ export const GET = async <T extends object>({
         Authorization: `Bearer ${getToken()}`,
         'Content-Type': 'application/json',
       },
+      cache: 'no-store',
     });
 
     if (!response.ok) {

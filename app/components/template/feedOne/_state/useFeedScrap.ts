@@ -15,6 +15,9 @@ export const useFeedScrap = ({ id }: Props) => {
       await queryClient.invalidateQueries({
         predicate: (query) => query.queryKey[0] === 'feed',
       });
+      await queryClient.invalidateQueries({
+        queryKey: ['my', 'scrap'],
+      });
     },
   });
 

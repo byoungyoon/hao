@@ -14,6 +14,7 @@ import CustomCommentEditMode from '@/app/components/template/feedOne/_component/
 import { useFeedCommentDelete } from '@/app/components/template/feedOne/_state/useFeedCommentDelete';
 import { useFeedCommentVote } from '@/app/components/template/feedOne/_state/useFeedCommentVote';
 import { useFeedCommentAdopted } from '@/app/components/template/feedOne/_state/useFeedCommentAdopted';
+import CustomPreModal from '@/app/(beforeLogin)/_component/CustomPreModal';
 
 import * as styles from './customComment.css';
 
@@ -101,6 +102,7 @@ export default function CustomComment({
                 width={20}
                 height={20}
                 onClick={onEdit}
+                className={styles.image}
               />
               <Image
                 src={Trash.src}
@@ -108,7 +110,9 @@ export default function CustomComment({
                 width={20}
                 height={20}
                 onClick={onDelete}
+                className={styles.image}
               />
+              <CustomPreModal />
             </div>
           )}
         </hgroup>
@@ -128,6 +132,7 @@ export default function CustomComment({
                 width={24}
                 height={24}
                 onClick={onVote}
+                className={styles.image}
               />
               <Body
                 size='6'
@@ -150,6 +155,7 @@ export default function CustomComment({
             {hasSelect && isAdmin && (
               <div className={styles.countGroup}>
                 <Image
+                  className={styles.image}
                   src={AdoptOff}
                   alt='like'
                   width={24}

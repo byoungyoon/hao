@@ -3,14 +3,14 @@
 import Body from '@/app/components/text/Body';
 import Image from 'next/image';
 import Arrow from '@/app/icon/category-gray.png';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import CustomSelect from '@/app/(beforeLogin)/writing/_component/CustomSelect';
 import { useWritingForm } from '@/app/store/useTranslate';
 import cx from 'classnames';
 import { useToday } from '@/app/(beforeLogin)/_state/useToday';
+import RQProvider from '@/app/provider/RQProvider';
 
 import * as styles from './customCategory.css';
-import RQProvider from '@/app/provider/RQProvider';
 
 type Props = {
   isQuestion?: boolean;
@@ -35,6 +35,10 @@ export default function CustomCategory({ isQuestion }: Props) {
   };
 
   const { localData: todayData } = useToday();
+
+  useEffect(() => {
+    return () => updateCategory('');
+  }, [updateCategory]);
 
   return (
     <RQProvider>

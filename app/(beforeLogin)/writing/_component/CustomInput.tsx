@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Vector from '@/app/icon/vector.png';
 import { useWritingForm } from '@/app/store/useTranslate';
-import { ChangeEventHandler } from 'react';
+import { ChangeEventHandler, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 import * as styles from './customInput.css';
@@ -24,6 +24,10 @@ export default function CustomInput() {
   const onClickReset = () => {
     updateTitle('');
   };
+
+  useEffect(() => {
+    return () => updateTitle('');
+  }, [updateTitle]);
 
   return (
     <div className={styles.inputLayer}>

@@ -113,6 +113,7 @@ export const logoutLayer = style({
   justifyContent: 'center',
   alignItems: 'center',
   minHeight: 150,
+  position: 'relative',
 });
 
 export const border = style({
