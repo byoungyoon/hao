@@ -1,20 +1,33 @@
-import { QueryFunction } from '@tanstack/react-query';
 import { GET } from '@/app/sevice/service';
 
-export type AlarmResponseTypes = {
-  boardId: number;
-  commentId: number;
-  isAlive: boolean;
+export type AlarmDataTypes = {
+  id: number;
+  body: string;
   nickname: string;
-  comment: string;
+  type: 'LIKE' | 'COMMENT' | 'ADOPTED';
   image: string;
+  isAlive: boolean;
+  age: number;
+  page: number;
 };
 
-export const getAlarm: QueryFunction<
-  AlarmResponseTypes[],
-  [_1: string]
-> = async () => {
-  return await GET<AlarmResponseTypes[]>({
+export type AlarmResponseTypes = {
+  hasPage: boolean;
+  data: AlarmDataTypes[];
+};
+
+type Props = {
+  pageParams?: number;
+  queryKey: [_1: string];
+};
+
+export const getAlarm = async ({ pageParams }: Props) => {
+  const params = {
+    page: pageParams ?? 1,
+  };
+
+  return await GET<AlarmResponseTypes>({
     url: '/api/alarm/list',
+    parameters: params,
   });
 };

@@ -11,6 +11,7 @@ import Arrow from '@/app/icon/arrow-left.png';
 import cx from 'classnames';
 
 import * as styles from './layout.css';
+import CustomAlarm from '@/app/(beforeLogin)/home/_component/CustomAlarm';
 
 const PATH = '/home';
 
@@ -47,11 +48,7 @@ export default function HomeLayout({ children }: Props) {
           />
         )
       }
-      right={
-        defaultPage && (
-          <Image src={AlarmOn} alt='alarm' width={24} height={24} />
-        )
-      }
+      right={defaultPage && <CustomAlarm />}
       className={cx(defaultPage && styles.navigation)}
     >
       {children}
