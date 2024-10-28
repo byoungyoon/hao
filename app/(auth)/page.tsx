@@ -11,9 +11,10 @@ const AuthPage = () => {
   useEffect(() => {
     const token = searchParam.get('token') ?? '';
     if (!!token) router.push(`/auth/${token}`);
-
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (window as any).LogoutHandler.postMessage('');
+    else {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (window as any).LogoutHandler.postMessage('');
+    }
   }, [router, searchParam]);
 
   return null;
