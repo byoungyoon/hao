@@ -151,29 +151,8 @@ export default function DetailCard({
             </Body>
           </div>
         )}
-        <div className={styles.testButtonGroup}>
-          <button type='button' onClick={() => setIsContainer(true)}>
-            사진 레이아웃 고정
-          </button>
-          <button type='button' onClick={() => setIsContainer(false)}>
-            사진 레이아웃 해제
-          </button>
-          <button type='button' onClick={() => setIsFade(true)}>
-            사진 fade 효과
-          </button>
-          <button type='button' onClick={() => setIsFade(false)}>
-            사진 slide 효과
-          </button>
-        </div>
-
         {data.thumbnail && (
-          <div className={styles.slickLayer}>
-            <CustomImage
-              images={data.thumbnail}
-              isContainer={isContainer}
-              isFade={isFade}
-            />
-          </div>
+          <CustomImage images={data.thumbnail} isContainer={isContainer} />
         )}
         <Body size='5' className={styles.subTitle}>
           {data.subTitle}
