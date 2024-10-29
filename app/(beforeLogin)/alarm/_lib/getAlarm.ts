@@ -17,13 +17,13 @@ export type AlarmResponseTypes = {
 };
 
 type Props = {
-  pageParams?: number;
+  pageParam?: number;
   queryKey: [_1: string];
 };
 
-export const getAlarm = async ({ pageParams }: Props) => {
+export const getAlarm = async ({ pageParam }: Props) => {
   const params = {
-    page: pageParams ?? 1,
+    page: pageParam ?? 1,
   };
 
   return await GET<AlarmResponseTypes>({

@@ -10,7 +10,7 @@ export default function CustomTitle() {
     <div>
       <Heading size='2'>지금까지 뱉은 후회 {myData.boardCnt}개 중</Heading>
       <Heading size='2'>
-        <text>{myData.adoptedCnt}개</text>를 후~ 날렸어
+        <strong>{myData.adoptedCnt}개</strong>를 후~ 날렸어
       </Heading>
     </div>
   );

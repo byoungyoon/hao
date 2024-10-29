@@ -11,7 +11,7 @@ export const infoArticle = style({
   padding: '40px 20px',
 });
 
-globalStyle(`${infoArticle} text`, {
+globalStyle(`${infoArticle} strong`, {
   color: vars.color.orange['300'],
 });
 

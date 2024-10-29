@@ -7,7 +7,7 @@ export const reportLayer = style({
   padding: 24,
 });
 
-globalStyle(`${reportLayer} text`, {
+globalStyle(`${reportLayer} strong`, {
   color: vars.color.orange['300'],
 });
 

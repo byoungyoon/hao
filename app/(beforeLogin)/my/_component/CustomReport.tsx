@@ -9,15 +9,39 @@ import Button from '@/app/components/button/Button';
 import Image from 'next/image';
 import MyButton from '@/app/icon/my-button.png';
 import Arrow from '@/app/icon/arrow-white.png';
+import { useRouter } from 'next/navigation';
+import { makeNickname } from '@/app/util/makeNickname';
+import { useCategory } from '@/app/(beforeLogin)/_state/useCategory';
+import { useMemo } from 'react';
+import { MyReportDataTypes } from '@/app/(beforeLogin)/my/_lib/getMy';
 
 import * as styles from './customReport.css';
-import { useRouter } from 'next/navigation';
 
 export default function CustomReport() {
   const router = useRouter();
 
   const { localData: myData } = useMy();
   const { localData: userData } = useUser();
+  const { localData: categoryData } = useCategory();
+
+  const reportData = useMemo(() => {
+    const data = categoryData.map((datum) => datum.name);
+
+    const onMerge = (currData: MyReportDataTypes[]) => {
+      if (currData.length >= 3) return currData;
+
+      const filter = data.filter(
+        (datum) => !currData.map((datum) => datum.category).includes(datum),
+      );
+      return onMerge(
+        currData.concat({
+          category: filter[Math.floor(Math.random() * filter.length)],
+          count: 0,
+        }),
+      );
+    };
+    return onMerge(myData.report);
+  }, [myData, categoryData]);
 
   const onClickReport = () => {
     router.push('/writing');
@@ -52,36 +76,39 @@ export default function CustomReport() {
 
   return (
     <div className={styles.reportLayer}>
-      <Heading size='2'>{userData.nickname}는</Heading>
+      <Heading size='2'>
+        {userData.nickname}
+        {makeNickname(userData.nickname)}
+      </Heading>
       <Heading size='2'>
         &apos;
-        <text>{myData.report[0].category}</text>
+        <strong>{myData.report[0].category}</strong>
         &apos;에 제일 많은 후회를 했어
       </Heading>
       <Body size='5' className={styles.reportAside}>
         과거의 후회를 되돌아보며 더 나은 내가 되어보자!
       </Body>
       <div className={styles.chart}>
-        {myData.report.length > 1 && (
+        {reportData.length > 1 && (
           <CustomChartItem
-            text={myData.report[1].category}
+            text={reportData[1].category}
             rank={2}
-            count={myData.report[1].count}
-            onClick={onClickItem(myData.report[1].category)}
+            count={reportData[1].count}
+            onClick={onClickItem(reportData[1].category)}
           />
         )}
         <CustomChartItem
-          text={myData.report[0].category}
+          text={reportData[0].category}
           rank={1}
-          count={myData.report[0].count}
-          onClick={onClickItem(myData.report[0].category)}
+          count={reportData[0].count}
+          onClick={onClickItem(reportData[0].category)}
         />
-        {myData.report.length > 2 && (
+        {reportData.length > 2 && (
           <CustomChartItem
-            text={myData.report[2].category}
+            text={reportData[2].category}
             rank={3}
-            count={myData.report[2].count}
-            onClick={onClickItem(myData.report[2].category)}
+            count={reportData[2].count}
+            onClick={onClickItem(reportData[2].category)}
           />
         )}
       </div>

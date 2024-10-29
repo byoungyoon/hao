@@ -28,6 +28,8 @@ export default function CustomItem({
     return '';
   }, [type]);
 
+  console.log(type);
+
   return (
     <div className={styles.item}>
       <div className={cx(styles.imageLayer, `age${age}`)}>

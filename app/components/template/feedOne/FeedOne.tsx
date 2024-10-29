@@ -4,6 +4,7 @@ import CustomDetailReport from '@/app/components/template/feedOne/_component/Cus
 import CustomCommentList from '@/app/components/template/feedOne/_component/CustomCommentList';
 import CustomCommentInput from '@/app/components/template/feedOne/_component/CustomCommentInput';
 import HeartCanvas from '@/app/components/canvas/HeartCanvas';
+import CustomNext from '@/app/components/template/feedOne/_component/CustomNext';
 
 import * as styles from './feedOne.css';
 
@@ -20,6 +21,7 @@ export default function FeedOne({ id }: Props) {
         <article className={styles.commentArticle}>
           <CustomDetailReport id={id} />
           <CustomCommentList id={id} />
+          <CustomNext id={id} />
         </article>
         <div className={styles.input}>
           <CustomCommentInput id={id} />

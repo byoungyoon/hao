@@ -7,9 +7,8 @@ import 'dayjs/locale/ko';
 import Image, { StaticImageData } from 'next/image';
 import Body from '@/app/components/text/Body';
 import CustomTab from '@/app/(beforeLogin)/home/_component/CustomTab';
-import CustomItemGroup from '@/app/(beforeLogin)/home/_component/CustomItemGroup';
-import CustomQuestion from '@/app/(beforeLogin)/home/_component/CustomQuestion';
-import SuspenseToday from '@/app/(beforeLogin)/home/_component/SuspenseToday';
+import SuspenseToday from '@/app/(beforeLogin)/home/_suspense/SuspenseToday';
+import SuspenseTopFeed from '@/app/(beforeLogin)/home/_suspense/SuspenseTopFeed';
 
 import * as styles from './page.css';
 
@@ -28,9 +27,7 @@ export default function HomePage() {
             </Heading>
             <Image src={Info as StaticImageData} alt='info' />
           </div>
-          <SuspenseToday>
-            <CustomQuestion />
-          </SuspenseToday>
+          <SuspenseToday />
         </hgroup>
       </CustomTopLayer>
       <article className={styles.topArticle}>
@@ -46,7 +43,7 @@ export default function HomePage() {
           </Body>
         </hgroup>
         <CustomTab />
-        <CustomItemGroup />
+        <SuspenseTopFeed />
       </article>
     </div>
   );

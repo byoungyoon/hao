@@ -11,7 +11,7 @@ type Props = {
 
 export const useFeedCommentDelete = ({ id }: Props) => {
   const queryClient = useQueryClient();
-  const { openModal } = useModal();
+  const { openModal, closeModal } = useModal();
 
   const { mutate } = useMutation({
     mutationKey: ['feed', 'comment', id, 'delete'],
@@ -25,6 +25,8 @@ export const useFeedCommentDelete = ({ id }: Props) => {
 
   const onAction = () => {
     mutate({ id });
+
+    closeModal();
   };
 
   const onDelete = () => {

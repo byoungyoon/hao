@@ -8,16 +8,16 @@ type Props = {
 
 export default function ButtonText(
   props: DetailedHTMLProps<
-    HTMLAttributes<HTMLParagraphElement>,
-    HTMLParagraphElement
+    HTMLAttributes<HTMLHeadingElement>,
+    HTMLHeadingElement
   > &
     Props,
 ) {
   const { size, children, className, ...rest } = props;
 
   return (
-    <p className={cx(styles.type[size], className)} {...rest}>
+    <h4 className={cx(styles.type[size], className)} {...rest}>
       {children}
-    </p>
+    </h4>
   );
 }

@@ -1,8 +1,7 @@
-const testToken =
-  'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJxbmZwcjMxQG5hdGUuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImlhdCI6MTcyODMwNjYyMSwiZXhwIjoxNzMwODk4NjIxfQ._t8nuhse1CBkYq-pyevkvukRYhS-47uj4cuSjltjF7k';
+import Cookies from 'js-cookie';
 
 const getToken = () => {
-  return localStorage.getItem('token') ?? testToken;
+  return Cookies.get('token');
 };
 
 type Props = {

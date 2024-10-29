@@ -1,5 +1,6 @@
 import { InfiniteData, useInfiniteQuery } from '@tanstack/react-query';
 import {
+  AlarmDataTypes,
   AlarmResponseTypes,
   getAlarm,
 } from '@/app/(beforeLogin)/alarm/_lib/getAlarm';
@@ -28,7 +29,11 @@ export const useAlarm = () => {
   const localData = useMemo(() => {
     if (!data) return [];
 
-    return data;
+    return data.pages.reduce<AlarmDataTypes[]>((curr, next) => {
+      const result = [...curr];
+
+      return result.concat(next.data);
+    }, []);
   }, [data]);
 
   return { localData };

@@ -21,16 +21,16 @@ export type FeedCommentResponseTypes = {
 };
 
 type Props = {
-  pageParams?: number;
+  pageParam?: number;
   queryKey: [_1: string, detail: number, _3: string];
 };
 
-export const getFeedComment = async ({ queryKey, pageParams }: Props) => {
+export const getFeedComment = async ({ queryKey, pageParam }: Props) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_1, detail, _3] = queryKey;
 
   const params = {
-    page: pageParams ?? 1,
+    page: pageParam ?? 1,
   };
 
   return await GET<FeedCommentResponseTypes>({

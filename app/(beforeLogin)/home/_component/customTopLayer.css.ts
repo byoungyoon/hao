@@ -6,6 +6,7 @@ export const topLayer = style({
   height: 489,
 
   position: 'relative',
+  zIndex: 999,
 
   '@media': {
     'screen and (max-width: 375px)': {
