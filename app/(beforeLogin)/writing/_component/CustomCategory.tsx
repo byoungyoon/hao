@@ -8,7 +8,6 @@ import CustomSelect from '@/app/(beforeLogin)/writing/_component/CustomSelect';
 import { useWritingForm } from '@/app/store/useTranslate';
 import cx from 'classnames';
 import { useToday } from '@/app/(beforeLogin)/_state/useToday';
-import RQProvider from '@/app/provider/RQProvider';
 
 import * as styles from './customCategory.css';
 
@@ -41,7 +40,7 @@ export default function CustomCategory({ isQuestion }: Props) {
   }, [updateCategory]);
 
   return (
-    <RQProvider>
+    <>
       <div
         role='button'
         tabIndex={0}
@@ -62,6 +61,6 @@ export default function CustomCategory({ isQuestion }: Props) {
         onTrackable={onTrackable}
         onTrackableCategory={onTrackableCategory}
       />
-    </RQProvider>
+    </>
   );
 }

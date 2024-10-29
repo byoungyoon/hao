@@ -9,6 +9,7 @@ export const section = style({
   justifyContent: 'center',
   padding: '0 40px',
   maxWidth: 425,
+  boxSizing: 'border-box',
   margin: '0 auto',
   background: vars.color.gray.white,
 });
@@ -28,6 +29,8 @@ export const subTitle = style({
 
 export const loginImageLayer = style({
   marginTop: 80,
+  display: 'flex',
+  justifyContent: 'center',
 });
 
 export const button = style({

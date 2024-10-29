@@ -52,3 +52,7 @@ export const close = style({
   top: 3,
   right: 3,
 });
+
+export const file = style({
+  display: 'none',
+});

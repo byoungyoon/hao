@@ -3,7 +3,7 @@ import { vars } from '@/app/theme.css';
 
 export const optionLayer = style({
   borderRadius: 8,
-  padding: '16px 24px',
+  padding: '16px 0',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
@@ -23,10 +23,10 @@ export const optionLayer = style({
 
   '@media': {
     'screen and (max-width: 375px)': {
-      padding: '14px 22px',
+      padding: '14px 0',
     },
     'screen and (max-width: 320px)': {
-      padding: '12px 20px',
+      padding: '12px 0',
     },
   },
 });
@@ -43,6 +43,7 @@ export const optionTitle = style({
 
 export const optionSubTitle = style({
   color: vars.color.gray['200'],
+  whiteSpace: 'nowrap',
 
   selectors: {
     '&.orange': {

@@ -64,4 +64,5 @@ export const infoModifyButton = style({
 export const infoModifyButtonText = style({
   color: vars.color.gray.white,
   paddingLeft: 8,
+  whiteSpace: 'nowrap',
 });

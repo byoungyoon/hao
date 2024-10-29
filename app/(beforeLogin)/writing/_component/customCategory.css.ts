@@ -14,12 +14,10 @@ export const category = style({
   '@media': {
     'screen and (max-width: 375px)': {
       height: 50,
-      margin: '22px 0',
       padding: '0 22px',
     },
     'screen and (max-width: 320px)': {
       height: 42,
-      margin: '20px 0',
       padding: '0 20px',
     },
   },
