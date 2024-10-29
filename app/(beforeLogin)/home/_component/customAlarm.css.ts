@@ -12,6 +12,8 @@ export const alarmLayer = style({
   display: 'flex',
   justifyContent: 'right',
   alignItems: 'center',
+  maxWidth: 425,
+  margin: '0 auto',
 });
 
 export const alarm = style({

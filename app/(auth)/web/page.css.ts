@@ -8,6 +8,9 @@ export const section = style({
   height: '100vh',
   justifyContent: 'center',
   padding: '0 40px',
+  maxWidth: 425,
+  margin: '0 auto',
+  background: vars.color.gray.white,
 });
 
 export const textArticle = style({
