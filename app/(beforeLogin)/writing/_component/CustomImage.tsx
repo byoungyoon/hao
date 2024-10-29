@@ -38,9 +38,13 @@ export default function CustomImage() {
   };
 
   const onClick = () => {
-    if (image.length >= 3) return;
+    if (image.length >= 3 || !window) return;
 
-    if (isApp) {
+    const userAgent =
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      navigator.userAgent || navigator.vendor || (window as any).opera;
+
+    if (/your-app-specific-keyword|Android|iPhone|iPad/i.test(userAgent)) {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       (window as any).ImageHandler.postMessage('');
     } else {
