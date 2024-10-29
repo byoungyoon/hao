@@ -12,7 +12,7 @@ import dynamic from 'next/dynamic';
 import * as styles from './page.css';
 
 const KEY = '5070eea30f03c9a37011ccb60fc2df72';
-const REDIRECT = `${process.env.NEXT_PUBLIC_API_URL}/web`;
+const REDIRECT = `${process.env.NEXT_REDIRECT_URL}/web`;
 const URL = `https://kauth.kakao.com/oauth/authorize?client_id=${KEY}&redirect_uri=${REDIRECT}&response_type=code`;
 
 type LoginResponseTypes = {
