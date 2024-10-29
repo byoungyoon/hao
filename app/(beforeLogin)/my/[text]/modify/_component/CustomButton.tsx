@@ -26,7 +26,11 @@ export default function CustomButton() {
   }, [age, point, nickname, userData]);
 
   const isResult = useMemo(() => {
-    if (localResult.nickname.length < 2 || localResult.nickname.length > 5)
+    if (
+      nickname === '' ||
+      localResult.nickname.length < 2 ||
+      localResult.nickname.length > 5
+    )
       return false;
 
     if (localResult.age === 10) return [1, 2, 3].includes(localResult.point);

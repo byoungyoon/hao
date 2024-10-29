@@ -1,3 +1,5 @@
+'use client';
+
 import { CardUserTypes } from '@/app/components/card/Card';
 
 import cx from 'classnames';
@@ -8,12 +10,12 @@ import LikeOff from '@/app/icon/like-deactivate.png';
 import Comment from '@/app/icon/comment.png';
 import Bookmark from '@/app/icon/bookmark-activate.png';
 import BookmarkOff from '@/app/icon/bookmark-deactivate.png';
-
-import * as styles from './detailCard.css';
-import { MouseEventHandler } from 'react';
+import { MouseEventHandler, useState } from 'react';
 import Edit from '@/app/icon/edit-gray.png';
 import Trash from '@/app/icon/trash-gray.png';
-import CustomPreModal from '@/app/(beforeLogin)/_component/CustomPreModal';
+import CustomImage from '@/app/components/card/_component/CustomImage';
+
+import * as styles from './detailCard.css';
 
 export type CardDetailDataTypes = {
   /**
@@ -89,6 +91,9 @@ export default function DetailCard({
   onEdit,
   onDelete,
 }: Props) {
+  const [isFade, setIsFade] = useState(true);
+  const [isContainer, setIsContainer] = useState(false);
+
   return (
     <div className={styles.item}>
       <hgroup className={styles.hgroup}>
@@ -130,7 +135,6 @@ export default function DetailCard({
               onClick={onDelete}
               className={styles.image}
             />
-            <CustomPreModal />
           </div>
         )}
       </hgroup>
@@ -147,14 +151,27 @@ export default function DetailCard({
             </Body>
           </div>
         )}
-        {data.thumbnail && data.thumbnail.length !== 0 && (
-          <div className={styles.thumbnailLayer}>
-            <Image
-              src={data.thumbnail[0]}
-              alt='thumbnail'
-              layout='fill'
-              objectFit='cover'
-              objectPosition='center'
+        <div className={styles.testButtonGroup}>
+          <button type='button' onClick={() => setIsContainer(true)}>
+            사진 레이아웃 고정
+          </button>
+          <button type='button' onClick={() => setIsContainer(false)}>
+            사진 레이아웃 해제
+          </button>
+          <button type='button' onClick={() => setIsFade(true)}>
+            사진 fade 효과
+          </button>
+          <button type='button' onClick={() => setIsFade(false)}>
+            사진 slide 효과
+          </button>
+        </div>
+
+        {data.thumbnail && (
+          <div className={styles.slickLayer}>
+            <CustomImage
+              images={data.thumbnail}
+              isContainer={isContainer}
+              isFade={isFade}
             />
           </div>
         )}

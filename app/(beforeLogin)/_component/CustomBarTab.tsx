@@ -12,9 +12,16 @@ import { useMemo } from 'react';
 import BarTab from '@/app/components/tab/BarTab';
 import { useRouter } from 'next/navigation';
 import { BarTabItemTypes } from '@/app/components/tab/BarTabItem';
+import { useWritingForm } from '@/app/store/useTranslate';
+import { useModal } from '@/app/store/useModal';
+import TextModal from '@/app/components/modal/TextModal';
+import Image from '@/app/image/character/modal-intercept.png';
+import { vars } from '@/app/theme.css';
 
 export default function CustomBarTab() {
   const router = useRouter();
+  const check = useWritingForm((state) => state.check);
+  const { openModal, closeModal } = useModal();
 
   const data: BarTabItemTypes[] = useMemo(
     () => [
@@ -54,11 +61,33 @@ export default function CustomBarTab() {
     [],
   );
 
+  const onAction = (target: string) => () => {
+    closeModal();
+
+    router.push(target);
+  };
+
   const onTrackableTab = (select: string) => {
     const find = data.find((datum) => datum.text === select);
     if (!find) return;
 
-    router.push(find.target);
+    if (check()) {
+      router.push(find.target);
+    } else {
+      openModal(
+        <TextModal
+          text={['이 내용은 다 사라질 거야.', '되돌아갈래?']}
+          image={{
+            item: Image.src,
+            background: vars.color.blue['100'],
+          }}
+          result={{
+            text: '응 되돌릴래!',
+            onResult: onAction(find.target),
+          }}
+        />,
+      );
+    }
   };
 
   return <BarTab data={data} onTrackable={onTrackableTab} />;

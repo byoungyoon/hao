@@ -85,16 +85,16 @@ export const editLayer = style({
   position: 'relative',
 });
 
-export const thumbnailLayer = style({
-  width: '100%',
-  borderRadius: 8,
-  overflow: 'hidden',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  background: vars.color.gray['100'],
+export const slickLayer = style({
   position: 'relative',
-  height: 221,
+  zIndex: 1,
+  borderRadius: 8,
+});
+
+export const testButtonGroup = style({
+  display: 'flex',
+  position: 'relative',
+  zIndex: 1,
 });
 
 export const subTitle = style({

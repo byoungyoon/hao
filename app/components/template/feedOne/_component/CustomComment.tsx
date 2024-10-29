@@ -14,7 +14,6 @@ import CustomCommentEditMode from '@/app/components/template/feedOne/_component/
 import { useFeedCommentDelete } from '@/app/components/template/feedOne/_state/useFeedCommentDelete';
 import { useFeedCommentVote } from '@/app/components/template/feedOne/_state/useFeedCommentVote';
 import { useFeedCommentAdopted } from '@/app/components/template/feedOne/_state/useFeedCommentAdopted';
-import CustomPreModal from '@/app/(beforeLogin)/_component/CustomPreModal';
 
 import * as styles from './customComment.css';
 
@@ -112,7 +111,6 @@ export default function CustomComment({
                 onClick={onDelete}
                 className={styles.image}
               />
-              <CustomPreModal />
             </div>
           )}
         </hgroup>

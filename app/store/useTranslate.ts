@@ -73,29 +73,42 @@ type WritingAction = {
   updateType: (type: WritingState['type']) => void;
 
   reset: () => void;
+  check: () => boolean;
 };
 
-export const useWritingForm = create<WritingState & WritingAction>((set) => ({
-  category: '',
-  title: '',
-  body: '',
-  images: [],
-  type: '후시딘',
+export const useWritingForm = create<WritingState & WritingAction>(
+  (set, get) => ({
+    category: '',
+    title: '',
+    body: '',
+    images: [],
+    type: '후시딘',
 
-  updateCategory: (category) => set(() => ({ category: category })),
-  updateTitle: (title) => set(() => ({ title: title })),
-  updateBody: (body) => set(() => ({ body: body })),
-  updateImages: (images) => set(() => ({ images: images })),
-  updateType: (type) => set(() => ({ type: type })),
-  reset: () =>
-    set(() => ({
-      category: '',
-      title: '',
-      body: '',
-      images: [],
-      type: '후시딘',
-    })),
-}));
+    updateCategory: (category) => set(() => ({ category: category })),
+    updateTitle: (title) => set(() => ({ title: title })),
+    updateBody: (body) => set(() => ({ body: body })),
+    updateImages: (images) => set(() => ({ images: images })),
+    updateType: (type) => set(() => ({ type: type })),
+    reset: () =>
+      set(() => ({
+        category: '',
+        title: '',
+        body: '',
+        images: [],
+        type: '후시딘',
+      })),
+    check: () => {
+      const { category, title, body, images } = get();
+
+      return !(
+        category.length !== 0 ||
+        title.length !== 0 ||
+        body.length !== 0 ||
+        images.length !== 0
+      );
+    },
+  }),
+);
 
 type Top5State = {
   age: number;
