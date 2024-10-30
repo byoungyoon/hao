@@ -27,6 +27,13 @@ export default function CustomButton() {
 
   const isResult = useMemo(() => {
     if (
+      localResult.age === userData.age &&
+      localResult.point === userData.characterId &&
+      localResult.nickname === userData.nickname
+    )
+      return false;
+
+    if (
       nickname === '' ||
       localResult.nickname.length < 2 ||
       localResult.nickname.length > 5
@@ -38,7 +45,13 @@ export default function CustomButton() {
     if (localResult.age === 30) return [7, 8, 9].includes(localResult.point);
 
     return true;
-  }, [localResult.age, localResult.nickname, localResult.point]);
+  }, [
+    localResult.age,
+    localResult.nickname,
+    localResult.point,
+    userData,
+    nickname,
+  ]);
 
   const { mutate: onAction } = useMutation({
     mutationKey: ['my', 'modify'],
