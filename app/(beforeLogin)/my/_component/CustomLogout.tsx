@@ -5,15 +5,29 @@ import { useModal } from '@/app/store/useModal';
 import TextModal from '@/app/components/modal/TextModal';
 import Image from '@/app/image/character/modal-logout.png';
 import { vars } from '@/app/theme.css';
+import Cookies from 'js-cookie';
 
 import * as styles from './customLogout.css';
+import { useRouter } from 'next/navigation';
 
 export default function CustomLogout() {
+  const router = useRouter();
   const openModal = useModal((state) => state.openModal);
 
   const onResult = () => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (window as any).LogoutHandler.postMessage('');
+    const userAgent =
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      navigator.userAgent || navigator.vendor || (window as any).opera;
+
+    const isWebView = userAgent.includes('wv') || userAgent.includes('WebView');
+
+    if (isWebView) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (window as any).LogoutHandler.postMessage('');
+    } else {
+      Cookies.remove('token');
+      router.replace('/web');
+    }
   };
 
   const onLogout = () => {
