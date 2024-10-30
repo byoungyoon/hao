@@ -112,6 +112,7 @@ export const useWritingForm = create<WritingState & WritingAction>(
 
 type Top5State = {
   age: number;
+  direction: number;
 };
 
 type Top5Action = {
@@ -120,6 +121,6 @@ type Top5Action = {
 
 export const useTop5From = create<Top5State & Top5Action>((set) => ({
   age: 0,
-
-  updateAge: (age) => set(() => ({ age: age })),
+  direction: 0,
+  updateAge: (nAge) => set(({ age }) => ({ age: nAge, direction: nAge - age })),
 }));

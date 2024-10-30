@@ -36,6 +36,8 @@ export default function CustomCategory({ isQuestion }: Props) {
   const { localData: todayData } = useToday();
 
   useEffect(() => {
+    if (isQuestion) updateCategory(todayData.category);
+
     return () => updateCategory('');
   }, [updateCategory]);
 
