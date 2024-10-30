@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 import Body from '@/app/components/text/Body';
 import Like from '@/app/icon/like-activate.svg';

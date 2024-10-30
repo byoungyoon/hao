@@ -3,7 +3,7 @@
 import DetailCard from '@/app/components/card/DetailCard';
 import { useFeedOne } from '@/app/components/template/feedOne/_state/useFeedone';
 import { useToday } from '@/app/(beforeLogin)/_state/useToday';
-import { useFeedVote } from '@/app/components/template/feedOne/_state/useFeedVote';
+import { useFeedVote } from '@/app/(beforeLogin)/_state/useFeedVote';
 import { useFeedScrap } from '@/app/components/template/feedOne/_state/useFeedScrap';
 import { useEffect, useState } from 'react';
 import { useUser } from '@/app/(beforeLogin)/_state/useUser';

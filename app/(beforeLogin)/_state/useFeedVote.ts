@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { postFeedVote } from '@/app/components/template/feedOne/_lib/postFeedVote';
+import { postFeedVote } from '@/app/(beforeLogin)/_lib/postFeedVote';
 import { MouseEventHandler } from 'react';
 import { useHeart } from '@/app/store/useHeart';
 

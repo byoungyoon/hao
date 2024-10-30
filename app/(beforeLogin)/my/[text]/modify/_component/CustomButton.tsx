@@ -33,11 +33,7 @@ export default function CustomButton() {
     )
       return false;
 
-    if (
-      nickname === '' ||
-      localResult.nickname.length < 2 ||
-      localResult.nickname.length > 5
-    )
+    if (localResult.nickname.length < 2 || localResult.nickname.length > 5)
       return false;
 
     if (localResult.age === 10) return [1, 2, 3].includes(localResult.point);
@@ -45,13 +41,7 @@ export default function CustomButton() {
     if (localResult.age === 30) return [7, 8, 9].includes(localResult.point);
 
     return true;
-  }, [
-    localResult.age,
-    localResult.nickname,
-    localResult.point,
-    userData,
-    nickname,
-  ]);
+  }, [localResult.age, localResult.nickname, localResult.point, userData]);
 
   const { mutate: onAction } = useMutation({
     mutationKey: ['my', 'modify'],

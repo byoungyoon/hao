@@ -8,9 +8,16 @@ export const item = style({
   gap: 8,
   width: '100%',
   cursor: 'pointer',
+  borderBottom: `1px solid ${vars.color.gray['100']}`,
 
   ':focus': {
     background: vars.color.gray.white,
+  },
+
+  selectors: {
+    '&.select': {
+      borderBottom: 'none',
+    },
   },
 });
 
@@ -27,11 +34,5 @@ export const text = style({
 export const border = style({
   height: 3,
   width: '100%',
-  background: vars.color.gray['100'],
-
-  selectors: {
-    '&.select': {
-      background: vars.color.orange['300'],
-    },
-  },
+  background: vars.color.orange['300'],
 });
