@@ -37,10 +37,7 @@ export default function CustomImage() {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       navigator.userAgent || navigator.vendor || (window as any).opera;
 
-    const isWebView =
-      userAgent.includes('wv') ||
-      userAgent.includes('Chrome') ||
-      userAgent.includes('WebView');
+    const isWebView = userAgent.includes('wv') || userAgent.includes('WebView');
 
     if (isWebView) {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
