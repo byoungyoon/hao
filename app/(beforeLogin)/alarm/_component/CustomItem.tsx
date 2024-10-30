@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import cx from 'classnames';
 import Body from '@/app/components/text/Body';
-import { useMemo, useState, MouseEvent } from 'react';
+import { useMemo, useState, MouseEvent, TouchEvent } from 'react';
 import Delete from '@/app/icon/alarm-delete.svg';
 
 import * as styles from './customItem.css';
@@ -40,17 +40,17 @@ export default function CustomItem({
     return '';
   }, [type]);
 
-  const onMouseDown = (event: MouseEvent) => {
+  const onActionDown = (x: number) => {
     if (isMode) return;
 
     setIsDragging(true);
-    setStartX(event.clientX);
+    setStartX(x);
   };
 
-  const onMouseMove = (event: MouseEvent) => {
+  const onActionMove = (x: number) => {
     if (!isDragging) return;
 
-    const dx = Math.min(startX - event.clientX, 100);
+    const dx = Math.min(startX - x, 100);
     setTranslateX(Math.max(dx, 0));
 
     if (Math.max(dx, 0) >= 100) {
@@ -59,12 +59,22 @@ export default function CustomItem({
     }
   };
 
-  const onMouseUp = () => {
+  const onActionUp = () => {
     if (isMode) return;
 
     setIsDragging(false);
     setTranslateX(0);
   };
+
+  const onMouseDown = (event: MouseEvent) => onActionDown(event.clientX);
+  const onMouseMove = (event: MouseEvent) => onActionMove(event.clientX);
+  const onMouseUp = () => onActionUp();
+
+  const onTouchStart = (event: TouchEvent) =>
+    onActionDown(event.touches[0].clientX);
+  const onTouchMove = (event: TouchEvent) =>
+    onActionMove(event.touches[0].clientX);
+  const onTouchEnd = () => onActionUp();
 
   const onClick = () => {
     setIsMode(false);
@@ -76,6 +86,9 @@ export default function CustomItem({
       onMouseDown={onMouseDown}
       onMouseMove={onMouseMove}
       onMouseUp={onMouseUp}
+      onTouchStart={onTouchStart}
+      onTouchMove={onTouchMove}
+      onTouchEnd={onTouchEnd}
       onClick={onClick}
       style={{
         transform: `translateX(-${translateX}px)`,
