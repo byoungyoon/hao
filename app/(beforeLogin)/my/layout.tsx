@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import Layout from '@/app/(beforeLogin)/_component/Layout';
 import CustomText from '@/app/(beforeLogin)/my/_component/CustomText';
 import CustomBackButton from '@/app/(beforeLogin)/my/_component/CustomBackButton';
-import CustomAlarm from '@/app/(beforeLogin)/my/_component/CustomAlarm';
+import CustomAlarm from '@/app/(beforeLogin)/_component/CustomAlarm';
 
 type Props = {
   children: ReactNode;

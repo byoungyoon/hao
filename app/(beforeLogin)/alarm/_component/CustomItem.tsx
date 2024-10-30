@@ -5,10 +5,12 @@ import cx from 'classnames';
 import Body from '@/app/components/text/Body';
 import { useMemo, useState, MouseEvent, TouchEvent } from 'react';
 import Delete from '@/app/icon/alarm-delete.svg';
+import { useAlarmDelete } from '@/app/(beforeLogin)/alarm/_state/useAlarmDelete';
 
 import * as styles from './customItem.css';
 
 type Props = {
+  id: number;
   age: number;
   image: string;
   nickname: string;
@@ -19,6 +21,7 @@ type Props = {
 };
 
 export default function CustomItem({
+  id,
   age,
   image,
   nickname,
@@ -41,7 +44,10 @@ export default function CustomItem({
   }, [type]);
 
   const onActionDown = (x: number) => {
-    if (isMode) return;
+    if (isMode) {
+      setIsMode(false);
+      return;
+    }
 
     setIsDragging(true);
     setStartX(x);
@@ -76,9 +82,7 @@ export default function CustomItem({
     onActionMove(event.touches[0].clientX);
   const onTouchEnd = () => onActionUp();
 
-  const onClick = () => {
-    setIsMode(false);
-  };
+  const { onDelete } = useAlarmDelete({ id: id });
 
   return (
     <div
@@ -89,7 +93,6 @@ export default function CustomItem({
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
-      onClick={onClick}
       style={{
         transform: `translateX(-${translateX}px)`,
         transition: isDragging ? 'none' : 'transform 0.3s',
@@ -125,7 +128,12 @@ export default function CustomItem({
           </Body>
         )}
       </div>
-      <div className={styles.modeLayer}>
+      <div
+        role='button'
+        tabIndex={0}
+        className={styles.modeLayer}
+        onClick={onDelete}
+      >
         <Image src={Delete} alt='delete' />
       </div>
     </div>
