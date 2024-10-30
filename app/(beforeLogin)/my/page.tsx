@@ -23,7 +23,7 @@ export default function MyPage() {
           <hgroup className={styles.infoHgroup}>
             <CustomTitle />
             <Body size='5' className={styles.infoAside}>
-              마음이 조금 가벼워졌길 바래!
+              마음이 조금 가벼워졌길 바라!
             </Body>
             <Image
               src={Character}

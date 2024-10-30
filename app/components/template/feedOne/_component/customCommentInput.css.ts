@@ -11,20 +11,35 @@ export const group = style({
 });
 
 export const inputLayer = style({
-  position: 'relative',
   flexGrow: 1,
   display: 'flex',
   alignItems: 'center',
+  justifyContent: 'space-between',
+  background: vars.color.gray.background,
+  borderRadius: 8,
+  gap: 8,
+  overflow: 'hidden',
+  padding: '8px 8px 8px 16px',
 });
 
-export const input = style({
-  background: vars.color.gray.background,
-  padding: '18px 16px',
-  borderRadius: 8,
+export const inputGroup = style({
+  display: 'flex',
+  width: '100%',
+  flexDirection: 'column',
+  alignItems: 'end',
+  gap: 8,
+});
+
+export const textarea = style({
   outline: 'none',
   border: 'none',
   width: '100%',
-  paddingRight: 100,
+  fontSize: 14,
+  fontFamily: 'regular',
+  fontWeight: 400,
+  background: 'inherit',
+  resize: 'none',
+  height: '100%',
 
   '::placeholder': {
     color: vars.color.gray['200'],
@@ -32,30 +47,23 @@ export const input = style({
     fontFamily: 'regular',
     fontWeight: 400,
   },
+});
 
+export const button = style({
+  height: '100%',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+});
+
+export const plusImage = style({
   '@media': {
-    'screen and (max-width: 375px)': {
-      paddingRight: 96,
-    },
     'screen and (max-width: 320px)': {
-      paddingRight: 92,
+      display: 'none',
     },
   },
 });
 
-export const button = style({
-  position: 'absolute',
-  right: 8,
-  height: 37,
-
-  '@media': {
-    'screen and (max-width: 375px)': {
-      padding: '7px 22px',
-      right: 6,
-    },
-    'screen and (max-width: 320px)': {
-      padding: '6px 20px',
-      right: 4,
-    },
-  },
+export const counting = style({
+  color: vars.color.gray['400'],
 });

@@ -1,5 +1,3 @@
-'use client';
-
 import { CardUserTypes } from '@/app/components/card/Card';
 
 import cx from 'classnames';
@@ -10,7 +8,7 @@ import LikeOff from '@/app/icon/like-deactivate.png';
 import Comment from '@/app/icon/comment.png';
 import Bookmark from '@/app/icon/bookmark-activate.png';
 import BookmarkOff from '@/app/icon/bookmark-deactivate.png';
-import { MouseEventHandler, useState } from 'react';
+import { MouseEventHandler } from 'react';
 import Edit from '@/app/icon/edit-gray.png';
 import Trash from '@/app/icon/trash-gray.png';
 import CustomImage from '@/app/components/card/_component/CustomImage';
@@ -91,9 +89,6 @@ export default function DetailCard({
   onEdit,
   onDelete,
 }: Props) {
-  const [isFade, setIsFade] = useState(true);
-  const [isContainer, setIsContainer] = useState(false);
-
   return (
     <div className={styles.item}>
       <hgroup className={styles.hgroup}>
@@ -151,9 +146,7 @@ export default function DetailCard({
             </Body>
           </div>
         )}
-        {data.thumbnail && (
-          <CustomImage images={data.thumbnail} isContainer={isContainer} />
-        )}
+        {data.thumbnail && <CustomImage images={data.thumbnail} />}
         <Body size='5' className={styles.subTitle}>
           {data.subTitle}
         </Body>

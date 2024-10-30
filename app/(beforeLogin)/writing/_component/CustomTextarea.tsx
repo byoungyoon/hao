@@ -2,9 +2,13 @@
 
 import Body from '@/app/components/text/Body';
 import { useWritingForm } from '@/app/store/useTranslate';
-import { ChangeEventHandler, useEffect } from 'react';
+import { ChangeEventHandler, useEffect, useState } from 'react';
+import TextareaAutosize from 'react-textarea-autosize';
+import VibratingText from '@/app/components/text/VibratingText';
 
 import * as styles from './customTextarea.css';
+
+const LIMIT_TEXT = 500;
 
 type Props = {
   isQuestion?: boolean;
@@ -12,10 +16,15 @@ type Props = {
 
 export default function CustomTextarea({ isQuestion }: Props) {
   const { body, updateBody } = useWritingForm();
+  const [updateKey, setUpdateKey] = useState(0);
 
   const onChangeTextarea: ChangeEventHandler<HTMLTextAreaElement> = (event) => {
     const value = event.target.value;
-    if (value.length > 100) return;
+
+    if (value.length > LIMIT_TEXT) {
+      setUpdateKey(updateKey + 1);
+      return;
+    }
 
     updateBody(value);
   };
@@ -26,7 +35,7 @@ export default function CustomTextarea({ isQuestion }: Props) {
 
   return (
     <div className={styles.textareaLayer}>
-      <textarea
+      <TextareaAutosize
         value={body}
         className={styles.textarea}
         placeholder={
@@ -34,9 +43,11 @@ export default function CustomTextarea({ isQuestion }: Props) {
         }
         onChange={onChangeTextarea}
       />
-      <Body size='3' className={styles.counting}>
-        {body.length}/100
-      </Body>
+      <VibratingText updateKey={updateKey}>
+        <Body size='3' className={styles.counting}>
+          {body.length}/{LIMIT_TEXT}
+        </Body>
+      </VibratingText>
     </div>
   );
 }

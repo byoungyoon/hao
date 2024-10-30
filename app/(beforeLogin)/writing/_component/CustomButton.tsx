@@ -15,11 +15,15 @@ export default function CustomButton({ isQuestion = false }: Props) {
   const { localData: userData } = useUser();
 
   const isResult = useMemo(() => {
-    if (isQuestion) return true;
-    if (title.length < 2 || title.length > 15 || category === '') return false;
+    if (isQuestion && body.length !== 0) return true;
 
-    return true;
-  }, [title, category, isQuestion]);
+    return !(
+      title.length < 2 ||
+      title.length > 15 ||
+      category === '' ||
+      body.length === 0
+    );
+  }, [title, category, isQuestion, body]);
 
   const base64ToFile = (base64String: string, filename: string) => {
     const byteCharacters = atob(base64String);

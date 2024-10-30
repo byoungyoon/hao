@@ -3,30 +3,51 @@ import { vars } from '@/app/theme.css';
 
 export const commentText = style({
   color: vars.color.gray['400'],
+  wordBreak: 'break-all',
+  whiteSpace: 'normal',
 });
 
-export const input = style({
+export const textarea = style({
   outline: 'none',
   border: 'none',
-  background: vars.color.gray.background,
-  height: 37,
-  borderRadius: 8,
-  fontSize: 15,
-  fontFamily: 'medium',
-  color: vars.color.gray['400'],
-  padding: '0 10px',
   width: '100%',
+  fontSize: 14,
+  fontFamily: 'regular',
+  fontWeight: 400,
+  background: 'inherit',
+  resize: 'none',
+  height: '100%',
 
   '::placeholder': {
     color: vars.color.gray['200'],
+    fontSize: 14,
+    fontFamily: 'regular',
+    fontWeight: 400,
   },
 });
 
 export const inputLayer = style({
+  flexGrow: 1,
   display: 'flex',
-  gap: 5,
-  justifyContent: 'space-between',
   alignItems: 'center',
+  justifyContent: 'space-between',
+  background: vars.color.gray.background,
+  borderRadius: 8,
+  gap: 8,
+  overflow: 'hidden',
+  padding: '8px 8px 8px 16px',
+});
+
+export const inputGroup = style({
+  display: 'flex',
+  width: '100%',
+  flexDirection: 'column',
+  alignItems: 'end',
+  gap: 8,
+});
+
+export const counting = style({
+  color: vars.color.gray['400'],
 });
 
 export const button = style({
