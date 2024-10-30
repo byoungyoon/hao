@@ -2,8 +2,8 @@
 
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useCallback, useEffect } from 'react';
-import Login from '@/app/image/sample/login.png';
-import Kakao from '@/app/image/sample/kakao.png';
+import Login from '@/app/image/sample/login.svg';
+import Kakao from '@/app/image/sample/kakao.svg';
 import Image from 'next/image';
 import Body from '@/app/components/text/Body';
 import Heading from '@/app/components/text/Heading';

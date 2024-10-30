@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { themeClass } from '@/app/theme.css';
 import Navigation from '@/app/components/navigation/Navigation';
 import Image from 'next/image';
-import Arrow from '@/app/icon/arrow-left.png';
+import Arrow from '@/app/icon/arrow-left.svg';
 import Alarm from '@/app/icon/alarm.png';
 import AlarmOn from '@/app/icon/alarm-on.png';
 import Logo1 from '@/app/icon/logo/logo-1.png';

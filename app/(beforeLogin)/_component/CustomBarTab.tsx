@@ -15,7 +15,7 @@ import { BarTabItemTypes } from '@/app/components/tab/BarTabItem';
 import { useWritingForm } from '@/app/store/useTranslate';
 import { useModal } from '@/app/store/useModal';
 import TextModal from '@/app/components/modal/TextModal';
-import Image from '@/app/image/character/modal-intercept.png';
+import Image from '@/app/image/character/modal-intercept.svg';
 import { vars } from '@/app/theme.css';
 
 export default function CustomBarTab() {

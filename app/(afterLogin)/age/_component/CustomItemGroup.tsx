@@ -1,12 +1,12 @@
 'use client';
 
 import CustomItem from '@/app/(afterLogin)/age/_component/CustomItem';
-import default10 from '@/app/image/character/default_10.png';
-import color10 from '@/app/image/character/color_10.png';
-import default20 from '@/app/image/character/default_20.png';
-import color20 from '@/app/image/character/color_20.png';
-import default30 from '@/app/image/character/default_30.png';
-import color30 from '@/app/image/character/color_30.png';
+import default10 from '@/app/image/character/default_10.svg';
+import color10 from '@/app/image/character/color_10.svg';
+import default20 from '@/app/image/character/default_20.svg';
+import color20 from '@/app/image/character/color_20.svg';
+import default30 from '@/app/image/character/default_30.svg';
+import color30 from '@/app/image/character/color_30.svg';
 import { useAgeForm } from '@/app/store/useTranslate';
 
 import * as styles from './customItemGroup.css';

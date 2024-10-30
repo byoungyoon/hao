@@ -2,7 +2,7 @@
 
 import Body from '@/app/components/text/Body';
 import Image from 'next/image';
-import Arrow from '@/app/icon/category-gray.png';
+import Arrow from '@/app/icon/category-gray.svg';
 import { useEffect, useState } from 'react';
 import CustomSelect from '@/app/(beforeLogin)/writing/_component/CustomSelect';
 import { useWritingForm } from '@/app/store/useTranslate';

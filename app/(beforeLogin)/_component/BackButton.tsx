@@ -1,6 +1,6 @@
 'use client';
 
-import Arrow from '@/app/icon/arrow-left.png';
+import Arrow from '@/app/icon/arrow-left.svg';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 

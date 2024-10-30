@@ -1,9 +1,9 @@
 'use client';
 
 import Image from 'next/image';
-import Camera from '@/app/icon/camera-gray.png';
+import Camera from '@/app/icon/camera-gray.svg';
 import { ChangeEvent, useEffect, useState } from 'react';
-import Close from '@/app/icon/image_close.png';
+import Close from '@/app/icon/image_close.svg';
 import { useWritingForm } from '@/app/store/useTranslate';
 
 import * as styles from '@/app/(beforeLogin)/writing/page.css';

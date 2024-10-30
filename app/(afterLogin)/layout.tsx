@@ -3,7 +3,7 @@
 import { ReactNode, useMemo } from 'react';
 import Progress from '@/app/(afterLogin)/_component/Progress';
 import Image from 'next/image';
-import Arrow from '@/app/icon/arrow-left.png';
+import Arrow from '@/app/icon/arrow-left.svg';
 import { usePathname, useRouter } from 'next/navigation';
 import RQProvider from '@/app/provider/RQProvider';
 

@@ -1,4 +1,4 @@
-import Onboarding from '@/app/image/onboarding.png';
+import Onboarding from '@/app/image/onboarding.svg';
 import Heading from '@/app/components/text/Heading';
 import Image from 'next/image';
 import CustomButton from '@/app/(afterLogin)/result/_component/CustomButton';

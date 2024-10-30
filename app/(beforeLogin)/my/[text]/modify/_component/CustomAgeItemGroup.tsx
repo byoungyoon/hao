@@ -1,12 +1,12 @@
 'use client';
 
 import { useAgeForm } from '@/app/store/useTranslate';
-import Default10 from '@/app/image/character/default_10.png';
-import Default20 from '@/app/image/character/default_20.png';
-import Default30 from '@/app/image/character/default_30.png';
-import Color10 from '@/app/image/character/color_10.png';
-import Color20 from '@/app/image/character/color_20.png';
-import Color30 from '@/app/image/character/color_30.png';
+import Default10 from '@/app/image/character/default_10.svg';
+import Default20 from '@/app/image/character/default_20.svg';
+import Default30 from '@/app/image/character/default_30.svg';
+import Color10 from '@/app/image/character/color_10.svg';
+import Color20 from '@/app/image/character/color_20.svg';
+import Color30 from '@/app/image/character/color_30.svg';
 import { useUser } from '@/app/(beforeLogin)/_state/useUser';
 import { useEffect, useState } from 'react';
 import CustomAgeItem from '@/app/(beforeLogin)/my/[text]/modify/_component/CustomAgeItem';

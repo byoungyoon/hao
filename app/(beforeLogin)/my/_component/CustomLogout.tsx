@@ -3,12 +3,12 @@
 import Button from '@/app/components/button/Button';
 import { useModal } from '@/app/store/useModal';
 import TextModal from '@/app/components/modal/TextModal';
-import Image from '@/app/image/character/modal-logout.png';
+import Image from '@/app/image/character/modal-logout.svg';
 import { vars } from '@/app/theme.css';
 import Cookies from 'js-cookie';
+import { useRouter } from 'next/navigation';
 
 import * as styles from './customLogout.css';
-import { useRouter } from 'next/navigation';
 
 export default function CustomLogout() {
   const router = useRouter();
