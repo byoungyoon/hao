@@ -5,11 +5,20 @@ export const item = style({
   display: 'flex',
   alignItems: 'center',
   gap: 16,
-  padding: '32px 24px',
+  height: 112,
+  width: '100%',
+  padding: '0 0 0 24px',
+  position: 'relative',
+
+  selectors: {
+    '&.noAlive': {
+      background: vars.color.gray['100'],
+    },
+  },
 });
 
 export const imageLayer = style({
-  width: 48,
+  minWidth: 48,
   height: 48,
   borderRadius: '50%',
   display: 'flex',
@@ -26,6 +35,17 @@ export const imageLayer = style({
     '&.age30': {
       background: vars.color.blue['100'],
     },
+    '&.noAlive': {
+      background: vars.color.gray['200'],
+    },
+  },
+});
+
+export const image = style({
+  selectors: {
+    '&.noAlive': {
+      filter: 'grayscale(100%) sepia(50%)',
+    },
   },
 });
 
@@ -33,8 +53,38 @@ export const textLayer = style({
   display: 'flex',
   flexDirection: 'column',
   gap: 6,
+  minWidth: 270,
+});
+
+export const title = style({
+  selectors: {
+    '&.noAlive': {
+      color: vars.color.gray['300'],
+    },
+  },
+});
+
+export const message = style({
+  selectors: {
+    '&.noAlive': {
+      color: vars.color.gray['200'],
+    },
+  },
 });
 
 globalStyle(`${textLayer} strong`, {
   color: vars.color.orange['300'],
+});
+
+export const modeLayer = style({
+  position: 'absolute',
+  right: -80,
+  top: 0,
+  minWidth: 80,
+  background: vars.color.red['100'],
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  cursor: 'pointer',
+  height: '100%',
 });

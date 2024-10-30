@@ -8,7 +8,7 @@ export const comment = style({
 });
 
 export const imageLayer = style({
-  width: 24,
+  minWidth: 24,
   height: 24,
   display: 'flex',
   alignItems: 'center',

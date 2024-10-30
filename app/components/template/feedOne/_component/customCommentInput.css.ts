@@ -22,14 +22,6 @@ export const inputLayer = style({
   padding: '8px 8px 8px 16px',
 });
 
-export const inputGroup = style({
-  display: 'flex',
-  width: '100%',
-  flexDirection: 'column',
-  alignItems: 'end',
-  gap: 8,
-});
-
 export const textarea = style({
   outline: 'none',
   border: 'none',
@@ -62,8 +54,4 @@ export const plusImage = style({
       display: 'none',
     },
   },
-});
-
-export const counting = style({
-  color: vars.color.gray['400'],
 });

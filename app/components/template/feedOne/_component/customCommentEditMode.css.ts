@@ -38,18 +38,6 @@ export const inputLayer = style({
   padding: '8px 8px 8px 16px',
 });
 
-export const inputGroup = style({
-  display: 'flex',
-  width: '100%',
-  flexDirection: 'column',
-  alignItems: 'end',
-  gap: 8,
-});
-
-export const counting = style({
-  color: vars.color.gray['400'],
-});
-
 export const button = style({
   height: 37,
   background: vars.color.orange['300'],

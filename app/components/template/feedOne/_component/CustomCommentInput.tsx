@@ -6,12 +6,8 @@ import Button from '@/app/components/button/Button';
 import { ChangeEventHandler, useState } from 'react';
 import TextareaAutosize from 'react-textarea-autosize';
 import { useFeedCommentSave } from '@/app/components/template/feedOne/_state/useFeedCommentSave';
-import Body from '@/app/components/text/Body';
-import VibratingText from '@/app/components/text/VibratingText';
 
 import * as styles from './customCommentInput.css';
-
-const LIMIT_TEXT = 100;
 
 type Props = {
   id: number;
@@ -19,14 +15,8 @@ type Props = {
 
 export default function CustomCommentInput({ id }: Props) {
   const [value, setValue] = useState('');
-  const [updateKey, setUpdateKey] = useState(0);
 
   const onChangeInput: ChangeEventHandler<HTMLTextAreaElement> = (event) => {
-    if (event.target.value.length > LIMIT_TEXT) {
-      setUpdateKey(updateKey + 1);
-      return;
-    }
-
     setValue(event.target.value);
   };
 
@@ -53,20 +43,13 @@ export default function CustomCommentInput({ id }: Props) {
         className={styles.plusImage}
       />
       <div className={styles.inputLayer}>
-        <div className={styles.inputGroup}>
-          <TextareaAutosize
-            className={styles.textarea}
-            rows={1}
-            placeholder='경험을 공유하며 힘이 되는 말을 해봐!'
-            value={value}
-            onChange={onChangeInput}
-          />
-          <VibratingText updateKey={updateKey}>
-            <Body size='7' className={styles.counting}>
-              {value.length}/{LIMIT_TEXT}
-            </Body>
-          </VibratingText>
-        </div>
+        <TextareaAutosize
+          className={styles.textarea}
+          rows={1}
+          placeholder='경험을 공유하며 힘이 되는 말을 해봐!'
+          value={value}
+          onChange={onChangeInput}
+        />
         <Button
           size='auto'
           color={value === '' ? 'gray' : 'orange'}

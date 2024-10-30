@@ -87,6 +87,7 @@ export const POST = async <T extends object>({
 export const PUT = async <T extends object>({
   url,
   parameters,
+  isFormData,
 }: Props): Promise<T> => {
   try {
     const baseUrl = process.env.NEXT_PUBLIC_API_URL;
@@ -102,9 +103,9 @@ export const PUT = async <T extends object>({
       method: 'PUT',
       headers: {
         Authorization: `Bearer ${getToken()}`,
-        'Content-Type': 'application/json',
+        ...(isFormData ? {} : { 'Content-Type': 'application/json' }),
       },
-      body: JSON.stringify(parameters),
+      body: !isFormData ? JSON.stringify(parameters) : (parameters as FormData),
     });
 
     if (!response.ok) {

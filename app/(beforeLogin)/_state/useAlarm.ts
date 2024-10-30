@@ -3,7 +3,7 @@ import {
   AlarmDataTypes,
   AlarmResponseTypes,
   getAlarm,
-} from '@/app/(beforeLogin)/alarm/_lib/getAlarm';
+} from '@/app/(beforeLogin)/_lib/getAlarm';
 import { useMemo } from 'react';
 
 export const useAlarm = () => {

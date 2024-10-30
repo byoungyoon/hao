@@ -4,7 +4,7 @@ export type AlarmDataTypes = {
   id: number;
   body: string;
   nickname: string;
-  type: 'LIKE' | 'COMMENT' | 'ADOPTED';
+  msg: 'LIKE' | 'COMMENT' | 'ADOPTED';
   image: string;
   isAlive: boolean;
   age: number;

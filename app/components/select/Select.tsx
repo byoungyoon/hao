@@ -2,9 +2,10 @@ import Body from '@/app/components/text/Body';
 import { useEffect, useRef, useState } from 'react';
 import Arrow from '@/app/icon/feed_filter_arrow.png';
 import Image from 'next/image';
+import cx from 'classnames';
+import { AnimatePresence, motion } from 'framer-motion';
 
 import * as styles from './select.css';
-import cx from 'classnames';
 
 export type SelectTypes = {
   value: string;
@@ -67,20 +68,23 @@ export default function Select({ data, onTrackable, className }: Props) {
         </Body>
         <Image src={Arrow} alt='arrow' width={18} height={18} />
       </div>
-      {open && (
-        <div className={styles.itemGroup}>
-          {data.map((datum) => (
-            <Body
-              size='5'
-              key={datum.value}
-              className={styles.item}
-              onClick={onClickItem(datum)}
-            >
-              {datum.label}
-            </Body>
-          ))}
-        </div>
-      )}
+      <motion.div className={styles.animationItem} layoutId='test' />
+      <AnimatePresence>
+        {open && (
+          <motion.div className={styles.itemGroup} layoutId='test'>
+            {data.map((datum) => (
+              <Body
+                size='5'
+                key={datum.value}
+                className={styles.item}
+                onClick={onClickItem(datum)}
+              >
+                {datum.label}
+              </Body>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

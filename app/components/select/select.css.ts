@@ -35,3 +35,12 @@ export const item = style({
   color: vars.color.gray['400'],
   whiteSpace: 'nowrap',
 });
+
+export const animationItem = style({
+  position: 'absolute',
+  top: 15,
+  left: '50%',
+  transform: 'translateX(-50%)',
+  width: 10,
+  height: 10,
+});
