@@ -150,7 +150,7 @@ export default function CustomComment({
                 </Body>
               </div>
             )}
-            {hasSelect && isAdmin && (
+            {hasSelect && isAdmin && !isHost && (
               <div className={styles.countGroup}>
                 <Image
                   className={styles.image}

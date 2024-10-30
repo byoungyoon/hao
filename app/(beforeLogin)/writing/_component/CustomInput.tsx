@@ -34,7 +34,7 @@ export default function CustomInput() {
       <input
         type='text'
         className={styles.input}
-        placeholder='제목을 지어줘!(3자~15자)'
+        placeholder='제목을 지어줘!'
         value={title}
         onChange={onChangeInput}
       />

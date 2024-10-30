@@ -34,11 +34,14 @@ export default function CustomImage() {
     if (image.length >= 3 || !window) return;
 
     const userAgent =
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       navigator.userAgent || navigator.vendor || (window as any).opera;
 
-    if (/your-app-specific-keyword|Android|iPhone|iPad/i.test(userAgent)) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const isWebView =
+      userAgent.includes('wv') ||
+      userAgent.includes('Chrome') ||
+      userAgent.includes('WebView');
+
+    if (isWebView) {
       (window as any).ImageHandler.postMessage('');
     } else {
       const fileInput = document.getElementById('file') as HTMLInputElement;
