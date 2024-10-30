@@ -1,6 +1,6 @@
 'use client';
 
-import Plus from '@/app/icon/plus-gray.png';
+import Plus from '@/app/icon/plus-gray.svg';
 import Image from 'next/image';
 import Button from '@/app/components/button/Button';
 import { ChangeEventHandler, useState } from 'react';

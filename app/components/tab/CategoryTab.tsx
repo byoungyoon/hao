@@ -4,6 +4,7 @@ import CategoryTabItem, {
   CategoryTabItemTypes,
 } from '@/app/components/tab/CategoryTabItem';
 import { useEffect, useState } from 'react';
+
 import * as styles from './cartegoryTab.css';
 
 type Props = {

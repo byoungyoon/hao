@@ -1,6 +1,6 @@
 import CustomTopLayer from '@/app/(beforeLogin)/home/_component/CustomTopLayer';
 import Heading from '@/app/components/text/Heading';
-import Info from '@/app/icon/info.png';
+import Info from '@/app/icon/info.svg';
 import dayjs from 'dayjs';
 import localizedFormat from 'dayjs/plugin/localizedFormat';
 import 'dayjs/locale/ko';

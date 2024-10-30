@@ -1,6 +1,7 @@
 import Body from '@/app/components/text/Body';
-import * as styles from './categoryTabItem.css';
 import cx from 'classnames';
+
+import * as styles from './categoryTabItem.css';
 
 export type CategoryTabItemTypes = {
   text: string;

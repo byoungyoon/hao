@@ -2,9 +2,9 @@ import CustomText from '@/app/(beforeLogin)/my/[text]/scrap/[category]/_componen
 import { Suspense } from 'react';
 import CustomCardGroup from '@/app/(beforeLogin)/my/[text]/scrap/[category]/_component/CustomCardGroup';
 import CustomNext from '@/app/(beforeLogin)/my/[text]/scrap/[category]/_component/CustomNext';
+import SuspenseMyScrapFeed from '@/app/(beforeLogin)/my/[text]/scrap/[category]/_component/SuspenseMyScrapFeed';
 
 import * as styles from './page.css';
-import SuspenseMyScrapFeed from '@/app/(beforeLogin)/my/[text]/scrap/[category]/_component/SuspenseMyScrapFeed';
 
 type Props = {
   params: {

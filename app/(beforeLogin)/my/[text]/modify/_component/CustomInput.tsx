@@ -3,7 +3,7 @@
 import { useUser } from '@/app/(beforeLogin)/_state/useUser';
 import { ChangeEventHandler, useState } from 'react';
 import { usePointForm } from '@/app/store/useTranslate';
-import Edit from '@/app/icon/edit-gray.png';
+import Edit from '@/app/icon/edit-gray.svg';
 import Image from 'next/image';
 
 import * as styles from './customInput.css';

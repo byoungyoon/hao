@@ -4,9 +4,9 @@ import Heading from '@/app/components/text/Heading';
 import Image from 'next/image';
 import Button from '@/app/components/button/Button';
 import { useModal } from '@/app/store/useModal';
+import { useMemo } from 'react';
 
 import * as styles from './textModal.css';
-import { useMemo } from 'react';
 
 type Props = {
   text: string[] | string;

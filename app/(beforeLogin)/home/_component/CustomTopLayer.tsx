@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import Header from '@/app/icon/home/header.png';
+import Header from '@/app/icon/home/header.svg';
 import Image from 'next/image';
 import Link from 'next/link';
 

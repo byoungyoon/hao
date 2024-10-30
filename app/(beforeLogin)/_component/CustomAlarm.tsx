@@ -1,7 +1,7 @@
 'use client';
 
-import AlarmOn from '@/app/icon/alarm-on.png';
-import AlarmOff from '@/app/icon/alarm.png';
+import AlarmOn from '@/app/icon/alarm-on.svg';
+import AlarmOff from '@/app/icon/alarm.svg';
 import Image from 'next/image';
 import { useParams, useRouter } from 'next/navigation';
 import { useAlarm } from '@/app/(beforeLogin)/_state/useAlarm';

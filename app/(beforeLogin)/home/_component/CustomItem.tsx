@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import Body from '@/app/components/text/Body';
-import Like from '@/app/icon/like-activate.png';
-import LikeOff from '@/app/icon/like-deactivate.png';
-import Comment from '@/app/icon/comment.png';
+import Like from '@/app/icon/like-activate.svg';
+import LikeOff from '@/app/icon/like-deactivate.svg';
+import Comment from '@/app/icon/comment.svg';
 import Default from '@/app/image/top5_default.png';
 
 import cx from 'classnames';

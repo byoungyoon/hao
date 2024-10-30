@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Body from '@/app/components/text/Body';
-import Arrow from '@/app/icon/arrow-white.png';
+import Arrow from '@/app/icon/arrow-white.svg';
 import { useUser } from '@/app/(beforeLogin)/_state/useUser';
 
 import * as styles from './customInfo.css';

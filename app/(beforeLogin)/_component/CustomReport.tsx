@@ -1,6 +1,6 @@
 'use client';
 
-import Report from '@/app/icon/report.png';
+import Report from '@/app/icon/report.svg';
 import Image from 'next/image';
 import Body from '@/app/components/text/Body';
 import { useMemo } from 'react';

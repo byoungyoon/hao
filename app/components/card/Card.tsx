@@ -2,11 +2,11 @@ import cx from 'classnames';
 import Image from 'next/image';
 import Body from '@/app/components/text/Body';
 import InfoLayer from '@/app/components/layer/InfoLayer';
-import Like from '@/app/icon/like-activate.png';
-import LikeOff from '@/app/icon/like-deactivate.png';
-import Comment from '@/app/icon/comment.png';
-import Bookmark from '@/app/icon/bookmark-activate.png';
-import BookmarkOff from '@/app/icon/bookmark-deactivate.png';
+import Like from '@/app/icon/like-activate.svg';
+import LikeOff from '@/app/icon/like-deactivate.svg';
+import Comment from '@/app/icon/comment.svg';
+import Bookmark from '@/app/icon/bookmark-activate.svg';
+import BookmarkOff from '@/app/icon/bookmark-deactivate.svg';
 
 import * as styles from './card.css';
 

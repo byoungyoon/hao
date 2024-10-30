@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import Vector from '@/app/icon/vector.png';
+import Vector from '@/app/icon/vector.svg';
 import { useWritingForm } from '@/app/store/useTranslate';
 import { ChangeEventHandler, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';

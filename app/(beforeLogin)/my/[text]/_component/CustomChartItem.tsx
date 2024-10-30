@@ -1,6 +1,6 @@
 import Heading from '@/app/components/text/Heading';
 import cx from 'classnames';
-import Arrow from '@/app/icon/arrow-white.png';
+import Arrow from '@/app/icon/arrow-white.svg';
 import Image from 'next/image';
 import Body from '@/app/components/text/Body';
 

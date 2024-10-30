@@ -3,12 +3,12 @@
 import Image from 'next/image';
 import cx from 'classnames';
 import Body from '@/app/components/text/Body';
-import Edit from '@/app/icon/edit-gray.png';
-import Trash from '@/app/icon/trash-gray.png';
-import Like from '@/app/icon/like-activate.png';
-import LikeOff from '@/app/icon/like-deactivate.png';
-import Adopt from '@/app/icon/adopt-activate.png';
-import AdoptOff from '@/app/icon/adopt-deactivate.png';
+import Edit from '@/app/icon/edit-gray.svg';
+import Trash from '@/app/icon/trash-gray.svg';
+import Like from '@/app/icon/like-activate.svg';
+import LikeOff from '@/app/icon/like-deactivate.svg';
+import Adopt from '@/app/icon/adopt-activate.svg';
+import AdoptOff from '@/app/icon/adopt-deactivate.svg';
 import { useState } from 'react';
 import CustomCommentEditMode from '@/app/components/template/feedOne/_component/CustomCommentEditMode';
 import { useFeedCommentDelete } from '@/app/components/template/feedOne/_state/useFeedCommentDelete';

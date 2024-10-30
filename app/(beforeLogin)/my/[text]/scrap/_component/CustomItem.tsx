@@ -1,4 +1,4 @@
-import Arrow from '@/app/icon/arrow-right.png';
+import Arrow from '@/app/icon/arrow-right.svg';
 import Image from 'next/image';
 import { ReactNode } from 'react';
 import Body from '@/app/components/text/Body';

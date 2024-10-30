@@ -1,7 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import Heart from '@/app/icon/like-activate.png';
+import Heart from '@/app/icon/like-activate.svg';
 import { useHeart } from '@/app/store/useHeart';
 
 import * as styles from './heartCanvas.css';

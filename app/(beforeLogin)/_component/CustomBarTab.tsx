@@ -1,13 +1,13 @@
 'use client';
 
-import HomeOn from '@/app/icon/home/on.png';
-import HomeOff from '@/app/icon/home/off.png';
-import FeedOn from '@/app/icon/feed/on.png';
-import FeedOff from '@/app/icon/feed/off.png';
-import MyPageOn from '@/app/icon/mypage/on.png';
-import MyPageOff from '@/app/icon/mypage/off.png';
-import WritingOn from '@/app/icon/writing/on.png';
-import WritingOff from '@/app/icon/writing/off.png';
+import HomeOn from '@/app/icon/home/on.svg';
+import HomeOff from '@/app/icon/home/off.svg';
+import FeedOn from '@/app/icon/feed/on.svg';
+import FeedOff from '@/app/icon/feed/off.svg';
+import MyPageOn from '@/app/icon/mypage/on.svg';
+import MyPageOff from '@/app/icon/mypage/off.svg';
+import WritingOn from '@/app/icon/writing/on.svg';
+import WritingOff from '@/app/icon/writing/off.svg';
 import { useMemo } from 'react';
 import BarTab from '@/app/components/tab/BarTab';
 import { useRouter } from 'next/navigation';

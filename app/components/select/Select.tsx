@@ -1,6 +1,6 @@
 import Body from '@/app/components/text/Body';
 import { useEffect, useRef, useState } from 'react';
-import Arrow from '@/app/icon/feed_filter_arrow.png';
+import Arrow from '@/app/icon/feed_filter_arrow.svg';
 import Image from 'next/image';
 import cx from 'classnames';
 import { AnimatePresence, motion } from 'framer-motion';
