@@ -34,6 +34,7 @@ export default function CustomImage() {
     if (image.length >= 3 || !window) return;
 
     const userAgent =
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       navigator.userAgent || navigator.vendor || (window as any).opera;
 
     const isWebView =
@@ -42,6 +43,7 @@ export default function CustomImage() {
       userAgent.includes('WebView');
 
     if (isWebView) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       (window as any).ImageHandler.postMessage('');
     } else {
       const fileInput = document.getElementById('file') as HTMLInputElement;
