@@ -29,7 +29,7 @@ export default function CustomInput() {
         className={styles.input}
         value={nickName}
         onChange={onChangeInput}
-        placeholder='2~5자로 입력해줘'
+        placeholder='2~8자로 입력해줘'
       />
       <Image
         src={Edit.src}

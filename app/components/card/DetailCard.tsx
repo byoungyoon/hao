@@ -95,7 +95,7 @@ export default function DetailCard({
         <div className={styles.userGroup}>
           <span className={cx(styles.imageLayer, `age${user.age}`)}>
             <Image
-              src={`data:image/png;base64,${user.profill}`}
+              src={`data:image/svg+xml;base64,${user.profill}`}
               alt='user'
               width={26}
               height={25}

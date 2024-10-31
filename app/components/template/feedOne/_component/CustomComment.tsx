@@ -71,7 +71,7 @@ export default function CustomComment({
     <div className={styles.comment}>
       <div className={cx(styles.imageLayer, `age${age}`)}>
         <Image
-          src={`data:image/png;base64,${image}`}
+          src={`data:image/svg+xml;base64,${image}`}
           alt='comment'
           width={15}
           height={13}

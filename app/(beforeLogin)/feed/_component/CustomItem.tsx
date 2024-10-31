@@ -74,7 +74,7 @@ export default function CustomItem({
         <div className={styles.userGroup}>
           <span className={cx(styles.imageLayer, `age${age}`)}>
             <Image
-              src={`data:image/png;base64,${image}`}
+              src={`data:image/svg+xml;base64,${image}`}
               alt='user'
               width={26}
               height={25}

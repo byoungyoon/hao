@@ -68,7 +68,7 @@ export default function CustomItemGroup() {
           count: datum.count,
           icon: (
             <Image
-              src={`data:image/png;base64,${datum.image}`}
+              src={`data:image/svg+xml;base64,${datum.image}`}
               alt='scrap'
               width={LAYOUTS[index % LAYOUTS.length].width}
               height={LAYOUTS[index % LAYOUTS.length].height}
