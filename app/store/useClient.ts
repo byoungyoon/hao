@@ -1,47 +1,20 @@
 import { create } from 'zustand';
 
 type State = {
-  vote: Record<
-    number,
-    {
-      state: boolean;
-      trueCount: number;
-      falseCount: number;
-    }
-  >;
-  scrap: Record<number, boolean>;
+  vote: Record<number, boolean>;
 };
 
 type Action = {
-  updateVote: (
-    id: number,
-    state: boolean,
-    trueCount: number,
-    falseCount: number,
-  ) => void;
-
-  updateScrap: (id: number, state: boolean) => void;
+  updateVote: (id: number, state: boolean) => void;
 };
 
-export const useClient = create<State & Action>((set) => ({
+export const useClient = create<State & Action>((set, get) => ({
   vote: {},
-  scrap: {},
 
-  updateVote: (id, state, trueCount, falseCount) => {
-    set(({ vote }) => ({
-      vote: {
-        ...vote,
-        [id]: {
-          state: state,
-          trueCount: trueCount,
-          falseCount: falseCount,
-        },
-      },
-    }));
+  updateVote: (id, state) => {
+    const { vote } = get();
+
+    vote[id] = state;
+    set(() => ({ vote: vote }));
   },
-
-  updateScrap: (id, state) =>
-    set(({ scrap }) => ({
-      scrap: { ...scrap, [id]: state },
-    })),
 }));

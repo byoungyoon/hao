@@ -10,5 +10,7 @@ type Props = {
 export default function CustomText({ category }: Props) {
   const { localData } = useMyScrapFeed({ category: category });
 
+  console.log(localData);
+
   return <Body size='5'>총 {localData.length}건</Body>;
 }
