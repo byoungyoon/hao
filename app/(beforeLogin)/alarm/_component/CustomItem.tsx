@@ -133,6 +133,7 @@ export default function CustomItem({
         tabIndex={0}
         className={styles.modeLayer}
         onClick={onDelete}
+        onTouchEnd={onDelete}
       >
         <Image src={Delete} alt='delete' />
       </div>
