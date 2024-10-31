@@ -28,7 +28,7 @@ export default function MyModifyPage() {
         <article className={styles.nicknameArticle}>
           <CustomInput />
           <Body size='5' className={styles.nicknameAside}>
-            2~5자로 입력해줘
+            2~8자로 입력해줘
           </Body>
         </article>
         <div className={styles.buttonLayer}>

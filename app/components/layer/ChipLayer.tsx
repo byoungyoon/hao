@@ -18,7 +18,10 @@ export default function ChipLayer({ text, color, onClick }: Props) {
       className={cx(styles.layer, color)}
       onClick={onClick}
     >
-      <Body size='4' className={cx(styles.layerText, color)}>
+      <Body
+        size={color === 'orange' ? '4' : '3'}
+        className={cx(styles.layerText, color)}
+      >
         {text}
       </Body>
     </div>

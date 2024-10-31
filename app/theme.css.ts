@@ -22,7 +22,7 @@ export const [themeClass, vars] = createTheme({
     },
     gray: {
       white: '#fff',
-      background: '#f6f6f6',
+      background: '#f6f7f9',
       100: '#f1f1f1',
       200: '#a7a7a7',
       300: '#7a7a7a',

@@ -75,7 +75,7 @@ type Props = {
   option: CardDetailOptionTypes;
 
   onVote?: MouseEventHandler<HTMLImageElement>;
-  onScrap?: () => void;
+  onScrap?: MouseEventHandler<HTMLImageElement>;
   onDelete?: () => void;
   onEdit?: () => void;
 };

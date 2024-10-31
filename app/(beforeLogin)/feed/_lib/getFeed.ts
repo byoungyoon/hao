@@ -25,6 +25,7 @@ export type FeedDataTypes = {
 export type FeedResponseTypes = {
   hasPage: boolean;
   data: FeedDataTypes[];
+  totalCnt: number;
 };
 
 type Props = {

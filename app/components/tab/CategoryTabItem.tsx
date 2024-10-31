@@ -25,7 +25,10 @@ export default function CategoryTabItem({ text, isSelect, onClick }: Props) {
       className={cx(styles.item, isSelect && 'select')}
       onClick={onClick}
     >
-      <Body size='4' className={cx(styles.text, isSelect && 'select')}>
+      <Body
+        size={isSelect ? '4' : '3'}
+        className={cx(styles.text, isSelect && 'select')}
+      >
         {text}
       </Body>
       {isSelect && (

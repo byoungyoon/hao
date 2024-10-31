@@ -18,9 +18,7 @@ export default function BeforeLoginLayout({ children }: Props) {
           <Modal />
         </RQProvider>
       </div>
-      <footer className={styles.footer}>
-        <CustomBarTab />
-      </footer>
+      <CustomBarTab />
     </main>
   );
 }

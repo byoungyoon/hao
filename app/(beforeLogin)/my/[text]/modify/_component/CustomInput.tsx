@@ -1,5 +1,7 @@
 'use client';
 
+const LIMIT = 8;
+
 import { useUser } from '@/app/(beforeLogin)/_state/useUser';
 import { ChangeEventHandler, useState } from 'react';
 import { usePointForm } from '@/app/store/useTranslate';
@@ -14,6 +16,8 @@ export default function CustomInput() {
 
   const [nickName, setNickName] = useState(userData.nickname);
   const onChangeInput: ChangeEventHandler<HTMLInputElement> = (event) => {
+    if (event.target.value.length > LIMIT) return;
+
     setNickName(event.target.value);
     updateNickname(event.target.value);
   };

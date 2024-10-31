@@ -10,6 +10,7 @@ export const useFeedOne = ({ id }: Props) => {
   const { data } = useQuery({
     queryKey: ['feed', id],
     queryFn: getFeedOne,
+    staleTime: 0,
   });
 
   const localData = useMemo(() => {

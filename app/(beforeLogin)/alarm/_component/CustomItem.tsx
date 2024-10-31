@@ -103,7 +103,7 @@ export default function CustomItem({
       >
         <Image
           className={cx(styles.image, !isAlive && 'noAlive')}
-          src={`data:image/png;base64,${image}`}
+          src={`data:image/svg+xml;base64,${image}`}
           alt='alarm'
           width={38}
           height={38}

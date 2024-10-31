@@ -33,6 +33,7 @@ export default function CustomCardGroup({ category }: Props) {
             profill: datum.img,
           }}
           data={{
+            id: datum.id,
             date: datum.createdAt,
             title: datum.subject,
             subTitle: datum.body,

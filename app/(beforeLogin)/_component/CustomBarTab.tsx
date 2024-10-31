@@ -17,9 +17,14 @@ import { useModal } from '@/app/store/useModal';
 import TextModal from '@/app/components/modal/TextModal';
 import Image from '@/app/image/character/modal-intercept.svg';
 import { vars } from '@/app/theme.css';
+import cx from 'classnames';
+
+import * as styles from './customBarTab.css';
 
 export default function CustomBarTab() {
   const router = useRouter();
+  // const searchParams = useSearchParams();
+
   const check = useWritingForm((state) => state.check);
   const { openModal, closeModal } = useModal();
 
@@ -90,5 +95,9 @@ export default function CustomBarTab() {
     }
   };
 
-  return <BarTab data={data} onTrackable={onTrackableTab} />;
+  return (
+    <footer className={cx(styles.footer)}>
+      <BarTab data={data} onTrackable={onTrackableTab} />
+    </footer>
+  );
 }

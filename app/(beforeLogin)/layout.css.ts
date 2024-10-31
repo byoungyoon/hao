@@ -15,9 +15,3 @@ export const container = style({
 export const body = style({
   flexGrow: 1,
 });
-
-export const footer = style({
-  position: 'sticky',
-  boxShadow: vars.shadow.top,
-  height: 60,
-});
