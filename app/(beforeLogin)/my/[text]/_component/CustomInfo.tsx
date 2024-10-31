@@ -15,7 +15,7 @@ export default function CustomInfo() {
       <div className={styles.infoModifyImage}>
         <div className={styles.infoModifyImageLayer}>
           <Image
-            src={`data:image/png;base64,${localData.profile}`}
+            src={`data:image/svg+xml;base64,${localData.profile}`}
             alt='default'
             layout='fill'
             unoptimized

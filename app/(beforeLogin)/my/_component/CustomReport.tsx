@@ -48,7 +48,7 @@ export default function CustomReport() {
   };
 
   const onClickItem = (item: string) => () => {
-    router.push(`/my/스크랩/scrap/${item}`);
+    router.push(`/my/후회/${item}`);
   };
 
   if (myData.report.length === 0)
