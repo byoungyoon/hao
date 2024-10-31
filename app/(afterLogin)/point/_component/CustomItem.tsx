@@ -19,7 +19,7 @@ export default function CustomItem({ className, image, onClick }: Props) {
       onClick={onClick}
     >
       <Image
-        src={`data:image/png;base64,${image}`}
+        src={`data:image/svg+xml;base64,${image}`}
         alt='point'
         width={138}
         height={143}

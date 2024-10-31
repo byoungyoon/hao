@@ -1,4 +1,5 @@
 import { style } from '@vanilla-extract/css';
+import { vars } from '@/app/theme.css';
 
 export const container = style({
   width: '100%',
@@ -6,6 +7,10 @@ export const container = style({
   height: '100vh',
   display: 'flex',
   flexDirection: 'column',
+
+  maxWidth: 425,
+  margin: '0 auto',
+  background: vars.color.gray.white,
 });
 
 export const header = style({
