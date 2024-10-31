@@ -10,6 +10,7 @@ import Default from '@/app/image/top5_default.png';
 import cx from 'classnames';
 import { makeSplitText } from '@/app/util/makeSplitText';
 import * as styles from './customItem.css';
+import { MouseEventHandler } from 'react';
 
 export type CustomItemDataTypes = {
   num: number;
@@ -22,6 +23,7 @@ export type CustomItemDataTypes = {
   isLike?: boolean;
 
   onClick?: () => void;
+  onVote?: () => void;
 };
 
 type Props = CustomItemDataTypes;
@@ -35,7 +37,14 @@ export default function CustomItem({
   comment,
   isLike,
   onClick,
+  onVote,
 }: Props) {
+  const onClickVote: MouseEventHandler<HTMLImageElement> = (event) => {
+    event.stopPropagation();
+
+    if (onVote) onVote();
+  };
+
   return (
     <div role='button' tabIndex={0} className={styles.item} onClick={onClick}>
       <div className={styles.numLayer}>
@@ -69,6 +78,7 @@ export default function CustomItem({
             alt='like'
             width={24}
             height={24}
+            onClick={onClickVote}
           />
           <Body size='6' className={cx(styles.countText, isLike && 'orange')}>
             {like}

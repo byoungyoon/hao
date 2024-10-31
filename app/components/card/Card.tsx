@@ -1,3 +1,5 @@
+'use client';
+
 import cx from 'classnames';
 import Image from 'next/image';
 import Body from '@/app/components/text/Body';
@@ -7,6 +9,10 @@ import LikeOff from '@/app/icon/like-deactivate.svg';
 import Comment from '@/app/icon/comment.svg';
 import Bookmark from '@/app/icon/bookmark-activate.svg';
 import BookmarkOff from '@/app/icon/bookmark-deactivate.svg';
+import { useFeedVote } from '@/app/(beforeLogin)/_state/useFeedVote';
+import { useClient } from '@/app/store/useClient';
+import { useMemo } from 'react';
+import { useFeedScrap } from '@/app/(beforeLogin)/_state/useFeedScrap';
 
 import * as styles from './card.css';
 
@@ -26,6 +32,7 @@ export type CardUserTypes = {
 };
 
 export type CardDataTypes = {
+  id: number;
   /**
    * 작성 날짜
    */
@@ -88,13 +95,44 @@ type Props = {
 };
 
 export default function Card({ user, data, option, onClick }: Props) {
+  const { vote, scrap } = useClient();
+
+  const localVote = useMemo(() => {
+    const find = vote[data.id];
+    if (!find)
+      return {
+        state: option.isVote,
+        trueCount: option.isVote ? data.voteCount : data.voteCount + 1,
+        falseCount: option.isVote ? data.voteCount - 1 : data.voteCount,
+      };
+
+    return find;
+  }, [vote, data, option]);
+
+  const localScrap = useMemo(() => {
+    const find = scrap[data.id];
+    if (!find) return option.isScrap;
+
+    return find;
+  }, [scrap, data, option]);
+
+  const { onVote } = useFeedVote({
+    id: data.id,
+    vote: localVote,
+  });
+
+  const { onScrap } = useFeedScrap({
+    id: data.id,
+    state: localScrap,
+  });
+
   return (
     <div role='button' tabIndex={0} className={styles.item} onClick={onClick}>
       <hgroup className={styles.hgroup}>
         <div className={styles.userGroup}>
           <span className={cx(styles.imageLayer, `age${user.age}`)}>
             <Image
-              src={`data:image/png;base64,${user.profill}`}
+              src={`data:image/svg+xml;base64,${user.profill}`}
               alt='user'
               width={26}
               height={25}
@@ -150,16 +188,17 @@ export default function Card({ user, data, option, onClick }: Props) {
         <div className={styles.countSubLayer}>
           <div className={styles.countGroup}>
             <Image
-              src={option.isVote ? Like : LikeOff}
+              src={localVote.state ? Like : LikeOff}
               alt='list'
               width={24}
               height={24}
+              onClick={onVote}
             />
             <Body
               size='5'
-              className={cx(styles.countText, option.isVote && 'orange')}
+              className={cx(styles.countText, localVote.state && 'orange')}
             >
-              {data.voteCount}
+              {localVote.state ? localVote.trueCount : localVote.falseCount}
             </Body>
           </div>
           <div className={styles.countGroup}>
@@ -170,10 +209,11 @@ export default function Card({ user, data, option, onClick }: Props) {
           </div>
         </div>
         <Image
-          src={option.isScrap ? Bookmark : BookmarkOff}
+          src={localScrap ? Bookmark : BookmarkOff}
           alt='list'
           width={24}
           height={24}
+          onClick={onScrap}
         />
       </div>
     </div>

@@ -9,9 +9,9 @@ export type FeedDataTypes = {
   thumbnail: string;
   userId: string;
   age: number;
-  isAdopte: boolean;
+  isAdopted: boolean;
   nickname: string;
-  categpry: string;
+  category: string;
   type: '후시딘' | '후추';
   createdAt: string;
   images: string[];

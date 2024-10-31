@@ -1,5 +1,4 @@
 import CustomText from '@/app/(beforeLogin)/my/[text]/scrap/[category]/_component/CustomText';
-import { Suspense } from 'react';
 import CustomCardGroup from '@/app/(beforeLogin)/my/[text]/scrap/[category]/_component/CustomCardGroup';
 import CustomNext from '@/app/(beforeLogin)/my/[text]/scrap/[category]/_component/CustomNext';
 import SuspenseMyScrapFeed from '@/app/(beforeLogin)/my/[text]/scrap/[category]/_component/SuspenseMyScrapFeed';
@@ -18,15 +17,9 @@ export default function MyScrapCategoryPage({ params }: Props) {
   return (
     <section className={styles.section}>
       <SuspenseMyScrapFeed category={category}>
-        <Suspense fallback={<>loading...</>}>
-          <CustomText category={category} />
-        </Suspense>
-        <Suspense fallback={<>loading...</>}>
-          <CustomCardGroup category={category} />
-        </Suspense>
-        <Suspense fallback={<>loading...</>}>
-          <CustomNext category={category} />
-        </Suspense>
+        <CustomText category={category} />
+        <CustomCardGroup category={category} />
+        <CustomNext category={category} />
       </SuspenseMyScrapFeed>
     </section>
   );

@@ -12,6 +12,7 @@ import CustomMyTitle from '@/app/(beforeLogin)/my/_component/CustomMyTitle';
 import CustomScrapTitle from '@/app/(beforeLogin)/my/_component/CustomScrapTitle';
 import CustomReport from '@/app/(beforeLogin)/my/_component/CustomReport';
 import CustomLogout from '@/app/(beforeLogin)/my/_component/CustomLogout';
+import CustomArticle from '@/app/(beforeLogin)/my/_component/CustomArticle';
 
 import * as styles from './page.css';
 
@@ -19,7 +20,10 @@ export default function MyPage() {
   return (
     <section className={styles.section}>
       <SuspenseMy>
-        <article className={styles.infoArticle}>
+        <CustomArticle
+          className={styles.infoArticle}
+          transition={{ duration: 0.3 }}
+        >
           <hgroup className={styles.infoHgroup}>
             <CustomTitle />
             <Body size='5' className={styles.infoAside}>
@@ -63,14 +67,17 @@ export default function MyPage() {
               />
             </CustomCallback>
           </div>
-        </article>
+        </CustomArticle>
         <div className={styles.border} />
-        <article className={styles.reportArticle}>
+        <CustomArticle
+          className={styles.reportArticle}
+          transition={{ delay: 0.3, duration: 0.3 }}
+        >
           <Heading size='2' className={styles.reportTitle}>
             후해 리포트
           </Heading>
           <CustomReport />
-        </article>
+        </CustomArticle>
       </SuspenseMy>
       <div className={styles.logoutLayer}>
         <CustomLogout />
