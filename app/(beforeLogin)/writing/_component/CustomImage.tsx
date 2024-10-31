@@ -16,18 +16,26 @@ export default function CustomImage() {
     const files = event.target.files;
     if (!files || files.length === 0) return;
 
-    const reader = new FileReader();
-    reader.onload = () => {
-      const base64Image = reader.result as string;
+    const selectedFiles = Array.from(files).slice(0, 3);
 
+    const readers = selectedFiles.map((file) => {
+      return new Promise<string>((resolve) => {
+        const reader = new FileReader();
+        reader.onload = () => {
+          const base64Image = reader.result as string;
+          resolve(base64Image.split(',')[1]);
+        };
+        reader.readAsDataURL(file);
+      });
+    });
+
+    Promise.all(readers).then((base64Images) => {
       setImage((prevState) => {
-        const result = prevState.concat(base64Image.split(',')[1]);
+        const result = prevState.concat(base64Images).slice(0, 3);
         updateImages(result);
-
         return result;
       });
-    };
-    reader.readAsDataURL(files[0]);
+    });
   };
 
   const onClick = () => {
@@ -84,6 +92,7 @@ export default function CustomImage() {
         className={styles.file}
         onChange={onFileChange}
         accept='.png,.jpg'
+        multiple
       />
       {image.map((datum, index) => (
         <div key={index} className={styles.imageLayer}>
