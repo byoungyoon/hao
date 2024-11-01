@@ -20,15 +20,15 @@ export default function WritingModifyPage() {
           </Suspense>
         </div>
         <CustomInput />
-        <div className={styles.textareaLayer}>
-          <CustomTextarea />
-        </div>
+        <CustomTextarea />
         <CustomReport mode='다중' />
-        <CustomImage />
+        <div className={styles.imageGroupLayer}>
+          <CustomImage />
+        </div>
       </article>
       <article className={styles.optionArticle}>
         <Body size='1'>내가 원하는 답변은</Body>
-        <CustomOptionGroup />
+        <CustomOptionGroup isDisabled />
         <CustomButton />
       </article>
     </section>

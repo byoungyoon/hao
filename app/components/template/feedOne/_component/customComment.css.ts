@@ -109,3 +109,9 @@ export const image = style({
   position: 'relative',
   zIndex: 1,
 });
+
+export const commentText = style({
+  color: vars.color.gray['400'],
+  wordBreak: 'break-all',
+  whiteSpace: 'normal',
+});

@@ -4,20 +4,30 @@ import Comment from '@/app/icon/comment-image.svg';
 import Image from 'next/image';
 import Remove from '@/app/icon/image-remove.svg';
 import Button from '@/app/components/button/Button';
-import { ChangeEvent, ChangeEventHandler, useEffect, useState } from 'react';
+import { ChangeEvent, ChangeEventHandler, useEffect, useMemo } from 'react';
 import TextareaAutosize from 'react-textarea-autosize';
 import { useFeedCommentSave } from '@/app/components/template/feedOne/_state/useFeedCommentSave';
 import { makeFile } from '@/app/util/makeFile';
 
 import * as styles from './customCommentInput.css';
+import { useCommentForm } from '@/app/store/useTranslate';
 
 type Props = {
   id: number;
 };
 
 export default function CustomCommentInput({ id }: Props) {
-  const [value, setValue] = useState('');
-  const [image, setImage] = useState('');
+  const { value, image, target, updateValue, updateImage } = useCommentForm();
+
+  const defaultValue = useMemo(() => value, [target]);
+  const defaultImage = useMemo(() => image, [target]);
+
+  const isResult = useMemo(() => {
+    if (target !== 0 && defaultImage === image && defaultValue === value)
+      return false;
+
+    return !(value === '' && image === '');
+  }, [target, value, image]);
 
   const onFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files;
@@ -26,7 +36,7 @@ export default function CustomCommentInput({ id }: Props) {
     const reader = new FileReader();
     reader.onload = () => {
       const base64Image = reader.result as string;
-      setImage(base64Image.split(',')[1]);
+      updateImage(base64Image.split(',')[1]);
     };
     reader.readAsDataURL(files[0]);
   };
@@ -48,25 +58,26 @@ export default function CustomCommentInput({ id }: Props) {
   };
 
   const onChangeInput: ChangeEventHandler<HTMLTextAreaElement> = (event) => {
-    setValue(event.target.value);
+    updateValue(event.target.value);
   };
 
   const onReset = () => {
-    setValue('');
+    updateValue('');
     onRemove();
   };
 
   const { onResult, isPending } = useFeedCommentSave({
     id: id,
+    targetId: target,
     onReset: onReset,
   });
 
   const onClick = () => {
-    onResult(value, makeFile(image, 'file1'));
+    onResult(value, makeFile(image, 'file1.png'));
   };
 
   const onRemove = () => {
-    setImage('');
+    updateImage('');
 
     const fileInput = document.getElementById('file') as HTMLInputElement;
     fileInput.value = '';
@@ -75,7 +86,7 @@ export default function CustomCommentInput({ id }: Props) {
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (window as any).handleImage = function (base64Image: string) {
-      setImage(base64Image);
+      updateImage(base64Image);
     };
   }, []);
 
@@ -125,10 +136,10 @@ export default function CustomCommentInput({ id }: Props) {
         />
         <Button
           size='auto'
-          color={value === '' ? 'gray' : 'orange'}
+          color={isResult ? 'orange' : 'gray'}
           text='전송'
           className={styles.button}
-          disabled={isPending || value === ''}
+          disabled={isPending || !isResult}
           onClick={onClick}
         />
       </div>

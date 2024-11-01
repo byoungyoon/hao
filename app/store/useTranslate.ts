@@ -146,3 +146,35 @@ export const useTopButton = create<TopButtonState & TopButtonAction>((set) => ({
 
   action: (state) => set(() => ({ state: state })),
 }));
+
+type CommentState = {
+  target: number;
+  value: string;
+  image: string;
+};
+
+type CommentAction = {
+  updateComment: (
+    target: CommentState['target'],
+    value: CommentState['value'],
+    image: CommentState['image'],
+  ) => void;
+  updateValue: (value: CommentState['value']) => void;
+  updateImage: (value: CommentState['image']) => void;
+};
+
+export const useCommentForm = create<CommentState & CommentAction>((set) => ({
+  value: '',
+  image: '',
+  target: 0,
+
+  updateComment: (sTarget, value, image) => {
+    set(({ target }) => ({
+      target: target === sTarget ? 0 : sTarget,
+      value: target === sTarget ? '' : value,
+      image: target === sTarget ? '' : image,
+    }));
+  },
+  updateValue: (value) => set(() => ({ value: value })),
+  updateImage: (image) => set(() => ({ image: image })),
+}));

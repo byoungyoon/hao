@@ -32,7 +32,7 @@ export const textarea = style({
 });
 
 export const button = style({
-  height: '100%',
+  height: 36,
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
@@ -53,6 +53,7 @@ export const plusImage = style({
 
 export const layer = style({
   padding: '16px 24px 0 24px',
+  background: vars.color.gray.white,
 });
 
 export const imageLayer = style({

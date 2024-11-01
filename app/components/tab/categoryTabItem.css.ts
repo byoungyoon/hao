@@ -32,7 +32,7 @@ export const text = style({
 });
 
 export const border = style({
-  height: 3,
+  minHeight: 3,
   width: '100%',
   background: vars.color.orange['300'],
 });

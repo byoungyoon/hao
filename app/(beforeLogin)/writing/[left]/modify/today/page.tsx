@@ -28,7 +28,7 @@ export default function WritingModifyTodayPage() {
       </article>
       <article className={styles.optionArticle}>
         <Body size='1'>내가 원하는 답변은</Body>
-        <CustomOptionGroup />
+        <CustomOptionGroup isDisabled />
         <CustomButton isQuestion />
       </article>
     </section>

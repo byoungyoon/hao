@@ -9,11 +9,12 @@ import Like from '@/app/icon/like-activate.svg';
 import LikeOff from '@/app/icon/like-deactivate.svg';
 import Adopt from '@/app/icon/adopt-activate.svg';
 import AdoptOff from '@/app/icon/adopt-deactivate.svg';
-import { useState } from 'react';
-import CustomCommentEditMode from '@/app/components/template/feedOne/_component/CustomCommentEditMode';
 import { useFeedCommentDelete } from '@/app/components/template/feedOne/_state/useFeedCommentDelete';
 import { useFeedCommentVote } from '@/app/components/template/feedOne/_state/useFeedCommentVote';
 import { useFeedCommentAdopted } from '@/app/components/template/feedOne/_state/useFeedCommentAdopted';
+import CustomImage from '@/app/components/card/_component/CustomImage';
+import { useCommentForm } from '@/app/store/useTranslate';
+import { makeBase64 } from '@/app/util/makeFile';
 
 import * as styles from './customComment.css';
 
@@ -26,6 +27,7 @@ type Props = {
   age: number;
   comment: string;
   likeCount: number;
+  commentImage?: string;
 
   hasSelect?: boolean;
   isEdit?: boolean;
@@ -36,7 +38,6 @@ type Props = {
 };
 
 export default function CustomComment({
-  feedId,
   id,
   image,
   nickname,
@@ -44,6 +45,7 @@ export default function CustomComment({
   age,
   comment,
   likeCount,
+  commentImage,
   isEdit,
   isAdmin,
   hasSelect,
@@ -51,20 +53,18 @@ export default function CustomComment({
   isLike,
   isHost,
 }: Props) {
-  const [isEditMode, setIsEditMode] = useState(false);
-  const [localValue, setLocalValue] = useState(comment);
+  const { updateComment } = useCommentForm();
 
   const { onDelete } = useFeedCommentDelete({ id: id });
   const { onVote } = useFeedCommentVote({ id: id });
   const { onAdopted } = useFeedCommentAdopted({ id: id });
 
-  const onEdit = () => {
-    setIsEditMode(!isEditMode);
-  };
-
-  const onTrackableEditMode = (value: string) => {
-    setIsEditMode(false);
-    setLocalValue(value);
+  const onEdit = async () => {
+    updateComment(
+      id,
+      comment,
+      commentImage ? await makeBase64(commentImage) : '',
+    );
   };
 
   return (
@@ -115,13 +115,10 @@ export default function CustomComment({
           )}
         </hgroup>
         <div className={styles.contentLayer}>
-          <CustomCommentEditMode
-            id={id}
-            feedId={feedId}
-            defaultComment={localValue}
-            isEditMode={isEditMode}
-            onTrackable={onTrackableEditMode}
-          />
+          {commentImage && <CustomImage images={[commentImage]} />}
+          <Body size='6' className={styles.commentText}>
+            {comment}
+          </Body>
           <div className={styles.countLayer}>
             <div className={styles.countGroup}>
               <Image

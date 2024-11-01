@@ -13,6 +13,7 @@ export type FeedCommentDataTypes = {
   createdAt: string;
   img: string;
   isVoted: boolean;
+  commentImage: string;
 };
 
 export type FeedCommentResponseTypes = {

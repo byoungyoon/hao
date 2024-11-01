@@ -4,10 +4,11 @@ import { postFeedCommentSave } from '@/app/components/template/feedOne/_lib/post
 type Props = {
   id: number;
 
+  targetId: number;
   onReset?: () => void;
 };
 
-export const useFeedCommentSave = ({ id, onReset }: Props) => {
+export const useFeedCommentSave = ({ id, targetId, onReset }: Props) => {
   const queryClient = useQueryClient();
 
   const { mutate: onAction, isPending } = useMutation({
@@ -29,6 +30,7 @@ export const useFeedCommentSave = ({ id, onReset }: Props) => {
   const onResult = (body: string, image: File) => {
     onAction({
       id: id,
+      targetId: targetId,
       body: body,
       image: image,
     });

@@ -18,7 +18,9 @@ export default function FeedOne({ id }: Props) {
       <CustomDetailItem id={id} />
       <div className={styles.border} />
       <article className={styles.commentArticle}>
-        <CustomDetailReport id={id} />
+        <div className={styles.reportLayer}>
+          <CustomDetailReport id={id} />
+        </div>
         <CustomCommentList id={id} />
         <CustomNext id={id} />
       </article>

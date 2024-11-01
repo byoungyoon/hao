@@ -21,7 +21,7 @@ export default function WritingTodayPage() {
         </div>
         <CustomQuestion />
         <CustomTextarea isQuestion />
-        <CustomReport />
+        <CustomReport mode='다중' />
         <div className={styles.imageGroupLayer}>
           <CustomImage />
         </div>

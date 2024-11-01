@@ -10,6 +10,7 @@ import { useFeedDelete } from '@/app/components/template/feedOne/_state/useFeedD
 import { useClient } from '@/app/store/useClient';
 import { useRouter } from 'next/navigation';
 import { useWritingForm } from '@/app/store/useTranslate';
+import { makeBase64 } from '@/app/util/makeFile';
 
 type Props = {
   id: number;
@@ -46,12 +47,6 @@ export default function CustomDetailItem({ id }: Props) {
   });
   const { onDelete } = useFeedDelete({ id: id });
 
-  const covertImage = async (url: string) => {
-    const response = await fetch(url);
-    const buffer = await response.arrayBuffer();
-    return Buffer.from(buffer).toString('base64');
-  };
-
   const onEdit = async () => {
     updateCategory(feedData.category);
     updateBody(feedData.subTitle);
@@ -61,7 +56,7 @@ export default function CustomDetailItem({ id }: Props) {
 
     if (feedData.thumbnail) {
       const images = Promise.all(
-        feedData.thumbnail.map(async (datum) => await covertImage(datum)),
+        feedData.thumbnail.map(async (datum) => await makeBase64(datum)),
       );
 
       updateImages(await images);

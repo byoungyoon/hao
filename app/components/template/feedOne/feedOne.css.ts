@@ -25,3 +25,7 @@ export const input = style({
   boxShadow: vars.shadow.top,
   zIndex: 1,
 });
+
+export const reportLayer = style({
+  marginBottom: 16,
+});

@@ -6,10 +6,16 @@ import { useEffect } from 'react';
 
 import * as styles from './customOptionGroup.css';
 
-export default function CustomOptionGroup() {
+type Props = {
+  isDisabled?: boolean;
+};
+
+export default function CustomOptionGroup({ isDisabled }: Props) {
   const { type, updateType } = useWritingForm();
 
   const onClickOption = (sType: '후시딘' | '후추') => () => {
+    if (isDisabled) return;
+
     updateType(sType);
   };
 

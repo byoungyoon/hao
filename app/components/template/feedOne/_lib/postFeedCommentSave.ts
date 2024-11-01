@@ -3,6 +3,7 @@ import { POST } from '@/app/sevice/service';
 
 export type FeedCommentSaveRequestTypes = {
   id: number;
+  targetId: number;
   body: string;
   image?: File;
 };
@@ -10,9 +11,10 @@ export type FeedCommentSaveRequestTypes = {
 export const postFeedCommentSave: MutationFunction<
   object,
   FeedCommentSaveRequestTypes
-> = async ({ id, body, image }) => {
+> = async ({ id, targetId, body, image }) => {
   const formData = new FormData();
 
+  if (targetId !== 0) formData.append('id', `${targetId}`);
   formData.append('boardId', `${id}`);
   formData.append('body', body);
   if (image) formData.append('image', image);
