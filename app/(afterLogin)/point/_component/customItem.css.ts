@@ -7,4 +7,5 @@ export const item = style({
   alignItems: 'center',
   justifyContent: 'center',
   borderRadius: 8,
+  margin: '0 24px',
 });

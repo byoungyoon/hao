@@ -4,13 +4,14 @@ import { vars } from '@/app/theme.css';
 export const container = style({
   width: '100%',
   maxHeight: '100vh',
-  height: '100vh',
+  minHeight: '100vh',
   display: 'flex',
   flexDirection: 'column',
 
   maxWidth: 425,
   margin: '0 auto',
   background: vars.color.gray.white,
+  overflow: 'hidden',
 });
 
 export const header = style({

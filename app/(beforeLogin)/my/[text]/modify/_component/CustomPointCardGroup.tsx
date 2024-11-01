@@ -1,12 +1,15 @@
 'use client';
 
 import { useAgeForm, usePointForm } from '@/app/store/useTranslate';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { getPoint } from '@/app/(afterLogin)/point/_lib/getPoint';
 import cx from 'classnames';
 import PointCard from '@/app/components/card/PointCard';
 import { useUser } from '@/app/(beforeLogin)/_state/useUser';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import Slider from 'react-slick';
 
 import * as styles from './customPointCardGroup.css';
 
@@ -22,8 +25,6 @@ export default function CustomPointCardGroup() {
   );
 
   const [point, setPoint] = useState(userData.characterId);
-
-  const scrollRef = useRef<HTMLDivElement | null>(null);
 
   const { data } = useQuery({
     queryKey: ['point'],
@@ -56,26 +57,39 @@ export default function CustomPointCardGroup() {
     updatePoint(point);
   };
 
-  useEffect(() => {
-    if (localData.length === 0 || !scrollRef.current) return;
+  const onAfterChange = (current: number) => {
+    updatePoint(selectAge[current]);
+    setPoint(selectAge[current]);
+  };
 
-    const element = scrollRef.current!;
-    element.scrollLeft = (element.scrollWidth - element.clientWidth) / 2;
-  }, [localData, scrollRef]);
+  const settings = {
+    className: 'center',
+    centerMode: true,
+    focusOnSelect: true,
+    infinite: false,
+    centerPadding: '60px',
+    slidesToShow: 1,
+    speed: 500,
+    initialSlide: 1,
+
+    afterChange: onAfterChange,
+  };
 
   return (
-    <div ref={scrollRef} className={styles.group}>
-      {localData.map((datum) => (
-        <PointCard
-          key={datum.id}
-          image={datum.image}
-          className={cx(
-            styles.age[`age${localAge}`],
-            point === datum.id && 'select',
-          )}
-          onClick={onClickItem(datum.id)}
-        />
-      ))}
+    <div className={styles.group}>
+      <Slider {...settings}>
+        {localData.map((datum) => (
+          <PointCard
+            key={datum.id}
+            image={datum.image}
+            className={cx(
+              styles.age[`age${localAge}`],
+              point === datum.id && 'select',
+            )}
+            onClick={onClickItem(datum.id)}
+          />
+        ))}
+      </Slider>
     </div>
   );
 }
