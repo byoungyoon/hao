@@ -8,8 +8,21 @@ import Delete from '@/app/icon/alarm-delete.svg';
 import { useAlarmDelete } from '@/app/(beforeLogin)/alarm/_state/useAlarmDelete';
 import { useToast } from '@/app/store/useToast';
 import { useRouter } from 'next/navigation';
+import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+import duration from 'dayjs/plugin/duration';
+import { motion } from 'framer-motion';
 
 import * as styles from './customItem.css';
+
+dayjs.extend(utc);
+dayjs.extend(duration);
+
+const variants = {
+  initial: { opacity: 0 },
+  animate: { opacity: 1 },
+  exit: { opacity: 0 },
+};
 
 type Props = {
   id: number;
@@ -20,6 +33,7 @@ type Props = {
   type: 'LIKE' | 'COMMENT' | 'ADOPTED';
 
   isAlive?: boolean;
+  createdAt: string;
 };
 
 export default function CustomItem({
@@ -30,6 +44,7 @@ export default function CustomItem({
   nickname,
   type,
   isAlive,
+  createdAt,
 }: Props) {
   const router = useRouter();
   const updateToast = useToast((state) => state.updateToast);
@@ -48,6 +63,28 @@ export default function CustomItem({
     return '';
   }, [type]);
 
+  const localTime = useMemo(() => {
+    const time = dayjs(createdAt);
+    const now = dayjs();
+    const diffInMinutes = now.diff(time, 'minute');
+    const diffInHours = now.diff(time, 'hour');
+
+    if (diffInMinutes < 60) {
+      if (diffInMinutes === 0) {
+        return '방금';
+      } else if (diffInMinutes === 1) {
+        return '최근 1분 전';
+      } else {
+        return `최근 ${diffInMinutes}분 전`;
+      }
+    } else if (diffInHours < 24) {
+      return `${diffInHours}시간 전`;
+    } else {
+      const diffInDays = now.diff(time, 'day');
+      return `${diffInDays}일 전`;
+    }
+  }, [createdAt]);
+
   const onActionDown = (x: number) => {
     if (isMode) {
       return;
@@ -60,10 +97,10 @@ export default function CustomItem({
   const onActionMove = (x: number) => {
     if (!isDragging) return;
 
-    const dx = Math.min(startX - x, 100);
+    const dx = Math.min(startX - x, 80);
     setTranslateX(Math.max(dx, 0));
 
-    if (Math.max(dx, 0) >= 100) {
+    if (Math.max(dx, 0) >= 80) {
       setIsDragging(false);
       setIsMode(true);
     }
@@ -99,7 +136,12 @@ export default function CustomItem({
   };
 
   return (
-    <div
+    <motion.div
+      variants={variants}
+      initial='initial'
+      animate='animate'
+      exit='exit'
+      transition={{ duration: 0.4 }}
       className={cx(styles.item, !isAlive && 'noAlive')}
       onMouseDown={onMouseDown}
       onMouseMove={onMouseMove}
@@ -137,6 +179,9 @@ export default function CustomItem({
             </>
           )}
         </Body>
+        <Body size='5' className={styles.date}>
+          {localTime}
+        </Body>
       </div>
       <div
         role='button'
@@ -147,6 +192,6 @@ export default function CustomItem({
       >
         <Image src={Delete} alt='delete' />
       </div>
-    </div>
+    </motion.div>
   );
 }

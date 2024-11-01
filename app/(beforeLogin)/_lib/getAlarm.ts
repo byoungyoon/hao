@@ -10,6 +10,7 @@ export type AlarmDataTypes = {
   isAlive: boolean;
   age: number;
   page: number;
+  createdAt: string;
 };
 
 export type AlarmResponseTypes = {

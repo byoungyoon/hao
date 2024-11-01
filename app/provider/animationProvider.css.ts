@@ -10,4 +10,7 @@ export const container = style({
   zIndex: 2,
   overflow: 'scroll',
   background: vars.color.gray.white,
+  maxWidth: 425,
+  margin: '0 auto',
+  scrollbarWidth: 'none',
 });

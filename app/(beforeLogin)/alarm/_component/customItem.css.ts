@@ -6,7 +6,6 @@ export const item = style({
   alignItems: 'center',
   gap: 16,
   height: 112,
-  width: '100%',
   padding: '0 0 0 24px',
   position: 'relative',
   background: vars.color.gray.white,
@@ -81,4 +80,8 @@ export const modeLayer = style({
   justifyContent: 'center',
   cursor: 'pointer',
   height: '100%',
+});
+
+export const date = style({
+  color: vars.color.gray['300'],
 });

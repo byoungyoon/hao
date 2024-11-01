@@ -7,7 +7,7 @@ import {
 import { useMemo } from 'react';
 
 export const useAlarm = () => {
-  const { data } = useInfiniteQuery<
+  const { data, fetchNextPage, hasNextPage } = useInfiniteQuery<
     AlarmResponseTypes,
     object,
     InfiniteData<AlarmResponseTypes>,
@@ -36,5 +36,5 @@ export const useAlarm = () => {
     }, []);
   }, [data]);
 
-  return { localData };
+  return { localData, fetchNextPage, hasNextPage };
 };
