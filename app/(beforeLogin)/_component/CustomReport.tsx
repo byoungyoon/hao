@@ -3,7 +3,7 @@
 import Report from '@/app/icon/report.svg';
 import Image from 'next/image';
 import Body from '@/app/components/text/Body';
-import { useEffect, useMemo } from 'react';
+import { Fragment, useEffect, useMemo } from 'react';
 import { motion, useCycle } from 'framer-motion';
 
 import * as styles from './customReport.css';
@@ -15,10 +15,11 @@ type Props = {
 export default function CustomReport({ mode }: Props) {
   const text = useMemo(() => {
     if (mode === '후시딘')
-      return '작성자에게 긍정적으로 아물 수 있는 후시딘이 되어줘';
-    if (mode === '후추') return '작성자에게 진지하게 톡 쏘는 후추가 되어줘';
+      return ['작성자에게 긍정적으로 아물 수 있는 ', '후시딘', '이 되어줘'];
+    if (mode === '후추')
+      return ['작성자에게 진지하게 톡 쏘는 ', '후추', '가 되어줘'];
     if (mode === '작성자')
-      return '한 친구에게만 몰래 힘이 됐다는 말을 전해줄게';
+      return ['한 친구', '에게만 몰래 힘이 됐다는 말을 전해줄게', ''];
 
     if (mode === '다중')
       return [
@@ -27,7 +28,7 @@ export default function CustomReport({ mode }: Props) {
         '어떻게 하는 게 최선이었다고 생각해?',
       ];
 
-    return '';
+    return [];
   }, [mode]);
 
   const [currentText, cycleText] = useCycle(
@@ -58,9 +59,18 @@ export default function CustomReport({ mode }: Props) {
           </Body>
         </motion.div>
       ) : (
-        <Body size='6' className={styles.text}>
-          {text}
-        </Body>
+        <>
+          <Image src={Report} alt='report' width={24} height={24} />
+          <Body size='6' className={styles.text}>
+            {text.map((datum, index) =>
+              datum === '후시딘' || datum === '후추' || datum === '한 친구' ? (
+                <strong key={index}>{datum}</strong>
+              ) : (
+                <Fragment key={index}>{datum}</Fragment>
+              ),
+            )}
+          </Body>
+        </>
       )}
     </div>
   );

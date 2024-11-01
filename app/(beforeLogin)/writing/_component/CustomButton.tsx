@@ -5,6 +5,7 @@ import { useWritingForm } from '@/app/store/useTranslate';
 import { useUser } from '@/app/(beforeLogin)/_state/useUser';
 import { useEffect, useMemo } from 'react';
 import { useFeedSave } from '@/app/(beforeLogin)/writing/_state/useFeedSave';
+import { makeFile } from '@/app/util/makeFile';
 
 type Props = {
   isQuestion?: boolean;
@@ -21,18 +22,6 @@ export default function CustomButton({ isQuestion = false }: Props) {
     return !(title.length === 0 || category === '' || body.length === 0);
   }, [title, category, isQuestion, body]);
 
-  const base64ToFile = (base64String: string, filename: string) => {
-    const byteCharacters = atob(base64String);
-    const byteNumbers = new Uint8Array(byteCharacters.length);
-
-    for (let i = 0; i < byteCharacters.length; i++) {
-      byteNumbers[i] = byteCharacters.charCodeAt(i);
-    }
-
-    const blob = new Blob([byteNumbers], { type: 'image/png' });
-    return new File([blob], filename, { type: blob.type });
-  };
-
   const { onResult, isPending } = useFeedSave();
 
   const onLocalResult = () => {
@@ -43,9 +32,7 @@ export default function CustomButton({ isQuestion = false }: Props) {
       category: category,
       type: type,
       age: userData.age,
-      image: images.map((image, index) =>
-        base64ToFile(image, `file${index}.png`),
-      ),
+      image: images.map((image, index) => makeFile(image, `file${index}.png`)),
       isQuestion: isQuestion,
     });
   };

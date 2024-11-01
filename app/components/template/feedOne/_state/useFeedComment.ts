@@ -28,6 +28,8 @@ export const useFeedComment = ({ id }: Props) => {
     },
   });
 
+  console.log(data);
+
   const localData = useMemo(() => {
     if (!data) return [] as FeedCommentDataTypes[];
 

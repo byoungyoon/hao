@@ -49,7 +49,7 @@ export const nameLayer = style({
 export const nameGroup = style({
   display: 'flex',
   alignItems: 'center',
-  gap: 6,
+  gap: 8,
 });
 
 export const nickname = style({
@@ -65,8 +65,6 @@ export const date = style({
 });
 
 export const age = style({
-  padding: '4px 8px',
-  background: vars.color.orange['50'],
   color: vars.color.orange['300'],
   borderRadius: 100,
 });

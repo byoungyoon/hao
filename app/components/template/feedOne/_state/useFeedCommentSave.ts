@@ -26,10 +26,11 @@ export const useFeedCommentSave = ({ id, onReset }: Props) => {
     },
   });
 
-  const onResult = (body: string) => {
+  const onResult = (body: string, image: File) => {
     onAction({
       id: id,
       body: body,
+      image: image,
     });
   };
 

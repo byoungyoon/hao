@@ -7,24 +7,14 @@ export const topLayer = style({
 
   position: 'relative',
   zIndex: 999,
-
-  '@media': {
-    'screen and (max-width: 375px)': {
-      height: 476,
-    },
-    'screen and (max-width: 320px)': {
-      height: 463,
-    },
-  },
 });
 
 export const image = style({
-  width: '100%',
+  width: '92%',
   position: 'absolute',
   bottom: 0,
   right: 0,
   cursor: 'pointer',
-  maxWidth: 425,
 
   '@media': {
     'screen and (max-width: 375px)': {

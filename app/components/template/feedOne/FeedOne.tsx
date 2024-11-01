@@ -4,9 +4,9 @@ import CustomCommentList from '@/app/components/template/feedOne/_component/Cust
 import CustomCommentInput from '@/app/components/template/feedOne/_component/CustomCommentInput';
 import HeartCanvas from '@/app/components/canvas/HeartCanvas';
 import CustomNext from '@/app/components/template/feedOne/_component/CustomNext';
+import CustomToast from '@/app/(beforeLogin)/_component/CustomToast';
 
 import * as styles from './feedOne.css';
-import CustomToast from '@/app/(beforeLogin)/_component/CustomToast';
 
 type Props = {
   id: number;

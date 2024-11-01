@@ -50,3 +50,28 @@ export const plusImage = style({
     },
   },
 });
+
+export const layer = style({
+  padding: '16px 24px 0 24px',
+});
+
+export const imageLayer = style({
+  width: 81,
+  height: 75,
+  position: 'relative',
+});
+
+export const image = style({
+  borderRadius: 12,
+});
+
+export const file = style({
+  display: 'none',
+});
+
+export const remove = style({
+  position: 'absolute',
+  top: -7,
+  right: -7,
+  cursor: 'pointer',
+});

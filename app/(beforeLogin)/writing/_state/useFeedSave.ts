@@ -31,7 +31,6 @@ export const useFeedSave = () => {
 
       reset();
       updateToast('공유 완료!');
-
       router.push('/feed');
     },
   });
