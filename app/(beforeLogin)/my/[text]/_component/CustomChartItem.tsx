@@ -22,7 +22,7 @@ export default function CustomChartItem({ rank, count, text, onClick }: Props) {
       </Heading>
       <div className={cx(styles.block, `rank${rank}`)}>
         <Heading size='2' className={styles.blockRank}>
-          {rank}
+          {rank}위
         </Heading>
         <div className={styles.blockGroup}>
           <Body size='3' className={styles.blockGroupText}>

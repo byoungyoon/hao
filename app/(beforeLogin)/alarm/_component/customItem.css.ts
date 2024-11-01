@@ -54,21 +54,12 @@ export const textLayer = style({
   display: 'flex',
   flexDirection: 'column',
   gap: 6,
-  minWidth: 270,
 });
 
 export const title = style({
   selectors: {
     '&.noAlive': {
       color: vars.color.gray['300'],
-    },
-  },
-});
-
-export const message = style({
-  selectors: {
-    '&.noAlive': {
-      color: vars.color.gray['200'],
     },
   },
 });

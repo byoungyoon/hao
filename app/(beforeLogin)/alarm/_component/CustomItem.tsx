@@ -50,7 +50,6 @@ export default function CustomItem({
 
   const onActionDown = (x: number) => {
     if (isMode) {
-      setIsMode(false);
       return;
     }
 
@@ -90,6 +89,11 @@ export default function CustomItem({
   const { onDelete } = useAlarmDelete({ id: id });
 
   const onClickItem = () => {
+    if (isMode) {
+      setIsMode(false);
+      return;
+    }
+
     if (!isAlive) updateToast('작성자가 삭제해서 볼 수 없어');
     else router.push(`/feed/${boardId}`);
   };
