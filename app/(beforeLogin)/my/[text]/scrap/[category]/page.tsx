@@ -1,7 +1,4 @@
-import CustomText from '@/app/(beforeLogin)/my/[text]/scrap/[category]/_component/CustomText';
 import CustomCardGroup from '@/app/(beforeLogin)/my/[text]/scrap/[category]/_component/CustomCardGroup';
-import CustomNext from '@/app/(beforeLogin)/my/[text]/scrap/[category]/_component/CustomNext';
-import SuspenseMyScrapFeed from '@/app/(beforeLogin)/my/[text]/scrap/[category]/_component/SuspenseMyScrapFeed';
 
 import * as styles from './page.css';
 
@@ -16,11 +13,7 @@ export default function MyScrapCategoryPage({ params }: Props) {
 
   return (
     <section className={styles.section}>
-      <SuspenseMyScrapFeed category={category}>
-        <CustomText category={category} />
-        <CustomCardGroup category={category} />
-        <CustomNext category={category} />
-      </SuspenseMyScrapFeed>
+      <CustomCardGroup category={category} />
     </section>
   );
 }

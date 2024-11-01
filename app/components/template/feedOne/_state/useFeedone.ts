@@ -16,6 +16,7 @@ export const useFeedOne = ({ id }: Props) => {
   const localData = useMemo(() => {
     if (!data)
       return {
+        id: 0,
         image: '',
         nickname: '',
         date: '',
@@ -27,9 +28,13 @@ export const useFeedOne = ({ id }: Props) => {
         type: '후시딘' as '후시딘' | '후추',
         thumbnail: [],
         userId: '',
+        isLike: false,
+        isBookmark: false,
+        isQuestion: false,
       };
 
     return {
+      id: data.id,
       image: data.img,
       nickname: data.nickname,
       date: data.createdAt,

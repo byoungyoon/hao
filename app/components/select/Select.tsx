@@ -14,22 +14,25 @@ export type SelectTypes = {
 
 type Props = {
   data: SelectTypes[];
+  defaultSelect?: string;
 
   onTrackable?: (value: string) => void;
   className?: string;
 };
 
-export default function Select({ data, onTrackable, className }: Props) {
+export default function Select({
+  data,
+  defaultSelect,
+  onTrackable,
+  className,
+}: Props) {
   const ref = useRef<HTMLDivElement | null>(null);
   const [open, setOpen] = useState(false);
 
   const [localDatum, setLocalDatum] = useState(
-    data.length > 0
-      ? data[0]
-      : {
-          value: '',
-          label: '',
-        },
+    defaultSelect
+      ? data.find((datum) => datum.value === defaultSelect)
+      : data[0],
   );
 
   const onClickToggle = () => {
@@ -64,7 +67,7 @@ export default function Select({ data, onTrackable, className }: Props) {
         onClick={onClickToggle}
       >
         <Body size='5' className={styles.text}>
-          {localDatum.label}
+          {localDatum?.label}
         </Body>
         <Image src={Arrow} alt='arrow' width={18} height={18} />
       </div>

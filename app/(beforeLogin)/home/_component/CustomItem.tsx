@@ -6,13 +6,16 @@ import Like from '@/app/icon/like-activate.svg';
 import LikeOff from '@/app/icon/like-deactivate.svg';
 import Comment from '@/app/icon/comment.svg';
 import Default from '@/app/image/top5_default.png';
-
 import cx from 'classnames';
 import { makeSplitText } from '@/app/util/makeSplitText';
+import { useMemo } from 'react';
+import { useFeedVote } from '@/app/(beforeLogin)/_state/useFeedVote';
+import { useClient } from '@/app/store/useClient';
+
 import * as styles from './customItem.css';
-import { MouseEventHandler } from 'react';
 
 export type CustomItemDataTypes = {
+  id: number;
   num: number;
   image: string;
   title: string;
@@ -23,12 +26,12 @@ export type CustomItemDataTypes = {
   isLike?: boolean;
 
   onClick?: () => void;
-  onVote?: () => void;
 };
 
 type Props = CustomItemDataTypes;
 
 export default function CustomItem({
+  id,
   num,
   image,
   title,
@@ -37,13 +40,22 @@ export default function CustomItem({
   comment,
   isLike,
   onClick,
-  onVote,
 }: Props) {
-  const onClickVote: MouseEventHandler<HTMLImageElement> = (event) => {
-    event.stopPropagation();
+  const { vote } = useClient();
 
-    if (onVote) onVote();
-  };
+  const localVote = useMemo(() => {
+    const find = vote[id];
+    if (!find)
+      return {
+        state: isLike,
+        trueCount: isLike ? like : like + 1,
+        falseCount: isLike ? like - 1 : like,
+      };
+
+    return find;
+  }, [vote, isLike, id]);
+
+  const { onVote } = useFeedVote({ id: id, vote: localVote });
 
   return (
     <div role='button' tabIndex={0} className={styles.item} onClick={onClick}>
@@ -74,14 +86,17 @@ export default function CustomItem({
       <div className={styles.countLayer}>
         <span className={styles.countGroup}>
           <Image
-            src={isLike ? Like : LikeOff}
+            src={localVote.state ? Like : LikeOff}
             alt='like'
             width={24}
             height={24}
-            onClick={onClickVote}
+            onClick={onVote}
           />
-          <Body size='6' className={cx(styles.countText, isLike && 'orange')}>
-            {like}
+          <Body
+            size='6'
+            className={cx(styles.countText, localVote.state && 'orange')}
+          >
+            {localVote.state ? localVote.trueCount : localVote.falseCount}
           </Body>
         </span>
         <span className={styles.countGroup}>

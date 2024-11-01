@@ -1,4 +1,4 @@
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { postFeedVote } from '@/app/(beforeLogin)/_lib/postFeedVote';
 import { MouseEventHandler } from 'react';
 import { useHeart } from '@/app/store/useHeart';
@@ -12,10 +12,11 @@ type Props = {
     trueCount: number;
     falseCount: number;
   };
-  onTrackable?: () => void;
 };
 
 export const useFeedVote = ({ id, vote }: Props) => {
+  const queryClient = useQueryClient();
+
   const updateVote = useClient((state) => state.updateVote);
   const viewHeart = useHeart((state) => state.viewHeart);
 
@@ -24,6 +25,11 @@ export const useFeedVote = ({ id, vote }: Props) => {
     mutationFn: postFeedVote,
     onMutate: () => {
       if (vote) updateVote(id, !vote.state, vote.trueCount, vote.falseCount);
+    },
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({
+        queryKey: ['feed', id],
+      });
     },
   });
 

@@ -113,7 +113,7 @@ export default function Card({ user, data, option, onClick }: Props) {
     const find = scrap[data.id];
     if (!find) return option.isScrap;
 
-    return find;
+    return find.state;
   }, [scrap, data, option]);
 
   const { onVote } = useFeedVote({

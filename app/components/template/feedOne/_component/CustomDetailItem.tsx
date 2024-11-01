@@ -5,32 +5,45 @@ import { useFeedOne } from '@/app/components/template/feedOne/_state/useFeedone'
 import { useToday } from '@/app/(beforeLogin)/_state/useToday';
 import { useFeedVote } from '@/app/(beforeLogin)/_state/useFeedVote';
 import { useFeedScrap } from '@/app/(beforeLogin)/_state/useFeedScrap';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useUser } from '@/app/(beforeLogin)/_state/useUser';
 import { useFeedDelete } from '@/app/components/template/feedOne/_state/useFeedDelete';
+import { useClient } from '@/app/store/useClient';
 
 type Props = {
   id: number;
 };
 
 export default function CustomDetailItem({ id }: Props) {
+  const { updateVote, updateScrap } = useClient();
+
   const { localData: feedData } = useFeedOne({ id: id });
   const { localData: todayData } = useToday();
   const { localData: userData } = useUser();
 
-  const [isVote, setIsVote] = useState(feedData.isLike);
+  const localVote = useMemo(() => {
+    return {
+      state: feedData.isLike,
+      trueCount: feedData.isLike ? feedData.like : feedData.like + 1,
+      falseCount: feedData.isLike ? feedData.like - 1 : feedData.like,
+    };
+  }, [feedData]);
 
-  const onTrackableVote = () => {
-    setIsVote(!isVote);
-  };
-
-  const { onVote } = useFeedVote({ id: id, onTrackable: onTrackableVote });
-  const { onScrap } = useFeedScrap({ id: id });
+  const { onVote } = useFeedVote({ id: id, vote: localVote });
+  const { onScrap } = useFeedScrap({ id: id, state: feedData.isBookmark });
   const { onDelete } = useFeedDelete({ id: id });
 
   useEffect(() => {
-    setIsVote(feedData.isLike);
-  }, [feedData]);
+    if (!feedData.id) return;
+
+    updateVote(
+      feedData.id,
+      localVote.state,
+      localVote.trueCount,
+      localVote.falseCount,
+    );
+    updateScrap(feedData.id, feedData.isBookmark);
+  }, [feedData, updateVote, updateScrap, localVote]);
 
   return (
     <DetailCard
@@ -44,7 +57,7 @@ export default function CustomDetailItem({ id }: Props) {
         date: feedData.date,
         title: feedData.title,
         subTitle: feedData.subTitle,
-        voteCount: feedData.like,
+        voteCount: localVote.state ? localVote.trueCount : localVote.falseCount,
         commentCount: feedData.comment,
         question: todayData.body,
         questionCategory: todayData.category,
@@ -52,7 +65,7 @@ export default function CustomDetailItem({ id }: Props) {
       option={{
         isQuestion: feedData.isQuestion,
         isScrap: feedData.isBookmark,
-        isVote: isVote,
+        isVote: localVote.state,
         isEdit: feedData.userId === userData.userId,
       }}
       onVote={onVote}

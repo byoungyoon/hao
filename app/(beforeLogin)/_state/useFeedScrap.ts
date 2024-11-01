@@ -19,6 +19,9 @@ export const useFeedScrap = ({ id, state }: Props) => {
       await queryClient.invalidateQueries({
         queryKey: ['my', 'scrap'],
       });
+      await queryClient.invalidateQueries({
+        queryKey: ['feed', id],
+      });
     },
     onMutate: () => {
       updateScrap(id, !state);

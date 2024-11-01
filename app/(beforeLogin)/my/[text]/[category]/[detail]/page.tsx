@@ -1,9 +1,17 @@
 import FeedOne from '@/app/components/template/feedOne/FeedOne';
+import { Suspense } from 'react';
+import SuspenseFeedOne from '@/app/(beforeLogin)/_suspense/SuspenseFeedOne';
 
 type Props = {
   params: { detail: string };
 };
 
 export default function MyCategoryDetailPage({ params }: Props) {
-  return <FeedOne id={+params.detail} />;
+  return (
+    <Suspense>
+      <SuspenseFeedOne id={+params.detail}>
+        <FeedOne id={+params.detail} />
+      </SuspenseFeedOne>
+    </Suspense>
+  );
 }

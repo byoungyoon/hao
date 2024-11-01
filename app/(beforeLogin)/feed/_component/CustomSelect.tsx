@@ -14,7 +14,7 @@ enum FeedFilterEnum {
 }
 
 export default function CustomSelect() {
-  const updateSort = useFeedForm((state) => state.updateSort);
+  const { sort, updateSort } = useFeedForm();
 
   const selectData = useMemo(
     () =>
@@ -33,6 +33,7 @@ export default function CustomSelect() {
 
   return (
     <Select
+      defaultSelect={sort}
       data={selectData}
       className={styles.select}
       onTrackable={onTrackableSelect}

@@ -49,7 +49,8 @@ export default function CustomItemGroup() {
       >
         {top5Data.map((datum, index) => (
           <CustomItem
-            key={index}
+            id={datum.id}
+            key={datum.id}
             num={index + 1}
             image={datum.thumbnail}
             title={datum.subject}

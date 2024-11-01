@@ -84,6 +84,7 @@ export const countGroup = style({
   display: 'flex',
   gap: 4,
   alignItems: 'center',
+  minWidth: 38,
 });
 
 export const countText = style({

@@ -9,7 +9,12 @@ type State = {
       falseCount: number;
     }
   >;
-  scrap: Record<number, boolean>;
+  scrap: Record<
+    number,
+    {
+      state: boolean;
+    }
+  >;
 };
 
 type Action = {
@@ -42,6 +47,6 @@ export const useClient = create<State & Action>((set) => ({
 
   updateScrap: (id, state) =>
     set(({ scrap }) => ({
-      scrap: { ...scrap, [id]: state },
+      scrap: { ...scrap, [id]: { state: state } },
     })),
 }));

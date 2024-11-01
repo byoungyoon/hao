@@ -1,6 +1,7 @@
-import { useMemo } from 'react';
+import { Suspense, useMemo } from 'react';
 
 import FeedOne from '@/app/components/template/feedOne/FeedOne';
+import SuspenseFeedOne from '@/app/(beforeLogin)/_suspense/SuspenseFeedOne';
 
 type Props = {
   params: { detail: string };
@@ -9,5 +10,11 @@ type Props = {
 export default function FeedDetailPage({ params }: Props) {
   const id = useMemo(() => +params.detail, [params.detail]);
 
-  return <FeedOne id={id} />;
+  return (
+    <Suspense>
+      <SuspenseFeedOne id={id}>
+        <FeedOne id={id} />
+      </SuspenseFeedOne>
+    </Suspense>
+  );
 }
