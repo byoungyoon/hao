@@ -18,9 +18,9 @@ export const text = style({
 
 export const itemGroup = style({
   position: 'absolute',
-  top: 23,
+  top: 32,
   right: 0,
-  left: 0,
+  left: -20,
   background: vars.color.gray.white,
   borderRadius: 8,
   padding: 16,

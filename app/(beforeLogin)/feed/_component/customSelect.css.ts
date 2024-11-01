@@ -1,7 +1,7 @@
 import { style } from '@vanilla-extract/css';
 
 export const select = style({
-  minWidth: 100,
+  minWidth: 80,
   display: 'flex',
   justifyContent: 'end',
 });

@@ -16,14 +16,14 @@ export const input = style({
   width: '100%',
   border: 'none',
   outline: 'none',
-  fontFamily: 'medium',
-  fontSize: 18,
+  fontSize: 16,
+  fontFamily: 'regular',
   color: vars.color.gray['400'],
 
   '::placeholder': {
     color: vars.color.gray['200'],
-    fontFamily: 'medium',
-    fontSize: 18,
+    fontFamily: 'regular',
+    fontSize: 16,
   },
 });
 
