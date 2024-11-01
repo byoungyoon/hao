@@ -36,6 +36,7 @@ type FeedState = {
   category: string;
   sort: string;
   isAdopted: boolean;
+  search: string;
 };
 
 type FeedAction = {
@@ -43,6 +44,7 @@ type FeedAction = {
   updateCategory: (category: FeedState['category']) => void;
   updateSort: (sort: FeedState['sort']) => void;
   updateIsAdopted: (isAdopted: FeedState['isAdopted']) => void;
+  updateSearch: (search: FeedState['search']) => void;
 };
 
 export const useFeedForm = create<FeedState & FeedAction>((set) => ({
@@ -50,14 +52,17 @@ export const useFeedForm = create<FeedState & FeedAction>((set) => ({
   category: '전체',
   sort: '',
   isAdopted: true,
+  search: '',
 
   updateAge: (age) => set(() => ({ age: age })),
   updateCategory: (category) => set(() => ({ category: category })),
   updateSort: (sort) => set(() => ({ sort: sort })),
   updateIsAdopted: (isAdopted) => set(() => ({ isAdopted: isAdopted })),
+  updateSearch: (search) => set(() => ({ search: search })),
 }));
 
 type WritingState = {
+  id: number;
   category: string;
   title: string;
   body: string;
@@ -66,6 +71,7 @@ type WritingState = {
 };
 
 type WritingAction = {
+  updateId: (id: WritingState['id']) => void;
   updateCategory: (y: WritingState['category']) => void;
   updateTitle: (title: WritingState['title']) => void;
   updateBody: (body: WritingState['body']) => void;
@@ -78,12 +84,14 @@ type WritingAction = {
 
 export const useWritingForm = create<WritingState & WritingAction>(
   (set, get) => ({
+    id: 0,
     category: '',
     title: '',
     body: '',
     images: [],
     type: '후시딘',
 
+    updateId: (id) => set(() => ({ id: id })),
     updateCategory: (category) => set(() => ({ category: category })),
     updateTitle: (title) => set(() => ({ title: title })),
     updateBody: (body) => set(() => ({ body: body })),
@@ -123,4 +131,18 @@ export const useTop5From = create<Top5State & Top5Action>((set) => ({
   age: 0,
   direction: 0,
   updateAge: (nAge) => set(({ age }) => ({ age: nAge, direction: nAge - age })),
+}));
+
+type TopButtonState = {
+  state: boolean;
+};
+
+type TopButtonAction = {
+  action: (state: TopButtonState['state']) => void;
+};
+
+export const useTopButton = create<TopButtonState & TopButtonAction>((set) => ({
+  state: false,
+
+  action: (state) => set(() => ({ state: state })),
 }));

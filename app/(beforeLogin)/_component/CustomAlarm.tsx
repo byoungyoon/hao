@@ -19,7 +19,7 @@ export default function CustomAlarm({ isHome }: Props) {
   const { localData: alarmData } = useAlarm();
 
   const onClickAlarm = () => {
-    router.push('/alarm?bar=false');
+    router.push('/alarm');
   };
 
   if (params.detail) return <></>;

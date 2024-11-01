@@ -97,7 +97,7 @@ export default function CustomImage() {
       {image.map((datum, index) => (
         <div key={index} className={styles.imageLayer}>
           <Image
-            src={`data:image/svg+xml;base64,${datum}`}
+            src={`data:image/png;base64,${datum}`}
             alt='my'
             layout='fill'
             objectFit='cover'

@@ -10,7 +10,7 @@ import WritingOn from '@/app/icon/writing/on.svg';
 import WritingOff from '@/app/icon/writing/off.svg';
 import { useMemo } from 'react';
 import BarTab from '@/app/components/tab/BarTab';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { BarTabItemTypes } from '@/app/components/tab/BarTabItem';
 import { useWritingForm } from '@/app/store/useTranslate';
 import { useModal } from '@/app/store/useModal';
@@ -23,10 +23,15 @@ import * as styles from './customBarTab.css';
 
 export default function CustomBarTab() {
   const router = useRouter();
-  // const searchParams = useSearchParams();
+  const pathname = usePathname();
 
   const check = useWritingForm((state) => state.check);
   const { openModal, closeModal } = useModal();
+
+  const isView = useMemo(
+    () => /\/\d+$/.test(pathname || '') || /\/alarm$/.test(pathname || ''),
+    [pathname],
+  );
 
   const data: BarTabItemTypes[] = useMemo(
     () => [
@@ -96,7 +101,7 @@ export default function CustomBarTab() {
   };
 
   return (
-    <footer className={cx(styles.footer)}>
+    <footer className={cx(styles.footer, isView && 'hidden')}>
       <BarTab data={data} onTrackable={onTrackableTab} />
     </footer>
   );

@@ -16,6 +16,6 @@ export const listArticle = style({
 
 export const selectLayer = style({
   display: 'flex',
-  justifyContent: 'end',
+  alignItems: 'center',
   margin: '24px 0 16px 0',
 });

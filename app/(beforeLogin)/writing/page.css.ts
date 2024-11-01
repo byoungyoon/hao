@@ -13,18 +13,18 @@ export const writingArticle = style({
 });
 
 export const categoryLayer = style({
-  margin: '24px 0',
+  margin: '16px 0',
 });
 
 export const textareaLayer = style({
-  margin: '12px 0 16px 0',
+  margin: '16px 0 0 0',
 });
 
 export const imageGroupLayer = style({
   display: 'flex',
   gap: 8,
   marginTop: 16,
-  marginBottom: 20,
+  marginBottom: 16,
 });
 
 export const imageLayer = style({

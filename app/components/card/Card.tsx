@@ -142,7 +142,9 @@ export default function Card({ user, data, option, onClick }: Props) {
           <div className={styles.userSubGroup}>
             <div className={styles.nameGroup}>
               <Body size='5'>{user.nickname}</Body>
-              <div className={styles.nameLayer}>{user.age}대</div>
+              <Body size='5' className={styles.age}>
+                {user.age}대
+              </Body>
             </div>
             <Body size='6' className={styles.date}>
               {data.date}

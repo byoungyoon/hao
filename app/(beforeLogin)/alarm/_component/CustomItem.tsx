@@ -15,7 +15,6 @@ type Props = {
   image: string;
   nickname: string;
   type: 'LIKE' | 'COMMENT' | 'ADOPTED';
-  message?: string;
 
   isAlive?: boolean;
 };
@@ -26,7 +25,6 @@ export default function CustomItem({
   image,
   nickname,
   type,
-  message,
   isAlive,
 }: Props) {
   const [translateX, setTranslateX] = useState(0);
@@ -122,11 +120,6 @@ export default function CustomItem({
             </>
           )}
         </Body>
-        {message && (
-          <Body size='5' className={cx(styles.message, !isAlive && 'noAlive')}>
-            {message}
-          </Body>
-        )}
       </div>
       <div
         role='button'

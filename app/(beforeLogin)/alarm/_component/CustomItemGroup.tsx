@@ -17,7 +17,6 @@ export default function CustomItemGroup() {
       image={datum.image}
       nickname={datum.nickname}
       type={datum.msg}
-      message={datum.body}
       isAlive={datum.isAlive}
     />
   ));

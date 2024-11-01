@@ -54,12 +54,8 @@ export const nameGroup = style({
   alignItems: 'center',
 });
 
-export const nameLayer = style({
-  borderRadius: 100,
+export const age = style({
   color: vars.color.orange['300'],
-  background: vars.color.orange['50'],
-  padding: '4px 8.5px',
-  display: 'inline-block',
 
   '@media': {
     'screen and (max-width: 320px)': {

@@ -3,7 +3,7 @@
 import Button from '@/app/components/button/Button';
 import { useWritingForm } from '@/app/store/useTranslate';
 import { useUser } from '@/app/(beforeLogin)/_state/useUser';
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useFeedSave } from '@/app/(beforeLogin)/writing/_state/useFeedSave';
 
 type Props = {
@@ -11,7 +11,8 @@ type Props = {
 };
 
 export default function CustomButton({ isQuestion = false }: Props) {
-  const { type, images, body, title, category } = useWritingForm();
+  const { type, images, body, title, category, id, updateId } =
+    useWritingForm();
   const { localData: userData } = useUser();
 
   const isResult = useMemo(() => {
@@ -36,6 +37,7 @@ export default function CustomButton({ isQuestion = false }: Props) {
 
   const onLocalResult = () => {
     onResult({
+      id: id,
       subject: title,
       body: body,
       category: category,
@@ -47,6 +49,10 @@ export default function CustomButton({ isQuestion = false }: Props) {
       isQuestion: isQuestion,
     });
   };
+
+  useEffect(() => {
+    return () => updateId(0);
+  }, []);
 
   return (
     <Button

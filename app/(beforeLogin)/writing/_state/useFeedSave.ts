@@ -2,9 +2,9 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { postFeedSave } from '@/app/(beforeLogin)/writing/_lib/postFeedSave';
 import { useRouter } from 'next/navigation';
 import { useWritingForm } from '@/app/store/useTranslate';
-import { throttle } from 'lodash';
 
 type Props = {
+  id: number;
   subject: string;
   body: string;
   image: File[];
@@ -32,10 +32,8 @@ export const useFeedSave = () => {
     },
   });
 
-  const throttledAction = throttle(onAction, 3000);
-
   const onResult = (props: Props) => {
-    throttledAction({ ...props });
+    onAction({ ...props });
   };
 
   return { onResult, isPending };

@@ -2,23 +2,32 @@
 
 import DetailCard from '@/app/components/card/DetailCard';
 import { useFeedOne } from '@/app/components/template/feedOne/_state/useFeedone';
-import { useToday } from '@/app/(beforeLogin)/_state/useToday';
 import { useFeedVote } from '@/app/(beforeLogin)/_state/useFeedVote';
 import { useFeedScrap } from '@/app/(beforeLogin)/_state/useFeedScrap';
 import { useEffect, useMemo } from 'react';
 import { useUser } from '@/app/(beforeLogin)/_state/useUser';
 import { useFeedDelete } from '@/app/components/template/feedOne/_state/useFeedDelete';
 import { useClient } from '@/app/store/useClient';
+import { useRouter } from 'next/navigation';
+import { useWritingForm } from '@/app/store/useTranslate';
 
 type Props = {
   id: number;
 };
 
 export default function CustomDetailItem({ id }: Props) {
+  const router = useRouter();
   const { updateVote, updateScrap } = useClient();
+  const {
+    updateCategory,
+    updateBody,
+    updateTitle,
+    updateImages,
+    updateType,
+    updateId,
+  } = useWritingForm();
 
   const { localData: feedData } = useFeedOne({ id: id });
-  const { localData: todayData } = useToday();
   const { localData: userData } = useUser();
 
   const localVote = useMemo(() => {
@@ -32,6 +41,33 @@ export default function CustomDetailItem({ id }: Props) {
   const { onVote } = useFeedVote({ id: id, vote: localVote });
   const { onScrap } = useFeedScrap({ id: id, state: feedData.isBookmark });
   const { onDelete } = useFeedDelete({ id: id });
+
+  const covertImage = async (url: string) => {
+    const response = await fetch(url);
+    const buffer = await response.arrayBuffer();
+    return Buffer.from(buffer).toString('base64');
+  };
+
+  const onEdit = async () => {
+    updateCategory(feedData.category);
+    updateBody(feedData.subTitle);
+    updateTitle(feedData.title);
+    updateType(feedData.type);
+    updateId(feedData.id);
+
+    if (feedData.thumbnail) {
+      const images = Promise.all(
+        feedData.thumbnail.map(async (datum) => await covertImage(datum)),
+      );
+
+      updateImages(await images);
+    }
+    if (feedData.isQuestion) {
+      router.push('/writing/m/modify/today');
+    } else {
+      router.push('/writing/m/modify');
+    }
+  };
 
   useEffect(() => {
     if (!feedData.id) return;
@@ -59,8 +95,8 @@ export default function CustomDetailItem({ id }: Props) {
         subTitle: feedData.subTitle,
         voteCount: localVote.state ? localVote.trueCount : localVote.falseCount,
         commentCount: feedData.comment,
-        question: todayData.body,
-        questionCategory: todayData.category,
+        question: feedData.title,
+        questionCategory: feedData.category,
       }}
       option={{
         isQuestion: feedData.isQuestion,
@@ -71,6 +107,7 @@ export default function CustomDetailItem({ id }: Props) {
       onVote={onVote}
       onScrap={onScrap}
       onDelete={onDelete}
+      onEdit={onEdit}
     />
   );
 }

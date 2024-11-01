@@ -11,6 +11,7 @@ export const useFeedOne = ({ id }: Props) => {
     queryKey: ['feed', id],
     queryFn: getFeedOne,
     staleTime: 0,
+    gcTime: 0,
   });
 
   const localData = useMemo(() => {
@@ -31,6 +32,7 @@ export const useFeedOne = ({ id }: Props) => {
         isLike: false,
         isBookmark: false,
         isQuestion: false,
+        category: '',
       };
 
     return {
@@ -49,6 +51,7 @@ export const useFeedOne = ({ id }: Props) => {
       type: data.type,
       isQuestion: data.isQuestion,
       userId: data.userId,
+      category: data.category,
     };
   }, [data]);
 

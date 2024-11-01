@@ -8,6 +8,8 @@ import { useFeedList } from '@/app/(beforeLogin)/_state/useFeedList';
 import { QueryKey } from '@tanstack/react-query';
 
 import * as styles from './feedList.css';
+import { useTopButton } from '@/app/store/useTranslate';
+import { useEffect } from 'react';
 
 type Props<T> = {
   queryKey: T;
@@ -27,11 +29,19 @@ export default function FeedList<T extends QueryKey>({
   const router = useRouter();
   const pathname = usePathname();
 
+  const action = useTopButton((state) => state.action);
+
   const { localData, setRefs } = useFeedList<T>({ queryKey, queryFn });
 
   const onClickCard = (detail: number) => () => {
     router.push(`${pathname}/${detail}`);
   };
+
+  useEffect(() => {
+    action(true);
+
+    return () => action(false);
+  }, []);
 
   return (
     <>
@@ -54,12 +64,13 @@ export default function FeedList<T extends QueryKey>({
               voteCount: datum.vote,
               commentCount: datum.commentCnt,
               questionCategory: datum.category,
-              question: datum.todayQuestion,
+              question: datum.subject,
             }}
             option={{
               isScrap: datum.isBookmark,
               isVote: datum.isVoted,
               isAdopt: datum.isAdopted,
+              isQuestion: datum.isQuestion,
             }}
             onClick={onClickCard(datum.id)}
           />

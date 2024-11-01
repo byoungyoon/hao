@@ -3,24 +3,21 @@ import { POST } from '@/app/sevice/service';
 
 export type FeedCommentSaveRequestTypes = {
   id: number;
-  nickname: string;
-  age: number;
   body: string;
 };
 
 export const postFeedCommentSave: MutationFunction<
   object,
   FeedCommentSaveRequestTypes
-> = async ({ id, nickname, age, body }) => {
-  const params = {
-    boardId: id,
-    nickname: nickname,
-    age: age,
-    body: body,
-  };
+> = async ({ id, body }) => {
+  const formData = new FormData();
+
+  formData.append('boardid', `${id}`);
+  formData.append('body', body);
 
   return await POST({
     url: '/api/comment/save',
-    parameters: params,
+    parameters: formData,
+    isFormData: true,
   });
 };

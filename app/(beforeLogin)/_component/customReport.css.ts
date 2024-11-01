@@ -14,3 +14,9 @@ export const report = style({
 export const text = style({
   color: vars.color.orange['300'],
 });
+
+export const textLayer = style({
+  display: 'flex',
+  alignItems: 'center',
+  gap: 8,
+});

@@ -20,10 +20,8 @@ export default function WritingPage() {
           </Suspense>
         </div>
         <CustomInput />
-        <div className={styles.textareaLayer}>
-          <CustomTextarea />
-        </div>
-        <CustomReport />
+        <CustomTextarea />
+        <CustomReport mode='다중' />
         <div className={styles.imageGroupLayer}>
           <CustomImage />
         </div>

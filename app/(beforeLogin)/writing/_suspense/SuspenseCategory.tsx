@@ -6,7 +6,15 @@ import {
 import CustomCategory from '@/app/(beforeLogin)/writing/_component/CustomCategory';
 import { categoryKey, todayKey } from '@/app/provider/keyData';
 
-export default async function SuspenseCategory() {
+type Props = {
+  isQuestion?: boolean;
+  isDisabled?: boolean;
+};
+
+export default async function SuspenseCategory({
+  isQuestion,
+  isDisabled,
+}: Props) {
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery(categoryKey);
@@ -16,7 +24,7 @@ export default async function SuspenseCategory() {
 
   return (
     <HydrationBoundary state={dehydratedState}>
-      <CustomCategory />
+      <CustomCategory isQuestion={isQuestion} isDisabled={isDisabled} />
     </HydrationBoundary>
   );
 }

@@ -1,25 +1,13 @@
-import { style } from '@vanilla-extract/css';
+import { globalStyle, style } from '@vanilla-extract/css';
 import { vars } from '@/app/theme.css';
 
 export const group = style({
   padding: '16px 20px',
   display: 'flex',
-  alignItems: 'center',
+  alignItems: 'end',
   justifyContent: 'center',
   gap: 8,
   background: vars.color.gray.white,
-});
-
-export const inputLayer = style({
-  flexGrow: 1,
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-  background: vars.color.gray.background,
-  borderRadius: 8,
-  gap: 8,
-  overflow: 'hidden',
-  padding: '8px 8px 8px 16px',
 });
 
 export const textarea = style({
@@ -29,9 +17,11 @@ export const textarea = style({
   fontSize: 14,
   fontFamily: 'regular',
   fontWeight: 400,
-  background: 'inherit',
+  background: vars.color.gray.background,
+  borderRadius: 8,
   resize: 'none',
-  height: '100%',
+  padding: '10px 16px',
+  color: vars.color.gray['400'],
 
   '::placeholder': {
     color: vars.color.gray['200'],
@@ -46,6 +36,11 @@ export const button = style({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
+  padding: '6px 15px !important',
+});
+
+globalStyle(`${button} h4`, {
+  fontSize: 18,
 });
 
 export const plusImage = style({

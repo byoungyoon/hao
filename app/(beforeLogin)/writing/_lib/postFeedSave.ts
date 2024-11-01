@@ -9,14 +9,16 @@ export type FeedSaveRequestTypes = {
   category: string;
   type: string;
   isQuestion: boolean;
+  id: number;
 };
 
 export const postFeedSave: MutationFunction<
   object,
   FeedSaveRequestTypes
-> = async ({ subject, body, image, age, category, type, isQuestion }) => {
+> = async ({ subject, body, image, age, category, type, isQuestion, id }) => {
   const formData = new FormData();
 
+  if (id) formData.append('id', `${id}`);
   formData.append('subject', subject);
   formData.append('body', body);
   formData.append('age', `${age}`);

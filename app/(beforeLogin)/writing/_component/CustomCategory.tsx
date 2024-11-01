@@ -13,9 +13,10 @@ import * as styles from './customCategory.css';
 
 type Props = {
   isQuestion?: boolean;
+  isDisabled?: boolean;
 };
 
-export default function CustomCategory({ isQuestion }: Props) {
+export default function CustomCategory({ isQuestion, isDisabled }: Props) {
   const { category, updateCategory } = useWritingForm();
 
   const [open, setOpen] = useState(false);
@@ -46,7 +47,10 @@ export default function CustomCategory({ isQuestion }: Props) {
       <div
         role='button'
         tabIndex={0}
-        className={cx(styles.category, isQuestion && 'question')}
+        className={cx(
+          styles.category,
+          (isQuestion || isDisabled) && 'question',
+        )}
         onClick={onClickCategory}
       >
         <Body size='3' className={styles.categoryText}>

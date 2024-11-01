@@ -30,18 +30,25 @@ export type FeedResponseTypes = {
 
 type Props = {
   pageParam?: number;
-  queryKey: [_1: string, age: number, category: string, sort: string];
+  queryKey: [
+    _1: string,
+    age: number,
+    category: string,
+    sort: string,
+    search: string,
+  ];
 };
 
 export const getFeed = async ({ queryKey, pageParam }: Props) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [_1, age, category, sort] = queryKey;
+  const [_1, age, category, sort, search] = queryKey;
 
   const params = {
     category: category === '전체' ? '' : category,
     age: age === 0 ? '' : age,
     page: pageParam ?? 1,
     sort: sort,
+    query: search,
   };
 
   return await GET<FeedResponseTypes>({

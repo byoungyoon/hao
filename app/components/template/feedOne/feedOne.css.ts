@@ -8,7 +8,7 @@ export const section = style({
 });
 
 export const border = style({
-  height: 6,
+  minHeight: 6,
   background: vars.color.gray['100'],
 });
 
