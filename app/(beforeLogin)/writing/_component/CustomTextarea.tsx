@@ -21,7 +21,7 @@ export default function CustomTextarea({ isQuestion }: Props) {
   const onChangeTextarea: ChangeEventHandler<HTMLTextAreaElement> = (event) => {
     const value = event.target.value;
 
-    if (value.length > LIMIT_TEXT) {
+    if (body.replace(/\n/g, '').length > LIMIT_TEXT) {
       setUpdateKey(updateKey + 1);
       return;
     }
@@ -45,7 +45,7 @@ export default function CustomTextarea({ isQuestion }: Props) {
       />
       <VibratingText updateKey={updateKey}>
         <Body size='3' className={styles.counting}>
-          {body.length}/{LIMIT_TEXT}
+          {body.replace(/\n/g, '').length}/{LIMIT_TEXT}
         </Body>
       </VibratingText>
     </div>

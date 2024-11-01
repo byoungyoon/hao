@@ -37,6 +37,7 @@ export const button = style({
   alignItems: 'center',
   justifyContent: 'center',
   padding: '6px 15px !important',
+  marginBottom: 1,
 });
 
 globalStyle(`${button} h4`, {
@@ -44,6 +45,8 @@ globalStyle(`${button} h4`, {
 });
 
 export const plusImage = style({
+  marginBottom: 0.5,
+
   '@media': {
     'screen and (max-width: 320px)': {
       display: 'none',

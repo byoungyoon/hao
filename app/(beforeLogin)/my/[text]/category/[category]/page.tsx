@@ -1,7 +1,7 @@
 'use client';
 
 import FeedList from '@/app/components/template/feedList/FeedList';
-import { getMyCategoryFeed } from '@/app/(beforeLogin)/my/[text]/[category]/_lib/getMyCategoryFeed';
+import { getMyCategoryFeed } from '@/app/(beforeLogin)/my/[text]/category/[category]/_lib/getMyCategoryFeed';
 
 import * as styles from './page.css';
 

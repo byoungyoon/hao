@@ -35,7 +35,7 @@ export default function FeedList<T extends QueryKey>({
   const { localData, setRefs } = useFeedList<T>({ queryKey, queryFn });
 
   const onClickCard = (detail: number) => () => {
-    router.push(`${pathname}/${detail}`);
+    router.push(`${pathname}/${detail}`, { scroll: false });
   };
 
   useEffect(() => {

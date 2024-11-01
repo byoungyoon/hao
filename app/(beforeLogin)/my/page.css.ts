@@ -23,10 +23,6 @@ export const infoHgroup = style({
   position: 'relative',
 });
 
-export const infoAside = style({
-  color: vars.color.gray['300'],
-});
-
 export const infoCharacter = style({
   position: 'absolute',
   bottom: -40,

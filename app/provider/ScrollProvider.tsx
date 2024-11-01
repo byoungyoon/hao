@@ -1,8 +1,6 @@
 'use client';
 
-import { ReactNode, useEffect, useRef, useState } from 'react';
-import Cookies from 'js-cookie';
-import { usePathname } from 'next/navigation';
+import { ReactNode, useRef, useState } from 'react';
 import Up from '@/app/icon/arrow-up.svg';
 import { useTopButton } from '@/app/store/useTranslate';
 import Image from 'next/image';
@@ -15,7 +13,6 @@ type Props = {
 };
 
 export default function ScrollProvider({ children }: Props) {
-  const pathname = usePathname();
   const ref = useRef<HTMLDivElement | null>(null);
   const state = useTopButton((state) => state.state);
 
@@ -24,12 +21,6 @@ export default function ScrollProvider({ children }: Props) {
 
   const onScroll = () => {
     if (!ref.current) return;
-
-    Cookies.set(
-      `scrollPosition-${pathname}`,
-      ref.current.scrollTop.toString(),
-      { expires: 7, path: '/' },
-    );
 
     const currentScrollY = ref.current.scrollTop;
 
@@ -64,14 +55,6 @@ export default function ScrollProvider({ children }: Props) {
   const easeInOutQuad = (t: number) => {
     return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
   };
-
-  useEffect(() => {
-    const savedScrollPosition = Cookies.get(`scrollPosition-${pathname}`);
-
-    if (savedScrollPosition && ref.current) {
-      ref.current.scrollTop = Number(savedScrollPosition);
-    }
-  }, [pathname]);
 
   return (
     <div className={styles.mainWrapper} ref={ref} onScroll={onScroll}>

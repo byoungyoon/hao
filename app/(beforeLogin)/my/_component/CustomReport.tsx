@@ -48,7 +48,7 @@ export default function CustomReport() {
   };
 
   const onClickItem = (item: string) => () => {
-    router.push(`/my/후회/${item}`);
+    router.push(`/my/후회/category/${item}`);
   };
 
   if (myData.report.length === 0)

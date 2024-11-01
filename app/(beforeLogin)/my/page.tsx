@@ -1,7 +1,6 @@
 import Heading from '@/app/components/text/Heading';
 import Body from '@/app/components/text/Body';
 import Image from 'next/image';
-import Character from '@/app/image/character/my-character1.svg';
 import Character2 from '@/app/image/character/my-character2.svg';
 import Character3 from '@/app/image/character/my-character3.svg';
 import CustomCallback from '@/app/(beforeLogin)/_component/CustomCallback';
@@ -13,9 +12,11 @@ import CustomScrapTitle from '@/app/(beforeLogin)/my/_component/CustomScrapTitle
 import CustomReport from '@/app/(beforeLogin)/my/_component/CustomReport';
 import CustomLogout from '@/app/(beforeLogin)/my/_component/CustomLogout';
 import CustomArticle from '@/app/(beforeLogin)/my/_component/CustomArticle';
+import CustomToast from '@/app/(beforeLogin)/_component/CustomToast';
+import CustomSubTitle from '@/app/(beforeLogin)/my/_component/CustomSubTitle';
+import CustomTitleImage from '@/app/(beforeLogin)/my/_component/CustomTitleImage';
 
 import * as styles from './page.css';
-import CustomToast from '@/app/(beforeLogin)/_component/CustomToast';
 
 export default function MyPage() {
   return (
@@ -27,14 +28,8 @@ export default function MyPage() {
         >
           <hgroup className={styles.infoHgroup}>
             <CustomTitle />
-            <Body size='5' className={styles.infoAside}>
-              마음이 조금 가벼워졌길 바라!
-            </Body>
-            <Image
-              src={Character}
-              alt='character'
-              className={styles.infoCharacter}
-            />
+            <CustomSubTitle />
+            <CustomTitleImage />
           </hgroup>
           <CustomCallback
             className={styles.infoModifyLayer}

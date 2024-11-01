@@ -57,6 +57,8 @@ export const textLayer = style({
 });
 
 export const title = style({
+  wordBreak: 'break-all',
+
   selectors: {
     '&.noAlive': {
       color: vars.color.gray['300'],

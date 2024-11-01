@@ -19,15 +19,9 @@ type Props = {
 export default function CustomCommentInput({ id }: Props) {
   const { value, image, target, updateValue, updateImage } = useCommentForm();
 
-  const defaultValue = useMemo(() => value, [target]);
-  const defaultImage = useMemo(() => image, [target]);
-
   const isResult = useMemo(() => {
-    if (target !== 0 && defaultImage === image && defaultValue === value)
-      return false;
-
     return !(value === '' && image === '');
-  }, [target, value, image]);
+  }, [value, image]);
 
   const onFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files;

@@ -82,20 +82,10 @@ export const editLayer = style({
   position: 'relative',
 });
 
-export const slickLayer = style({
-  position: 'relative',
-  zIndex: 1,
-  borderRadius: 8,
-});
-
-export const testButtonGroup = style({
-  display: 'flex',
-  position: 'relative',
-  zIndex: 1,
-});
-
 export const subTitle = style({
   color: vars.color.gray['400'],
+  wordBreak: 'break-all',
+  whiteSpace: 'pre-line',
 });
 
 export const countLayer = style({

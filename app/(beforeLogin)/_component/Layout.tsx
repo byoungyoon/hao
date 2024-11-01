@@ -1,8 +1,8 @@
 import { ReactNode } from 'react';
 import Navigation from '@/app/components/navigation/Navigation';
+import ScrollProvider from '@/app/provider/ScrollProvider';
 
 import * as styles from './layout.css';
-import ScrollProvider from '@/app/provider/ScrollProvider';
 
 type Props = {
   left?: ReactNode;

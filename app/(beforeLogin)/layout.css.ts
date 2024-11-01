@@ -14,4 +14,5 @@ export const container = style({
 
 export const body = style({
   flexGrow: 1,
+  position: 'relative',
 });

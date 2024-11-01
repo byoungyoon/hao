@@ -87,7 +87,13 @@ export const thumbnailLayer = style({
 });
 
 export const subTitle = style({
-  color: vars.color.gray['400'],
+  display: '-webkit-box',
+  WebkitLineClamp: 2, // 두 줄로 제한
+  WebkitBoxOrient: 'vertical',
+  overflow: 'hidden',
+  textOverflow: 'ellipsis',
+  whiteSpace: 'pre-line',
+  wordBreak: 'break-all',
 });
 
 export const countLayer = style({

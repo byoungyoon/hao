@@ -6,7 +6,7 @@ export const topLayer = style({
   height: 430,
 
   position: 'relative',
-  zIndex: 999,
+  zIndex: 1,
 });
 
 export const image = style({
