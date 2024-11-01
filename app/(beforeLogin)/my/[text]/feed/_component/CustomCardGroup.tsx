@@ -32,6 +32,7 @@ export default function CustomCardGroup() {
           }}
           data={{
             id: datum.id,
+            category: datum.category,
             date: datum.createdAt,
             title: datum.subject,
             subTitle: datum.body,

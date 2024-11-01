@@ -3,7 +3,7 @@ import { vars } from '@/app/theme.css';
 
 export const topLayer = style({
   background: vars.color.orange['50'],
-  height: 489,
+  height: 430,
 
   position: 'relative',
   zIndex: 999,

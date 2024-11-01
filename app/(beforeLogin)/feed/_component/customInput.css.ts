@@ -26,3 +26,8 @@ export const input = style({
     fontSize: 18,
   },
 });
+
+export const resetButton = style({
+  display: 'flex',
+  alignItems: 'center',
+});

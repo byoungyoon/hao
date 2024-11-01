@@ -10,6 +10,7 @@ import { QueryKey } from '@tanstack/react-query';
 import * as styles from './feedList.css';
 import { useTopButton } from '@/app/store/useTranslate';
 import { useEffect } from 'react';
+import CustomToast from '@/app/(beforeLogin)/_component/CustomToast';
 
 type Props<T> = {
   queryKey: T;
@@ -57,6 +58,7 @@ export default function FeedList<T extends QueryKey>({
             }}
             data={{
               id: datum.id,
+              category: datum.category,
               date: datum.createdAt,
               title: datum.subject,
               subTitle: datum.body,
@@ -77,6 +79,7 @@ export default function FeedList<T extends QueryKey>({
         ))}
         <div ref={setRefs} />
       </div>
+      <CustomToast />
     </>
   );
 }

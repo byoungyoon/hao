@@ -43,8 +43,14 @@ export default function CustomInput() {
             initial='initial'
             animate='animate'
             exit='exit'
+            className={styles.resetButton}
           >
-            <Image src={Vector} alt='search' onClick={onReset} />
+            <Image
+              src={Vector}
+              alt='search'
+              onClick={onReset}
+              className={styles.resetButton}
+            />
           </motion.div>
         )}
       </AnimatePresence>

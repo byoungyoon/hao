@@ -33,6 +33,7 @@ export type CardUserTypes = {
 
 export type CardDataTypes = {
   id: number;
+  category: string;
   /**
    * 작성 날짜
    */
@@ -124,6 +125,7 @@ export default function Card({ user, data, option, onClick }: Props) {
   const { onScrap } = useFeedScrap({
     id: data.id,
     state: localScrap,
+    category: data.category,
   });
 
   return (

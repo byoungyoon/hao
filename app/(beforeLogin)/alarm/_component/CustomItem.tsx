@@ -8,6 +8,7 @@ import Delete from '@/app/icon/alarm-delete.svg';
 import { useAlarmDelete } from '@/app/(beforeLogin)/alarm/_state/useAlarmDelete';
 
 import * as styles from './customItem.css';
+import { useToast } from '@/app/store/useToast';
 
 type Props = {
   id: number;
@@ -27,6 +28,8 @@ export default function CustomItem({
   type,
   isAlive,
 }: Props) {
+  const updateToast = useToast((state) => state.updateToast);
+
   const [translateX, setTranslateX] = useState(0);
   const [startX, setStartX] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
@@ -82,6 +85,10 @@ export default function CustomItem({
 
   const { onDelete } = useAlarmDelete({ id: id });
 
+  const onClickItem = () => {
+    if (!isAlive) updateToast('작성자가 삭제해서 볼 수 없어');
+  };
+
   return (
     <div
       className={cx(styles.item, !isAlive && 'noAlive')}
@@ -91,6 +98,7 @@ export default function CustomItem({
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
+      onClick={onClickItem}
       style={{
         transform: `translateX(-${translateX}px)`,
         transition: isDragging ? 'none' : 'transform 0.3s',

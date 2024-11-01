@@ -5,6 +5,7 @@ import { useModal } from '@/app/store/useModal';
 import Image from '@/app/image/character/modal-delete.png';
 import TextModal from '@/app/components/modal/TextModal';
 import { vars } from '@/app/theme.css';
+import { useToast } from '@/app/store/useToast';
 
 type Props = {
   id: number;
@@ -13,7 +14,9 @@ type Props = {
 export const useFeedDelete = ({ id }: Props) => {
   const queryClient = useQueryClient();
   const router = useRouter();
+
   const { openModal } = useModal();
+  const { updateToast } = useToast();
 
   const { mutate } = useMutation({
     mutationKey: ['feed', id, 'delete'],
@@ -23,6 +26,7 @@ export const useFeedDelete = ({ id }: Props) => {
         predicate: (query) => query.queryKey[0] === 'feed',
       });
 
+      updateToast('삭제 완료!');
       router.back();
     },
   });

@@ -1,6 +1,10 @@
 import { MutationFunction } from '@tanstack/react-query';
 import { POST } from '@/app/sevice/service';
 
+export type FeedSaveResponseTypes = {
+  id?: number;
+};
+
 export type FeedSaveRequestTypes = {
   subject: string;
   body: string;
@@ -13,7 +17,7 @@ export type FeedSaveRequestTypes = {
 };
 
 export const postFeedSave: MutationFunction<
-  object,
+  FeedSaveResponseTypes,
   FeedSaveRequestTypes
 > = async ({ subject, body, image, age, category, type, isQuestion, id }) => {
   const formData = new FormData();
@@ -27,9 +31,13 @@ export const postFeedSave: MutationFunction<
   formData.append('isQuestion', `${isQuestion}`);
   image.forEach((img) => formData.append('image', img));
 
-  return await POST({
+  await POST({
     url: '/api/board/save',
     parameters: formData,
     isFormData: true,
   });
+
+  return {
+    id: id,
+  };
 };

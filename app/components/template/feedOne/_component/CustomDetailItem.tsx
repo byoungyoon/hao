@@ -39,7 +39,11 @@ export default function CustomDetailItem({ id }: Props) {
   }, [feedData]);
 
   const { onVote } = useFeedVote({ id: id, vote: localVote });
-  const { onScrap } = useFeedScrap({ id: id, state: feedData.isBookmark });
+  const { onScrap } = useFeedScrap({
+    id: id,
+    state: feedData.isBookmark,
+    category: feedData.category,
+  });
   const { onDelete } = useFeedDelete({ id: id });
 
   const covertImage = async (url: string) => {
