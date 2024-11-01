@@ -23,7 +23,7 @@ export default function WritingModifyPage() {
         <div className={styles.textareaLayer}>
           <CustomTextarea />
         </div>
-        <CustomReport />
+        <CustomReport mode='다중' />
         <CustomImage />
       </article>
       <article className={styles.optionArticle}>

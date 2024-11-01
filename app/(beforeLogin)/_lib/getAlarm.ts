@@ -2,6 +2,7 @@ import { GET } from '@/app/sevice/service';
 
 export type AlarmDataTypes = {
   id: number;
+  boardId: number;
   body: string;
   nickname: string;
   msg: 'LIKE' | 'COMMENT' | 'ADOPTED';

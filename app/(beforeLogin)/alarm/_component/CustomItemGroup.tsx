@@ -12,6 +12,7 @@ export default function CustomItemGroup() {
   return alarmData.map((datum) => (
     <CustomItem
       key={datum.id}
+      boardId={datum.boardId}
       id={datum.id}
       age={datum.age}
       image={datum.image}

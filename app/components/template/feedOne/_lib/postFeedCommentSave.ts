@@ -12,7 +12,7 @@ export const postFeedCommentSave: MutationFunction<
 > = async ({ id, body }) => {
   const formData = new FormData();
 
-  formData.append('boardid', `${id}`);
+  formData.append('boardId', `${id}`);
   formData.append('body', body);
 
   return await POST({

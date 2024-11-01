@@ -11,7 +11,7 @@ export default function AlarmPage() {
       <div className={styles.group}>
         <CustomItemGroup />
       </div>
-      <CustomToast bottom={4} />
+      <CustomToast bottom={20} />
     </section>
   );
 }

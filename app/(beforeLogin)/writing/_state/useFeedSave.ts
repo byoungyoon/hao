@@ -24,13 +24,13 @@ export const useFeedSave = () => {
   const { mutate: onAction, isPending } = useMutation({
     mutationKey: ['writing'],
     mutationFn: postFeedSave,
-    onSuccess: async ({ id }) => {
+    onSuccess: async () => {
       await queryClient.invalidateQueries({
         predicate: (query) => query.queryKey[0] === 'feed',
       });
 
       reset();
-      updateToast(id ? '변신 완료' : '공유 완료!');
+      updateToast('공유 완료!');
 
       router.push('/feed');
     },

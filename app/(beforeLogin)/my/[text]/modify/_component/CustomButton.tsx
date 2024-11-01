@@ -7,12 +7,14 @@ import { useUser } from '@/app/(beforeLogin)/_state/useUser';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
 import { putUpdateUser } from '@/app/(beforeLogin)/my/[text]/modify/_lib/putUpdateUser';
+import { useToast } from '@/app/store/useToast';
 
 export default function CustomButton() {
   const queryClient = useQueryClient();
+  const router = useRouter();
 
   const { localData: userData } = useUser();
-  const router = useRouter();
+  const updateToast = useToast((state) => state.updateToast);
 
   const { age } = useAgeForm();
   const { point, nickname } = usePointForm();
@@ -51,6 +53,7 @@ export default function CustomButton() {
         queryKey: ['user'],
       });
 
+      updateToast('변신 완료!');
       router.replace('/my');
     },
   });

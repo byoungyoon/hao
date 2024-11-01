@@ -12,7 +12,7 @@ type Props = {
 
 export const useFeedScrap = ({ id, state, category }: Props) => {
   const queryClient = useQueryClient();
-  const { updateScrap } = useClient();
+  const { updateScrap, scrap } = useClient();
   const updateToast = useToast((state) => state.updateToast);
 
   const { mutate: onAction } = useMutation({
@@ -26,7 +26,7 @@ export const useFeedScrap = ({ id, state, category }: Props) => {
         queryKey: ['feed', id],
       });
 
-      if (state) updateToast(`'${category}'에 잘 간직했어`);
+      if (scrap[id].state) updateToast(`'${category}'에 잘 간직했어`);
     },
     onMutate: () => {
       updateScrap(id, !state);

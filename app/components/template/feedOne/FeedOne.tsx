@@ -6,6 +6,7 @@ import HeartCanvas from '@/app/components/canvas/HeartCanvas';
 import CustomNext from '@/app/components/template/feedOne/_component/CustomNext';
 
 import * as styles from './feedOne.css';
+import CustomToast from '@/app/(beforeLogin)/_component/CustomToast';
 
 type Props = {
   id: number;
@@ -25,6 +26,7 @@ export default function FeedOne({ id }: Props) {
         <CustomCommentInput id={id} />
       </div>
       <HeartCanvas id='feedOne' />
+      <CustomToast bottom={88} />
     </section>
   );
 }

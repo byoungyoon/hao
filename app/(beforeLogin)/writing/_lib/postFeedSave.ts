@@ -31,13 +31,9 @@ export const postFeedSave: MutationFunction<
   formData.append('isQuestion', `${isQuestion}`);
   image.forEach((img) => formData.append('image', img));
 
-  await POST({
+  return await POST({
     url: '/api/board/save',
     parameters: formData,
     isFormData: true,
   });
-
-  return {
-    id: id,
-  };
 };

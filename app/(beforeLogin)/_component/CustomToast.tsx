@@ -18,7 +18,7 @@ const variants = {
   exit: { opacity: 0 },
 };
 
-export default function CustomToast({ timeout = 3000, bottom = 62 }: Props) {
+export default function CustomToast({ timeout = 3000, bottom = 80 }: Props) {
   const { open, text, closeToast } = useToast();
 
   useEffect(() => {

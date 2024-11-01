@@ -6,14 +6,16 @@ import Body from '@/app/components/text/Body';
 import { useMemo, useState, MouseEvent, TouchEvent } from 'react';
 import Delete from '@/app/icon/alarm-delete.svg';
 import { useAlarmDelete } from '@/app/(beforeLogin)/alarm/_state/useAlarmDelete';
+import { useToast } from '@/app/store/useToast';
+import { useRouter } from 'next/navigation';
 
 import * as styles from './customItem.css';
-import { useToast } from '@/app/store/useToast';
 
 type Props = {
   id: number;
   age: number;
   image: string;
+  boardId: number;
   nickname: string;
   type: 'LIKE' | 'COMMENT' | 'ADOPTED';
 
@@ -22,12 +24,14 @@ type Props = {
 
 export default function CustomItem({
   id,
+  boardId,
   age,
   image,
   nickname,
   type,
   isAlive,
 }: Props) {
+  const router = useRouter();
   const updateToast = useToast((state) => state.updateToast);
 
   const [translateX, setTranslateX] = useState(0);
@@ -87,6 +91,7 @@ export default function CustomItem({
 
   const onClickItem = () => {
     if (!isAlive) updateToast('작성자가 삭제해서 볼 수 없어');
+    else router.push(`/feed/${boardId}`);
   };
 
   return (

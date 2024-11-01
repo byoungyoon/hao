@@ -9,6 +9,7 @@ export const item = style({
   width: '100%',
   padding: '0 0 0 24px',
   position: 'relative',
+  background: vars.color.gray.white,
 
   selectors: {
     '&.noAlive': {

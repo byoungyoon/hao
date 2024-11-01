@@ -15,6 +15,7 @@ import CustomLogout from '@/app/(beforeLogin)/my/_component/CustomLogout';
 import CustomArticle from '@/app/(beforeLogin)/my/_component/CustomArticle';
 
 import * as styles from './page.css';
+import CustomToast from '@/app/(beforeLogin)/_component/CustomToast';
 
 export default function MyPage() {
   return (
@@ -82,6 +83,7 @@ export default function MyPage() {
       <div className={styles.logoutLayer}>
         <CustomLogout />
       </div>
+      <CustomToast />
     </section>
   );
 }
