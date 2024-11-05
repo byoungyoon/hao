@@ -161,6 +161,8 @@ type CommentAction = {
   ) => void;
   updateValue: (value: CommentState['value']) => void;
   updateImage: (value: CommentState['image']) => void;
+
+  reset: () => void;
 };
 
 export const useCommentForm = create<CommentState & CommentAction>((set) => ({
@@ -177,4 +179,5 @@ export const useCommentForm = create<CommentState & CommentAction>((set) => ({
   },
   updateValue: (value) => set(() => ({ value: value })),
   updateImage: (image) => set(() => ({ image: image })),
+  reset: () => set(() => ({ value: '', image: '', target: 0 })),
 }));

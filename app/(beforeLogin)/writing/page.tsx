@@ -21,7 +21,7 @@ export default function WritingPage() {
         </div>
         <CustomInput />
         <CustomTextarea />
-        <CustomReport mode='다중' />
+        <CustomReport mode='다중' timeout={10000} />
         <div className={styles.imageGroupLayer}>
           <CustomImage />
         </div>

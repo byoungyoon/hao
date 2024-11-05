@@ -11,6 +11,7 @@ import CustomItem from '@/app/(afterLogin)/point/_component/CustomItem';
 import cx from 'classnames';
 
 import * as styles from './customItemGroup.css';
+import { useResizeObserver } from '@/app/util/useResizeObserver';
 
 export default function CustomItemGroup() {
   const age = useAgeForm((state) => state.age);
@@ -28,15 +29,24 @@ export default function CustomItemGroup() {
     updatePoint(selectAge[current]);
   };
 
+  const { width, ref } = useResizeObserver();
+  const centerPadding = useMemo(() => {
+    if (width <= 320) return `15px`;
+    if (width <= 375) return `30px`;
+
+    return '50px';
+  }, [width]);
+
   const settings = {
     className: 'center',
     centerMode: true,
     focusOnSelect: true,
     infinite: false,
-    centerPadding: '80px',
+    centerPadding: centerPadding,
     slidesToShow: 1,
     speed: 500,
     initialSlide: 1,
+    arrows: false,
 
     afterChange: onAfterChange,
   };
@@ -66,7 +76,7 @@ export default function CustomItemGroup() {
   }, [selectAge]);
 
   return (
-    <div className={styles.group}>
+    <div ref={ref} className={styles.group}>
       <Slider {...settings}>
         {localData.map((datum) => (
           <CustomItem

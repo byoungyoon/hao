@@ -4,7 +4,6 @@ import CustomAgeItemGroup from '@/app/(beforeLogin)/my/[text]/modify/_component/
 import CustomInput from '@/app/(beforeLogin)/my/[text]/modify/_component/CustomInput';
 import CustomButton from '@/app/(beforeLogin)/my/[text]/modify/_component/CustomButton';
 import SuspensePoint from '@/app/(beforeLogin)/my/[text]/modify/_suspense/SuspensePoint';
-import { Suspense } from 'react';
 import SuspenseUserWrapper from '@/app/(beforeLogin)/my/[text]/modify/_suspense/SuspenseUserWrapper';
 
 import * as styles from './page.css';
@@ -21,9 +20,7 @@ export default function MyModifyPage() {
         </article>
         <article className={cx(styles.article, styles.pointArticle)}>
           <Body size='1'>나를 설정해봐</Body>
-          <Suspense>
-            <SuspensePoint />
-          </Suspense>
+          <SuspensePoint />
         </article>
         <article className={styles.nicknameArticle}>
           <CustomInput />

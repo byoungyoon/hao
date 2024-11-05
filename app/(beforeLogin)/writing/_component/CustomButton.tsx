@@ -6,6 +6,7 @@ import { useUser } from '@/app/(beforeLogin)/_state/useUser';
 import { useEffect, useMemo } from 'react';
 import { useFeedSave } from '@/app/(beforeLogin)/writing/_state/useFeedSave';
 import { makeFile } from '@/app/util/makeFile';
+import { useToday } from '@/app/(beforeLogin)/_state/useToday';
 
 type Props = {
   isQuestion?: boolean;
@@ -15,6 +16,7 @@ export default function CustomButton({ isQuestion = false }: Props) {
   const { type, images, body, title, category, id, updateId } =
     useWritingForm();
   const { localData: userData } = useUser();
+  const { localData: todayData } = useToday();
 
   const isResult = useMemo(() => {
     if (isQuestion && body.length !== 0) return true;
@@ -27,9 +29,9 @@ export default function CustomButton({ isQuestion = false }: Props) {
   const onLocalResult = () => {
     onResult({
       id: id,
-      subject: title,
+      subject: isQuestion ? todayData.body : title,
       body: body,
-      category: category,
+      category: isQuestion ? todayData.category : category,
       type: type,
       age: userData.age,
       image: images.map((image, index) => makeFile(image, `file${index}.png`)),

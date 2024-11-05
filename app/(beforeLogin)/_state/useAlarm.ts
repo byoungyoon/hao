@@ -36,5 +36,11 @@ export const useAlarm = () => {
     }, []);
   }, [data]);
 
-  return { localData, fetchNextPage, hasNextPage };
+  const totalData = useMemo(() => {
+    if (!data) return [];
+
+    return data.pages[0].totalCnt;
+  }, [data]);
+
+  return { localData, fetchNextPage, hasNextPage, totalData };
 };

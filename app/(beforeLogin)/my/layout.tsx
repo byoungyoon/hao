@@ -3,7 +3,6 @@ import Layout from '@/app/(beforeLogin)/_component/Layout';
 import CustomText from '@/app/(beforeLogin)/my/_component/CustomText';
 import CustomBackButton from '@/app/(beforeLogin)/my/_component/CustomBackButton';
 import CustomAlarm from '@/app/(beforeLogin)/_component/CustomAlarm';
-import { AnimatePresence } from 'framer-motion';
 import AnimationProvider from '@/app/provider/AnimationProvider';
 
 type Props = {
@@ -21,9 +20,7 @@ export default async function MyLayout({ children, modal }: Props) {
       >
         {children}
       </Layout>
-      <AnimatePresence>
-        <AnimationProvider>{modal}</AnimationProvider>
-      </AnimatePresence>
+      <AnimationProvider>{modal}</AnimationProvider>
     </>
   );
 }

@@ -92,7 +92,7 @@ export default function CustomBarTab() {
             background: vars.color.blue['100'],
           }}
           result={{
-            text: '응 되돌릴래!',
+            text: '응 되돌아갈래!',
             onResult: onAction(find.target),
           }}
         />,

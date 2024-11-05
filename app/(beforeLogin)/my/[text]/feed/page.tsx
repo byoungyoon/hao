@@ -1,7 +1,7 @@
 import CustomChipGroup from '@/app/(beforeLogin)/_component/CustomChipGroup';
 import CustomTab from '@/app/(beforeLogin)/my/[text]/feed/_component/CustomTab';
-import CustomCardGroup from '@/app/(beforeLogin)/my/[text]/feed/_component/CustomCardGroup';
 import CustomNext from '@/app/(beforeLogin)/my/[text]/feed/_component/CustomNext';
+import CustomFeedList from '@/app/(beforeLogin)/my/[text]/feed/_component/CustomFeedList';
 
 import * as styles from './page.css';
 
@@ -16,7 +16,7 @@ export default function MyFeedPage() {
           <CustomChipGroup />
         </div>
         <div className={styles.feedGroupLayer}>
-          <CustomCardGroup />
+          <CustomFeedList />
         </div>
         <CustomNext />
       </article>

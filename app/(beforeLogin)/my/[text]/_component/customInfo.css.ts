@@ -2,7 +2,7 @@ import { style } from '@vanilla-extract/css';
 import { vars } from '@/app/theme.css';
 
 export const infoModifyImage = style({
-  width: 70,
+  minWidth: 70,
   height: 70,
   display: 'flex',
   alignItems: 'center',
@@ -10,6 +10,20 @@ export const infoModifyImage = style({
   background: vars.color.gray.white,
   borderRadius: '50%',
   padding: 16,
+
+  '@media': {
+    'screen and (max-width: 375px)': {
+      width: 50,
+      minWidth: 50,
+      height: 50,
+    },
+    'screen and (max-width: 320px)': {
+      width: 30,
+      minWidth: 30,
+      height: 30,
+      padding: 8,
+    },
+  },
 });
 
 export const infoModifyImageLayer = style({

@@ -1,7 +1,7 @@
 'use client';
 
 import { useAgeForm, usePointForm } from '@/app/store/useTranslate';
-import { useMemo, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { getPoint } from '@/app/(afterLogin)/point/_lib/getPoint';
 import cx from 'classnames';
@@ -10,6 +10,7 @@ import { useUser } from '@/app/(beforeLogin)/_state/useUser';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Slider from 'react-slick';
+import { useResizeObserver } from '@/app/util/useResizeObserver';
 
 import * as styles from './customPointCardGroup.css';
 
@@ -19,6 +20,7 @@ export default function CustomPointCardGroup() {
   const age = useAgeForm((state) => state.age);
   const updatePoint = usePointForm((state) => state.updatePoint);
 
+  const sliderRef = useRef<Slider>(null);
   const localAge = useMemo(
     () => (age === 0 ? userData.age : age),
     [userData, age],
@@ -39,6 +41,10 @@ export default function CustomPointCardGroup() {
     return [];
   }, [localAge]);
 
+  const targetIndex = useMemo(() => {
+    return selectAge.indexOf(userData.characterId);
+  }, [selectAge, userData]);
+
   const localData = useMemo(() => {
     if (!data) return [];
 
@@ -53,8 +59,15 @@ export default function CustomPointCardGroup() {
   }, [data, selectAge]);
 
   const onClickItem = (point: number) => () => {
-    setPoint(point);
-    updatePoint(point);
+    const newIndex = selectAge.indexOf(point);
+    if (newIndex === -1) return;
+
+    sliderRef.current?.slickGoTo(newIndex);
+
+    setTimeout(() => {
+      setPoint(point);
+      updatePoint(point);
+    }, 350);
   };
 
   const onAfterChange = (current: number) => {
@@ -62,34 +75,49 @@ export default function CustomPointCardGroup() {
     setPoint(selectAge[current]);
   };
 
-  const settings = {
-    className: 'center',
-    centerMode: true,
-    focusOnSelect: true,
-    infinite: false,
-    centerPadding: '60px',
-    slidesToShow: 1,
-    speed: 500,
-    initialSlide: 1,
+  const { width, ref } = useResizeObserver();
+  const centerPadding = useMemo(() => {
+    if (width <= 320) return `15px`;
+    if (width <= 375) return `30px`;
 
-    afterChange: onAfterChange,
-  };
+    return '50px';
+  }, [width]);
+
+  const settings = useMemo(() => {
+    return {
+      className: 'center',
+      centerMode: true,
+      focusOnSelect: true,
+      infinite: false,
+      slidesToShow: 1,
+      speed: 500,
+      arrows: false,
+    };
+  }, []);
 
   return (
-    <div className={styles.group}>
-      <Slider {...settings}>
-        {localData.map((datum) => (
-          <PointCard
-            key={datum.id}
-            image={datum.image}
-            className={cx(
-              styles.age[`age${localAge}`],
-              point === datum.id && 'select',
-            )}
-            onClick={onClickItem(datum.id)}
-          />
-        ))}
-      </Slider>
+    <div ref={ref} className={styles.group}>
+      {targetIndex !== -1 && (
+        <Slider
+          {...settings}
+          centerPadding={centerPadding}
+          afterChange={onAfterChange}
+          initialSlide={targetIndex}
+          ref={sliderRef}
+        >
+          {localData.map((datum) => (
+            <PointCard
+              key={datum.id}
+              image={datum.image}
+              className={cx(
+                styles.age[`age${localAge}`],
+                point === datum.id && 'select',
+              )}
+              onClick={onClickItem(datum.id)}
+            />
+          ))}
+        </Slider>
+      )}
     </div>
   );
 }

@@ -15,16 +15,18 @@ export default function PointCard({ className, image, onClick }: Props) {
     <div
       role='button'
       tabIndex={0}
-      className={cx(styles.item, className)}
+      className={cx(styles.item)}
       onClick={onClick}
     >
-      <Image
-        src={`data:image/svg+xml;base64,${image}`}
-        alt='point'
-        width={138}
-        height={143}
-        unoptimized
-      />
+      <div className={cx(className, styles.full)}>
+        <Image
+          src={`data:image/svg+xml;base64,${image}`}
+          alt='point'
+          width={138}
+          height={143}
+          unoptimized
+        />
+      </div>
     </div>
   );
 }

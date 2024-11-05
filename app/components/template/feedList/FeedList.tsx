@@ -6,11 +6,11 @@ import Card from '@/app/components/card/Card';
 import Body from '@/app/components/text/Body';
 import { useFeedList } from '@/app/(beforeLogin)/_state/useFeedList';
 import { QueryKey } from '@tanstack/react-query';
-
-import * as styles from './feedList.css';
 import { useTopButton } from '@/app/store/useTranslate';
 import { useEffect } from 'react';
 import CustomToast from '@/app/(beforeLogin)/_component/CustomToast';
+
+import * as styles from './feedList.css';
 
 type Props<T> = {
   queryKey: T;
@@ -32,7 +32,10 @@ export default function FeedList<T extends QueryKey>({
 
   const action = useTopButton((state) => state.action);
 
-  const { localData, setRefs } = useFeedList<T>({ queryKey, queryFn });
+  const { localData, setRefs, totalData } = useFeedList<T>({
+    queryKey,
+    queryFn,
+  });
 
   const onClickCard = (detail: number) => () => {
     router.push(`${pathname}/${detail}`, { scroll: false });
@@ -46,7 +49,7 @@ export default function FeedList<T extends QueryKey>({
 
   return (
     <>
-      {hasTotal && <Body size='5'>총 {localData.length}건</Body>}
+      {hasTotal && <Body size='5'>총 {totalData}건</Body>}
       <div className={styles.group}>
         {localData.map((datum) => (
           <Card

@@ -11,11 +11,13 @@ export type AlarmDataTypes = {
   age: number;
   page: number;
   createdAt: string;
+  status: number;
 };
 
 export type AlarmResponseTypes = {
   hasPage: boolean;
   data: AlarmDataTypes[];
+  totalCnt: number;
 };
 
 type Props = {

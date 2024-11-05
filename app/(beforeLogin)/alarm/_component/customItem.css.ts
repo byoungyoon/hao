@@ -4,9 +4,8 @@ import { vars } from '@/app/theme.css';
 export const item = style({
   display: 'flex',
   alignItems: 'center',
-  gap: 16,
   height: 112,
-  padding: '0 0 0 24px',
+  padding: '0 24px',
   position: 'relative',
   background: vars.color.gray.white,
 
@@ -15,6 +14,12 @@ export const item = style({
       background: vars.color.gray['100'],
     },
   },
+});
+
+export const itemLayer = style({
+  display: 'flex',
+  alignItems: 'center',
+  gap: 16,
 });
 
 export const imageLayer = style({
@@ -80,8 +85,4 @@ export const modeLayer = style({
   justifyContent: 'center',
   cursor: 'pointer',
   height: '100%',
-});
-
-export const date = style({
-  color: vars.color.gray['300'],
 });

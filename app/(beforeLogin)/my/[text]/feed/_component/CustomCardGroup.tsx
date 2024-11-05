@@ -45,7 +45,7 @@ export default function CustomCardGroup() {
           option={{
             isScrap: datum.isBookmark,
             isVote: datum.isVoted,
-            isAdopt: datum.isVoted,
+            isAdopt: datum.isAdopted,
           }}
           onClick={onClickCard(datum.id)}
         />

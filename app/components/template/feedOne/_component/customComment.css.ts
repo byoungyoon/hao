@@ -113,5 +113,5 @@ export const image = style({
 export const commentText = style({
   color: vars.color.gray['400'],
   wordBreak: 'break-all',
-  whiteSpace: 'normal',
+  whiteSpace: 'pre-line',
 });

@@ -3,20 +3,22 @@
 import Image from 'next/image';
 import cx from 'classnames';
 import Body from '@/app/components/text/Body';
-import { useMemo, useState, MouseEvent, TouchEvent } from 'react';
+import {
+  useMemo,
+  useState,
+  MouseEvent,
+  TouchEvent,
+  MouseEventHandler,
+  useEffect,
+} from 'react';
 import Delete from '@/app/icon/alarm-delete.svg';
 import { useAlarmDelete } from '@/app/(beforeLogin)/alarm/_state/useAlarmDelete';
 import { useToast } from '@/app/store/useToast';
-import { useRouter } from 'next/navigation';
-import dayjs from 'dayjs';
-import utc from 'dayjs/plugin/utc';
-import duration from 'dayjs/plugin/duration';
+import { usePathname, useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
+import CustomItemDate from '@/app/(beforeLogin)/alarm/_component/CustomItemDate';
 
 import * as styles from './customItem.css';
-
-dayjs.extend(utc);
-dayjs.extend(duration);
 
 const variants = {
   initial: { opacity: 0 },
@@ -33,7 +35,11 @@ type Props = {
   type: 'LIKE' | 'COMMENT' | 'ADOPTED';
 
   isAlive?: boolean;
+  isSelect?: boolean;
   createdAt: string;
+
+  onTrackable?: (id: number) => void;
+  target: number;
 };
 
 export default function CustomItem({
@@ -44,9 +50,14 @@ export default function CustomItem({
   nickname,
   type,
   isAlive,
+  isSelect,
   createdAt,
+  onTrackable,
+  target,
 }: Props) {
   const router = useRouter();
+  const pathname = usePathname();
+
   const updateToast = useToast((state) => state.updateToast);
 
   const [translateX, setTranslateX] = useState(0);
@@ -63,35 +74,10 @@ export default function CustomItem({
     return '';
   }, [type]);
 
-  const localTime = useMemo(() => {
-    const time = dayjs(createdAt);
-    const now = dayjs();
-    const diffInMinutes = now.diff(time, 'minute');
-    const diffInHours = now.diff(time, 'hour');
-
-    if (diffInMinutes < 60) {
-      if (diffInMinutes === 0) {
-        return '방금';
-      } else if (diffInMinutes === 1) {
-        return '최근 1분 전';
-      } else {
-        return `최근 ${diffInMinutes}분 전`;
-      }
-    } else if (diffInHours < 24) {
-      return `${diffInHours}시간 전`;
-    } else {
-      const diffInDays = now.diff(time, 'day');
-      return `${diffInDays}일 전`;
-    }
-  }, [createdAt]);
-
   const onActionDown = (x: number) => {
-    if (isMode) {
-      return;
-    }
-
     setIsDragging(true);
     setStartX(x);
+    if (onTrackable) onTrackable(id);
   };
 
   const onActionMove = (x: number) => {
@@ -103,14 +89,15 @@ export default function CustomItem({
     if (Math.max(dx, 0) >= 80) {
       setIsDragging(false);
       setIsMode(true);
+    } else {
+      setIsMode(false);
     }
   };
 
   const onActionUp = () => {
-    if (isMode) return;
-
     setIsDragging(false);
-    setTranslateX(0);
+
+    if (!isMode) setTranslateX(0);
   };
 
   const onMouseDown = (event: MouseEvent) => onActionDown(event.clientX);
@@ -125,15 +112,20 @@ export default function CustomItem({
 
   const { onDelete } = useAlarmDelete({ id: id });
 
-  const onClickItem = () => {
-    if (isMode) {
-      setIsMode(false);
-      return;
-    }
+  const onClickItem: MouseEventHandler<HTMLDivElement> = (event) => {
+    if (isMode || event.clientX !== startX) return;
 
     if (!isAlive) updateToast('작성자가 삭제해서 볼 수 없어');
-    else router.push(`/feed/${boardId}`);
+    else router.push(`${pathname}/${boardId}`);
   };
+
+  useEffect(() => {
+    if (target !== id) {
+      setIsMode(false);
+      setTranslateX(0);
+      setIsDragging(false);
+    }
+  }, [target, id, setIsMode, setTranslateX, setIsDragging]);
 
   return (
     <motion.div
@@ -142,46 +134,45 @@ export default function CustomItem({
       animate='animate'
       exit='exit'
       transition={{ duration: 0.4 }}
-      className={cx(styles.item, !isAlive && 'noAlive')}
+      className={cx(styles.item, !isSelect && 'noAlive')}
       onMouseDown={onMouseDown}
       onMouseMove={onMouseMove}
       onMouseUp={onMouseUp}
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
-      onClick={onClickItem}
       style={{
         transform: `translateX(-${translateX}px)`,
-        transition: isDragging ? 'none' : 'transform 0.3s',
+        transition: 'transform 0.3s',
       }}
     >
-      <div
-        className={cx(styles.imageLayer, `age${age}`, !isAlive && 'noAlive')}
-      >
-        <Image
-          className={cx(styles.image, !isAlive && 'noAlive')}
-          src={`data:image/svg+xml;base64,${image}`}
-          alt='alarm'
-          width={38}
-          height={38}
-          unoptimized
-        />
-      </div>
-      <div className={styles.textLayer}>
-        <Body size='3' className={cx(styles.title, !isAlive && 'noAlive')}>
-          {isAlive ? (
-            <>
-              &apos;<strong>{nickname}</strong>&apos; {title}
-            </>
-          ) : (
-            <>
-              &apos;{nickname}&apos; {title}
-            </>
-          )}
-        </Body>
-        <Body size='5' className={styles.date}>
-          {localTime}
-        </Body>
+      <div className={styles.itemLayer} onMouseUp={onClickItem}>
+        <div
+          className={cx(styles.imageLayer, `age${age}`, !isSelect && 'noAlive')}
+        >
+          <Image
+            className={cx(styles.image, !isSelect && 'noAlive')}
+            src={`data:image/svg+xml;base64,${image}`}
+            alt='alarm'
+            width={38}
+            height={38}
+            unoptimized
+          />
+        </div>
+        <div className={styles.textLayer}>
+          <Body size='3' className={cx(styles.title, !isSelect && 'noAlive')}>
+            {isSelect ? (
+              <>
+                &apos;<strong>{nickname}</strong>&apos; {title}
+              </>
+            ) : (
+              <>
+                &apos;{nickname}&apos; {title}
+              </>
+            )}
+          </Body>
+          <CustomItemDate date={createdAt} />
+        </div>
       </div>
       <div
         role='button'

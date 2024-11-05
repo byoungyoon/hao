@@ -18,4 +18,5 @@ export const selectLayer = style({
   display: 'flex',
   alignItems: 'center',
   margin: '24px 0 16px 0',
+  gap: 8,
 });

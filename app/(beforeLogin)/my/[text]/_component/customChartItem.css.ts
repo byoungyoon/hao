@@ -55,7 +55,7 @@ export const blockRank = style({
 
 export const blockGroup = style({
   display: 'flex',
-  alignItems: 'center',
+  alignItems: 'end',
   gap: 4,
   marginBottom: 16,
   paddingLeft: 10,
@@ -63,5 +63,5 @@ export const blockGroup = style({
 
 export const blockGroupText = style({
   color: vars.color.gray.background,
-  whiteSpace: 'nowrap',
+  whiteSpace: 'pre-line',
 });

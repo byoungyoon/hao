@@ -17,10 +17,13 @@ type Props = {
 };
 
 export default function CustomCommentInput({ id }: Props) {
-  const { value, image, target, updateValue, updateImage } = useCommentForm();
+  const { value, image, target, updateValue, updateImage, reset } =
+    useCommentForm();
 
   const isResult = useMemo(() => {
-    return !(value === '' && image === '');
+    const isValue = value.replace(/\n/g, '').length === 0;
+
+    return !(isValue && image === '');
   }, [value, image]);
 
   const onFileChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -56,7 +59,7 @@ export default function CustomCommentInput({ id }: Props) {
   };
 
   const onReset = () => {
-    updateValue('');
+    reset();
     onRemove();
   };
 

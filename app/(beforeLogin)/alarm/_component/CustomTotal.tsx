@@ -6,11 +6,11 @@ import { useAlarm } from '@/app/(beforeLogin)/_state/useAlarm';
 import * as styles from './customTotal.css';
 
 export default function CustomTotal() {
-  const { localData: alarmData } = useAlarm();
+  const { totalData } = useAlarm();
 
   return (
     <Body size='5' className={styles.total}>
-      총 {alarmData.length}개
+      총 {totalData}개
     </Body>
   );
 }

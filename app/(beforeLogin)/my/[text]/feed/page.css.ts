@@ -23,23 +23,7 @@ export const article = style({
   flexDirection: 'column',
 });
 
-export const totalTextLayer = style({
-  marginTop: 24,
-  marginBottom: 16,
-});
-
 export const feedGroupLayer = style({
   flexGrow: 1,
   position: 'relative',
-});
-
-export const feedOverflow = style({
-  position: 'absolute',
-  top: 0,
-  left: 0,
-  right: 0,
-  bottom: 0,
-  overflow: 'scroll',
-  overflowX: 'hidden',
-  scrollbarWidth: 'none',
 });

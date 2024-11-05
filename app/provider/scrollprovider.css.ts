@@ -28,4 +28,5 @@ export const topButton = style({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
+  zIndex: 1,
 });

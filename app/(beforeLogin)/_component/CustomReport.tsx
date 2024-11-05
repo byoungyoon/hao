@@ -10,9 +10,10 @@ import * as styles from './customReport.css';
 
 type Props = {
   mode?: '후추' | '후시딘' | '작성자' | '다중';
+  timeout?: number;
 };
 
-export default function CustomReport({ mode }: Props) {
+export default function CustomReport({ mode, timeout = 2500 }: Props) {
   const text = useMemo(() => {
     if (mode === '후시딘')
       return ['작성자에게 긍정적으로 아물 수 있는 ', '후시딘', '이 되어줘'];
@@ -39,9 +40,9 @@ export default function CustomReport({ mode }: Props) {
     if (mode === '다중') {
       setInterval(() => {
         cycleText();
-      }, 2500);
+      }, timeout);
     }
-  }, [mode, cycleText]);
+  }, [mode, cycleText, timeout]);
 
   return (
     <div className={styles.report}>

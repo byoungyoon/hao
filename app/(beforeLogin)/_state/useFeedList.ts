@@ -62,9 +62,15 @@ export const useFeedList = <T extends QueryKey>({
     }, [] as FeedDataTypes[]);
   }, [data]);
 
+  const totalData = useMemo(() => {
+    if (!data) return 0;
+
+    return data.pages[0].totalCnt;
+  }, [data]);
+
   useEffect(() => {
     if (inView && hasNextPage) fetchNextPage();
   }, [inView, hasNextPage, fetchNextPage]);
 
-  return { localData, hasNextPage, fetchNextPage, setRefs };
+  return { localData, hasNextPage, fetchNextPage, setRefs, totalData };
 };
