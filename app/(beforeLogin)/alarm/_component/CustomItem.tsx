@@ -19,6 +19,7 @@ import { motion } from 'framer-motion';
 import CustomItemDate from '@/app/(beforeLogin)/alarm/_component/CustomItemDate';
 
 import * as styles from './customItem.css';
+import { useAlarmSelect } from '@/app/(beforeLogin)/alarm/_state/useAlarmSelect';
 
 const variants = {
   initial: { opacity: 0 },
@@ -111,12 +112,16 @@ export default function CustomItem({
   const onTouchEnd = () => onActionUp();
 
   const { onDelete } = useAlarmDelete({ id: id });
+  const { onSelect } = useAlarmSelect({ id: id });
 
   const onClickItem: MouseEventHandler<HTMLDivElement> = (event) => {
     if (isMode || event.clientX !== startX) return;
 
     if (!isAlive) updateToast('작성자가 삭제해서 볼 수 없어');
-    else router.push(`${pathname}/${boardId}`);
+    else {
+      onSelect();
+      router.push(`${pathname}/${boardId}`);
+    }
   };
 
   useEffect(() => {
