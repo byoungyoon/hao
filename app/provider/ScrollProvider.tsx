@@ -7,6 +7,8 @@ import Image from 'next/image';
 import { motion, useAnimation } from 'framer-motion';
 
 import * as styles from './scrollprovider.css';
+import { useToast } from '@/app/store/useToast';
+import cx from 'classnames';
 
 type Props = {
   children: ReactNode;
@@ -15,6 +17,7 @@ type Props = {
 export default function ScrollProvider({ children }: Props) {
   const ref = useRef<HTMLDivElement | null>(null);
   const state = useTopButton((state) => state.state);
+  const { open } = useToast();
 
   const controls = useAnimation();
   const [prevScrollY, setPrevScrollY] = useState(0);
@@ -67,7 +70,7 @@ export default function ScrollProvider({ children }: Props) {
             transition={{ duration: 0.3 }}
             role='button'
             tabIndex={0}
-            className={styles.topButton}
+            className={cx(styles.topButton, open && 'toast')}
             onClick={onScrollTop(600)}
           >
             <Image src={Up} alt='up' />

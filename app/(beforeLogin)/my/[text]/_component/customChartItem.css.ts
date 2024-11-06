@@ -63,5 +63,11 @@ export const blockGroup = style({
 
 export const blockGroupText = style({
   color: vars.color.gray.background,
-  whiteSpace: 'pre-line',
+  whiteSpace: 'nowrap',
+
+  '@media': {
+    'screen and (max-width: 320px)': {
+      whiteSpace: 'pre-line',
+    },
+  },
 });

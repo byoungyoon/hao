@@ -97,27 +97,25 @@ export default function CustomPointCardGroup() {
 
   return (
     <div ref={ref} className={styles.group}>
-      {targetIndex !== -1 && (
-        <Slider
-          {...settings}
-          centerPadding={centerPadding}
-          afterChange={onAfterChange}
-          initialSlide={targetIndex}
-          ref={sliderRef}
-        >
-          {localData.map((datum) => (
-            <PointCard
-              key={datum.id}
-              image={datum.image}
-              className={cx(
-                styles.age[`age${localAge}`],
-                point === datum.id && 'select',
-              )}
-              onClick={onClickItem(datum.id)}
-            />
-          ))}
-        </Slider>
-      )}
+      <Slider
+        {...settings}
+        centerPadding={centerPadding}
+        afterChange={onAfterChange}
+        initialSlide={targetIndex}
+        ref={sliderRef}
+      >
+        {localData.map((datum) => (
+          <PointCard
+            key={datum.id}
+            image={datum.image}
+            className={cx(
+              styles.age[`age${localAge}`],
+              point === datum.id && 'select',
+            )}
+            onClick={onClickItem(datum.id)}
+          />
+        ))}
+      </Slider>
     </div>
   );
 }

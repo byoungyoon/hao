@@ -74,13 +74,13 @@ export default function CustomItem({
             objectPosition='center'
           />
         ) : (
-          <Image src={Default} alt='item' layout='fill' objectFit='contain' />
+          <Image src={Default.src} alt='item' layout='fill' />
         )}
       </div>
       <div className={styles.titleLayer}>
         <Body size='3'>{makeSplitText(title, 10)}</Body>
         <Body size='6' className={styles.subTitle}>
-          {makeSplitText(subTitle, 50)}
+          {subTitle}
         </Body>
       </div>
       <div className={styles.countLayer}>

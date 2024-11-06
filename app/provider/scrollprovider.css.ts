@@ -29,4 +29,10 @@ export const topButton = style({
   alignItems: 'center',
   justifyContent: 'center',
   zIndex: 1,
+
+  selectors: {
+    '&.toast': {
+      zIndex: -1,
+    },
+  },
 });
