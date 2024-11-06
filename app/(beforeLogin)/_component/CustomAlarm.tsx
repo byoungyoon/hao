@@ -16,7 +16,7 @@ export default function CustomAlarm({ isHome }: Props) {
   const router = useRouter();
   const params = useParams<{ detail: string }>();
 
-  const { localData: alarmData } = useAlarm();
+  const { totalData } = useAlarm();
 
   const onClickAlarm = () => {
     router.push('/alarm');
@@ -26,7 +26,7 @@ export default function CustomAlarm({ isHome }: Props) {
   if (!isHome)
     return (
       <Image
-        src={alarmData.length === 0 ? AlarmOff.src : AlarmOn.src}
+        src={totalData === 0 ? AlarmOff.src : AlarmOn.src}
         alt='alarm'
         width={24}
         height={24}
@@ -38,7 +38,7 @@ export default function CustomAlarm({ isHome }: Props) {
     <div className={styles.alarmLayer}>
       <Image
         className={styles.alarm}
-        src={alarmData.length === 0 ? AlarmOff.src : AlarmOn.src}
+        src={totalData === 0 ? AlarmOff.src : AlarmOn.src}
         alt='alarm'
         width={24}
         height={24}

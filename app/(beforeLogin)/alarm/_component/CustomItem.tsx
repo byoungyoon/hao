@@ -117,9 +117,9 @@ export default function CustomItem({
   const onClickItem: MouseEventHandler<HTMLDivElement> = (event) => {
     if (isMode || event.clientX !== startX) return;
 
+    onSelect();
     if (!isAlive) updateToast('작성자가 삭제해서 볼 수 없어');
     else {
-      onSelect();
       router.push(`${pathname}/${boardId}`);
     }
   };
