@@ -4,8 +4,8 @@ import { vars } from '@/app/theme.css';
 export const container = style({
   maxWidth: 425,
   width: '100%',
-  maxHeight: '100vh',
-  height: '100vh',
+  maxHeight: '100svh',
+  height: '100svh',
   display: 'flex',
   flexDirection: 'column',
   margin: '0 auto',

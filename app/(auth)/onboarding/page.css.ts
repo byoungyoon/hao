@@ -3,7 +3,7 @@ import { vars } from '@/app/theme.css';
 
 export const container = style({
   background: vars.color.orange['50'],
-  height: '100vh',
+  height: '100svh',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',

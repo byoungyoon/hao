@@ -3,8 +3,8 @@ import { vars } from '@/app/theme.css';
 
 export const container = style({
   width: '100%',
-  maxHeight: '100vh',
-  minHeight: '100vh',
+  maxHeight: '100svh',
+  minHeight: '100svh',
   display: 'flex',
   flexDirection: 'column',
 

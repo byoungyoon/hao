@@ -5,7 +5,7 @@ export const section = style({
   display: 'flex',
   flexDirection: 'column',
 
-  height: '100vh',
+  height: '100svh',
   justifyContent: 'center',
   padding: '0 40px',
   maxWidth: 425,
