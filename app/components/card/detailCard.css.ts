@@ -86,6 +86,8 @@ export const subTitle = style({
   color: vars.color.gray['400'],
   wordBreak: 'break-all',
   whiteSpace: 'pre-line',
+  position: 'relative',
+  zIndex: 1,
 });
 
 export const countLayer = style({

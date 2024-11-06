@@ -5,6 +5,7 @@ export const item = style({
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
+  justifyContent: 'space-between',
   gap: 8,
   width: '100%',
   cursor: 'pointer',
@@ -12,12 +13,6 @@ export const item = style({
 
   ':focus': {
     background: vars.color.gray.white,
-  },
-
-  selectors: {
-    '&.select': {
-      borderBottom: 'none',
-    },
   },
 });
 
@@ -35,4 +30,6 @@ export const border = style({
   minHeight: 3,
   width: '100%',
   background: vars.color.orange['300'],
+  position: 'relative',
+  zIndex: 1,
 });

@@ -12,6 +12,7 @@ import { MouseEventHandler } from 'react';
 import Edit from '@/app/icon/edit-gray.svg';
 import Trash from '@/app/icon/trash-gray.svg';
 import CustomImage from '@/app/components/card/_component/CustomImage';
+import CustomSubTitle from '@/app/components/card/_component/CustomSubTitle';
 
 import * as styles from './detailCard.css';
 
@@ -149,9 +150,7 @@ export default function DetailCard({
           </div>
         )}
         {data.thumbnail && <CustomImage images={data.thumbnail} />}
-        <Body size='5' className={styles.subTitle}>
-          {data.subTitle}
-        </Body>
+        <CustomSubTitle subTitle={data.subTitle} />
       </div>
       <div className={styles.countLayer}>
         <div className={styles.countSubLayer}>

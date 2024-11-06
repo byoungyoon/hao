@@ -33,7 +33,7 @@ export default function CategoryTabItem({ text, isSelect, onClick }: Props) {
       </Body>
       {isSelect && (
         <motion.div
-          className={cx(styles.border, isSelect && 'select')}
+          className={styles.border}
           layoutId={`catrgory${pathname}`}
         />
       )}
