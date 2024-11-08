@@ -1,7 +1,11 @@
 import type { Metadata } from 'next';
 import './global.css';
 
+import cx from 'classnames';
+import CustomTree from '@/app/components/tree/CustomTree';
+
 import * as styles from './theme.css';
+import * as layoutStyles from './layout.css';
 
 export const metadata: Metadata = {
   title: '후~해',
@@ -15,7 +19,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className={styles.themeClass}>{children}</body>
+      <body className={cx(styles.themeClass, layoutStyles.body)}>
+        <div id='tree' className={layoutStyles.treeLayer}>
+          <CustomTree />
+        </div>
+        {children}
+      </body>
     </html>
   );
 }

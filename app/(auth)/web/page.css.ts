@@ -4,12 +4,14 @@ import { vars } from '@/app/theme.css';
 export const section = style({
   display: 'flex',
   flexDirection: 'column',
-
-  height: '100svh',
   justifyContent: 'center',
   padding: '0 40px',
-  maxWidth: 425,
   boxSizing: 'border-box',
+
+  maxWidth: 425,
+  width: '100%',
+  maxHeight: '100svh',
+  height: '100svh',
   margin: '0 auto',
   background: vars.color.gray.white,
 });

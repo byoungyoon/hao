@@ -13,10 +13,12 @@ export default function OnboardingPage() {
   const router = useRouter();
 
   useEffect(() => {
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       router.replace('/web');
     }, 2500);
-  }, []);
+
+    return () => clearTimeout(timer);
+  }, [router]);
 
   return (
     <section className={styles.container}>
