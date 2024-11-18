@@ -3,16 +3,17 @@ import { CardUserTypes } from '@/app/components/card/Card';
 import cx from 'classnames';
 import Image from 'next/image';
 import Body from '@/app/components/text/Body';
-import Like from '@/app/icon/like-activate.svg';
-import LikeOff from '@/app/icon/like-deactivate.svg';
 import Comment from '@/app/icon/comment.svg';
-import Bookmark from '@/app/icon/bookmark-activate.svg';
-import BookmarkOff from '@/app/icon/bookmark-deactivate.svg';
 import { MouseEventHandler } from 'react';
 import Edit from '@/app/icon/edit-gray.svg';
 import Trash from '@/app/icon/trash-gray.svg';
 import CustomImage from '@/app/components/card/_component/CustomImage';
 import CustomSubTitle from '@/app/components/card/_component/CustomSubTitle';
+import LikeOnIcon from '@/app/components/svg/LikeOnIcon';
+import LikeOffIcon from '@/app/components/svg/LikeOffIcon';
+import { vars } from '@/app/theme.css';
+import BookmarkOnIcon from '@/app/components/svg/BookmarkOnIcon';
+import BookmarkOffIcon from '@/app/components/svg/BookmarkOffIcon';
 
 import * as styles from './detailCard.css';
 
@@ -155,14 +156,16 @@ export default function DetailCard({
       <div className={styles.countLayer}>
         <div className={styles.countSubLayer}>
           <div className={styles.countGroup}>
-            <Image
-              src={option.isVote ? Like : LikeOff}
-              alt='list'
-              width={24}
-              height={24}
-              onClick={onVote}
-              className={styles.image}
-            />
+            <span onClick={onVote} className={styles.image}>
+              {option.isVote ? (
+                <LikeOnIcon
+                  color={vars.color.orange['100']}
+                  borderColor={vars.color.orange['300']}
+                />
+              ) : (
+                <LikeOffIcon />
+              )}
+            </span>
             <Body
               size='5'
               className={cx(styles.countText, option.isVote && 'orange')}
@@ -177,14 +180,16 @@ export default function DetailCard({
             </Body>
           </div>
         </div>
-        <Image
-          src={option.isScrap ? Bookmark : BookmarkOff}
-          alt='scarp'
-          width={24}
-          height={24}
-          onClick={onScrap}
-          className={styles.image}
-        />
+        <span onClick={onScrap} className={styles.image}>
+          {option.isScrap ? (
+            <BookmarkOnIcon
+              color={vars.color.orange['100']}
+              borderColor={vars.color.orange['300']}
+            />
+          ) : (
+            <BookmarkOffIcon />
+          )}
+        </span>
       </div>
     </div>
   );

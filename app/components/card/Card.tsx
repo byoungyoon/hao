@@ -4,15 +4,16 @@ import cx from 'classnames';
 import Image from 'next/image';
 import Body from '@/app/components/text/Body';
 import InfoLayer from '@/app/components/layer/InfoLayer';
-import Like from '@/app/icon/like-activate.svg';
-import LikeOff from '@/app/icon/like-deactivate.svg';
 import Comment from '@/app/icon/comment.svg';
-import Bookmark from '@/app/icon/bookmark-activate.svg';
-import BookmarkOff from '@/app/icon/bookmark-deactivate.svg';
 import { useFeedVote } from '@/app/(beforeLogin)/_state/useFeedVote';
 import { useClient } from '@/app/store/useClient';
 import { useMemo } from 'react';
 import { useFeedScrap } from '@/app/(beforeLogin)/_state/useFeedScrap';
+import LikeOnIcon from '@/app/components/svg/LikeOnIcon';
+import LikeOffIcon from '@/app/components/svg/LikeOffIcon';
+import { vars } from '@/app/theme.css';
+import BookmarkOnIcon from '@/app/components/svg/BookmarkOnIcon';
+import BookmarkOffIcon from '@/app/components/svg/BookmarkOffIcon';
 
 import * as styles from './card.css';
 
@@ -191,13 +192,16 @@ export default function Card({ user, data, option, onClick }: Props) {
       <div className={styles.countLayer}>
         <div className={styles.countSubLayer}>
           <div className={styles.countGroup}>
-            <Image
-              src={localVote.state ? Like : LikeOff}
-              alt='list'
-              width={24}
-              height={24}
-              onClick={onVote}
-            />
+            <span onClick={onVote}>
+              {localVote.state ? (
+                <LikeOnIcon
+                  color={vars.color.orange['100']}
+                  borderColor={vars.color.orange['300']}
+                />
+              ) : (
+                <LikeOffIcon />
+              )}
+            </span>
             <Body
               size='5'
               className={cx(styles.countText, localVote.state && 'orange')}
@@ -212,13 +216,16 @@ export default function Card({ user, data, option, onClick }: Props) {
             </Body>
           </div>
         </div>
-        <Image
-          src={localScrap ? Bookmark : BookmarkOff}
-          alt='list'
-          width={24}
-          height={24}
-          onClick={onScrap}
-        />
+        <span onClick={onScrap}>
+          {localScrap ? (
+            <BookmarkOnIcon
+              color={vars.color.orange['100']}
+              borderColor={vars.color.orange['300']}
+            />
+          ) : (
+            <BookmarkOffIcon />
+          )}
+        </span>
       </div>
     </div>
   );

@@ -2,7 +2,9 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import Heart from '@/app/icon/like-activate.svg';
+import HeartEvent from '@/app/icon/like-activate-event.svg';
 import { useHeart } from '@/app/store/useHeart';
+import { useTheme } from '@/app/store/useTranslate';
 
 import * as styles from './heartCanvas.css';
 
@@ -35,16 +37,17 @@ export default function HeartCanvas({
 
   const [hearts, setHearts] = useState<HeartDataTypes[]>([]);
   const ref = useRef<HTMLCanvasElement>(null);
+  const { theme } = useTheme();
 
   const localUpdate = useMemo(() => update, []);
 
   const image = useMemo(() => {
     const element = new Image();
-    element.src = Heart.src;
+    element.src = theme === 'default' ? Heart.src : HeartEvent.src;
     element.alt = 'heart';
 
     return element;
-  }, []);
+  }, [theme]);
 
   const onResize = useCallback(() => {
     if (!ref.current) return;

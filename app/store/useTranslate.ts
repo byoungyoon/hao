@@ -181,3 +181,17 @@ export const useCommentForm = create<CommentState & CommentAction>((set) => ({
   updateImage: (image) => set(() => ({ image: image })),
   reset: () => set(() => ({ value: '', image: '', target: 0 })),
 }));
+
+type ThemeState = {
+  theme: 'default' | 'event';
+};
+
+type ThemeAction = {
+  updateTheme: (theme: ThemeState['theme']) => void;
+};
+
+export const useTheme = create<ThemeState & ThemeAction>((set) => ({
+  theme: 'default',
+
+  updateTheme: (theme) => set(() => ({ theme: theme })),
+}));

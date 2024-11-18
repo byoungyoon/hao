@@ -1,10 +1,10 @@
 'use client';
 
-import AlarmOn from '@/app/icon/alarm-on.svg';
-import AlarmOff from '@/app/icon/alarm.svg';
-import Image from 'next/image';
 import { useParams, useRouter } from 'next/navigation';
 import { useAlarm } from '@/app/(beforeLogin)/_state/useAlarm';
+import AlarmOffIcon from '@/app/components/svg/AlarmOffIcon';
+import AlarmOnIcon from '@/app/components/svg/AlarmOnIcon';
+import { vars } from '@/app/theme.css';
 
 import * as styles from './customAlarm.css';
 
@@ -25,25 +25,24 @@ export default function CustomAlarm({ isHome }: Props) {
   if (params.detail) return <></>;
   if (!isHome)
     return (
-      <Image
-        src={totalData === 0 ? AlarmOff.src : AlarmOn.src}
-        alt='alarm'
-        width={24}
-        height={24}
-        onClick={onClickAlarm}
-      />
+      <span onClick={onClickAlarm}>
+        {totalData === 0 ? (
+          <AlarmOffIcon />
+        ) : (
+          <AlarmOnIcon color={vars.color.orange['300']} />
+        )}
+      </span>
     );
 
   return (
     <div className={styles.alarmLayer}>
-      <Image
-        className={styles.alarm}
-        src={totalData === 0 ? AlarmOff.src : AlarmOn.src}
-        alt='alarm'
-        width={24}
-        height={24}
-        onClick={onClickAlarm}
-      />
+      <span onClick={onClickAlarm} className={styles.alarm}>
+        {totalData === 0 ? (
+          <AlarmOffIcon />
+        ) : (
+          <AlarmOnIcon color={vars.color.orange['300']} />
+        )}
+      </span>
     </div>
   );
 }

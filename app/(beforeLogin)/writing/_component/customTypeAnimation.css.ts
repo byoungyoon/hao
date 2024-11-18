@@ -10,3 +10,10 @@ export const item = style({
   fontSize: 18,
   color: vars.color.gray['400'],
 });
+
+export const white = style({
+  position: 'fixed',
+  inset: 0,
+  zIndex: 999,
+  background: vars.color.gray.white,
+});
