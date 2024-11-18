@@ -1,11 +1,5 @@
 'use client';
 
-import FeedOn from '@/app/icon/feed/on.svg';
-import FeedOff from '@/app/icon/feed/off.svg';
-import MyPageOn from '@/app/icon/mypage/on.svg';
-import MyPageOff from '@/app/icon/mypage/off.svg';
-import WritingOn from '@/app/icon/writing/on.svg';
-import WritingOff from '@/app/icon/writing/off.svg';
 import { useMemo } from 'react';
 import BarTab from '@/app/components/tab/BarTab';
 import { usePathname, useRouter } from 'next/navigation';
@@ -16,8 +10,6 @@ import TextModal from '@/app/components/modal/TextModal';
 import Image from '@/app/image/character/modal-intercept.svg';
 import { vars } from '@/app/theme.css';
 import cx from 'classnames';
-
-import * as styles from './customBarTab.css';
 import HomeOnIcon from '@/app/components/svg/HomeOnIcon';
 import HomeOffIcon from '@/app/components/svg/HomeOffIcon';
 import FeedOnIcon from '@/app/components/svg/FeedOnIcon';
@@ -26,6 +18,8 @@ import MyPageOnIcon from '@/app/components/svg/MyPageOnIcon';
 import MyPageOffIcon from '@/app/components/svg/MyPageOffIcon';
 import WritingOnIcon from '@/app/components/svg/WritingOnIcon';
 import WritingOffIcon from '@/app/components/svg/WritingOffIcon';
+
+import * as styles from './customBarTab.css';
 
 export default function CustomBarTab() {
   const router = useRouter();
