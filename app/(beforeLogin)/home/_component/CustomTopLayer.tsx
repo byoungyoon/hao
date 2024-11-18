@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
-import Header from '@/app/icon/home/header.svg';
-import Image from 'next/image';
 import Link from 'next/link';
+import HeaderIcon from '@/app/components/svg/HeaderIcon';
+import { vars } from '@/app/theme.css';
 
 import * as styles from './customTopLayer.css';
 
@@ -14,7 +14,11 @@ export default function CustomTopLayer({ children }: Props) {
     <article className={styles.topLayer}>
       {children}
       <Link href={'/writing/i/today'}>
-        <Image src={Header} alt='header' className={styles.image} />
+        <HeaderIcon
+          className={styles.image}
+          color={vars.color.orange['300']}
+          borderColor={vars.color.orange['100']}
+        />
       </Link>
     </article>
   );

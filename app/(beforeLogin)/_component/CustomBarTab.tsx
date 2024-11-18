@@ -1,7 +1,5 @@
 'use client';
 
-import HomeOn from '@/app/icon/home/on.svg';
-import HomeOff from '@/app/icon/home/off.svg';
 import FeedOn from '@/app/icon/feed/on.svg';
 import FeedOff from '@/app/icon/feed/off.svg';
 import MyPageOn from '@/app/icon/mypage/on.svg';
@@ -20,6 +18,14 @@ import { vars } from '@/app/theme.css';
 import cx from 'classnames';
 
 import * as styles from './customBarTab.css';
+import HomeOnIcon from '@/app/components/svg/HomeOnIcon';
+import HomeOffIcon from '@/app/components/svg/HomeOffIcon';
+import FeedOnIcon from '@/app/components/svg/FeedOnIcon';
+import FeedOffIcon from '@/app/components/svg/FeedOffIcon';
+import MyPageOnIcon from '@/app/components/svg/MyPageOnIcon';
+import MyPageOffIcon from '@/app/components/svg/MyPageOffIcon';
+import WritingOnIcon from '@/app/components/svg/WritingOnIcon';
+import WritingOffIcon from '@/app/components/svg/WritingOffIcon';
 
 export default function CustomBarTab() {
   const router = useRouter();
@@ -38,32 +44,52 @@ export default function CustomBarTab() {
       {
         text: '홈',
         icon: {
-          on: HomeOn.src,
-          off: HomeOff.src,
+          on: (
+            <HomeOnIcon
+              color={vars.color.orange['100']}
+              borderColor={vars.color.orange['300']}
+            />
+          ),
+          off: <HomeOffIcon />,
         },
         target: '/home',
       },
       {
         text: '피드',
         icon: {
-          on: FeedOn.src,
-          off: FeedOff.src,
+          on: (
+            <FeedOnIcon
+              color={vars.color.orange['100']}
+              borderColor={vars.color.orange['300']}
+            />
+          ),
+          off: <FeedOffIcon />,
         },
         target: '/feed',
       },
       {
         text: '글 작성',
         icon: {
-          on: WritingOn.src,
-          off: WritingOff.src,
+          on: (
+            <WritingOnIcon
+              color={vars.color.orange['100']}
+              borderColor={vars.color.orange['300']}
+            />
+          ),
+          off: <WritingOffIcon />,
         },
         target: '/writing',
       },
       {
         text: '마이페이지',
         icon: {
-          on: MyPageOn.src,
-          off: MyPageOff.src,
+          on: (
+            <MyPageOnIcon
+              color={vars.color.orange['100']}
+              borderColor={vars.color.orange['300']}
+            />
+          ),
+          off: <MyPageOffIcon />,
         },
         target: '/my',
       },

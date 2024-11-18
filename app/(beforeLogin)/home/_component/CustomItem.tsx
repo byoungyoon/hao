@@ -2,8 +2,6 @@
 
 import Image from 'next/image';
 import Body from '@/app/components/text/Body';
-import Like from '@/app/icon/like-activate.svg';
-import LikeOff from '@/app/icon/like-deactivate.svg';
 import Comment from '@/app/icon/comment.svg';
 import Default from '@/app/image/top5_default.png';
 import cx from 'classnames';
@@ -11,6 +9,9 @@ import { makeSplitText } from '@/app/util/makeSplitText';
 import { useMemo } from 'react';
 import { useFeedVote } from '@/app/(beforeLogin)/_state/useFeedVote';
 import { useClient } from '@/app/store/useClient';
+import LikeOnIcon from '@/app/components/svg/LikeOnIcon';
+import LikeOffIcon from '@/app/components/svg/LikeOffIcon';
+import { vars } from '@/app/theme.css';
 
 import * as styles from './customItem.css';
 
@@ -85,13 +86,16 @@ export default function CustomItem({
       </div>
       <div className={styles.countLayer}>
         <span className={styles.countGroup}>
-          <Image
-            src={localVote.state ? Like : LikeOff}
-            alt='like'
-            width={24}
-            height={24}
-            onClick={onVote}
-          />
+          <span onClick={onVote}>
+            {localVote.state ? (
+              <LikeOnIcon
+                color={vars.color.orange['100']}
+                borderColor={vars.color.orange['300']}
+              />
+            ) : (
+              <LikeOffIcon />
+            )}
+          </span>
           <Body
             size='6'
             className={cx(styles.countText, localVote.state && 'orange')}

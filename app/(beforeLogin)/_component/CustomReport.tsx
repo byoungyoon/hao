@@ -1,10 +1,10 @@
 'use client';
 
-import Report from '@/app/icon/report.svg';
-import Image from 'next/image';
 import Body from '@/app/components/text/Body';
 import { Fragment, useEffect, useMemo } from 'react';
 import { motion, useCycle } from 'framer-motion';
+import ReportIcon from '@/app/components/svg/ReportIcon';
+import { vars } from '@/app/theme.css';
 
 import * as styles from './customReport.css';
 
@@ -54,14 +54,14 @@ export default function CustomReport({ mode, timeout = 2500 }: Props) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <Image src={Report} alt='report' width={24} height={24} />
+          <ReportIcon color={vars.color.orange['300']} />
           <Body size='6' className={styles.text}>
             {currentText}
           </Body>
         </motion.div>
       ) : (
         <>
-          <Image src={Report} alt='report' width={24} height={24} />
+          <ReportIcon color={vars.color.orange['300']} />
           <Body size='6' className={styles.text}>
             {text.map((datum, index) =>
               datum === '후시딘' || datum === '후추' || datum === '한 친구' ? (

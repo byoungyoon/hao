@@ -1,11 +1,12 @@
 'use client';
 
 import { useFeedForm } from '@/app/store/useTranslate';
-import Search from '@/app/icon/search.svg';
 import Vector from '@/app/icon/vector.svg';
 import Image from 'next/image';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ChangeEventHandler } from 'react';
+import SearchIcon from '@/app/components/svg/SearchIcon';
+import { vars } from '@/app/theme.css';
 
 import * as styles from './customInput.css';
 
@@ -28,7 +29,7 @@ export default function CustomInput() {
 
   return (
     <div className={styles.inputLayer}>
-      <Image src={Search} alt='search' />
+      <SearchIcon borderColor={vars.color.orange['300']} />
       <input
         type='text'
         className={styles.input}

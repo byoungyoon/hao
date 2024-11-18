@@ -2,8 +2,8 @@
 
 import { useParams } from 'next/navigation';
 import BackButton from '@/app/(beforeLogin)/_component/BackButton';
-import Image from 'next/image';
-import Logo from '@/app/icon/logo.svg';
+import LogoIcon from '@/app/components/svg/LogoIcon';
+import { vars } from '@/app/theme.css';
 
 import * as styles from './customBack.css';
 
@@ -13,11 +13,8 @@ export default function CustomBack() {
   return params.detail ? (
     <BackButton />
   ) : (
-    <Image
-      src={Logo}
-      alt='logo'
-      width={82}
-      height={25}
+    <LogoIcon
+      borderColor={vars.color.orange['300']}
       className={styles.logo}
       style={{ position: 'relative', zIndex: 1, marginTop: 10 }}
     />
