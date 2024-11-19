@@ -9,6 +9,7 @@ import Body from '@/app/components/text/Body';
 import CustomTab from '@/app/(beforeLogin)/home/_component/CustomTab';
 import SuspenseToday from '@/app/(beforeLogin)/home/_suspense/SuspenseToday';
 import SuspenseTopFeed from '@/app/(beforeLogin)/home/_suspense/SuspenseTopFeed';
+import CustomSnow from '@/app/(beforeLogin)/home/_component/CustomSnow';
 
 import * as styles from './page.css';
 
@@ -45,6 +46,7 @@ export default function HomePage() {
         <CustomTab />
         <SuspenseTopFeed />
       </article>
+      <CustomSnow />
     </div>
   );
 }

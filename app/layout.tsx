@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import './global.css';
 
-import ThemeBody from '@/ThemeBody';
+import ThemeBody from '@/app/ThemeBody';
 
 export const metadata: Metadata = {
   title: '후~해',

@@ -11,6 +11,7 @@ export const item = style({
   background: vars.color.gray.white,
   justifyContent: 'space-between',
   overflow: 'hidden',
+  zIndex: 3,
 
   '@media': {
     'screen and (max-width: 375px)': {

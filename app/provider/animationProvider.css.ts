@@ -7,7 +7,7 @@ export const container = style({
   right: 0,
   bottom: 0,
   position: 'fixed',
-  zIndex: 2,
+  zIndex: 3,
   overflow: 'scroll',
   background: vars.color.gray.white,
   maxWidth: 425,

@@ -12,8 +12,8 @@ export default function HeaderIcon({
 }: Props & SVGProps<SVGSVGElement>) {
   return (
     <svg
-      width='397'
-      height='169'
+      width='335'
+      height='160'
       viewBox='0 0 397 169'
       fill='none'
       xmlns='http://www.w3.org/2000/svg'

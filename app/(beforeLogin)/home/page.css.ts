@@ -4,6 +4,7 @@ import { vars } from '@/app/theme.css';
 export const layer = style({
   display: 'flex',
   flexDirection: 'column',
+  position: 'relative',
 });
 
 export const hgroup = style({
