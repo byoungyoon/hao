@@ -37,7 +37,12 @@ export default function CustomTopLayer({ children }: Props) {
             width={130}
             className={styles.snowman1}
           />
-          <Image src={Background} alt='background' width={270} />
+          <Image
+            src={Background}
+            alt='background'
+            width={270}
+            className={styles.background}
+          />
         </>
       )}
     </article>

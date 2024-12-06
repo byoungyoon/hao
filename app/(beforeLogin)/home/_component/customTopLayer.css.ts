@@ -8,7 +8,7 @@ export const topLayer = style({
 });
 
 export const image = style({
-  position: 'relative',
+  position: 'absolute',
   bottom: 0,
   right: 0,
   left: '12%',
